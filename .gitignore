@@ -2,6 +2,7 @@
 __pycache__/
 # for Replit, do not use the embedded venv Python
 venv/
+.pythonlibs
 config/config
 # LaTeX specific
 *.aux
