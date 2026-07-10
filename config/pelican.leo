@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Created by Leo: http://leoeditor.com/leo_toc.html -->
-<leo_file xmlns:leo="http://leoeditor.com/namespaces/leo-python-editor/1.1" >
+<!-- Created by Leo: https://leo-editor.github.io/leo-editor/leo_toc.html -->
+<leo_file xmlns:leo="https://leo-editor.github.io/leo-editor/namespaces/leo-python-editor/1.1" >
 <leo_header file_format="2"/>
 <globals/>
 <preferences/>
 <find_panel_settings/>
 <vnodes>
-<v t="yen.20170108171605.1"><vh>@settings</vh>
-<v t="yen.20170108171605.2"><vh>@data qt-gui-plugin-style-sheet</vh></v>
-<v t="yen.20170108171605.3"><vh>@string initial_split_orientation = horizontal</vh></v>
+<v t="leo.20260710133752.1"><vh>@settings</vh>
+<v t="leo.20260710133752.2"><vh>@data qt-gui-plugin-style-sheet</vh></v>
+<v t="leo.20260710133752.3"><vh>@string qt-layout-name = vertical-thirds</vh></v>
 </v>
 <v t="yen.20170108171733.1"><vh>@path ../</vh>
 <v t="leo.20180115150519.1"><vh>@edit index.html</vh></v>
@@ -54,9 +54,9 @@
 </v>
 <v t="leo.20170710022054.1"><vh>可以另建節點存放 markdown 目錄下的 md 檔案</vh></v>
 <v t="leo.20170710022041.1"><vh>@path markdown</vh>
-<v t="leo.20180115115910.1"><vh>2020</vh>
-<v t="leo.20180423103639.1"><vh>2020 Fall CP 課程</vh>
-<v t="leo.20180423103656.1"><vh>@edit 20200813.md</vh></v>
+<v t="leo.20180115115910.1"><vh>2026</vh>
+<v t="leo.20180423103639.1"><vh>2026 Summer</vh>
+<v t="leo.20180423103656.1"><vh>@edit 20260710.md</vh></v>
 </v>
 </v>
 </v>
@@ -88,8 +88,26 @@ g.es("admin pelican Github 執行完畢")
 <t tx="leo.20180115093726.1"></t>
 <t tx="leo.20180115115910.1"></t>
 <t tx="leo.20180423103639.1"></t>
-<t tx="yen.20170108171605.1"></t>
-<t tx="yen.20170108171605.2">QTreeWidget {
+<t tx="leo.20260710133752.1"></t>
+<t tx="leo.20260710133752.2">QSplitter::handle {
+    background-color: #CAE1FF; /* lightSteelBlue1 */
+}
+
+QStackedWidget {
+    /* background-color:lightpink; */
+    border-color: red;
+    padding: 0px;
+    /* border-width: 0px; */
+    /* background-color: yellow; */
+}
+
+QSplitter {
+    border-color: white;
+    background-color: white;
+    border-style: solid;
+}
+
+QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
     background-color: #ffffec; /* Leo's traditional tree color */
     selection-color: black; /* was white */
@@ -98,7 +116,7 @@ g.es("admin pelican Github 執行完畢")
     /*font-family: DejaVu Sans Mono;*/
     font-family:YaHei Mono;
     /* 標題字型大小設定 */
-    font-size: 20px;
+    font-size: 22px;
     font-weight: normal; /* normal,bold,100,..,900 */
     font-style: normal; /* normal, italic,oblique */
  }
@@ -111,7 +129,7 @@ QTreeWidget QLineEdit {
     /*font-family: DejaVu Sans Mono;*/    
     font-family:YaHei Mono;
     /* 沒有特別對應字型大小 */
-    font-size: 20px;
+    font-size: 22px;
     font-weight: normal; /* normal,bold,100,..,900 */
     font-style: normal; /* normal, italic,oblique */
 }
@@ -124,7 +142,7 @@ QTextEdit {
     /* font-family: Courier New; */
     font-family:YaHei Mono;
     /* log font 大小 */
-    font-size: 20px;
+    font-size: 22px;
     font-weight: normal; /* normal,bold,100,..,900 */
     font-style: normal; /* normal, italic,oblique */
 }
@@ -138,15 +156,15 @@ QTextEdit#richTextEdit {
     /* font-family: Courier New; */
     font-family:YaHei Mono;
     /* 內文字型大小 */
-    font-size: 20px;
+    font-size: 22px;
     font-weight: normal; /* normal,bold,100,..,900 */
     font-style: normal; /* normal,italic,oblique */
 }
 
 QLabel {
-    font-family:YaHei Mono;'CherryPy', 'pytz', 'mako', 'beautifulsoup4', 'pymysql', 'peewee'
+    font-family:YaHei Mono;
     /* 下方的 Minibuffer 標題字型大小 */
-    font-size: 20px;
+    font-size: 22px;
     font-weight: normal; /* normal,bold,100,..,900 */
     font-style: normal; /* normal,italic,oblique */
 }
@@ -156,14 +174,14 @@ QLineEdit#editorLabel {
     background-color: #ffffec;
     font-family:YaHei Mono;
     /* 沒有直接對應字型大小 */
-    font-size: 20px;
+    font-size: 22px;
     font-weight: normal; /* normal,bold,100,..,900 */
     font-style: normal; /* normal,italic,oblique */
     border: 2px;
     margin: 2px;
 }</t>
-<t tx="yen.20170108171605.3">horizontal: body pane to the left
-vertical: body pane on the botton</t>
+<t tx="leo.20260710133752.3">@string qt-layout-name = vertical-thirds
+@string qt-layout-name = horizontal-thirds</t>
 <t tx="yen.20170108171733.1"></t>
 <t tx="yen.20170108171733.2">@language python
 import os
