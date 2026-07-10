@@ -1,0 +1,16 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }} - cms user app</title>
+    {% else %}
+    <title>cms user app</title>
+    {% endif %}
+  </head>
+  <body>
+    <div>cms: <a href="/user/">Home</a>
+    |<a href="/user/threegear">threegear</a>
+    </div>
+    <hr>
+    {% block body %}{% endblock %}
+  </body>
+</html>
