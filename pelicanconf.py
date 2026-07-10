@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = 'KMOL'
-SITENAME = 'CMSimfly 網際內容管理'
+AUTHOR = 'MDE'
+SITENAME = 'CMS 網際內容'
 # 不要用文章所在目錄作為類別
 USE_FOLDER_AS_CATEGORY = False
 
