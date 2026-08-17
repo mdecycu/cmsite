@@ -14,7 +14,68 @@
 <p>CMS: <a href="https://github.com/mdecycu/cms">https://github.com/mdecycu/cms</a> </p>
 <p>scms: 在近端啟動編輯環境</p>
 <p>acp: add、commit、push</p>
-<h1>Dialog</h1>
+<h2>Python</h2>
+<p>為了讓熟悉 C++ 或 Java 的用戶方便使用，在 Python 2.2 中，放入 @staticmethod (靜態方法) 裝飾器的用法，以便在類別 (Class) 中定義一個不需要存取類別屬性 (Class attributes) 或實例屬性 (Instance attributes) 的方法。本質上就是一個寫在類別內部的普通函式。</p>
+<p>核心語法與特色</p>
+<ol>
+<li>不綁定參數：普通方法需要 self，類別方法需要 cls，但靜態方法不需要這兩個參數。</li>
+<li>呼叫方式：可以用 類別名稱.方法名稱() 直接呼叫，也可以透過實例呼叫 (但推薦用類別名稱)。</li>
+<li>無法直接存取狀態：因為沒有 self 和 cls，它無法直接讀取或修改類別或實例的變數。</li>
+</ol>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">class Demo:
+    @staticmethod
+    def my_static_method(arg1, arg2):
+        # 這裡只能使用傳入的參數 arg1 和 arg2
+        return arg1 + arg2
+</pre>
+<p>範例：日期格式驗證器</p>
+<p>假設要寫一個處理「員工（Employee）」資料的系統。需要一個功能來檢查使用者輸入的生日格式（字串）是否正確（例如必須是 YYYY-MM-DD）。這個檢查邏輯與特定的某個員工無關，只是一個純粹的工具函式，此時最適合用 @staticmethod：</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from datetime import datetime
+
+class Employee:
+    def __init__(self, name, birthday_str):
+        self.name = name
+        
+        # 在初始化時，呼叫靜態方法來驗證資料
+        if Employee.validate_date(birthday_str):
+            self.birthday = birthday_str
+        else:
+            raise ValueError("日期格式錯誤，必須是 YYYY-MM-DD")
+
+    # 定義靜態方法
+    @staticmethod
+    def validate_date(date_text):
+        """檢查字串是否符合 YYYY-MM-DD 格式"""
+        try:
+            datetime.strptime(date_text, '%Y-%m-%d')
+            return True
+        except ValueError:
+            return False
+
+# ===== 如何使用 =====
+
+# 1. 無需建立實例，直接用「類別名稱」呼叫靜態方法來測試
+is_valid = Employee.validate_date("2026-08-08")
+print(f"格式是否正確: {is_valid}")  # 輸出: True
+
+# 2. 正常建立實例（內部會自動呼叫該靜態方法）
+emp = Employee("王小明", "1995-05-20")
+
+# 3. 輸入錯誤格式，觸發錯誤
+# emp_error = Employee("張三", "1995/05/20") # 這行會拋出 ValueError
+</pre>
+<p>什麼時候該用 @staticmethod？</p>
+<p>當你發現某個方法符合以下條件時，就應該加上 @staticmethod：</p>
+<ol>
+<li>邏輯相關性：這個方法的功能在邏輯上完全屬於這個類別（例如：屬於 Employee 類別的日期驗證，或是屬於 Math 類別的平方根計算）。</li>
+<li>獨立性：方法內部完全不需要用到 self.variable 或 cls.variable。</li>
+</ol>
+<p>其實 Python 語法允許將工具函式直接寫在檔案外層，那為什麼還要保留 @staticmethod 呢？主要原因有兩個：</p>
+<p>程式碼封裝與命名空間（Namespace）：</p>
+<p style="padding-left: 30px;">如果這個工具函式只跟某個類別高度相關（例如前述的 validate_date 只服務於 Employee 類別），把它塞進類別內部作為 @staticmethod，可以避免污染外部的命名空間。開發者看到 Employee.validate_date() 就會立刻明白它的依賴關係。</p>
+<p>支援繼承與多型（Polymorphism）：</p>
+<p style="padding-left: 30px;">寫在類別內部的靜態方法是可以被子類別繼承或覆寫（Override）的。如果是寫在檔案外層的獨立函式，就無法享受物件導向的繼承架構。</p>
+<p></p><h1>Dialog</h1>
 <h4>尼采的主張與對後代的影響</h4>
 <p>德國哲學家<a href="https://grokipedia.com/page/Friedrich_Nietzsche">弗里德里希·威廉·尼采</a> (<a href="https://zh.wikipedia.org/zh-tw/%E5%BC%97%E9%87%8C%E5%BE%B7%E9%87%8C%E5%B8%8C%C2%B7%E5%B0%BC%E9%87%87">Wikipedia</a>) 的核心主張包含上帝已死、超人與權力意志，並對後代的存在主義與後現代主義造成深遠影響。</p>
 <h4>尼采的主要主張</h4>
@@ -144,7 +205,153 @@
 <li><a href="https://grokipedia.com/page/Friedrich_Nietzsche">尼采</a> (<a href="https://zh.wikipedia.org/wiki/%E5%BC%97%E9%87%8C%E5%BE%B7%E9%87%8C%E5%B8%8C%C2%B7%E5%B0%BC%E9%87%87">Friedrich Nietzsche</a>)：馬斯克曾提過他年輕時讀過尼采，雖然當時覺得有些消極，但尼采關於「超人」和突破傳統道德框架的觀點，常被外界用來解讀馬斯克不顧一切打破常規的行事風格。</li>
 <li><a href="https://grokipedia.com/page/Douglas%20Adams">道格拉斯·亞當斯</a> (<a href="https://zh.wikipedia.org/zh-tw/%E9%81%93%E6%A0%BC%E6%8B%89%E6%96%AF%C2%B7%E4%BA%9A%E5%BD%93%E6%96%AF">Douglas Adams</a>) ：雖然是科幻作家（銀河便車指南），但馬斯克曾說這本書是他的思想啟蒙，教會他「提出正確的問題比尋找答案更難」。</li>
 </ol>
-<p></p><h1>Ender-3</h1>
+<p></p><h2>PPE</h2>
+<p>PPE（Philosophy, Politics and Economics）</p>
+<p>疫情期間的市場價格可能同時受到：<br/><br/>經濟基本面 + 投資人心理 + 市場情緒 + 群體行為 + 投機活動等因素影響。</p>
+<p>經濟基本面，是指影響企業或整體經濟長期價值的各種實質因素。<br/><br/>對個別企業而言，基本面通常包括：</p>
+<ol>
+<li>營收</li>
+<li>淨利</li>
+<li>每股盈餘（EPS）</li>
+<li>現金流</li>
+<li>負債</li>
+<li>資產</li>
+<li>股東權益</li>
+<li>未來成長能力</li>
+<li>企業競爭優勢</li>
+</ol>
+<p>如果從總體經濟角度來看，則可能包括：</p>
+<ol>
+<li>GDP 經濟成長</li>
+<li>利率</li>
+<li>通貨膨脹</li>
+<li>就業</li>
+<li>工業生產</li>
+<li>消費</li>
+<li>投資</li>
+<li>貨幣供給</li>
+<li>政府政策</li>
+</ol>
+<p>疫情期間出現的「群聚行為」（Herding</p>
+<p>群聚行為是指投資人沒有完全依照自己的資訊與分析做決策，而是傾向於<strong>跟隨其他投資人的行動</strong>。</p>
+<p>COVID-19 危機期間的印度股票市場出現了短期群聚行為（Short-term Herding）。</p>
+<p>這代表投資人的決策在短期內可能受到其他市場參與者行為的影響，而不是完全根據自己的基本面分析。</p>
+<p>這是一個非常重要的發現。</p>
+<p>因為如果投資人都是理性的，應該根據：</p>
+<ol>
+<li>公司財務狀況</li>
+<li>企業未來獲利</li>
+<li>股票合理價值</li>
+<li>經濟環境</li>
+<li>風險與報酬</li>
+</ol>
+<p>來決定是否買賣股票。</p>
+<p>但在危機期間，投資人可能受到：</p>
+<ol>
+<li>恐慌</li>
+<li>貪婪</li>
+<li>害怕錯過行情 (FOMO, Fear Of Missing Out)</li>
+<li>市場新聞</li>
+<li>其他投資人的行為</li>
+<li>社群與媒體資訊</li>
+</ol>
+<p>影響。這表示市場價格可能<strong>短期偏離股票真正的基本價值</strong>。</p>
+<p>疫情期間的「非理性投資」<br/><br/>研究進一步指出，COVID-19 危機期間，印度股市投資人的投資選擇具有一定程度的非理性（Irrationality）。<br/><br/>所謂非理性，並不是說投資人完全沒有理由，而是指投資決策不一定符合傳統金融理論所假設的「理性投資人」模式</p>
+<p>理性投資人應該：</p>
+<ol>
+<li>收集資訊</li>
+<li>分析公司基本面</li>
+<li>評估風險</li>
+<li>計算合理價值</li>
+<li>比較預期報酬</li>
+<li>再決定是否投資</li>
+</ol>
+<p>但在重大危機期間，人的心理可能會影響決策。<br/><br/>例如：<br/><br/>恐慌<br/><br/>看到股市大跌，就認為市場還會繼續下跌，因此不管股票真正價值，先賣出。<br/><br/>貪婪<br/><br/>看到某支股票快速上漲，擔心錯過機會，因此在高價追買。<br/><br/>羊群效應<br/><br/>看到別人買，就認為自己也應該買。<br/><br/>過度反應<br/><br/>市場出現一個負面消息，投資人可能過度解讀，造成股價跌幅超過基本面所合理支持的程度。<br/><br/>因此，疫情提供了一個非常特殊的研究環境，可以觀察投資人如何在極端不確定性下做出決策。</p><h1>NX3</h1>
+<p>NX3 是在 UGS 時代於 2004 年推出，所以也稱為 UG NX3 (Siemens 是在 2007 年 5 月才接手推出 Siemens NX6)，當時的 Windows 操作系統仍是 Windows 10 32 位元，至今無論是 NXOpen Journal 檔案存為 VB、C++ 或 Java 格式，在 2006 年 8 月都會因為缺少 20 年前的 .NET FrameWork 1.1 而無法執行，而採用 NXOpen C 編寫的延伸程式，由於記憶體的控管難度，也會讓 NXOpen C 的程式開發顯得困難重重。</p>
+<p>由 Department of Mechanical and Aerospace Engineering, University of Missouri – Rolla 所建立的 <a href="/downloads/UG-NX3-Tutorial.pdf">UG-NX3-Tutorial.pdf</a></p>
+<p>NX3/UGII目錄僅 600 MB 左右，加上 STEP203UG、STEP214UG、IGES 以及 ADMIN，總容量也還不到 700 MB，而且又可以採免安裝的設定方式執行，使用上非常方便。</p>
+<p>NX3 不能使用中文進行目錄或檔案名稱存檔。</p>
+<p>建立新檔案時，可以在左下方的單位選擇區，選擇使用 Inches 或 Milimeters 作為繪圖單位。</p>
+<p>零件與組立檔案都使用 .prt 存檔，若要在開啟檔案前進行區別，可以在組立檔案的檔名中加上 _asm。</p>
+<p>NX3 可以接受 STEP 203 與 214 格式的零件檔案 Import，必須先開新檔案後以 File - Import 功能導入。</p>
+<p><img caption="false" height="266" src="/images/NX3_design.png" width="300"/></p>
+<p></p><h2>DPV</h2>
+<p>NX3 當時仍為 UGS時代，尤其又是在 Windows 7 推出之前的版本，nx3_user.dpv 儲存位置與納入 Siemens 之後的設定檔案儲存位置並不相同。</p>
+<p>.dpv 為 default preferences value</p>
+<p>nx3_user.dpv 與 nx3_user.xsl 存在</p>
+<p>Y:\home_ipv6\Local Settings\Application Data\Unigraphics Solutions\NX</p>
+<p>nx3_user.dpv 格式:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;?xml-stylesheet type="text/xsl" href="nx3_user.xsl"?&gt;
+&lt;PrefValues defaultLockStatus="unlocked"&gt;
+&lt;Pref Tab="All" name="Sketch_textHeight_MU" title="Text Height" value="2.0" Category="General" modified="2026-08-17T15:40:38" Application="Sketcher" displayValue="2.0"/&gt;
+&lt;Pref Tab="All" name="Sketch_decimalPlaces" title="Decimal Places" value="3" Category="General" modified="2026-08-17T15:40:41" Application="Sketcher" displayValue="3"/&gt;
+&lt;/PrefValues&gt;
+</pre>
+<p>nx3_user.dpv 檔案內容根據 File - Utilities - Customer Defaults 中的設定內容存檔。</p><h2>Datum</h2>
+<p>在 UGS NX3 中，建立基準面（Datum Plane）是構建三維空間幾何基準的最核心操作。NX 提供多種靈活的演算法，讓你能根據現有的點、線、面或角度來定位。</p>
+<p>以下為最常用的 7 種建立基準面的操作步驟：</p>
+<p>在開始以下任何一種方法前，請先執行：點選特徵工具列的 基準面 (Datum Plane) 圖示，或依序點選功能選單：插入 (Insert) -&gt; 基準/座標系 (Datum/CSYS) -&gt; 基準面 (Datum Plane)。</p>
+<p>方法一：偏置基準面（Offset）</p>
+<ol>
+<li>最常用，與現有平面保持特定垂直距離。</li>
+<li>選擇類型：將對話框中的類型（Type）切換為 偏置 (Offset)。</li>
+<li>選取參考面：點選現有的平整表面、既有基準面或座標平面（如 XY 平面）。</li>
+<li>設定距離：在 距離 (Distance) 欄位輸入數值（例如：50mm）。</li>
+<li>調整方向與數量：點選 反向 (Reverse Direction) 箭頭可切換偏置方向。調整 數量 (Number) 可一次建立多個等距離的平行面。</li>
+<li>完成：點選 確定 (OK)。</li>
+</ol>
+<p>方法二：成一角度（At an Angle / 傾斜面）</p>
+<ol>
+<li>圍繞一條軸線旋轉特定角度，適合製作斜面或拔模基準。</li>
+<li>選擇類型：切換為 成一角度 (At an Angle)。</li>
+<li>選取旋轉軸：點選一條直線、實體邊緣或基準軸（作為旋轉的中心軸）。</li>
+<li>選取參考面：點選一個與該軸平行的平面（作為計算 0 度的基準面）。</li>
+<li>設定角度：在 角度 (Angle) 欄位輸入所需的角度值（例如：45度）。</li>
+<li>完成：點選 確定 (OK)。</li>
+</ol>
+<p>方法三：二等分面（Bisector / 中立面）</p>
+<ol>
+<li>在兩個平行或成角度的平面正中間建立一個對稱面，極利於對稱零件建模。</li>
+<li>選擇類型：切換為 二等分面 (Bisector)。</li>
+<li>選取第一面：點選第一個平面。</li>
+<li>選取第二面：點選第二個平行或相交的平面。</li>
+<li>完成：系統會自動計算並將基準面精確定位在兩面正中央，點選 確定 (OK)。</li>
+</ol>
+<p>方法四：通過三點（Through Three Points）</p>
+<ol>
+<li>在非正交的任意空間中，利用三個不共線的點決定一個特殊平面。</li>
+<li>選擇類型：切換為 通過三點 (Through Three Points)。</li>
+<li>選取點：在 3D 空間中依序點選 點 1、點 2、點 3。</li>
+<li>註：點可以是草圖頂點、實體角點、圓心或基準點。選取時可配合畫面上方的「點過濾器（Point Snap）」以精確捕捉。</li>
+<li>完成：點選 確定 (OK)。</li>
+</ol>
+<p>方法五：點和一條線（Point and Direction / 過點且垂直/平行）</p>
+<ol>
+<li>通過一個特定點，並與某一條直線或向量垂直或平行。</li>
+<li>選擇類型：切換為 點和方向 (Point and Direction) 或相關點線組合。</li>
+<li>選取參考點：點選空間中的任意一個已知點。</li>
+<li>選取直線/向量：點選一條實體邊、基準軸，或直接點選座標軸指定向量方向。設定幾何關係：在設定中選擇使平面 平行 (Parallel) 或 垂直 (Perpendicular) 於該線。</li>
+<li>完成：點選 確定 (OK)。</li>
+</ol>
+<p>方法六：相切於曲面（Tangent / 切面）</p>
+<ol>
+<li>在圓柱面、圓錐面或任意曲面上建立一個相切的平面。</li>
+<li>選擇類型：切換為 相切 (Tangent)。</li>
+<li>選取曲面：點選圓柱體的外側曲面。</li>
+<li>指定定位參考（可選）：若只選曲面，基準面可能會繞著圓柱轉動。此時可以再選一個空間平面，並指定「與其平行」或「與其成一角度」，來精確固定切面的方位。</li>
+<li>完成：點選 確定 (OK)。</li>
+</ol>
+<p>方法七：基於路徑（On Path / 曲線剖切面）</p>
+<ol>
+<li>沿著一條曲線（如掃掠路徑）建立一個垂直於該曲線切線的平面，常用於建立掃掠（Sweep）的截面草圖。</li>
+<li>選擇類型：切換為 基於路徑 (On Path)。</li>
+<li>選取路徑曲線：點選一條草圖線、實體邊緣或不規則曲線。</li>
+<li>設定位置（Location）：可以輸入 弧長（Arc Length） 或是 百分比（Percentage）。例如：輸入百分比 0 代表曲線起點；輸入 50 代表曲線正中央；輸入 100 代表曲線終點。也可以用滑鼠直接在畫面的曲線上拖曳黃色箭頭來決定位置。</li>
+<li>完成：點選 確定 (OK)。</li>
+</ol>
+<p>用上述任何一種方法建立好基準面後，不管它的預設方向為何，只要在啟動 草圖 (Sketch) 指令並點選該面時，在對話框中展開 草圖定向 (Sketch Orientation) 欄位，手動用 水平 (Horizontal) 參考去抓取空間中的絕對 X 軸、Y 軸或實體邊緣，就能完全主導草圖內部的 X-Y 軸方位。</p><h1>Ender-3</h1>
 <p><a href="https://github.com/mdecycu/Ender-3">https://github.com/mdecycu/Ender-3</a> </p>
 <p>2026.8.5</p>
 <p>目前仍在服役的 Ender-3 列印機，是在 2019 年 3 月 5 日訂購，購買價是 220.99 美元。</p>
