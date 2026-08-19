@@ -351,7 +351,27 @@ emp = Employee("王小明", "1995-05-20")
 <li>設定位置（Location）：可以輸入 弧長（Arc Length） 或是 百分比（Percentage）。例如：輸入百分比 0 代表曲線起點；輸入 50 代表曲線正中央；輸入 100 代表曲線終點。也可以用滑鼠直接在畫面的曲線上拖曳黃色箭頭來決定位置。</li>
 <li>完成：點選 確定 (OK)。</li>
 </ol>
-<p>用上述任何一種方法建立好基準面後，不管它的預設方向為何，只要在啟動 草圖 (Sketch) 指令並點選該面時，在對話框中展開 草圖定向 (Sketch Orientation) 欄位，手動用 水平 (Horizontal) 參考去抓取空間中的絕對 X 軸、Y 軸或實體邊緣，就能完全主導草圖內部的 X-Y 軸方位。</p><h1>Ender-3</h1>
+<p>用上述任何一種方法建立好基準面後，不管它的預設方向為何，只要在啟動 草圖 (Sketch) 指令並點選該面時，在對話框中展開 草圖定向 (Sketch Orientation) 欄位，手動用 水平 (Horizontal) 參考去抓取空間中的絕對 X 軸、Y 軸或實體邊緣，就能完全主導草圖內部的 X-Y 軸方位。</p><h2>PDD</h2>
+<p>參數驅動設計 (Parametric Driven Design)</p>
+<p>參數驅動設計指幾何圖形的大小與形狀，由一組參數（數據、公式、幾何關係）來決定與控制。</p>
+<p>UGS NX3 雖然無法像 NX9 之後的 Python Journal 程式驅動，但是 Tools - Expression 仍支援 .exp 尺寸及方程式輸出入的功能，若再加上 .exp 由 Python 程式進行控制，仍可達到一定程度的參數設計效能。</p>
+<p>UGS NX3 的 .exp 檔案格式:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">// 專案名稱：無人機控制模組外殼參數化設計
+// 建立日期：2026/08/19
+// 修改人員：工程部 Musk
+
+[mm]p0=50
+[mm]p1=0.0000
+[mm]p2=p0*5
+[mm]p0=6
+
+// exp 參數解讀是全局有效
+// 且以最後設定的參數值為主
+// 這是註解
+// 透過 Tools - Expression import 後
+// p0=6，p2=30
+</pre>
+<p></p><h1>Ender-3</h1>
 <p><a href="https://github.com/mdecycu/Ender-3">https://github.com/mdecycu/Ender-3</a> </p>
 <p>2026.8.5</p>
 <p>目前仍在服役的 Ender-3 列印機，是在 2019 年 3 月 5 日訂購，購買價是 220.99 美元。</p>
@@ -371,4 +391,5 @@ emp = Employee("王小明", "1995-05-20")
 <p>可上下夾持的燈架設計:</p>
 <p><img alt="" height="233" src="/images/夾持式頭燈架.png" width="200"/></p>
 <p><a href="/downloads/head_light_top_clip.7z">head_light_top_clip.7z</a></p>
+<p>後記: 這種靠夾持力固定手電筒的設計，就 PLA 列印件，使用一陣子之後，會因為彈性疲乏而無法穩固夾持，必須設法使用其他設計方法。</p>
 <p></p>
