@@ -141,68 +141,30 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Locke << <a href='Locke.html'>Previous</a> <a href='NX3.html'>Next</a> >> NX3<br /><h1>PPE</h1>
-<p>PPE（Philosophy, Politics and Economics）</p>
-<p>疫情期間的市場價格可能同時受到：<br/><br/>經濟基本面 + 投資人心理 + 市場情緒 + 群體行為 + 投機活動等因素影響。</p>
-<p>經濟基本面，是指影響企業或整體經濟長期價值的各種實質因素。<br/><br/>對個別企業而言，基本面通常包括：</p>
-<ol>
-<li>營收</li>
-<li>淨利</li>
-<li>每股盈餘（EPS）</li>
-<li>現金流</li>
-<li>負債</li>
-<li>資產</li>
-<li>股東權益</li>
-<li>未來成長能力</li>
-<li>企業競爭優勢</li>
-</ol>
-<p>如果從總體經濟角度來看，則可能包括：</p>
-<ol>
-<li>GDP 經濟成長</li>
-<li>利率</li>
-<li>通貨膨脹</li>
-<li>就業</li>
-<li>工業生產</li>
-<li>消費</li>
-<li>投資</li>
-<li>貨幣供給</li>
-<li>政府政策</li>
-</ol>
-<p>疫情期間出現的「群聚行為」（Herding</p>
-<p>群聚行為是指投資人沒有完全依照自己的資訊與分析做決策，而是傾向於<strong>跟隨其他投資人的行動</strong>。</p>
-<p>COVID-19 危機期間的印度股票市場出現了短期群聚行為（Short-term Herding）。</p>
-<p>這代表投資人的決策在短期內可能受到其他市場參與者行為的影響，而不是完全根據自己的基本面分析。</p>
-<p>這是一個非常重要的發現。</p>
-<p>因為如果投資人都是理性的，應該根據：</p>
-<ol>
-<li>公司財務狀況</li>
-<li>企業未來獲利</li>
-<li>股票合理價值</li>
-<li>經濟環境</li>
-<li>風險與報酬</li>
-</ol>
-<p>來決定是否買賣股票。</p>
-<p>但在危機期間，投資人可能受到：</p>
-<ol>
-<li>恐慌</li>
-<li>貪婪</li>
-<li>害怕錯過行情 (FOMO, Fear Of Missing Out)</li>
-<li>市場新聞</li>
-<li>其他投資人的行為</li>
-<li>社群與媒體資訊</li>
-</ol>
-<p>影響。這表示市場價格可能<strong>短期偏離股票真正的基本價值</strong>。</p>
-<p>疫情期間的「非理性投資」<br/><br/>研究進一步指出，COVID-19 危機期間，印度股市投資人的投資選擇具有一定程度的非理性（Irrationality）。<br/><br/>所謂非理性，並不是說投資人完全沒有理由，而是指投資決策不一定符合傳統金融理論所假設的「理性投資人」模式</p>
-<p>理性投資人應該：</p>
-<ol>
-<li>收集資訊</li>
-<li>分析公司基本面</li>
-<li>評估風險</li>
-<li>計算合理價值</li>
-<li>比較預期報酬</li>
-<li>再決定是否投資</li>
-</ol>
-<p>但在重大危機期間，人的心理可能會影響決策。<br/><br/>例如：<br/><br/>恐慌<br/><br/>看到股市大跌，就認為市場還會繼續下跌，因此不管股票真正價值，先賣出。<br/><br/>貪婪<br/><br/>看到某支股票快速上漲，擔心錯過機會，因此在高價追買。<br/><br/>羊群效應<br/><br/>看到別人買，就認為自己也應該買。<br/><br/>過度反應<br/><br/>市場出現一個負面消息，投資人可能過度解讀，造成股價跌幅超過基本面所合理支持的程度。<br/><br/>因此，疫情提供了一個非常特殊的研究環境，可以觀察投資人如何在極端不確定性下做出決策。</p><br />Locke << <a href='Locke.html'>Previous</a> <a href='NX3.html'>Next</a> >> NX3</div>
+    <div id="tipue_search_content">Datum << <a href='Datum.html'>Previous</a> <a href='Ender-3.html'>Next</a> >> Ender-3<br /><h1>PDD</h1>
+<p>參數驅動設計 (Parametric Driven Design)</p>
+<p>參數驅動設計指幾何圖形的大小與形狀，由一組參數（數據、公式、幾何關係）來決定與控制。</p>
+<p>UGS NX3 雖然無法像 NX9 之後的 Python Journal 程式驅動，但是 Tools - Expression 仍支援 .exp 尺寸及方程式輸出入的功能，若再加上 .exp 由 Python 程式進行控制，仍可達到一定程度的參數設計效能。</p>
+<p>UGS NX3 的 .exp 檔案格式:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">// 專案名稱：控制模組外殼參數化設計
+// 建立日期：2026/08/19
+// 修改人員：工程部 Musk
+// 變數區分大小寫
+
+[mm]p0=50
+[mm]p1=0.0000
+[mm]p2 = if (p0 &lt;30) 50 else 100
+//[mm]p2=p0*5
+[mm]p0=7
+
+// 參數全部讀取後再進行判斷式
+// 與方程式的執行
+// 且以最後設定的參數值為主
+// 這是註解
+// 透過 Tools - Expression import 後
+// p0=7，p2=50
+</pre>
+<p></p><br />Datum << <a href='Datum.html'>Previous</a> <a href='Ender-3.html'>Next</a> >> Ender-3</div>
         
     <!-- footer -->
       <div class="container">
