@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隨機單字卡</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F0F4F8;
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            cursor: pointer;
+            user-select: none;
+        }
+        .card-container {
+            width: 600px;
+            height: 400px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        #progress-label {
+            font-size: 14px;
+            color: #666666;
+        }
+        .content-area {
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        #word-label {
+            font-size: 36px;
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 15px;
+            word-break: break-word;
+        }
+        #answer-label {
+            font-size: 22px;
+            color: #27AE60;
+            min-height: 40px;
+            word-break: break-word;
+        }
+        #tip-label {
+            font-size: 12px;
+            color: #95A5A6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container" id="app-card">
+        <div id="progress-label">載入中...</div>
+        <div class="content-area">
+            <div id="word-label">準備中</div>
+            <div id="answer-label"></div>
+        </div>
+        <div id="tip-label">請稍候，正在讀取單字...</div>
+    </div>
+
+    <script>
+        class FlashcardApp {
+            constructor(wordList) {
+                this.wordList = this.shuffle(wordList);
+                this.currentIndex = 0;
+                this.totalWords = this.wordList.length;
+                this.state = "SHOW_ANSWER"; // 對應原本邏輯：按下去要顯答案
+
+                this.progressLabel = document.getElementById("progress-label");
+                this.wordLabel = document.getElementById("word-label");
+                this.answerLabel = document.getElementById("answer-label");
+                this.tipLabel = document.getElementById("tip-label");
+
+                this.initEvents();
+                this.showNext();
+            }
+
+            shuffle(array) {
+                let arr = [...array];
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+                return arr;
+            }
+
+            initEvents() {
+                const handleAction = (e) => {
+                    if (e.code === 'Enter' || e.code === 'Space' || e.type === 'click') {
+                        e.preventDefault();
+                        this.handleClick();
+                    }
+                };
+                window.addEventListener('keydown', handleAction);
+                document.body.addEventListener('click', handleAction);
+            }
+
+            showNext() {
+                if (this.currentIndex >= this.totalWords) {
+                    this.progressLabel.textContent = "完成";
+                    this.wordLabel.textContent = "恭喜你！所有單字都複習完囉！";
+                    this.answerLabel.textContent = "";
+                    this.tipLabel.textContent = "結束";
+                    this.state = "FINISHED";
+                    return;
+                }
+
+                const [english, pos, chinese] = this.wordList[this.currentIndex];
+                this.progressLabel.textContent = `進度：${this.currentIndex + 1} / ${this.totalWords}`;
+                this.wordLabel.textContent = english;
+                this.answerLabel.textContent = "";
+                this.tipLabel.textContent = "👉 請按 Enter 或點擊畫面顯示答案...";
+                this.state = "SHOW_ANSWER";
+            }
+
+            showAnswer() {
+                const [english, pos, chinese] = this.wordList[this.currentIndex];
+                this.answerLabel.textContent = `【 ${pos} 】 ${chinese}`;
+                this.tipLabel.textContent = "👉 請按 Enter 或點擊畫面進入下一單字...";
+                this.currentIndex += 1;
+                this.state = "SHOW_WORD";
+            }
+
+            handleClick() {
+                if (this.state === "SHOW_ANSWER") {
+                    this.showAnswer();
+                } else if (this.state === "SHOW_WORD") {
+                    this.showNext();
+                }
+            }
+        }
+
+        async function loadWords() {
+            try {
+                const response = await fetch('5000_words.txt');
+                if (!response.ok) throw new Error("找不到檔案");
+                const text = await response.text();
+                
+                const lines = text.split('\n');
+                const wordList = [];
+                const pattern = /^([a-zA-Z\-\s]+)\s+([a-z\./]+)\s*(.+)$/;
+
+                for (let line of lines) {
+                    line = line.trim();
+                    if (!line) continue;
+                    const match = line.match(pattern);
+                    if (match) {
+                        const english = match[1].trim();
+                        const pos = match[2].trim();
+                        const chinese = match[3].trim();
+                        wordList.push([english, pos, chinese]);
+                    }
+                }
+                return wordList;
+            } catch (error) {
+                document.getElementById("progress-label").textContent = "錯誤";
+                document.getElementById("word-label").textContent = "找不到 5000_words.txt 檔案";
+                document.getElementById("tip-label").textContent = "請確認檔案與 index.html 放在同一個資料夾，並透過區域伺服器開啟。";
+                return [];
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            const words = await loadWords();
+            if (words.length > 0) {
+                new FlashcardApp(words);
+            }
+        });
+    </script>
+</body>
+</html>
