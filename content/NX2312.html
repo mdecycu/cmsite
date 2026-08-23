@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li class='has-children'><a href='CMS.html'>CMS</a><ul class='dropdown'><li><a href='Python.html'>Python</a></li></ul><li class='has-children'><a href='Dialog.html'>Dialog</a><ul class='dropdown'><li><a href='Plato.html'>Plato</a><li><a href='Locke.html'>Locke</a><li><a href='PPE.html'>PPE</a></li></ul><li class='has-children'><a href='NX.html'>NX</a><ul class='dropdown'><li><a href='NX2312.html'>NX2312</a><li class='has-children'><a href='NX3.html'>NX3</a><ul class='dropdown'><li><a href='DPV.html'>DPV</a><li><a href='Datum.html'>Datum</a><li><a href='PDD.html'>PDD</a><li><a href='AC.html'>AC</a><li><a href='SS.html'>SS</a></li></li></ul></ul><li class='has-children'><a href='Ender-3.html'>Ender-3</a><ul class='dropdown'><li><a href='手電筒架設計.html'>手電筒架設計</a><li><a href='洞洞板.html'>洞洞板</a></li>
+                     <li><a href='About.html'>About</a><li class='has-children'><a href='CMS.html'>CMS</a><ul class='dropdown'><li><a href='Python.html'>Python</a></li></ul><li class='has-children'><a href='Dialog.html'>Dialog</a><ul class='dropdown'><li><a href='Plato.html'>Plato</a><li><a href='Locke.html'>Locke</a><li><a href='PPE.html'>PPE</a></li></ul><li class='has-children'><a href='NX.html'>NX</a><ul class='dropdown'><li><a href='NX2312.html'>NX2312</a><li class='has-children'><a href='NX3.html'>NX3</a><ul class='dropdown'><li><a href='NX3_hints.html'>NX3_hints</a><li><a href='DPV.html'>DPV</a><li><a href='Datum.html'>Datum</a><li><a href='PDD.html'>PDD</a><li><a href='AC.html'>AC</a><li><a href='SS.html'>SS</a></li></li></ul></ul><li class='has-children'><a href='Ender-3.html'>Ender-3</a><ul class='dropdown'><li><a href='手電筒架設計.html'>手電筒架設計</a><li><a href='洞洞板.html'>洞洞板</a></li>
                       </ul>
                 </nav>
               </div>
@@ -154,8 +154,12 @@ img.add_border {
 &lt;Pref Application="Gateway" Category="User Interface" Tab="Journal" displayValue="Python" modified="2026-08-22T14:16:18" name="UG_journalLanguage" title="Journal Language" value="4"/&gt;
 &lt;/PrefValues&gt;
 </pre>
-<p></p>
-<br />NX << <a href='NX.html'>Previous</a> <a href='NX3.html'>Next</a> >> NX3</div>
+<p>因為 NX3 無法處理 STL 格式的零件，但可以採 NX2312 處理:</p>
+<p>在 NX2312 導入 STL 必須先開一個 new Model file 之後再使用 File - Import - STL 導入所需的 STL 格式零件。</p>
+<p>導入的 Facet Body Output Type 有三個選項，分別是 Convergent、NX 以及 JT。若是要延伸其中特定 Face，選擇以 Convergent 導入。</p>
+<p>導入後利用 Application - Shape Studio - Polygon Modeling 選擇要分割 Face 的 Facet Body，接著使用 Divide Facet Face，將希望改變厚度尺寸的面與 Facet Body 進行分割，之後再使用 Offset Face 進行增厚或變薄的操作。</p>
+<p>若將所導入的 Convergent Body Facet 的所有面均予以 Divide Facet Face，之後就可以進行後續的 Edge Blend 操作。</p>
+<p></p><br />NX << <a href='NX.html'>Previous</a> <a href='NX3.html'>Next</a> >> NX3</div>
         
     <!-- footer -->
       <div class="container">

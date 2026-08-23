@@ -316,8 +316,11 @@ emp = Employee("王小明", "1995-05-20")
 &lt;Pref Application="Gateway" Category="User Interface" Tab="Journal" displayValue="Python" modified="2026-08-22T14:16:18" name="UG_journalLanguage" title="Journal Language" value="4"/&gt;
 &lt;/PrefValues&gt;
 </pre>
-<p></p>
-<h2>NX3</h2>
+<p>因為 NX3 無法處理 STL 格式的零件，但可以採 NX2312 處理:</p>
+<p>在 NX2312 導入 STL 必須先開一個 new Model file 之後再使用 File - Import - STL 導入所需的 STL 格式零件。</p>
+<p>導入的 Facet Body Output Type 有三個選項，分別是 Convergent、NX 以及 JT。若是要延伸其中特定 Face，選擇以 Convergent 導入。</p>
+<p>導入後利用 Application - Shape Studio - Polygon Modeling 選擇要分割 Face 的 Facet Body，接著使用 Divide Facet Face，將希望改變厚度尺寸的面與 Facet Body 進行分割，之後再使用 Offset Face 進行增厚或變薄的操作。</p>
+<p></p><h2>NX3</h2>
 <p>NX3 是在 UGS 時代於 2004 年推出，所以也稱為 UG NX3 (Siemens 是在 2007 年 5 月才接手推出 Siemens NX6)，當時的 Windows 操作系統仍是 Windows 10 32 位元，至今無論是 NXOpen Journal 檔案存為 VB、C++ 或 Java 格式，在 2006 年 8 月都會因為缺少 20 年前的 .NET FrameWork 1.1 而無法執行，而採用 NXOpen C 編寫的延伸程式，由於記憶體的控管難度，也會讓 NXOpen C 的程式開發顯得困難重重。</p>
 <p>由 Department of Mechanical and Aerospace Engineering, University of Missouri – Rolla 所建立的 <a href="/downloads/UG-NX3-Tutorial.pdf">UG-NX3-Tutorial.pdf</a></p>
 <p>NX3/UGII目錄僅 600 MB 左右，加上 STEP203UG、STEP214UG、IGES 以及 ADMIN，總容量也還不到 700 MB，而且又可以採免安裝的設定方式執行，使用上非常方便。</p>
@@ -327,7 +330,28 @@ emp = Employee("王小明", "1995-05-20")
 <p>NX3 可以接受 STEP 203 與 214 格式的零件檔案 Import，必須先開新檔案後以 File - Import 功能導入。</p>
 <p><img caption="false" height="266" src="/images/NX3_design.png" width="300"/></p>
 <p></p>
-<h3>DPV</h3>
+<h3>NX3_hints</h3>
+<h4>Sketches can be reused in multiple features.</h4>
+<p>同一個 Sketch 可以被多個特徵重複使用。且各特徵完成之後，單一 Sketch 會分別在各特徵下自動參照複製 (如 Leo Editor 中的 Shadow 節點)，一旦被多個特徵引用的 Sketch 經過編修之後，所以引用的特徵會自動參照到最新的 Sketch。</p>
+<h4>Features and sketches can be copied within a part, or between parts using Copy and Paste.</h4>
+<p>Feature 與 Sketch 不只能在同一個 Part 內複製，也可以從一個 Part 複製到另一個 Part。在同一個零件中的 Insert - Associated Copy - Instance 所複製的物件會自行連動。</p>
+<p>若是跨零件的 Copy 物件需要連動，則必須透過 WAVE Geometry Linker / Interpart Modeling。</p>
+<p>「跨零件 Copy 後還要保持連動」可視為 Master Part → Derived Part 的設計架構。</p>
+<p>WAVE Geometry Linker 架構下的 Copy/Paste 物件是重新在目標 Part 中建立一個具有 associativity 的 linked object，使來源 Part 成為幾何的上游來源。</p>
+<p>Insert - Associated Copy - WAVE Geometry Linker</p>
+<p>操作方法: 在目標零件中建立 WAVE Geometry Linker，選擇用來源零件中的特定 Sketch 作為 associated 物件，NX3 就會在目標零件中建立一個對應的 linked Geometry。任何在目標零件中使用此幾何外形所建立的特徵，都會與來源零件中的原始幾何外形的設計連動。</p>
+<h4>Direct modeling allows you to add parameters to orphan geometry.</h4>
+<p>直接建模（Direct Modeling）允許對沒有原始 Feature 歷史關係的 orphan geometry 加入參數。</p>
+<p>所謂的 orphan geometry 是指沒有完整參數化 Feature 歷史、缺乏原始設計意圖的幾何物件，亦即，幾何資料可能是透過 Import 導入，但是原始建模歷史或 Feature 定義並不存在，這些 organ geometry 在 Part Navigator 中會以 Body/Solid 呈現。針對這些幾何物件，NX3 可以透過直接建模納入設計參數。</p>
+<p>NX3 在 Import STL 零件時，採 ASCII 格式才能，由於 Solvespace 只能輸出 Binary STL 檔案，此時可以透過 <a href="/downloads/binary_to_ascii.py">binary_to_ascii.py</a> 進行轉檔。但 NX3 並無法利用 Direct Modeling 處理 STL 格式零件。但可以透過 Siemens NX2312 版本處理 STL 格式的零件。</p>
+<p>Direct modeling commands in NX can be used to:</p>
+<ol>
+<li>Add parameters to imported orphan geometry.</li>
+<li>Directly change size and shape of geometry that was imported using IGES and STEP.</li>
+</ol>
+<p>Use the menus Insert → Direct Modeling to add parameters to faces. These commands directly modify faces and add parameters at the same time.</p>
+<p>For example, use the Resize Face command to resize holes. In the part shown, the red holes were resized on this part that was imported without history. This adds parameters that can be used to drive the hole diameters for future modifications.</p>
+<p></p><h3>DPV</h3>
 <p>NX3 當時仍為 UGS時代，尤其又是在 Windows 7 推出之前的版本，nx3_user.dpv 儲存位置與納入 Siemens 之後的設定檔案儲存位置並不相同。</p>
 <p>.dpv 為 default preferences value</p>
 <p>nx3_user.dpv 與 nx3_user.xsl 存在</p>
@@ -341,8 +365,7 @@ emp = Employee("王小明", "1995-05-20")
 &lt;Pref Tab="All" name="Sketch_decimalPlaces" title="Decimal Places" value="3" Category="General" modified="2026-08-17T15:40:41" Application="Sketcher" displayValue="3"/&gt;
 &lt;/PrefValues&gt;
 </pre>
-<p>nx3_user.dpv 檔案內容根據 File - Utilities - Customer Defaults 中的設定內容存檔。</p>
-<h3>Datum</h3>
+<p>nx3_user.dpv 檔案內容根據 File - Utilities - Customer Defaults 中的設定內容存檔。</p><h3>Datum</h3>
 <p>在 UGS NX3 中，建立基準面（Datum Plane）是構建三維空間幾何基準的最核心操作。NX 提供多種靈活的演算法，讓你能根據現有的點、線、面或角度來定位。</p>
 <p>以下為最常用的 7 種建立基準面的操作步驟：</p>
 <p>在開始以下任何一種方法前，請先執行：點選特徵工具列的 基準面 (Datum Plane) 圖示，或依序點選功能選單：插入 (Insert) -&gt; 基準/座標系 (Datum/CSYS) -&gt; 基準面 (Datum Plane)。</p>
@@ -436,7 +459,8 @@ emp = Employee("王小明", "1995-05-20")
 <p>多個特徵群組後，可以用於 Insert - Associated Copy - Instance 中，所帶出的 Rectangular Array 或 Circular Array 進行 Pattern 複製。</p>
 <p>Format - Group 功能的說明:</p>
 <p>UGS NX 3 的 Format → Group 是一種持久性的模型物件組織機制，用於將一個或多個 NX objects 以指定名稱建立為邏輯群組，並將該群組顯示於 Model Navigator。Group membership 不改變成員物件本身的幾何、Feature dependency 或參數化歷史，其主要用途在於模型結構管理、工程語意分類及後續選取／管理。</p>
-<p>先替一批 NX objects 建立一個有名稱的「可被重新找回、重新選取、重新管理的集合」，之後其他操作需要這批物件時，可以透過這個 Group 找回這批物件，而不必重新逐一選取。</p><h3>SS</h3>
+<p>先替一批 NX objects 建立一個有名稱的「可被重新找回、重新選取、重新管理的集合」，之後其他操作需要這批物件時，可以透過這個 Group 找回這批物件，而不必重新逐一選取。</p>
+<p>在較為複雜的設計繪圖過程，可以透過將某些現階段不需要看到的定位面、特徵或圖素以 Format - Group 命名為特定群組，然後在  Part Navigator 中設定為顯示或不顯示，以提升在帶有多曲面與定位座標下的設計繪圖效率。</p><h3>SS</h3>
 <p>Shape Studio (SS)</p>
 <p>在 UG/NX3（2004 年發佈）中，Shape Studio（工業設計與造型模組） 是 Siemens 專為汽車外觀、消費性電子產品與高階工業設計所打造的「進階曲面造型利器」。SS 擺脫了傳統機械設計（如單純的拉伸、旋轉）的生硬感，核心特色是提供強大的 Class-A（A級曲面） 建立與分析工具，讓工程師能設計出極具流線感、滑順且符合美學的高難度曲面。</p>
 <p>UGS NX3 Shape Studio 的 4 大核心特色</p>
