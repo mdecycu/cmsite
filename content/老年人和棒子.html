@@ -1,0 +1,288 @@
+<!DOCTYPE html><html>
+        <head>
+        <title>MDialog</title>
+        <meta charset="utf-8">
+<meta property="head" content="H2">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cms/static/favicons.png">
+        
+        <style type='text/css'>
+            .site-section {
+            background-color: #FFFF;
+            padding: 40px 40px;
+            }
+            body > div > div.dropdown.open {
+                display: block;
+            }
+        </style>
+    
+        <!-- <script src="./../cms/static/jquery.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="tipuesearch_content.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch.js"></script>
+        <!-- for Wink3 客製化關閉 -->
+        <!--
+        <link rel="stylesheet" type="text/css" href="./../cms/static/winkPlayer.css" />
+        <script type="text/javascript" src="./../cms/static/winkPlayer.js"></script>
+        -->
+        <script>
+            /* original tipuesearch
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+            */
+            // customed doSearch
+            function doSearch() {
+                $('#tipue_search_input').tipuesearch({
+                    newWindow: true, 
+                    minimumLength: 2,
+                    wholeWords: false, // for search 中文
+                });
+            }
+            $(document).ready(doSearch);
+        </script>
+        
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDiff.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushMojo.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushWbt.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDart.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushRust.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cms/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<!-- 暫時不用
+<script src="./../cms/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cms/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cms/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cms/static/gearUtils-05.js"></script>
+-->
+<!-- for Brython 暫時不用
+<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
+<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
+-->
+<style>
+img.add_border {
+    border: 3px solid blue;
+}
+</style>
+
+</head>
+<body>
+<div class='container'><nav>
+        
+    <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+            <header class="site-navbar py-4 bg-white" role="banner">
+              <div class="container">
+                <div class="row align-items-center">
+                <h1>Dialog</h1>
+                <div class="pl-4">
+                    <form>
+                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
+                    </form>
+                </div>
+                  <!-- <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">Dialog</a></h1> 
+                  </div>
+                  -->
+                  <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
+                        <li class="active has-children"><a href="index.html">Home</a>
+                        <ul class="dropdown">
+                            <li><a href="sitemap.html">SMap</a></li>
+                            <li><a href="./../blog/index.html">blog</a></li>
+                        </ul>
+                      </li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='老年人和棒子.html'>老年人和棒子</a></li></ul><li class='has-children'><a href='CMS.html'>CMS</a><ul class='dropdown'><li><a href='Python.html'>Python</a></li></ul><li class='has-children'><a href='Dialog.html'>Dialog</a><ul class='dropdown'><li><a href='Plato.html'>Plato</a><li><a href='Locke.html'>Locke</a><li><a href='PPE.html'>PPE</a></li></ul><li class='has-children'><a href='NX.html'>NX</a><ul class='dropdown'><li><a href='NX2312.html'>NX2312</a><li class='has-children'><a href='NX3.html'>NX3</a><ul class='dropdown'><li><a href='NX3_hints.html'>NX3_hints</a><li><a href='DPV.html'>DPV</a><li><a href='Datum.html'>Datum</a><li><a href='PDD.html'>PDD</a><li><a href='AC.html'>AC</a><li><a href='SS.html'>SS</a></li></li></ul></ul><li class='has-children'><a href='Ender-3.html'>Ender-3</a><ul class='dropdown'><li><a href='手電筒架設計.html'>手電筒架設計</a><li><a href='洞洞板.html'>洞洞板</a></li>
+                      </ul>
+                </nav>
+              </div>
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+              </div>
+
+            </div>
+          </div>
+          
+        </header>
+    <div id="tipue_search_content">About << <a href='About.html'>Previous</a> <a href='CMS.html'>Next</a> >> CMS<br /><h1>老年人和棒子</h1>
+<p>誰道人生難再少？</p>
+<p>君看流水尚能西，</p>
+<p>休將白髮唱黃雞！</p>
+<p>-- 蘇軾《浣溪沙》</p>
+<p><a href="https://zh.wikipedia.org/zh-tw/%E7%8E%8B%E6%B4%AA%E9%88%9E">王洪鈞</a>先生在二十五卷第七期《自由青年》裏寫了一篇《如何使青年接上這一棒》，政大外交系主任<a href="https://nccuaahq.org.tw/node/49609">李其泰</a>先生讀了這篇文章很感動，特地剪下來，寄給他的老師<a href="https://zh.wikipedia.org/zh-tw/%E5%A7%9A%E5%BE%9E%E5%90%BE">姚從吾</a>先生，還附了一封推薦這篇文章的信。姚先生坐在研究室裏，笑嘻嘻地連文帶信拿給我看，向一個比他小四十三歲的學生徵求意見，我把它們匆匆看過，然後抬起頭來，望著姚先生那稀疏的白髮，很誠懇地答他道：</p>
+<p>「王先生在文章裏說得很明白，他說『首先不必談如何使青年接上這一棒，倒要看看如何使老年們交出這一棒』。站在一個青年人的立場，我所關心的是：第一、從感覺上面說，老年人肯不肯交出這一棒？第二、從技巧上面說，老年人會不會交出這一棒？第三、從棒本身來說，老年人交出來的是一支什麼棒？我擔心的是，老年人不但不肯把棒交出來，反倒可能在青年人頭上打一棒！」</p>
+<p>姚先生聽了我的話不禁大笑，我也感到很好笑，但在我們兩個人的笑臉背後，我似乎看到果戈里（<a href="https://en.wikipedia.org/wiki/Nikolai_Gogol">Nikolai Vasilyevich Gogol</a>）的句子，我感到我們兩個人的笑都該是「含著淚水的」！</p>
+<p>「如何使青年接上這一棒」？這是一個古老的問題。《莊子》天道篇的後面，記載那個斲輪老手對桓公說的幾句話，實在很有餘味：</p>
+<p>「斲輪徐，則甘而不固；疾，則苦而不入。不徐不疾，得之於手而應於心，口不能言，有數存焉於其間，臣不能以喻臣之子，臣之子亦不能受之於臣，是以行年七十而老斲忻輪……」</p>
+<p>這真是老年人的悲哀！但又何嘗不是青年人的悲哀？老年人那方面感到對青年人「不能以喻」，在另一方面，青年人又感到對老年人「不能受之」，他們眼巴巴地望著老年人「行年七十」，但卻仍舊孤單地走著那沒有止境的老路，他們有熱血，他們不能不悲哀！</p>
+<p>現年八十六歲的美國詩人<a href="https://zh.wikipedia.org/zh-tw/%E7%BE%85%E4%BC%AF%E7%89%B9%C2%B7%E4%BD%9B%E6%B4%9B%E6%96%AF%E7%89%B9">羅伯特·佛洛斯特</a>（Robert Frost）在他《生命前進著》（Life Goes On）裏<a href="https://atkinsbookshelf.wordpress.com/2020/02/09/what-is-the-most-important-lesson-in-life-robert-frost/">寫道</a>：</p>
+<p>"Just a little while back, at my farm near Ripton, Vermont, I planted a few more trees. You wonder why? Well, I'm like the Chinese of ninety who did the same thing. When they asked him why, he said that the world wasn't a desert when he came into it and wouldn't be when he departed. Those trees will keep on growing after I'm gone and after you're Gone. "</p>
+<p>不久以前，在佛蒙特州，在我那靠近瑞普頓的農場上，我種了一些樹。你猜幹嘛呢？我就像那九十歲的中國老頭子，他也做過同樣的事。當別人問他幹嘛的時候，他說當他來的時候這世界並不是一片沙漠，當他走的時候他也不願意它是。這些樹在我離去和你離去了以後，還會繼續發榮滋長的。</p>
+<p>這種留點餘蔭的人生觀，它代表一個偉大心靈的偉大心懷，在奴隸出身的喜劇家<a href="https://zh.wikipedia.org/zh-tw/%E6%96%AF%E5%A1%94%E6%8F%90%E4%B9%8C%E6%96%AF">斯塔提烏斯·凱西裏烏斯</a>（Statius Caecilius）的《青年朋友》（Synephebi）裏，我們也可以看到那栽了樹為後人享用的老農夫，他深信上帝不但願他接受祖先的遺業，並且還願他把遺業傳授給下一代。</p>
+<p>在活著的人裏面，沒有人能比老年人更適合做承先啟後繼往開來的工作了，老年人從死人手中接下這根棒，由於他們的身世各異，所收到的棒子也各有不同：</p>
+<p>第一種老年人拿的是一根「莫須有的棒子」，他們根本就沒接到過這根棒，也許接到過後又丟了，他們除了麻將牌的技術外，大概什麼也交不出來，他們最大的特色就是裝老糊塗（我還看不到一個真正糊塗的老年人），他們的人生觀是「但願空諸所有，慎勿實諸所無」，他們永遠不會退化，因為根本就沒有進化，他們數十年如一日，那一日就是早睡早起一日三餐，《五代史記》漢家人傳記太后李氏向周太祖嘮叨說：「老身未終殘年，屬此多難，唯以衰朽托於始終」。其實「托於始終」的不是她那視茫茫而發蒼蒼的「衰朽」，而是那四張小白臉和一百三十二張麻將軍！</p>
+<p>在另一方面，他們是屬於長壽的一群，他們不需要<a href="https://zh.wikipedia.org/zh-tw/%E8%83%A1%E5%AE%89%C2%B7%E5%BA%9E%E5%A1%9E%C2%B7%E5%BE%B7%E8%8E%B1%E6%98%82">旁斯．得．利昂</a>（Ponce De Leon）追求的那種「青春泉」（Fountain of Youth），他們青年時代雖然衰老，可是老年時代竟得不死，他們的「殘年」是難終的，孔丘罵他們「老而不死」，他們表面上雖不敢反對聖人這句話，可是在心裏卻奇怪為什麼孔老二自己七十多歲還活著？他們也未嘗不想交點什麼給青年人，可是一方面他們沒有「避此人出一頭地」的胸襟，再一方面又心有餘而力不足，自己妙手空空，對人勞心怛怛又有什麼用呢？</p>
+<p>第二種老年人中的是一根「落了伍的棒子」。一般說來。老年人可皆議的地方不是落伍，而是落了伍卻死不承認他落伍，落伍是當然的，可是死不承認就是頑固了。《左傳》裏記石碏雖然自承：「老夫耄矣！無能為也！」但是他的內心深處，恐怕還是有點酸性反應，尤其在青年時代有過驚天動地的事業的人，到了老年「一官匏繫老馮唐」，酸勁兒就更大。康有為剛出山的時候，葉德輝、王益吾們咬定他是洪水猛獸，寫了《翼教叢編》去罵他，可是二十年後，跑在時代前面的康有為被潮流卷到後面去了；我認識的一位同盟會時代的老革命黨，當年是飛揚跋扈的豪健人物，六十年下來，他竟變成一個整天吃齋念佛寫毛筆字的老人了。好像愈是在青年時代前進的人，愈是在老年到來冥頑不靈的人。 民國七年的十月裏，梁巨川以六十歲的年紀投水殉清，當時二十六歲的胡適曾寫《<a href="https://zh.wikisource.org/zh-hant/%E4%B8%8D%E8%80%81%EF%BC%88%E8%B7%8B%E6%A2%81%E6%BC%B1%E6%BA%9F%E5%85%88%E7%94%9F%E8%87%B4%E9%99%B3%E7%8D%A8%E7%A7%80%E6%9B%B8%EF%BC%89">不老</a>》一文評論這件事，他說少年人應該問自己道：「我們到了六七十歲時，還能保存那創造的精神，做那時代的新人物嗎？</p>
+<p>這問題還不是根本問題。我們應該進一步，問自己道：「我們該用什麼法子才可使我們的精神到老還是進取創造的呢？我們應該怎麼預備做一個白頭的新人物呢？」</p>
+<p>其實做白頭新人物談何容易！在近人中，被冷紅生罵做「媚世」、被章老虎罵做「媚小生」的梁啟超庶幾近之，其他的聞人實不多見。上了年紀的人未嘗不想進步，從<a href="https://zh.wikipedia.org/zh-tw/%E7%BA%B3%E6%92%92%E5%B0%BC%E5%B0%94%C2%B7%E9%9C%8D%E6%A1%91">霍桑</a>（Nathaniel Hawthone）《海德哥醫生的試驗》（Dr. Heidegger's Experiment）裏，我們看到那三個老頭和一個老婦在喝了「返老還童水」以後所發的狂喊：</p>
+<p>"Gives more of this wondrous water!" cried they eagerly. "We are younger－but we are still too old！Quick give us more！"(「把這一些奇怪的水再給我們一點！」他們著急地叫著，「我們年輕些了——可是我們仍舊還太老！快點——再多给我們一點！」)</p>
+<p>可憐的是，他們的胃口已經不能使他們消化那些青春的果實了，他們只能「反芻」（ruminate）肚子裏頭那點存貨，以「老馬之智可用也」的自負，整天販賣那些發了霉的骨董，他們即使能誨人不倦，可是他們卻不想想被誨的後生早已「愛」了，他們說後生可畏，其實真正可畏的不是後生，而是老生那些疲勞轟炸式的常談！</p>
+<p>我想起「琵琶記」蔡公筆試中的那句對話：「老兒，你如今眼昏耳聾，又走動不得。」參加接力賽跑的人都知道接一個「走動不得者」的棒子的味兒，尤其是失敗下來，他們竟還埋怨那些接棒的人，他們從來不肯自己反省，自己跑不快還要嫉妒青年人，說青年人不行，他們恰像平劇裏邊那種衰派的老旦，自己只不過是一個角色，可是卻在任何人面前倚老賣老，這不是滑稽嗎？</p>
+<p>第三種老年人拿的是一根「不放手的棒子」。以前監察院副院長<a href="https://zh.wikipedia.org/zh-tw/%E5%88%98%E5%93%B2_(1880%E5%B9%B4)">劉哲</a>就是一個好代表，他老先生拿棒子打人，比孔夫子還積極，孔夫子只不過是「以杖叩其脛」，可是劉副座卻和鄭板橋一樣，志在「擊其腦」，現在他死了，棒子也殉葬了，真可惜了這根殺氣洋溢的棒子！　</p>
+<p>老年人對死亡感到恐懼，他發現什麼東西都將在突然間不屬於他，他不願看到任何東西離他遠去，因此人一到了老年，就顯得貪心而小氣，他們一方面殊求無厭；一方面「印刓敝，忍不能予」， 他們充滿了舍我其誰的自信，一點沒有成功不必在我的雅量，總覺得他一遽歸道山天下就無人救了！國失干城了！青年人失導師了！學問成絕學了！圖書館沒館長了！所以他們什麼都想一把抓，什麼都想求近功，孔夫子早就看到這一點，因此他勸老年人「戒之在得」，換成白話說，就是：「你們這些憨老漢還是休息休息吧！還是鬆開手，把棒子遞給青年人吧！」</p>
+<p>但是話雖這麼說，貪得之心即使連說大道理的聖人也在所難免，即以勸人「戒之在得」的本人而論，孔丘說他「道不行，乘桴浮於海」，可是跟他出國的，他卻限制名額只要子路，子路的身體足可以參加接力賽跑，可是孔子仍嫌他「無所取材」，「禮記」中記孔聖臨死前「負手曳杖，消搖於門」，這個「曳」字用得太好了，杖者棒也，棒者名器，不可以假人，放乎哉？不放也！棒交不下去，一個「曳」字寫盡了他那失望而未絕望的心情，當子貢跑進去的時候，孔子感歎「爾來何遲也」！這是一個七十三歲的老教育家最後的哀呼！　</p>
+<p>我們只看到老年人在體力上需要「杖而後能行，扶而後能立」，但我們卻很難想像一根棒子的抽象意義對他們是何等重大，他們老了，需要青年人來扶，但他並不完全放心，他還是要緊抓著棒子，一來呢，棒者，男孩子之所喜，女孩子之所欲也，有棒在手，倚之以吊青年人胃口，自然不難達到「少者懷之」的境界；二來呢，有棒子可增加他的自我信任和安全感，「姚興小兒，吾當折杖以笞之！」這是何等老當益壯的口氣！三來呢，你這年輕人，苟生異心若萌歹念而不好好扶老子，老子就給你一棒子！（老實說，凡是「博我以文，約我以禮」的人，都是能夠「擊我以棒」的人，其實這還算是好的，等而下之的，有些老前輩們，為了怕青年人有朝一日搶去了他們的棒子，他們索性先給青年人一棒子，那些專門澆青年人涼水、扯青年人後腿、說青年人樣樣不行的，就屬此類。）</p>
+<p>西遊記就是一個好例子。取經一事，明明孫行者足可勝任，可是卻一定要派唐僧那個血壓又高、頭腦又混的肉饅頭做主角，還帶了豬八戒沙和尚兩個工讒善媚的走狗青年，唐僧根本不比孫悟空高明，只是裝得老成持重些，且年資已久，是<a href="https://zh.wikipedia.org/zh-tw/%E5%90%89%E8%97%8F">胡吉藏</a>的老弟子，跟<a href="https://zh.wikipedia.org/zh-tw/%E5%A7%9A%E6%80%9D%E5%BB%89">姚思廉</a>是老同學，自然在菩薩面前吃得開，緊箍咒就是唐僧的抽象棒子，孫猴子雖然也有個棒子，但在滿朝精神重於物質的邏輯下，只好被唐三藏棒住。　</p>
+<p>老年人抓住棒子不放的另一原因，是他們的長壽心理，古人「有生者不諱死」，其實「諱」字應該校改為「知」字，許多老年人整天做著「竊比我于老彭」的好夢，不慌不忙，從來不知死之將至，據說虞舜九十五歲才把帝位「禪」出來，其老不倦勤之概可想。比照虞先生的尺碼看來，人生七十歲開始也不嫌遲。很多老年人都有大遠景，長期發展的大計畫，而這些遠景和計畫卻又和他們遲緩的腳步極不相稱的，他們只知道任重和道遠，卻不曉得日暮與途窮，陸遊的詩句道盡了他們心中的竊喜，那是：　</p>
+<p>「自揣明年猶健在，東廂更覓茜金栽。」</p>
+<p>白首窮盡的抱負是動人的，可惜只是礙了手腳！<a href="https://zh.wikipedia.org/zh-tw/%E9%98%BF%E5%9B%BE%E5%B0%94%C2%B7%E5%8F%94%E6%9C%AC%E5%8D%8E">叔本華</a>算是這些人裏邊最成功的，他說：「他們以為我老得要死了，看吧，等他們全死了，我還活著。」在這方面他是考第一的，可是他的自私與吝嗇也是考第一的。</p>
+<p>新陳代謝（metabolism）本是很普通的自然現象，它的結果自然產生許多「老廢物」（waste matter），像草酸鈣（calcium oxalate）等就是，這種異化作用是一切生物活動的起點，並不值得驚怪與戀棧。紀元前六世紀，大運動家密羅（Milo）年老的時候，一天看到操場上的年輕健兒大展身手，他竟忍不住望著自己鶴骨雞膚大哭，他感歎，他不服氣，他終於不自量力，狂劈橡木而死，引起<a href="https://zh.wikipedia.org/zh-tw/%E8%A5%BF%E5%A1%9E%E7%BD%97">西塞羅</a>（Marcus Tullius Cicero）在「論老年」（De Senectute）裏不少的訕笑。</p>
+<p>有些老年人硬怕青年人厭棄他們，<a href="https://zh.wikipedia.org/zh-tw/%E4%BC%8A%E4%B8%87%C2%B7%E5%B1%A0%E6%A0%BC%E6%B6%85%E5%A4%AB">屠格涅夫</a>的「父與子」裏記尼可拉．彼特洛維奇（Nikolai Petrovitch）接他兒子回來時說：「現在我們必須互相接近，並且設法相互徹底地瞭解。」（第三章）但是他的哥哥卻先感慨了：「你設法不忘掉你學過的，但是——一轉眼！——他們就證明那些都是垃圾，並且告訴你，有靈性有見識的人早就不搞這些勞什子了，並且如果你不以為嫌，一個落了伍的老腐敗就是你！這又有什麼好法子？年輕人自然比我們來得聰明！」（第六章）</p>
+<p>後來弟弟終於悟到了，他說：「這樣看來你和我都是落了伍的人了，我們的時代過去了，唉，唉，也許巴紮洛夫（Bazarov）是對的，但是我坦白告訴你，有一件事使我難受，就在這時候，我是多麼盼望我能與（兒子）阿爾卡迪（Arkady）多親近一點，可是結果呢，我丟在後邊了，他已經向前走了，我們不能互相瞭解了。」「我從前還以為我正跟著時代做每一件事，……我念書、我研究，我嘗試在每一方面都合乎時代的要求，——可是他們還說我的日子過去了，並且，哥哥，我也開始這樣想了。」「哥哥，你知道我現在想起什麼嗎？有一次我跟我們可憐的媽媽吵嘴，她好生氣，不願聽我的話，最後我向她說：『當然了，你不能瞭解我，我們是屬於不同的兩代的人！』她被我氣壞了，可是當時我卻想：『這又有什麼法子呢？它是一顆苦藥丸，可是它必須吞下去。』你看，現在輪到咱們了，咱們的後一代也可以向咱們說：『你不是我們這一代人了，吞你的藥丸去罷！』」「是的，哥哥，好象是時候了，我們該訂做一口棺材，把兩條胳膊放在胸前了。」（第十章）　</p>
+<p>至少我個人覺得，像尼可拉．彼特洛維奇這種老年人是可以尊敬的，他雖到了老悖的年紀，雖然在「涅盤經」的八苦中只少占了六苦，可是他仍然想做一朵「老少年」（即雁來紅Amarantus tricolor），他充滿了正常的舐犢之愛，虛心的向另一代的小毛頭們來學，也許「老狗學不會新把戲」，但他絕不就此展開「倚賣術」，「北史」穆崇傳：「老身二十年侍中，與卿先君亟連職事，縱卿後進，何宜排突也？」這就是賣老！</p>
+<p>有些急進派的年輕人實在看不慣，他們對「老羆當道臥」的局面感到難以容忍，他們未嘗不想自己去另外找棒子，可是老年人慢騰騰地「跑」在前面，既礙了路，又擋住視野，於是年輕人想到還是乾脆去搶棒子，可是，怪事就在這兒，十次有九次，他碰到的是一位飯斗米肉十斤的腹負將軍，或是一位狡猾無比的癡頑老子，除了被飽以老拳外，連接棒預備隊的資格也要丟掉了。經書上說「老者不以筋力為禮」，可是打起人來，他們就有勁了！</p>
+<p>王陽明說：「不有老成，其何能國？」詩經裏說：「雖無老成人，尚有典型。」一些古代的「年老成德之人」的確給了我們不少的典型，在古希臘時代，僭主<a href="https://zh.wikipedia.org/zh-tw/%E5%BA%87%E8%A5%BF%E7%89%B9%E6%8B%89%E5%9B%BE">庇西斯屈特斯</a>（Pisistratus）怒問智者<a href="https://zh.wikipedia.org/zh-tw/%E6%A2%AD%E4%BC%A6">梭倫</a>（Solon）：「你仗著什麼，竟這樣勇敢的反抗我？」梭倫平靜地答他道：「老年。」這些老骨頭們的高風亮節真使我們傾倒！一個人到了「七十老翁何所求」的年紀，以他的身分、地位與安全性，若還「以耽沉之利，欲役老朽之筋骸」，該是一件多麼可恥、多麼懦夫、多麼不可饒恕的事！</p>
+<p>所以，當我們想到八十一歲的<a href="https://zh.wikipedia.org/zh-tw/%E6%9F%8F%E6%8B%89%E5%9B%BE">柏拉圖</a>死時還拿著筆、八十六歲的<a href="https://zh.wikipedia.org/zh-tw/%E8%B5%AB%E4%BC%AF%E7%89%B9%C2%B7%E8%83%A1%E4%BD%9B">胡佛</a>每週還工作八十四小時、九十四歲的<a href="https://zh.wikipedia.org/zh-tw/%E4%BC%8A%E7%B4%A2%E5%85%8B%E6%8B%89%E5%BA%95">伊梭格拉底斯</a>（Isocrates）還絕食殉道，再回頭看看我們這種一面通宵打牌、一面「我老了，看你們的了」的傳統、一面庸德之行庸言之謹、一面舞著棒子「杖於朝」的傳統，我們能不笑洋鬼子傻瓜嗎？　</p>
+<p>王洪鈞先生在文章裏面又說：「我無意批評年輕人。老實說，不去分析他們所處的環境、不去瞭解他們所受的教育，光是指摘他們，都是不公平的。」　</p>
+<p>王先生站在一個中年人的立場，他當然可以原諒青年人，可是青年人若站在一個愛真理勝於愛老師的立場，他不能不對莎士比亞筆下 full of care 的老先生說幾句「不知忌諱」的話，也正如王先生所說的：「這些話，好象是牢騷，但也是不得不發的牢騷。因為問題既已存在，與其加以裱糊，不如把它戳穿。戳穿之後，我們才能瞭解到它的嚴重，才能去思索、才能去解決。」</p>
+<p>現在一般情形，好像只有老年為青年的安排與教訓，沒有青年自己（真正的自己，不是「代表」的「模範青年」）的心聲，與王先生的文章同期，還有一篇<a href="https://zh.wikipedia.org/zh-tw/%E6%9B%BE%E7%B4%84%E8%BE%B2">曾約農</a>的「為青少年陳情」，他老先生別具隻眼，覺得「推青年所希冀者，不外五端」，其中「訓育從嚴」「生活輔導」「青年立法」等，「皆出於一般青年內心之要求而未公開表示者」，至少我個人，我認為曾老先生這種「推」法未免可怕，老年人竟這樣「推」青年人，這樣為青年人「陳情」，我們真領教他們對我們瞭解的厚度了（曾老先生若肯到中學參觀參觀那種中央集權整齊劃一的平頭教育，考察考察酷似警察局的訓導處，看看那些「學生資料袋」，再向外看看太保學生的數目，大概他又會重讀他爺爺那篇「原才」了）。</p>
+<p>我發現在曾老先生的「五端」外，還有「外一端」，正是「青年所希冀者」，那就是老年人要我們聽話，希望老年人也「垂聽」一下我們的聲音。雖然<a href="https://zh.wikipedia.org/zh-tw/%E5%BC%97%E6%9C%97%E8%A5%BF%E6%96%AF%C2%B7%E5%9F%B9%E6%A0%B9">培根</a>（Francis Bacon）早就說我們不適於判斷，可是我們畢竟是一個窩裏的人，畢竟一同參加這場接力賽，不要總是以為你們看我們都看得那麼准，你們總該想想我們在用什麼顏色的眼睛在看你們，至少你們該想一次。<br/><br/><a href="https://zh.wikipedia.org/zh-tw/%E4%BA%A8%E5%88%A9%C2%B7%E6%88%B4%E7%BB%B4%C2%B7%E6%A2%AD%E7%BD%97">梭羅</a>（Henry David Thoreau）在他的「瓦爾登湖」（Walden）的第一篇裏，曾有過幾段激烈批評老年人的文字，它們的神韻與氣勢是會被翻譯毀壞的：　<br/><br/>"What old people say you cannot do you try and find that you can. Old deeds for old people, and new deeds for new. Age is no better, hardly so well, qualified for an instructor as youth, for it has not profited so much as it has lost. Practically, the old have no very important advice to give the young, their own experience has been so partial, and their lives have been such miserable failures, for private reasons, as they must believe; and it may be that they have some faith left which belies that experience, and they are only less young than they were. "</p>
+<p>老頭子們說你不能做這個不能做那個，可是你試一下，你就會發現你能。老的一套只該適合老傢伙，新人該有新的一套。一大把年紀很難構成做青年老師的好條件，因為它得不償失、功不補患。實際一點說，老年人不會有什麼很重要的意見給青年人，他們自己的經驗是那樣支離破碎，他們的生活又那樣慘敗，他們必須知道這些都是咎由自取，也許他們還保留一些與經驗並不符合的自信心，可是他們已經不夠年輕了。<br/><br/>他更激烈地否定老年人：　<br/><br/>"I have lived some thirty years on this planet, and I have yet to hear the first syllable of valuable or even earnest advice from my seniors. They have told me nothing, and probably, cannot tell me anything, to the purpose. Here is life, an experiment to a great extent untried by me; but it does not avail me that they have tried it. If I have any experience which I think valuable, I am sure to reflect that this my Mentors said nothing about."</p>
+<p>我在這星球上活了三十年，從我的老前輩那兒，我還沒聽到可稱得上有價值的或熱情忠告的第一個音節，他們什麼也沒有告訴我，可能也告訴不了我什麼中肯的話。這就是生命，一個大部分沒被我體會過的經驗，他們雖然體會過了，可是對我卻沒用。如果我得了什麼我覺得有價值的經驗，我一定會想：這個經驗，我的「指導人」壓根兒還沒提過呢。</p>
+<p>這些話足可以使老一輩的罵他忘恩負義了，可是他又接著向老人家施展了棒喝：<br/><br/>"You may say the wisest thing you can, old man--you who have lived seventy years, not without honour of a kind,--I hear an irresistible voice which invites me away from all that. One generation abandons the enterprises of another like stranded vessels."</p>
+<p>你可以說那些最聰明的話，老傢伙——你活了七十年了，而且活得榮華富貴，——我卻聽到一種擋不住的呐喊，要求我不聽你的話。這一代扔掉上一代的豐功偉業就好象扔掉一條擱了淺的破船。</p>
+<p>我不太覺得我們一定要過於刻毒地批判老年人，我也不太覺得我們一定要像放棄破船一般地放棄對他們的希望，他們之中，若真有豎起脊樑特立獨行的皓首匹夫，我們還是願意做執鞭之士的。讀過「宋史」晏敦復傳的人，都會看到下面這一段：</p>
+<p>〔和議時，秦〕檜使所親諭敦復曰：「公能曲從，兩地旦夕可至。」敦複曰：「吾終不為身計誤國家，況吾薑桂之性，到老愈辣，請勿言。」檜卒不能屈。</p>
+<p>這是一面好鏡子，在「水深波浪闊」的時代裏，我們正需要一些有「薑桂之性」的老辣椒們來「訓育」我們、「輔導」我們，「立」身教而為我們「法」，他們要我們苦幹，至少他自己不躺在沙發上做學者；他要我們有骨氣，至少他自己不是一個「善保千金軀」的鄉願；他要我們戰鬥，至少他自己要做「老人與海」裏面的打魚人。</p>
+<p>一些老年人教青年人讀經，他自己總該讀過「善歌者使人繼其聲，善教者使人繼其志」的話，即使他的歌聲動人壯志可嘉，他也該問問青年人的意見，瑞斯（<a href="https://en.wikipedia.org/wiki/Cale_Young_Rice">Cale Young Rice</a>）在「青年人向老人說的話」（The Young to the Old）裏，他告訴老年人：　</p>
+<p>You who are old,<br/>And have fought the fight,<br/>And have won or lost or left the fight,<br/>Weight us not down,<br/>With fears of the world, as we run!</p>
+<p>你們老了，<br/>打過了這場仗，<br/>贏過，輸過，又丟下了這場仗。<br/>當我們在奔跑，<br/>你們對世界的恐懼，<br/>不能把我們嚇倒。</p>
+<p>可是，問號緊跟著我們，我們忍不住要問：有幾位老年人肯聽我們的話呢？有幾位老年人能聽我們的話呢？有幾位老年人樂意談談接棒的問題呢？</p>
+<p>從<a href="https://zh.wikipedia.org/zh-tw/%E9%99%86%E6%9C%BA">陸機</a>的舊賦裏，我們彷佛看到一批批的英氣耿介聲蓋士林的青年人，他們一個個都從青絲老到了白髮，他們還算是高明的人，雖然顯得老憊，還能勉強維持最後一道防線，不太肯胡來，他們的「老氣」不復以達工部所謂「橫九州」的地位了，只好以望七之年，去做「橫秋」的壯舉了！老朽昏憒賣身投靠的一輩我們不必說，即以最開明一代的老先生而論，從寫「人權與約法」時代的胡適之到寫「容忍與自由」時代的胡適之；從「人權論集」時代的<a href="https://zh.wikipedia.org/zh-tw/%E6%A2%81%E5%AE%9E%E7%A7%8B">梁實秋</a>到「遠東英漢字典」時代的梁實秋，我們多少可以看出他們轉變的痕跡，<a href="https://zh.wikipedia.org/zh-tw/%E7%BE%85%E4%BC%AF%E7%89%B9%C2%B7%E4%BD%9B%E6%B4%9B%E6%96%AF%E7%89%B9">弗洛斯特</a>在他那首「預防」（Precution）裏，說他年輕時不敢做一個急進派，因為怕他年老時變成一個保守派，我並非說胡適之與梁實秋已變成保守派，我是說，他們今日的「穩健」比起當年那種生龍活虎意氣縱橫的氣概，是不大相稱的！　</p>
+<p>公自平生懷直氣，<br/>誰能晚節負初心？</p>
+<p>死去的哲人的詩句已經替那些好學不倦、守經不變的耄勤之士指出一條危機，我們不惋惜錢謙益、<a href="https://zh.wikipedia.org/zh-tw/%E7%AB%A0%E5%A3%AB%E9%87%97">章士釗</a>的老不自愛，我們只惋惜<a href="https://zh.wikipedia.org/zh-tw/%E9%BB%84%E5%AE%97%E7%BE%B2">黃梨洲</a>、<a href="https://zh.wikipedia.org/zh-tw/%E6%B1%9F%E4%BA%A2%E8%99%8E">江亢虎</a>的晚節難全！<a href="https://zh.wikipedia.org/zh-tw/%E8%92%82%E6%89%98%C2%B7%E6%9D%8E%E7%BB%B4">羅馬史家李維</a>（Livy）曾對<a href="https://zh.wikipedia.org/zh-tw/%E5%A4%A7%E8%A5%BF%E5%BA%87%E9%98%BF">西辟奧．阿利坎努斯</a>（Scipio Africanus）批評道：『Ultima Primis cedebant.』（他的晚年不及他的早年。）環顧國中，有幾個可愛的老年人能擋得住這種判決呢</p>
+<p>病情是指出來了，可是沒有藥方，答案不是沒有，而是不需要一個越俎代庖的青年人來提供，至少就我個人而言，我不覺得我有資格去做評議員。對那些老不成器老不曉事的老爺們，我不願再說什麼，對那些老著臉皮老調重彈的老奸巨猾們，我也不願再說什麼，只是對那些以老當益壯自許、以老驥伏櫪自命的老先生們，我忍不住要告訴你們說：我們不會搶你們的棒子，我們不要鳴鼓而攻我們的聖人的棒子，我們不稀罕裏面已經腐朽外面塗層新漆的棒子。我們早已伸出了雙手，透過沉悶的空氣，眼巴巴地等待你們遞給我們一根真正嶄新的棒子！　<br/><br/>李敖 1961年七月十五日在碧潭山樓</p>
+<p>-----------------------------------</p>
+<h4>蘇軾《浣溪沙·游蘄水清泉寺》北宋神宗元豐五年（西元 1082年）暮春三月在湖北黃岡</h4>
+<h4>山下蘭芽短浸溪，松間沙路淨無泥。</h4>
+<h4>蕭蕭暮雨子規啼，誰道人生無再少？</h4>
+<h4>門前流水尚能西！休將白髮唱黃雞。</h4>
+<p>山腳下剛長出來的蘭草嫩芽，短短的，浸泡在清澈的溪水裡；松林間的沙子路在雨後顯得人格外潔淨，沒有一點泥濘。</p>
+<p>黃昏時分，細雨紛紛，傳來杜鵑鳥 (別稱子規) 陣陣淒清的啼叫聲。是誰說人生就不能再回到年少時光呢？</p>
+<p>你看，這門前的溪水都還能向西倒流呢！可千萬不要在年老白髮時，徒自悲傷、感嘆歲月催人老 (還跟著白居易一起唱那種悲嘆黃雞催曉、歲月催人的衰老愁歌了)。</p>
+<p>----------------------------------</p>
+<h4>《莊子．天道》中的寓言「輪扁斲輪」。</h4>
+<h4>斲輪徐，則甘而不固；疾，則苦而不入。不徐不疾，得之於手而應於心，口不能言，有數存焉於其間，臣不能以喻臣之子，臣之子亦不能受之於臣，是以行年七十而老斲忻輪。</h4>
+<p>做車輪的時候，如果動作太慢、下手太寬鬆，卡榫就會削得太寬、太鬆（甘），組裝起來就不牢固（不固）；</p>
+<p>如果下手太急、削得太快，卡榫就會削得太緊、太澀（苦），車輪部件就套不進去（不入）。</p>
+<p>最完美的狀態是做到不慢也不急，拿捏得剛剛好。這種恰到好處的分寸，是透過雙手在實作中去感受，並由內心去神領體會的（得之於手而應於心）。</p>
+<p>這裡面有一種巧妙的訣竅（數），是用嘴巴根本說不出來的（口不能言）。</p>
+<p>我沒有辦法用言語把這個訣竅講明白、傳授給我的兒子（臣不能以喻臣之子），我兒子也沒辦法光憑聽我說就接過這項絕活（臣之子亦不能受之於臣）。正因為這樣，我活到了七十歲，這把老骨頭了還得自己動手削車輪。</p>
+<p>「斲（ㄓㄨㄛˊ）輪」指砍削木材製作車輪；「輪扁」則是這位造車輪的老工匠的名字。</p>
+<p>這段話是輪扁用來向齊桓公說明：真正核心的「技藝與智慧」只存在於實踐中，是無法透過文字或言語傳播的。</p>
+<p>----------------------------------</p>
+<p>記錄先秦工藝的《周禮．考工記》，當時對車輪的尺寸、比例、以及驗收誤差，都有精準且量化的規定。輪扁所強調的「口不能言」，是因為在最後的組裝階段，木材的物理特性必須靠「隱性手感」去完成極限公差的微調。</p>
+<p>先秦時期的「量測工具」有四大法定測量工具，統稱為「規、矩、準、繩」：</p>
+<p>規：圓規。用來檢測車輪的外圈（牙）是否為完美的圓形。</p>
+<p>矩：直角尺。用來測量車輪輻條與車軸之間是否達到絕對的 90 度垂直。</p>
+<p>準：水準器（利用水面平直原理）。用來測量車箱、車軸是否平衡。</p>
+<p>繩：墨斗與線繩。用來拉直線、確定車轅的中心軸線。</p>
+<p>先秦如何進行「驗收與公差管理」的？</p>
+<p>《考工記》記錄的車輪品管檢驗方法。這些方法在現代工程學來看，就是標準的「公差與品管」：</p>
+<p>稱重對稱（質量公差）：一個車輪由左右兩組對稱的輻條組成。</p>
+<p>《考工記》規定：「設其輻而名其上方，張其（輪）而其（質量）均。」工匠做完兩個輪子後，要把兩個輪子放到天平上稱重。兩個輪子的重量誤差必須接近於零，如果兩邊重量不均，馬車跑起來就會劇烈顛簸或偏向。</p>
+<p>水浮法（密度與同心度公差）：把做好的整顆木質車輪丟進水裡，看它浮在水面上的深度。如果車輪在水裡沉浮的深淺完全一致，代表這個輪子的圓心位置抓得極精準，且各部位的木材密度、厚度完全對稱。</p>
+<p>儘管有量測與品管方法，為什麼輪扁還說「得之於手而應於心」？</p>
+<p>既然工具、尺寸、質檢標準都一應俱全，為什麼還要強調「手感」？</p>
+<p>這牽涉到材料科學（木工）的終極限制。</p>
+<p>木材是活的（各向異性）：金屬可以做到固定的機械公差。但木材有年輪、有干濕度、有紋理、有軟硬不均的問題。</p>
+<p>即使你用尺量出兩個一模一樣的卡榫尺寸，一塊稍微潮濕的木頭，跟一塊完全乾燥的木頭，其組裝時的膨脹與阻力完全不同。</p>
+<p>極限公差無法形諸文字：在組裝的最後一刻，工匠面對的是「這塊木頭今天比較乾，刀要下得再淺半毫米」或者「這個榫眼剛好卡到樹瘤，必須多用兩分力砸下去」。</p>
+<p>這種因地制宜、因材料而異的「微米級動態調整」，在兩千年前是無法寫進說明書裡的。</p><br />About << <a href='About.html'>Previous</a> <a href='CMS.html'>Next</a> >> CMS</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cms/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cms/static/chimper/js/popper.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cms/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cms/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cms/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cms/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        
