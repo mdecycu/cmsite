@@ -2,7 +2,7 @@
         <head>
         <title>MDialog</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cms/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap.min.css">
@@ -141,16 +141,18 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">PDD << <a href='PDD.html'>Previous</a> <a href='SS.html'>Next</a> >> SS<br /><h1>AC</h1>
-<p>Associated Copy (AC)</p>
-<p>UGS NX3 允許使用者在 Part Navigator 中以滑鼠加上 Ctrl 選擇一個以上的 Features，然後再利用滑鼠帶出其中有 Group 的表單，利用此表單的 Group 可以將所選多個 Features 以群組名稱命名。</p>
-<p>在 Part Navigator 中帶出的 Group 功能，等同 Format - Group Features，而非 Format - Group。</p>
-<p>多個特徵群組後，可以用於 Insert - Associated Copy - Instance 中，所帶出的 Rectangular Array 或 Circular Array 進行 Pattern 複製。</p>
-<p>Format - Group 功能的說明:</p>
-<p>UGS NX 3 的 Format → Group 是一種持久性的模型物件組織機制，用於將一個或多個 NX objects 以指定名稱建立為邏輯群組，並將該群組顯示於 Model Navigator。Group membership 不改變成員物件本身的幾何、Feature dependency 或參數化歷史，其主要用途在於模型結構管理、工程語意分類及後續選取／管理。</p>
-<p>先替一批 NX objects 建立一個有名稱的「可被重新找回、重新選取、重新管理的集合」，之後其他操作需要這批物件時，可以透過這個 Group 找回這批物件，而不必重新逐一選取。</p>
-<p>在較為複雜的設計繪圖過程，可以透過將某些現階段不需要看到的定位面、特徵或圖素以 Format - Group 命名為特定群組，然後在  Part Navigator 中設定為顯示或不顯示，以提升在帶有多曲面與定位座標下的設計繪圖效率。</p>
-<br />PDD << <a href='PDD.html'>Previous</a> <a href='SS.html'>Next</a> >> SS</div>
+    <div id="tipue_search_content">SS << <a href='SS.html'>Previous</a> <a href='Ender-3.html'>Next</a> >> Ender-3<br /><h1>Open C</h1>
+<p>這裡的 Open C 指用來開發 UGS NX3 的 API 程式庫。</p>
+<p>Open C API is designed to enable an easy interface between NX and the outside world. The Open C API consists of:</p>
+<ol>
+<li>a large set of user callable functions/subroutines that access the NX Graphics Terminal, File Manager, and Database.</li>
+<li>command procedures to link and run user programs.</li>
+<li>an interactive interface in NX to run those programs.</li>
+</ol>
+<p>Open C API programs can run in 2 different environments, depending on how the program was linked.</p>
+<p>The two environments are:</p>
+<p>External - these Open C API programs are stand alone programs that can run from the operating system, outside of NX, or as a child process spawned from NX.</p>
+<p>Internal - these Open C API programs can only be run from inside of an NX session. These programs are loaded into main memory along side of NX and access routines within NX. One advantage to this is that the executables are much smaller and link much faster. Once an Internal Open C API Program is loaded into memory, it can stay resident for the remainder of the NX session. If you call this program again, it executes without reloading (provided it was not unloaded). Internal Open C API programs work on the current part and automatically modify the part display.<br/><br/>Most Open C API functions/subroutines can be used in either mode. There are only a few, mostly User Interface routines that are only supported in internal mode.</p><br />SS << <a href='SS.html'>Previous</a> <a href='Ender-3.html'>Next</a> >> Ender-3</div>
         
     <!-- footer -->
       <div class="container">
