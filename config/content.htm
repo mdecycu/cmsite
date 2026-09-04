@@ -127,9 +127,9 @@
 <p></p>
 <h1>CMS</h1>
 <p>CMS: <a href="https://github.com/mdecycu/cms">https://github.com/mdecycu/cms</a> </p>
+<p>執行所需模組: pip install flask flask_cors bs4 lxml pelican markdown</p>
 <p>scms: 在近端啟動編輯環境</p>
-<p>acp: add、commit、push</p>
-<h2>Python</h2>
+<p>acp: add、commit、push</p><h2>Python</h2>
 <p>為了讓熟悉 C++ 或 Java 的用戶方便使用，在 Python 2.2 中，放入 @staticmethod (靜態方法) 裝飾器的用法，以便在類別 (Class) 中定義一個不需要存取類別屬性 (Class attributes) 或實例屬性 (Instance attributes) 的方法。本質上就是一個寫在類別內部的普通函式。</p>
 <p>核心語法與特色</p>
 <ol>
@@ -191,7 +191,61 @@ emp = Employee("王小明", "1995-05-20")
 <p>支援繼承與多型（Polymorphism）：</p>
 <p style="padding-left: 30px;">寫在類別內部的靜態方法是可以被子類別繼承或覆寫（Override）的。如果是寫在檔案外層的獨立函式，就無法享受物件導向的繼承架構。</p>
 <p></p>
-<h1>Dialog</h1>
+<h2>Mojo</h2>
+<p>Mojo 在 2026.8.18 正式開源。</p>
+<p><a href="https://www.modular.com/blog/mojo-open-source">https://www.modular.com/blog/mojo-open-source</a> </p>
+<p>具革命性下一代系統級程式語言：</p>
+<p>Mojo 的底層技術、演進與未來展望</p>
+<p>兼論其在 AI 與異質計算（Heterogeneous Computing）時代之定位</p>
+<p>摘要 (Abstract)</p>
+<p>隨著大型語言模型（LLM）與人工智慧（AI）的爆發性成長，傳統計算架構正面臨「研發效率」與「執行效能」的雙重瓶頸。長期以來，AI 生態系被 Python 的高層研發便利性與 C++/CUDA 的低階極致效能割裂為「雙語言架構」（Two-Language Problem）。本文旨在探討由 Modular 團隊開發之 Mojo 程式語言，如何透過融合 Python 語法與新世代多級中間表示（MLIR） 編譯器技術，消弭上述技術斷層。本研究將詳細剖析 Mojo 的技術起源、底層記憶體所有權機制、核心突破、當前業界實際應用案例，並對比 Rust 與 C++ 等競爭語言，最後展望其演進為全域系統級語言之未來路徑。</p>
+<p>一、 緒論與緣起 (Introduction &amp; Origin)</p>
+<p>1.1 歷史背景與雙語言痛點</p>
+<p>在人工智慧、量化金融與大數據處理領域，長年存在著軟體工程的兩極妥協。Python 憑藉親切的語法與高度動態性，成為科學研究（PyTorch、NumPy）與快速原型設計的絕對霸主；然而，Python 作為高階直譯式語言（Interpreted Language），受限於全域解譯器鎖（GIL）與高昂的記憶體開銷，無法直接壓榨硬體極限。為了將模型部署於車載晶片、邊緣裝置或資料中心，企業往往需要龐大的工程團隊將 Python 代碼手動重寫（Porting）為 C++ 或 CUDA。這種「雙語言問題」大幅拉長了產品落地週期，更埋下了大量移植 Bug 與維護包袱。</p>
+<p>1.2 創始契機</p>
+<p>為了解決這個全球硬體與 AI 巨頭的共同痛點，由 LLVM、Clang 與 Swift 語言的開發者——克里斯·拉特納（Chris Lattner），聯合提姆·戴維斯（Tim Davis）於 2022 年創立了 Modular 公司。創始團隊的第一性原理非常明確：不應該強迫科學家去適應複雜的 C++ 或 Rust，而是應該為全球數百萬 Python 開發者賦能，打造一款擁有 Python 外殼、卻具備 C++ 效能的系統級語言。 這便是 Mojo 的誕生起源。</p>
+<p>二、 開發過程使用的核心技術與嘗試解決的問題 (Core Technologies &amp; Problem Solving)</p>
+<p>Mojo 能夠打破效能障礙，並非單純在 Python 之上套用 JIT（即時編譯），而是從編譯器硬核底層進行了典範轉移。</p>
+<p>2.1 多級中間表示 (MLIR) 技術</p>
+<p>傳統編譯器（如 Rust 與 C++ 所依賴的 LLVM）在處理高階抽象時，會直接將代碼下放到低階的單一中間表示（LLVM IR）。這在處理通用的標量（Scalar）計算時極為優秀，但在面對 AI 特有的「張量（Tensor）計算與矩陣並行優化」時，LLVM 無法理解高階的語意。</p>
+<p>解決方案： Mojo 直接架構在 MLIR（Multi-Level Intermediate Representation） 之上。MLIR 允許 Mojo 在編譯期間定義多個不同抽象層級的「方言（Dialects）」。這意味著 Mojo 的編譯器可以在高層級理解矩陣乘法，在中間層級自動進行並行化與硬體暫存器對齊，在底層直達硬體指令。這使得 Mojo 天生具備極強的異質計算（Heterogeneous Computing）優化能力。</p>
+<p>2.2 漸進式強型別與靜態結構化</p>
+<p>Python 的動態型別雖然方便，但在運行時會帶來巨大的檢查開銷（Type Overheads），且無法被靜態編譯器優化。</p>
+<p>解決方案： Mojo 引入了 fn 與 struct 關鍵字（對標 Python 的 def 與 class）。當開發者使用 fn 定義函數並加上靜態型別標註（如 x: Int）時，Mojo 編譯器會切換至硬核編譯模式，強制在編譯期分配固定記憶體，生成無虛擬機（Zero-overhead）的原生機器碼。</p>
+<p>2.3 融合 Rust 的記憶體所有權機制 (Ownership &amp; Borrowing)</p>
+<p>為了徹底擺脫垃圾回收（Garbage Collection, GC）帶來的系統停頓（Stop-the-world）延遲，Mojo 必須實現確定性的記憶體管理。</p>
+<p>解決方案： Mojo 吸取了 Rust 的精華，在語言層級實現了借用檢查器（Borrow Checker）與所有權生命週期管理（引入 borrowed、inout、owned 等變數標註）。最創新的突破在於 「急切銷毀（Eager Destruction）」 機制：一旦一個龐大的 Tensor 或物件在程式碼中最後一次被讀取，Mojo 會在下一行程式碼執行前立即在記憶體中釋放它，而不需要等待大括號作用域（Scope）結束。這大幅提升了 GPU 等有限硬體暫存器的利用率。</p>
+<p>2.4 完全解耦 Python 運行時與獨立二進位編譯</p>
+<p>解決方案： 透過 mojo build 命令，編譯器能夠將所有純 Mojo 邏輯與標準庫直接編譯為單一、無任何外部依賴的獨立二進位檔（Standalone Binary）。這徹底解決了 Python 難以封裝、缺乏可攜性的歷史頑疾。</p>
+<p>三、 相同標的之競爭語言對比 (Competitors Analysis)</p>
+<p>在現代系統程式設計與高性能計算領域，Mojo 迎面撞上了兩大實力雄厚的對手 (Rust 與 C++)。</p>
+<p>3.1 Mojo vs. Rust</p>
+<p>Rust 的防線： Rust 是目前系統程式設計的黃金標準，在高性能網路伺服器、作業系統內核、資安防禦領域擁有無可動搖的地位。其生態系（如 Tokio 非同步網路框架）極為成熟。</p>
+<p>Mojo 的挑戰與優勢： Rust 最大的弱點在於其極度艱澀的語法與緩慢的研發速度，且在 AI 運算（矩陣、晶片驅動）上缺乏底層 MLIR 級別的優化。Mojo 透過相容 Python，讓團隊可以用 1/10 的時間寫出與 Rust 旗鼓相當的效能，並能直接 import 整個 Python 生態，這對 Rust 構成了顯著的「效率維度」威脅。</p>
+<p>3.2 Mojo vs. C++ / CUDA</p>
+<p>C++ 的防線：傳統自動駕駛、火箭控制、3D 遊戲引擎的核心。</p>
+<p>Mojo 的挑戰與優勢： C++ 缺乏內建的內存安全機制，安全漏洞頻傳。更重要的是，寫 CUDA 代碼需要對 GPU 硬體架構有極深的理解。Mojo 試圖成為「下一代 C++」，讓開發者用現代化、安全的語法，自動由編譯器生成超越手寫 C++/CUDA 的並行優化。</p>
+<p>3.3 Mojo vs. Python 與 Cython</p>
+<p>Python 的防線： 雖然 Cython 或 PyPy 能提升 Python 效能，但它們本質上無法脫離 CPython 虛擬機的束縛，也無法生成脫離 Python 的裸機（Bare-metal）二進位檔。Mojo 則是一款真正的編譯型系統語言，本質上已與 Python 分道揚鑣，只是借用了 Python 的精美外殼。</p>
+<p>四、 已經達成的標的與目前實際應用範例 (Milestones &amp; Application Examples)</p>
+<p>自 2023 年橫空出世以來，Mojo 已經取得了階段性的里程碑突破。</p>
+<p>4.1 核心成果與開源進程全面開源核心工具鏈：</p>
+<p>母公司 Modular 已將 Mojo 的編譯器核心與標準庫以 Apache 2.0 授權協議全面開源，徹底打消了開源社群對於商業公司壟斷技術的疑慮。</p>
+<p>極致的極速數據： 在官方公佈的曼德博集合（Mandelbrot）演算法測試中，純 Mojo 程式碼透過自動並行化與 SIMD 優化，跑出了比純 Python 快上 35,000 倍的驚人數據。</p>
+<p>4.2 實際應用範例</p>
+<p>4.2.1 邊緣運算與自動駕駛（Edge AI &amp; Autopilot）</p>
+<p>在自動駕駛與機器人領域，模型權重（Weights）確定後，需要將矩陣相乘代碼移植到嵌入式車載晶片上。目前已有多家前沿自動駕駛與硬體製造商，開始引入 Mojo 的編譯器將模型直接轉譯為獨立的、符合硬體指令集（如 ARM 向量指令）的二進位檔。這省去了以往將 Python PyTorch 模型手動翻譯成 C++ 的漫長陣痛期。</p>
+<p>4.2.2 大規模大模型（LLM）推論基礎設施（MAX 平台整合）</p>
+<p>Modular 團隊將 Mojo 語言與其旗下的 MAX（Modular Accelerated Xecution）推論引擎深度深度綁定。目前在雲端伺服器佈署開源大模型（如 Llama 3/4 等）時，使用 Mojo 撰寫的自訂注意力機制核心（Custom Attention Kernels），在非 NVIDIA 晶片（如 AMD 最新 Instinct 系列加速卡）上成功跑出了逼近甚至超越傳統 CUDA 封裝的超低延遲推論性能，這為打破晶片市場的壟斷提供了底層技術支撐。</p>
+<p>4.2.3 高性能資料解析與預處理工具（Data Pipeline Acceleration）</p>
+<p>在大數據與 AI 訓練前期，清洗、解析數百 GB 的純文字（JSON、CSV）是一大效能黑洞。社群與企業已開始使用 Mojo 重寫這些 I/O 與字串解析模組。得益於其沒有 GC 的快速記憶體釋放，數據管道的處理速度大幅超越了傳統的 Python/Pandas 架構，且比 C++ 專案更易於維護。</p>
+<p>五、 未來展望與結論 (Future Outlook &amp; Conclusion)</p>
+<p>5.1 未來演進路徑與挑戰</p>
+<p>Mojo 要真正建立「大一統」的王國，未來仍需跨越以下兩大挑戰：</p>
+<p>全面補齊非 AI 領域的系統級基礎設施： 雖然 Mojo 在矩陣、記憶體和硬體加速上無懈可擊，但在傳統系統程式設計高度依賴的「非同步網路通訊（Async Net IO）」、多執行緒併發 HTTP 服務、原生圖形介面（GUI）上，其標準庫仍有很大的空白需要社群共同補齊。</p>
+<p>Freestanding 裸機操作系統層級的解耦： 未來 Mojo 需要發展出類似 Rust #[no_std] 無需操作系統的極致精簡模式，才能真正攻佔微控制器底層韧體、甚至用來撰寫全新的操作系統內核。</p>
+<p>5.2 結論 (Conclusion)</p>
+<p>Mojo 不僅僅是一門新興的程式語言，更是 AI 與硬體異質計算時代下，編譯器技術演進的必然產物。它精準地洞察了傳統軟體工程中「執行效率」與「開發效能」不可兼得的痛點，透過 MLIR、現代所有權管理系統以及高度相容 Python 的語法設計，打破了工業界維持了數十年的雙語言包袱。儘管作為一門年輕的語言，其外圍非同步網路生態仍有待時間淬鍊，但 Mojo 「用 Python 的難度，提供超越 C++ 的效能」這項降維打擊武器，註定將在未來的 AI 基礎設施、大數據與高性能系統程式設計版圖中，強勢劃分出屬於自己的半壁江山。</p><h1>Dialog</h1>
 <h4>尼采的主張與對後代的影響</h4>
 <p>德國哲學家<a href="https://grokipedia.com/page/Friedrich_Nietzsche">弗里德里希·威廉·尼采</a> (<a href="https://zh.wikipedia.org/zh-tw/%E5%BC%97%E9%87%8C%E5%BE%B7%E9%87%8C%E5%B8%8C%C2%B7%E5%B0%BC%E9%87%87">Wikipedia</a>) 的核心主張包含上帝已死、超人與權力意志，並對後代的存在主義與後現代主義造成深遠影響。</p>
 <h4>尼采的主要主張</h4>
@@ -234,8 +288,7 @@ emp = Employee("王小明", "1995-05-20")
 <p style="padding-left: 30px;">強烈的風格化：將自己的生命力轉化為具體的創造活動，如寫作、藝術、哲學思考。讓擴張的力量成為實質的文化與精神產物，而非流於暴力的發泄。</p>
 <p>4. 體現「超人」（Overman）的姿態</p>
 <p style="padding-left: 30px;">成為精神的立法者：不當隨波逐流的「末人」（The Last Man），而是成為給予世界意義的創造者。</p>
-<p style="padding-left: 30px;">絕對地肯定命運：面對「永恆輪迴」的極端考驗（如果人生要一模一樣地重來無數次），依然能熱愛自己的命運（Amor Fati），主動選擇並創造這樣的生命。尼采認為，一個僅僅「求生存」的人，過的是一種被動的、防禦性的生活；而一個「主動擴張與創造」的人，才是真正活出生命本能的強者。</p>
-<h2>Plato</h2>
+<p style="padding-left: 30px;">絕對地肯定命運：面對「永恆輪迴」的極端考驗（如果人生要一模一樣地重來無數次），依然能熱愛自己的命運（Amor Fati），主動選擇並創造這樣的生命。尼采認為，一個僅僅「求生存」的人，過的是一種被動的、防禦性的生活；而一個「主動擴張與創造」的人，才是真正活出生命本能的強者。</p><h2>Plato</h2>
 <p>"The laws of physics must be invariant under Lorentz transformations."</p>
 <p style="text-align: right;">-- Albert Einstein</p>
 <p>物理定律是由空間、時間以及內部空間的<strong>對稱性原理</strong>所「決定」與衍生出來的產物。</p>
@@ -452,7 +505,7 @@ emp = Employee("王小明", "1995-05-20")
 <p>Mencius said, Suppose the case of the whole kingdom turning in great delight to an individual to submit to him. To regard the whole kingdom thus turning to him in great delight but as a bundle of grass - only Shun was capable of this. He considered that if one could not get the hearts of his parents he could not be considered a man, and that if he could not get to an entire accord with his parents, he could not be considered a son. By Shun's completely fulfilling everything by which a parent could be served, Gu Sou was brought to find delight in what was good. When Gu Sou was brought to find that delight, the whole kingdom was transformed. When Gu Sou was brought to find that delight, all fathers and sons in the kingdom were established in their respective duties. This is called great filial piety.</p>
 <p>孟子說：「假設全天下的人都歡欣鼓悅地歸順某個人，而他看待天下人的歸順就像對待一捆雜草一樣輕描淡寫，只有舜能夠做到這一點。他認為如果得不到父母的心，就不能算是一個真正的人；如果不能和父母融洽相處，就不能算是一個真正的兒子。舜克盡了侍奉父母的道義，使得盲叟（舜父）轉而喜愛美善。當盲叟轉而喜愛美善時，全天下的人都被感化了；當盲叟轉而喜愛美善時，天下所有的父子關係也就都有了準則。這就叫做真正的大孝。」</p>
 <h2>Woodruff</h2>
-<p><a href="https://en.wikipedia.org/wiki/George_W._Woodruff">George W. Woodruff</a> 於 1917 年畢業於 <a href="https://www.gatech.edu/">Georgia Tech</a> 機械系，日後成為<a href="https://zh.wikipedia.org/zh-tw/%E4%BA%9A%E7%89%B9%E5%85%B0%E5%A4%A7">亞特蘭大</a>知名的企業家與慈善家。1985 年，喬治亞理工學院機械系在慶祝創系百週年時，正式將學院更名為 <a href="https://catalog.gatech.edu/colleges/coe/mechanical-engineering/">George W. Woodruff School of Mechanical Engineering</a>，以表彰他對母校長期的巨額捐贈與卓越支持。</p>
+<p><a href="https://en.wikipedia.org/wiki/George_W._Woodruff">George W. Woodruff</a> 於 1917 年畢業於 <a href="https://www.gatech.edu/">Georgia Tech</a> 機械系，日後成為<a href="https://zh.wikipedia.org/zh-tw/%E4%BA%9A%E7%89%B9%E5%85%B0%E5%A4%A7">亞特蘭大</a>知名的企業家與慈善家。1985 年，喬治亞理工學院機械系在慶祝創系百週年時，正式將學院更名為 <a href="https://coe.gatech.edu/schools/mechanical-engineering">George W. Woodruff School of Mechanical Engineering</a>，以表彰他對母校長期的巨額捐贈與卓越支持。</p>
 <p><a href="https://en.wikipedia.org/wiki/George_W._Woodruff">George W. Woodruff</a> 與其兄長 <a href="https://en.wikipedia.org/wiki/Robert_W._Woodruff">Robert W. Woodruff</a> (曾短暫在 <a href="https://www.gatech.edu/">Georgia Tech</a> 就讀但沒有畢業) 的財富源自 1919 年，他們的父親 <a href="https://en.wikipedia.org/wiki/Ernest_Woodruff">Ernest Woodruff</a> (當時是喬治亞信託公司的總裁) 帶領一個財團，以 2500 萬美元收購了當時還在起步階段的 The Coca-Cola Company。這個舉動讓 Woodruff 整個家族成為可口可樂的核心大股東。不論是哥哥還是弟弟，他們的初始財富和商業機會，都建立在父親打下的這個基礎上。</p>
 <p><a href="https://www.coca-colacompany.com/about-us/history/the-asa-candler-era">https://www.coca-colacompany.com/about-us/history/the-asa-candler-era</a> </p><h1>NX</h1>
 <p>摘要<br/><br/>早期的 Unigraphics（UG）至中期的 I-DEAS、中後期的 NX，再至 2026 年 Designcenter 的演進，並非單純的產品改名或使用者介面更新，而是一條由數值控制（Numerical Control, NC）、電腦輔助製造（Computer-Aided Manufacturing, CAM）、電腦輔助設計（Computer-Aided Design, CAD）、電腦輔助工程（Computer-Aided Engineering, CAE）、產品資料管理（Product Data Management, PDM）逐步整合至產品生命週期管理（Product Lifecycle Management, PLM），並進一步向數位主線（Digital Thread）、雲端工程（Cloud Engineering）與人工智慧輔助工程（AI-assisted Engineering）延伸的技術發展歷程。<br/><br/>此一技術血統可追溯至 1960 年代 United Computing 所發展之 APT/UNIAPT 技術，1970 年代形成 UNI-GRAPHICS，1976 年進入 McDonnell Douglas 體系；1990 年代進入 EDS 時代；2001 年 EDS 將 UGS 與 SDRC 納入同一 PLM 組織，促成 Unigraphics 與 I-DEAS 技術整合；2002 年正式推出 NX；2007 年 Siemens 收購 UGS；2019 年導入 Continuous Release；2022 年改採年份與月份作為版本標識；2025 年將 NX 納入 Designcenter 品牌；2026 年 6 月進一步以 Designcenter 2606 作為統一產品名稱。</p>
@@ -488,6 +541,44 @@ emp = Employee("王小明", "1995-05-20")
 <p><img alt="" height="356" src="/images/NX_releases.png" width="400"/><br/><br/>產品名稱的演進本身具有一定研究價值。<br/><br/>早期：<br/><br/>UNI-GRAPHICS<br/><br/>強調圖形與工程幾何。<br/><br/>之後：<br/><br/>Unigraphics<br/><br/>形成完整 CAD/CAM 品牌。<br/><br/>2002：<br/><br/>Unigraphics NX<br/><br/>代表 New Generation。<br/><br/>之後：<br/><br/>NX<br/><br/>逐漸成為獨立 CAD/CAM/CAE 品牌。<br/><br/>2007 後：<br/><br/>Siemens NX<br/><br/>反映 Siemens 企業體系。<br/><br/>2019：<br/><br/>NX Continuous Release<br/><br/>反映軟體生命週期模式變化。<br/><br/>2022：<br/><br/>NX 2206<br/><br/>反映持續發布的時間型版本。<br/><br/>2025：<br/><br/>Designcenter NX<br/><br/>反映平台化品牌。<br/><br/>2026：<br/><br/>Designcenter 2606<br/><br/>則代表 NX 技術進一步被置於更高層級的 Designcenter 平台品牌之下。<br/><br/>因此，品牌演進實際上反映了產品定位的逐步提升：<br/><br/>CAD Application → CAD/CAM Platform → Product Engineering Platform → Digital Engineering Environment。</p>
 <p>二十四、2026 年的 Designcenter 應如何定位<br/><br/>截至 2026 年，較適合將 Designcenter 理解為：<br/><br/>一個以產品設計與工程為核心，逐漸整合桌面 CAD、雲端工程、協作、資料管理、模擬、製造與 AI 能力的工程平台品牌。<br/><br/>此定位與早期「CAD 軟體」具有明顯差異。<br/><br/>其核心技術方向可概括為：<br/><br/>Geometry<br/><br/>↓<br/><br/>Parametric / Direct Modeling<br/><br/>↓<br/><br/>Product Definition<br/><br/>↓<br/><br/>CAD/CAM/CAE Integration<br/><br/>↓<br/><br/>PLM<br/><br/>↓<br/><br/>Digital Thread<br/><br/>↓<br/><br/>Cloud Engineering<br/><br/>↓<br/><br/>AI-assisted Engineering<br/><br/>這條路徑正是六十年以上工程軟體發展的核心脈絡。</p>
 <p>二十五、結論<br/><br/>從 1960 年代 United Computing 的 NC/APT 技術，到 1970 年代 UNI-GRAPHICS；從 McDonnell Douglas 時代的 Unigraphics，到 EDS/UGS 時代；從 SDRC I-DEAS 與 Unigraphics 的整合，到 2002 年 NX 的建立；再經 Siemens 於 2007 年取得 UGS、2019 年 Continuous Release、2022 年時間型版本命名、2025 年 Designcenter NX，以及 2026 年 Designcenter 2606，整條技術演進可以視為一個持續提高「產品數位化抽象層級」的過程。<br/><br/>其最早期的核心問題是：<br/><br/>如何以電腦描述幾何與加工。<br/><br/>其後轉變為：<br/><br/>如何建立具有設計意圖的三維產品模型。<br/><br/>再進一步：<br/><br/>如何整合設計、分析與製造。<br/><br/>之後：<br/><br/>如何管理完整產品資料與生命週期。<br/><br/>而 2026 年的主要問題則逐漸轉變為：<br/><br/>如何使產品資料、工程流程、模擬、製造、協作、雲端與人工智慧形成連續的數位工程環境。<br/><br/>因此，從技術史觀點而言，「UG → NX → Designcenter」是 CAD 軟體由幾何工具逐步演化為產品工程基礎設施（Product Engineering Infrastructure） 的一個具代表性的案例。<br/><br/>其中最值得注意的歷史事實，是 Unigraphics 的製造工程血統、I-DEAS 的 CAD/CAE/PDM 技術、EDS/UGS 的 PLM 戰略，以及 Siemens 的工業數位化戰略，最終在 Designcenter 時代逐漸匯合。<br/><br/>總之 2026 年的 Designcenter 從早期 Unigraphics 套件，逐步將數十年間累積的 CAD、CAM、CAE、PDM、PLM、Digital Thread、Cloud Engineering 與 AI Engineering 等技術，重新置於一個更高層級產品工程架構之下，未來可望有更令人期待的發展。</p><h2>NX2512</h2>
+<p><a href="https://docs.sw.siemens.com/en-US/product/209349590/doc/PL20250429951538534.xid1851843/html/xid1851946_v1">NX2512 Help</a></p>
+<p>Designcenter NX 2512 的 Designcenter_user.dpv (使用者偏好設定) 位於 Y:\home_ipv6\appdata\Local\Siemens\Designcenter2512，參考內容:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;?xml-stylesheet type="text/xsl" href="Designcenter_user.xsl"?&gt;
+&lt;PrefValues defaultLockStatus="unlocked"&gt;
+&lt;Pref Application="Gateway" Category="General" Tab="Miscellaneous" displayValue="No" modified="2026-09-04T03:19:13" name="NX_EarlyAccessFeatureEnable" title="Early Access Features - Enable Early Access Features" value="false"/&gt;
+&lt;Pref Application="Gateway" Category="General" Tab="Data Privacy" displayValue="No" modified="2026-09-04T03:17:45" name="NX_ProductExcellenceProgram" title="Product Excellence Program - Participate" value="false"/&gt;
+&lt;Pref Application="Gateway" Category="General" Tab="Miscellaneous" displayValue="No" modified="2026-09-04T03:19:13" name="PMAN_Spreadsheet_Excel_Enable_2007_Macros" title="Enable Macros for Excel 2007 and Later" value="false"/&gt;
+&lt;Pref Application="Gateway" Category="General" Tab="Data Privacy" displayValue="No" modified="2026-09-04T03:19:31" name="NX_DigitalProductExperience" title="Digital Product Experience - Participate" value="false"/&gt;
+&lt;Pref Application="Gateway" Category="General" Tab="Data Privacy" displayValue="No" modified="2026-09-04T03:19:31" name="NX_ProductExcellenceProgramMessage" title="Product Excellence Program - Display Initial Startup Message" value="false"/&gt;
+&lt;Pref Application="Gateway" Category="User Interface" Tab="Journal" displayValue="UTF-8" modified="2026-08-22T14:16:18" name="UG_journalFileFormat" title="Journal File Format" value="3"/&gt;
+&lt;Pref Application="Gateway" Category="User Interface" Tab="Journal" displayValue="Python" modified="2026-08-22T14:16:18" name="UG_journalLanguage" title="Journal Language" value="4"/&gt;
+&lt;/PrefValues&gt;
+</pre>
+<p>設定內容:</p>
+<p>一、隱私權與資料收集設定 (Data Privacy)</p>
+<p style="padding-left: 30px;">關閉 Siemens 的自動化資料收集與意見回饋機制。</p>
+<p style="padding-left: 30px;">NX_ProductExcellenceProgram (產品卓越計畫 - 參與)設定值： false (關閉)</p>
+<p style="padding-left: 30px;">說明： 不參與 Siemens 的產品卓越計畫。系統不會自動傳送軟體使用數據或錯誤回報給原廠。</p>
+<p style="padding-left: 30px;">NX_DigitalProductExperience (數位產品體驗 - 參與)設定值： false (關閉)</p>
+<p style="padding-left: 30px;">說明： 不參與數位產品體驗改善計畫，關閉相關的使用者體驗數據追蹤。</p>
+<p style="padding-left: 30px;">NX_ProductExcellenceProgramMessage (顯示初始啟動訊息)設定值： false (關閉)</p>
+<p style="padding-left: 30px;">說明： 隱藏軟體初次啟動時詢問「是否加入產品卓越計畫」的彈出提示視窗。</p>
+<p>二、常規與安全性設定 (General / Miscellaneous)</p>
+<p style="padding-left: 30px;">控制新功能的開放與巨集安全性。</p>
+<p style="padding-left: 30px;">NX_EarlyAccessFeatureEnable (啟用早期訪問功能)設定值： false (關閉)</p>
+<p style="padding-left: 30px;">說明： 關閉測試版功能。系統僅會顯示正式發布的穩定功能，不會顯示或啟用還在實驗階段的 Early Access（預覽）新功能。</p>
+<p style="padding-left: 30px;">PMAN_Spreadsheet_Excel_Enable_2007_Macros (啟用 Excel 2007 及更高版本的巨集)設定值： false (關閉)</p>
+<p style="padding-left: 30px;">說明： 當 NX 與 Excel 進行資料連結（如：部件族群 Part Families 或電子表格驅動）時，停用 Excel 的巨集（Macros）執行，提升防範惡意程式的安全性。</p>
+<p>三、延伸程式設定 (User Interface / Journal)</p>
+<p style="padding-left: 30px;">使用者在錄製 NX 操作腳本（Journal）時的預設開發環境。</p>
+<p style="padding-left: 30px;">UG_journalLanguage (日誌語言)設定值： 4 (對應顯示值：Python)</p>
+<p style="padding-left: 30px;">說明： 設定 NX 錄製自動化巨集與腳本時的預設程式語言為 Python（而非 VB.NET 或 C#）</p>
+<p style="padding-left: 30px;">UG_journalFileFormat (日誌檔案格式)設定值： 3 (對應顯示值：UTF-8)</p>
+<p style="padding-left: 30px;">說明： 規定錄製出來的 Python 腳本檔案編碼格式為 UTF-8，確保程式碼中的中文字元或特殊符號不會變成亂碼。</p>
+<p>由於 Designcenter NX2512 的 Python 延伸程式動態連結程式庫採 Python 3.12，可以利用其他版本的 Python 環境建立 Python 3.12 的可攜對應程式環境。</p>
+<p><a href="/downloads/gen_portable_python312.py">gen_portable_python312.py</a> 可以在 SciTE 環境中執行，但是 python <a href="https://bootstrap.pypa.io/get-pip.py">get-pip.py</a> 則一定要在 python.exe 環境中執行。</p>
 <p><img alt="" height="263" src="/images/nx2512_new_file.png" width="400"/></p>
 <p><img alt="" height="365" src="/images/nx2512_sketch.png" width="400"/></p>
 <p>Siemens 的 Designcenter NX2512 雖然仍保留 NX 商標名稱，但整體架構已經與 Cloud/Saas 的 Designcenter X 結合更加緊密，runtime 執行時 CLOUDDM (Cloud data management) 中的 Liveshare 也必須同時啟動。</p>
