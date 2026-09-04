@@ -290,6 +290,11 @@ emp = Employee("王小明", "1995-05-20")
 <li>Wired Magazine. (2026, June 24). <a href="https://www.wired.com/story/qualcomm-buys-buzzy-chip-startup-modular-for-nearly-dollar4-billion/">Qualcomm Buys Buzzy Chip Startup Modular for Nearly $4 Billion</a>.</li>
 <li>CNBC. (2026, June 24). <a href="https://www.cnbc.com/2026/06/24/qualcomm-ai-chip-modular-software.html">Qualcomm inks deal for AI startup Modular to bolster software capabilities</a>.</li>
 <li>Constellation Research. (2026, June 24). <a href="https://www.constellationr.com/insights/news/qualcomm-acquires-modular-add-open-software-chops">Qualcomm acquires Modular to add open software chops</a>.</li>
+<li><a href="https://indico.cern.ch/event/1330797/contributions/5776136/attachments/2820415/4925031/mojo-novel-programming-language.pdf">https://indico.cern.ch/event/1330797/contributions/5776136/attachments/2820415/4925031/mojo-novel-programming-language.pdf</a> </li>
+<li><a href="https://amitxshukla.github.io/Mojo/intro.html">https://amitxshukla.github.io/Mojo/intro.html</a> </li>
+<li><a href="https://llvm.org/devmtg/2023-10/slides/keynote/Mojo.pdf">https://llvm.org/devmtg/2023-10/slides/keynote/Mojo.pdf</a> </li>
+<li><a href="https://ruhati.net/mojo/">https://ruhati.net/mojo/</a> </li>
+<li><a href="https://mojo-lang.com/miji/">https://mojo-lang.com/miji/</a> </li>
 </ol><h3>WSL</h3>
 <p>以管理者身分啟動 Powershell</p>
 <pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 修正 PowerShell 亂碼與空格問題
@@ -326,7 +331,7 @@ nano main.mojo
 from std.python import Python 
 
 def main() raises:
-    print("Mojo 1.0.0 核心引擎啟動成功！🔥")
+    print("Mojo 1.0.0 核心引擎啟動成功！")
     
     # 1.0.0 規範：新宣告變數必須強制加上 var 關鍵字
     var a = 100
@@ -337,6 +342,16 @@ def main() raises:
     var sys = Python.import_module("sys")
     print("目前 CPython 虛擬機運行的版本為:", sys.version)
 </pre>
+<p>離開編輯器方法： 貼上後，按下鍵盤的 Ctrl + O 再按一次 Enter（儲存檔案），接著按下 Ctrl + X（離開編輯器）。</p>
+<p>最後完成編譯:</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 執行靜態編譯與鏈結，打包成 my_app
+mojo build main.mojo -o my_app
+
+# 脫離 Python 依賴，直接以系統級原生速度執行！
+./my_app
+</pre>
+<p>從 Powershell 進入 WSL 中的 Ubuntu 22.04:</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">wsl -d Ubuntu-22.04 -u username</pre>
 <p></p><h1>Dialog</h1>
 <h4>尼采的主張與對後代的影響</h4>
 <p>德國哲學家<a href="https://grokipedia.com/page/Friedrich_Nietzsche">弗里德里希·威廉·尼采</a> (<a href="https://zh.wikipedia.org/zh-tw/%E5%BC%97%E9%87%8C%E5%BE%B7%E9%87%8C%E5%B8%8C%C2%B7%E5%B0%BC%E9%87%87">Wikipedia</a>) 的核心主張包含上帝已死、超人與權力意志，並對後代的存在主義與後現代主義造成深遠影響。</p>
