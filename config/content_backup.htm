@@ -722,7 +722,8 @@ mojo build main.mojo -o my_app
 <li>UGOPEN</li>
 <li>UNFOLD</li>
 </ol>
-<p>等目錄，總容量約 10GB (7z 壓縮後約 2GB)，完整安裝的 NX2512 則佔 42GB (7z 壓縮後約 10GB)，全部檔案 16 萬 4 千多個。</p><h2>NX2312</h2>
+<p>等目錄，總容量約 10GB (7z 壓縮後約 2GB)，完整安裝的 NX2512 則佔 42GB (7z 壓縮後約 10GB)，全部檔案 16 萬 4 千多個。</p><h3>docs</h3>
+<p>NX2512 利用 HelpServer.3.2.1.exe 與 docs-nx-2512-series-en-US.zip 安裝後，可以在 http://localhost:5000 查詢。但是這批技術文件的查詢採用 Java elasticsearch、json 以及 node.js Web 技術執行網際搜尋，若希望全面採用 Javascript 與 json 技術取代，可以利用 <a href="/downloads/build_nxdocs_index.py">build_nxdocs_index.py</a> 解讀 C:\Program Files\Siemens\Help Server\collections\documentation\external 目錄中的所有檔案後，整合 Http POST 與 GET 連結，建立一個可結合 nginx 的可攜式文件搜尋系統。</p><h2>NX2312</h2>
 <p>NX2312 包含 CAD/CAE 容量約 15GB</p>
 <p>ugraf -nx 開啟 NX2312</p>
 <p>NX_user.dpv 檔案格式:</p>
@@ -1722,7 +1723,7 @@ ending1: ;
 <p>Open C API programs can run in 2 different environments, depending on how the program was linked.</p>
 <p>The two environments are:</p>
 <p>External - these Open C API programs are stand alone programs that can run from the operating system, outside of NX, or as a child process spawned from NX.</p>
-<p>Internal - these Open C API programs can only be run from inside of an NX session. These programs are loaded into main memory along side of NX and access routines within NX. One advantage to this is that the executables are much smaller and link much faster. Once an Internal Open C API Program is loaded into memory, it can stay resident for the remainder of the NX session. If you call this program again, it executes without reloading (provided it was not unloaded). Internal Open C API programs work on the current part and automatically modify the part display.<br/><br/>Most Open C API functions/subroutines can be used in either mode. There are only a few, mostly User Interface routines that are only supported in internal mode.</p><h1>Robotics</h1>
+<p>Internal - these Open C API programs can only be run from inside of an NX session. These programs are loaded into main memory along side of NX and access routines within NX. One advantage to this is that the executables are much smaller and link much faster. Once an Internal Open C API Program is loaded into memory, it can stay resident for the remainder of the NX session. If you call this program again, it executes without reloading (provided it was not unloaded). Internal Open C API programs work on the current part and automatically modify the part display.<br/><br/>Most Open C API functions/subroutines can be used in either mode. There are only a few, mostly User Interface routines that are only supported in internal mode.</p><h2>Robotics</h2>
 <p><a href="https://github.com/TheRobotStudio/SO-ARM100">https://github.com/TheRobotStudio/SO-ARM100</a> </p>
 <p><a href="https://github.com/huggingface/lerobot">https://github.com/huggingface/lerobot</a> </p><h1>Ender-3</h1>
 <p><a href="https://github.com/mdecycu/Ender-3">https://github.com/mdecycu/Ender-3</a> </p>
