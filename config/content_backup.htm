@@ -659,6 +659,7 @@ mojo build main.mojo -o my_app
 <p><a href="https://docs.sw.siemens.com/en-US/doc/209349590/PL20231101866122454.xid1968491/xid2091711">NX Programming Tools</a> (NX2406)</p>
 <p><a href="https://docs.sw.siemens.com/en-US/doc/209349590/PL20231101866122454.custom_api.fusion_1?audience=external">Knowledge Fusion Language Reference</a></p>
 <p><a href="https://docs.sw.siemens.com/en-US/doc/209349590/PL20231101866122454.nxopen_prog_guide/purpose">Overview of Programmer’s Guide</a></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-xLsqkvWuv0?si=lByxRAZ0VYndyQvC" title="YouTube video player" width="560"></iframe></p>
 <p>Designcenter NX 2512 的 Designcenter_user.dpv (使用者偏好設定) 位於 Y:\home_ipv6\appdata\Local\Siemens\Designcenter2512，參考內容:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
@@ -723,7 +724,11 @@ mojo build main.mojo -o my_app
 <li>UNFOLD</li>
 </ol>
 <p>等目錄，總容量約 10GB (7z 壓縮後約 2GB)，完整安裝的 NX2512 則佔 42GB (7z 壓縮後約 10GB)，全部檔案 16 萬 4 千多個。</p><h3>docs</h3>
-<p>NX2512 利用 HelpServer.3.2.1.exe 與 docs-nx-2512-series-en-US.zip 安裝後，可以在 http://localhost:5000 查詢。但是這批技術文件的查詢採用 Java elasticsearch、json 以及 node.js Web 技術執行網際搜尋，若希望全面採用 Javascript 與 json 技術取代，可以利用 <a href="/downloads/build_nxdocs_index.py">build_nxdocs_index.py</a> 解讀 C:\Program Files\Siemens\Help Server\collections\documentation\external 目錄中的所有檔案後，整合 Http POST 與 GET 連結，建立一個可結合 nginx 的可攜式文件搜尋系統。</p><h2>NX2312</h2>
+<p>NX2512 利用 HelpServer.3.2.1.exe 與 docs-nx-2512-series-en-US.zip 安裝後，可以在 http://localhost:5000 查詢。但是這批技術文件的查詢採用 Java elasticsearch、json 以及 node.js Web 技術執行網際搜尋，若希望全面採用 Javascript 與 json 技術取代，可以利用 <a href="/downloads/build_nxdocs_index.py">build_nxdocs_index.py</a> 解讀 C:\Program Files\Siemens\Help Server\collections\documentation\external 目錄中的所有檔案後，整合 Http POST 與 GET 連結，建立一個可結合 nginx 的可攜式文件搜尋系統。</p>
+<p>將原本採用 Frameset 的技術文件，轉為可利用全頁面檢視關鍵字搜尋結果的系統:</p>
+<p><img alt="" class="add_border" height="302" src="/images/nx2512_js_based_search.png" width="400"/></p>
+<p>各頁面的 elasticsearch 對應連結，以 HTTP GET 關鍵字搜尋取代:</p>
+<p><img alt="" class="add_border" height="204" src="/images/nx2512_get_url_replaced_link.png" width="400"/></p><h2>NX2312</h2>
 <p>NX2312 包含 CAD/CAE 容量約 15GB</p>
 <p>ugraf -nx 開啟 NX2312</p>
 <p>NX_user.dpv 檔案格式:</p>
