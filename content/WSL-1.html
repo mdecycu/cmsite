@@ -141,31 +141,14 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Datum << <a href='Datum.html'>Previous</a> <a href='AC.html'>Next</a> >> AC<br /><h1>PDD</h1>
-<p>參數驅動設計 (Parametric Driven Design)</p>
-<p>參數驅動設計指幾何圖形的大小與形狀，由一組參數（數據、公式、幾何關係）來決定與控制。</p>
-<p>UGS NX3 雖然無法像 NX9 之後的 Python Journal 程式驅動，但是 Tools - Expression 仍支援 .exp 尺寸及方程式輸出入的功能，若再加上 .exp 由 Python 程式進行控制，仍可達到一定程度的參數設計效能。</p>
-<p>UGS NX3 的 .exp 檔案格式:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">// 專案名稱：控制模組外殼參數化設計
-// 建立日期：2026/08/19
-// 修改人員：工程部 Musk
-// 變數區分大小寫
+    <div id="tipue_search_content">Mojo << <a href='Mojo.html'>Previous</a> <a href='WSL-2.html'>Next</a> >> WSL-2<br /><h1>WSL-1</h1>
+<p>以管理者身分啟動 Powershell</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 修正 PowerShell 亂碼與空格問題
+[console]::OutputEncoding = [System.Text.Encoding]::Unicode
 
-[mm]p0=50
-[mm]p1=0.0000
-[mm]p2 = if (p0 &lt;30) 50 else 100
-//[mm]p2=p0*5
-[mm]p0=7
-
-// 參數全部讀取後再進行判斷式
-// 與方程式的執行
-// 且以最後設定的參數值為主
-// 這是註解
-// 透過 Tools - Expression import 後
-// p0=7，p2=50
-</pre>
-<p></p>
-<br />Datum << <a href='Datum.html'>Previous</a> <a href='AC.html'>Next</a> >> AC</div>
+# 清除可能殘留的舊版本環境
+wsl --unregister Ubuntu
+w<br />Mojo << <a href='Mojo.html'>Previous</a> <a href='WSL-2.html'>Next</a> >> WSL-2</div>
         
     <!-- footer -->
       <div class="container">

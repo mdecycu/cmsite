@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='老年人和棒子.html'>老年人和棒子</a><li><a href='川口塔峰.html'>川口塔峰</a></li></ul><li class='has-children'><a href='CMS.html'>CMS</a><ul class='dropdown'><li><a href='Python.html'>Python</a><li class='has-children'><a href='Mojo.html'>Mojo</a><ul class='dropdown'><li><a href='WSL.html'>WSL</a></li></li></ul></ul><li class='has-children'><a href='Dialog.html'>Dialog</a><ul class='dropdown'><li><a href='Plato.html'>Plato</a><li><a href='Locke.html'>Locke</a><li><a href='PPE.html'>PPE</a><li><a href='孟子.html'>孟子</a><li><a href='Woodruff.html'>Woodruff</a></li></ul><li class='has-children'><a href='NX.html'>NX</a><ul class='dropdown'><li><a href='NX2512.html'>NX2512</a><li><a href='NX2312.html'>NX2312</a><li class='has-children'><a href='NX3.html'>NX3</a><ul class='dropdown'><li><a href='ugopen.html'>ugopen</a><li><a href='NX3_hints.html'>NX3_hints</a><li><a href='DPV.html'>DPV</a><li><a href='Datum.html'>Datum</a><li><a href='PDD.html'>PDD</a><li><a href='AC.html'>AC</a><li><a href='SS.html'>SS</a></li></ul><li><a href='Open C.html'>Open C</a></li></ul><li class='has-children'><a href='Ender-3.html'>Ender-3</a><ul class='dropdown'><li><a href='手電筒架.html'>手電筒架</a><li><a href='洞洞板.html'>洞洞板</a><li><a href='桌邊掛勾.html'>桌邊掛勾</a><li><a href='STEM.html'>STEM</a></li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='老年人和棒子.html'>老年人和棒子</a><li><a href='川口塔峰.html'>川口塔峰</a></li></ul><li class='has-children'><a href='CMS.html'>CMS</a><ul class='dropdown'><li><a href='Python.html'>Python</a><li class='has-children'><a href='Mojo.html'>Mojo</a><ul class='dropdown'><li><a href='WSL-1.html'>WSL-1</a><li><a href='WSL-2.html'>WSL-2</a></li></li></ul></ul><li class='has-children'><a href='Dialog.html'>Dialog</a><ul class='dropdown'><li><a href='Plato.html'>Plato</a><li><a href='Locke.html'>Locke</a><li><a href='PPE.html'>PPE</a><li><a href='孟子.html'>孟子</a><li><a href='Woodruff.html'>Woodruff</a></li></ul><li class='has-children'><a href='NX.html'>NX</a><ul class='dropdown'><li class='has-children'><a href='NX2512.html'>NX2512</a><ul class='dropdown'><li><a href='docs.html'>docs</a></li></ul><li><a href='NX2312.html'>NX2312</a><li class='has-children'><a href='NX3.html'>NX3</a><ul class='dropdown'><li><a href='ugopen.html'>ugopen</a><li><a href='NX3_hints.html'>NX3_hints</a><li><a href='DPV.html'>DPV</a><li><a href='Datum.html'>Datum</a><li><a href='PDD.html'>PDD</a><li><a href='AC.html'>AC</a><li><a href='SS.html'>SS</a></li></ul><li><a href='Open C.html'>Open C</a><li><a href='Robotics.html'>Robotics</a></li></ul><li class='has-children'><a href='Ender-3.html'>Ender-3</a><ul class='dropdown'><li><a href='手電筒架.html'>手電筒架</a><li><a href='洞洞板.html'>洞洞板</a><li><a href='桌邊掛勾.html'>桌邊掛勾</a><li><a href='STEM.html'>STEM</a></li>
                       </ul>
                 </nav>
               </div>
@@ -141,64 +141,15 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Mojo << <a href='Mojo.html'>Previous</a> <a href='Dialog.html'>Next</a> >> Dialog<br /><h1>WSL</h1>
-<p>以管理者身分啟動 Powershell</p>
-<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 修正 PowerShell 亂碼與空格問題
-[console]::OutputEncoding = [System.Text.Encoding]::Unicode
-
-# 清除可能殘留的舊版本環境
-wsl --unregister Ubuntu
-wsl --unregister Ubuntu-22.04
-
-# 強制繞過微軟商店，從網頁直接抓取最穩定的 Ubuntu 22.04 LTS
-wsl --install --web-download -d Ubuntu-22.04</pre>
-<p>設定 Linux 帳號與密碼</p>
-<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 1. 更新並升級 Linux 核心元件 (中途若跳出詢問請一律打 y 按 Enter)
-sudo apt update &amp;&amp; sudo apt upgrade -y
-
-# 2. 安裝 Linux 標配的 C 語言編譯與鏈結器工具鏈 (Mojo 打包成 my_app 必備)
-sudo apt install build-essential -y
-
-# 3. 一鍵安裝新世代 Pixi 套件管理器
-curl -fsSL https://pixi.sh/install.sh | bash
-
-# 4. 刷新終端機設定，讓 Pixi 變數立即生效
-source ~/.bashrc
-
-# 5. 使用 Pixi 同時指向開源與官方最新管道，全域安裝 Mojo 1.0.0 穩定版
-pixi global install mojo -c conda-forge -c https://modular.com
-</pre>
-<p>建立測試專案:</p>
-<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">mkdir -p ~/projects/hello_mojo &amp;&amp; cd ~/projects/hello_mojo
-nano main.mojo
-</pre>
-<p>main.mojo 內容:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 1.0.0 正式版官方唯一標準：Python 互操作性元件已被移至 std.python
-from std.python import Python 
-
-def main() raises:
-    print("Mojo 1.0.0 核心引擎啟動成功！")
-    
-    # 1.0.0 規範：新宣告變數必須強制加上 var 關鍵字
-    var a = 100
-    var b = 200
-    print("Mojo 高性能整數加總結果:", a + b)
-    
-    # 透過標準庫的 Python 生態動態引入 sys 模組
-    var sys = Python.import_module("sys")
-    print("目前 CPython 虛擬機運行的版本為:", sys.version)
-</pre>
-<p>離開編輯器方法： 貼上後，按下鍵盤的 Ctrl + O 再按一次 Enter（儲存檔案），接著按下 Ctrl + X（離開編輯器）。</p>
-<p>最後完成編譯:</p>
-<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 執行靜態編譯與鏈結，打包成 my_app
-mojo build main.mojo -o my_app
-
-# 脫離 Python 依賴，直接以系統級原生速度執行！
-./my_app
-</pre>
-<p>從 Powershell 進入 WSL 中的 Ubuntu 22.04:</p>
-<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">wsl -d Ubuntu-22.04 -u username</pre>
-<p></p><br />Mojo << <a href='Mojo.html'>Previous</a> <a href='Dialog.html'>Next</a> >> Dialog</div>
+    <div id="tipue_search_content">NX2512 << <a href='NX2512.html'>Previous</a> <a href='NX2312.html'>Next</a> >> NX2312<br /><h1>docs</h1>
+<p>下載 docs-nx-2512-series-en-US.zip 之後，不希望透過其 HelpServer.3.1.0.exe 來配置近端的 Documentation，可以將 <a href="./../downloads/build_index.py">build_index.py</a> 放在 PL20250429951538534 目錄之外的 docs 目錄中，所完成的文件架構就是採用 Javascript 加上 json 關鍵字搜尋系統。</p>
+<p>NX2512 利用 HelpServer.3.2.1.exe 與 docs-nx-2512-series-en-US.zip 安裝後，可以在 http://localhost:5000 查詢。但是這批技術文件的查詢採用 Java elasticsearch、json 以及 node.js Web 技術執行網際搜尋，若希望全面採用 Javascript 與 json 技術取代，可以利用 <a href="./../downloads/build_nxdocs_index.py">build_nxdocs_index.py</a> 解讀 C:\Program Files\Siemens\Help Server\collections\documentation\external 目錄中的所有檔案後，整合 Http POST 與 GET 連結，建立一個可結合 nginx 的可攜式文件搜尋系統。</p>
+<p>將原本採用 Frameset 的技術文件，轉為可利用全頁面檢視關鍵字搜尋結果的系統:</p>
+<p><img alt="" class="add_border" height="302" src="./../images/nx2512_js_based_search.png" width="400"/></p>
+<p>各頁面的 elasticsearch 對應連結，以 HTTP GET 關鍵字搜尋取代:</p>
+<p><img alt="" class="add_border" height="204" src="./../images/nx2512_get_url_replaced_link.png" width="400"/></p>
+<p>之前針對 NX3 Document 也處理過類似的問題:</p>
+<p><img alt="" class="add_border" height="355" src="./../images/nx3_docs_search.png" width="400"/></p><br />NX2512 << <a href='NX2512.html'>Previous</a> <a href='NX2312.html'>Next</a> >> NX2312</div>
         
     <!-- footer -->
       <div class="container">

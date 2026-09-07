@@ -141,31 +141,65 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Datum << <a href='Datum.html'>Previous</a> <a href='AC.html'>Next</a> >> AC<br /><h1>PDD</h1>
-<p>參數驅動設計 (Parametric Driven Design)</p>
-<p>參數驅動設計指幾何圖形的大小與形狀，由一組參數（數據、公式、幾何關係）來決定與控制。</p>
-<p>UGS NX3 雖然無法像 NX9 之後的 Python Journal 程式驅動，但是 Tools - Expression 仍支援 .exp 尺寸及方程式輸出入的功能，若再加上 .exp 由 Python 程式進行控制，仍可達到一定程度的參數設計效能。</p>
-<p>UGS NX3 的 .exp 檔案格式:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">// 專案名稱：控制模組外殼參數化設計
-// 建立日期：2026/08/19
-// 修改人員：工程部 Musk
-// 變數區分大小寫
+    <div id="tipue_search_content">WSL-1 << <a href='WSL-1.html'>Previous</a> <a href='Dialog.html'>Next</a> >> Dialog<br /><h1>WSL-2</h1>
+<p>以管理者身分啟動 Powershell</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 修正 PowerShell 亂碼與空格問題
+[console]::OutputEncoding = [System.Text.Encoding]::Unicode
 
-[mm]p0=50
-[mm]p1=0.0000
-[mm]p2 = if (p0 &lt;30) 50 else 100
-//[mm]p2=p0*5
-[mm]p0=7
+# 清除可能殘留的舊版本環境
+wsl --unregister Ubuntu
+wsl --unregister Ubuntu-22.04
 
-// 參數全部讀取後再進行判斷式
-// 與方程式的執行
-// 且以最後設定的參數值為主
-// 這是註解
-// 透過 Tools - Expression import 後
-// p0=7，p2=50
+# 強制繞過微軟商店，從網頁直接抓取最穩定的 Ubuntu 22.04 LTS
+wsl --install --web-download -d Ubuntu-22.04</pre>
+<p>設定 Linux 帳號與密碼</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 1. 更新並升級 Linux 核心元件 (中途若跳出詢問請一律打 y 按 Enter)
+sudo apt update &amp;&amp; sudo apt upgrade -y
+
+# 2. 安裝 Linux 標配的 C 語言編譯與鏈結器工具鏈 (Mojo 打包成 my_app 必備)
+sudo apt install build-essential -y
+
+# 3. 一鍵安裝新世代 Pixi 套件管理器
+curl -fsSL https://pixi.sh/install.sh | bash
+
+# 4. 刷新終端機設定，讓 Pixi 變數立即生效
+source ~/.bashrc
+
+# 5. 使用 Pixi 同時指向開源與官方最新管道，全域安裝 Mojo 1.0.0 穩定版
+pixi global install mojo -c conda-forge -c https://modular.com
 </pre>
+<p>建立測試專案:</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">mkdir -p ~/projects/hello_mojo &amp;&amp; cd ~/projects/hello_mojo
+nano main.mojo
+</pre>
+<p>main.mojo 內容:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 1.0.0 正式版官方唯一標準：Python 互操作性元件已被移至 std.python
+from std.python import Python 
+
+def main() raises:
+    print("Mojo 1.0.0 核心引擎啟動成功！")
+    
+    # 1.0.0 規範：新宣告變數必須強制加上 var 關鍵字
+    var a = 100
+    var b = 200
+    print("Mojo 高性能整數加總結果:", a + b)
+    
+    # 透過標準庫的 Python 生態動態引入 sys 模組
+    var sys = Python.import_module("sys")
+    print("目前 CPython 虛擬機運行的版本為:", sys.version)
+</pre>
+<p>離開編輯器方法： 貼上後，按下鍵盤的 Ctrl + O 再按一次 Enter（儲存檔案），接著按下 Ctrl + X（離開編輯器）。</p>
+<p>最後完成編譯:</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 執行靜態編譯與鏈結，打包成 my_app
+mojo build main.mojo -o my_app
+
+# 脫離 Python 依賴，直接以系統級原生速度執行！
+./my_app
+</pre>
+<p>從 Powershell 進入 WSL 中的 Ubuntu 22.04:</p>
+<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">wsl -d Ubuntu-22.04 -u username</pre>
 <p></p>
-<br />Datum << <a href='Datum.html'>Previous</a> <a href='AC.html'>Next</a> >> AC</div>
+<br />WSL-1 << <a href='WSL-1.html'>Previous</a> <a href='Dialog.html'>Next</a> >> Dialog</div>
         
     <!-- footer -->
       <div class="container">
