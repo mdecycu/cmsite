@@ -1,0 +1,252 @@
+<!DOCTYPE html><html>
+        <head>
+        <title>MDialog</title>
+        <meta charset="utf-8">
+<meta property="head" content="H2">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cms/static/favicons.png">
+        
+        <style type='text/css'>
+            .site-section {
+            background-color: #FFFF;
+            padding: 40px 40px;
+            }
+            body > div > div.dropdown.open {
+                display: block;
+            }
+        </style>
+    
+        <!-- <script src="./../cms/static/jquery.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="tipuesearch_content.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch.js"></script>
+        <!-- for Wink3 客製化關閉 -->
+        <!--
+        <link rel="stylesheet" type="text/css" href="./../cms/static/winkPlayer.css" />
+        <script type="text/javascript" src="./../cms/static/winkPlayer.js"></script>
+        -->
+        <script>
+            /* original tipuesearch
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+            */
+            // customed doSearch
+            function doSearch() {
+                $('#tipue_search_input').tipuesearch({
+                    newWindow: true, 
+                    minimumLength: 2,
+                    wholeWords: false, // for search 中文
+                });
+            }
+            $(document).ready(doSearch);
+        </script>
+        
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDiff.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushMojo.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushWbt.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDart.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushRust.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cms/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<!-- 暫時不用
+<script src="./../cms/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cms/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cms/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cms/static/gearUtils-05.js"></script>
+-->
+<!-- for Brython 暫時不用
+<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
+<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
+-->
+<style>
+img.add_border {
+    border: 3px solid blue;
+}
+</style>
+
+</head>
+<body>
+<div class='container'><nav>
+        
+    <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+            <header class="site-navbar py-4 bg-white" role="banner">
+              <div class="container">
+                <div class="row align-items-center">
+                <h1>Dialog</h1>
+                <div class="pl-4">
+                    <form>
+                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
+                    </form>
+                </div>
+                  <!-- <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">Dialog</a></h1> 
+                  </div>
+                  -->
+                  <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
+                        <li class="active has-children"><a href="index.html">Home</a>
+                        <ul class="dropdown">
+                            <li><a href="sitemap.html">SMap</a></li>
+                            <li><a href="./../blog/index.html">blog</a></li>
+                        </ul>
+                      </li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='老年人和棒子.html'>老年人和棒子</a><li><a href='川口塔峰.html'>川口塔峰</a></li></ul><li class='has-children'><a href='CMS.html'>CMS</a><ul class='dropdown'><li class='has-children'><a href='Python.html'>Python</a><ul class='dropdown'><li><a href='mobi.html'>mobi</a></li></ul><li><a href='git.html'>git</a><li class='has-children'><a href='Mojo.html'>Mojo</a><ul class='dropdown'><li><a href='WSL.html'>WSL</a></li></li></ul></ul><li class='has-children'><a href='Dialog.html'>Dialog</a><ul class='dropdown'><li><a href='Plato.html'>Plato</a><li><a href='Locke.html'>Locke</a><li><a href='PPE.html'>PPE</a><li><a href='孟子.html'>孟子</a><li><a href='Woodruff.html'>Woodruff</a><li><a href='Keats.html'>Keats</a><li><a href='Weingartner.html'>Weingartner</a></li></ul><li class='has-children'><a href='NX.html'>NX</a><ul class='dropdown'><li class='has-children'><a href='NX2512.html'>NX2512</a><ul class='dropdown'><li><a href='docs.html'>docs</a></li></ul><li><a href='NX2312.html'>NX2312</a><li class='has-children'><a href='NX3.html'>NX3</a><ul class='dropdown'><li><a href='ugopen.html'>ugopen</a><li><a href='NX3_hints.html'>NX3_hints</a><li><a href='DPV.html'>DPV</a><li><a href='Datum.html'>Datum</a><li><a href='PDD.html'>PDD</a><li><a href='AC.html'>AC</a><li><a href='SS.html'>SS</a></li></ul><li><a href='Open C.html'>Open C</a><li><a href='Robotics.html'>Robotics</a></li></ul><li class='has-children'><a href='Ender-3.html'>Ender-3</a><ul class='dropdown'><li><a href='手電筒架.html'>手電筒架</a><li><a href='洞洞板.html'>洞洞板</a><li><a href='桌邊掛勾.html'>桌邊掛勾</a><li><a href='STEM.html'>STEM</a></li>
+                      </ul>
+                </nav>
+              </div>
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+              </div>
+
+            </div>
+          </div>
+          
+        </header>
+    <div id="tipue_search_content">Keats << <a href='Keats.html'>Previous</a> <a href='NX.html'>Next</a> >> NX<br /><h1>Weingartner</h1>
+<p>保羅·費利克斯·馮·魏因加特納（<a href="https://en.wikipedia.org/wiki/Felix_Weingartner">Paul Felix von Weingartner</a>），是 19 世紀末至 20 世紀初歐洲樂壇最具影響力的奧地利指揮家、作曲家、鋼琴家與音樂理論家。</p>
+<p>他在古典音樂史上的崇高地位，主要建立在其客觀、清晰、忠於原譜（"as written"）的指揮風格上，被公認為是闡釋<a href="https://zh.wikipedia.org/zh-tw/%E8%B7%AF%E5%BE%B7%E7%BB%B4%E5%B8%8C%C2%B7%E8%8C%83%C2%B7%E8%B4%9D%E5%A4%9A%E8%8A%AC">貝多芬</a>與<a href="https://zh.wikipedia.org/zh-tw/%E5%9F%83%E5%85%8B%E6%89%98%C2%B7%E6%9F%8F%E8%BE%BD%E5%85%B9">白遼士</a>作品的權威。他是史上第一位灌錄貝多芬九首交響曲全集錄音的指揮家，同時對早期的管弦樂唱片錄音史有著拓荒者般的關鍵貢獻。</p>
+<p>一、 生平歷程</p>
+<p>神童起步與名師門下（1863–1884）</p>
+<p>魏因加特納於 1863 年出生於奧匈帝國達爾馬提亞地區的札拉（今<a href="https://zh.wikipedia.org/wiki/%E5%85%8B%E7%BD%97%E5%9C%B0%E4%BA%9A">克羅埃西亞</a><a href="https://zh.wikipedia.org/zh-tw/%E6%89%8E%E9%81%94%E7%88%BE">札達爾</a>）的一個下層貴族家庭。5 歲時喪父，隨母親移居奧地利格拉茨。16 歲時他便出版了幾首鋼琴小品，甚至得到了布拉姆斯的賞識與推薦。</p>
+<p>1881 年，他進入<a href="https://zh.wikipedia.org/zh-tw/%E8%90%8A%E6%AF%94%E9%8C%AB%E5%AD%9F%E5%BE%B7%E7%88%BE%E9%A0%8C%E9%9F%B3%E6%A8%82%E6%88%B2%E5%8A%87%E5%AD%B8%E9%99%A2">萊比錫音樂學院</a>深造，並在<a href="https://zh.wikipedia.org/zh-tw/%E8%8E%B1%E6%AF%94%E9%94%A1%E5%A4%A7%E5%AD%A6">萊比錫大學</a>修讀哲學。1883 年，他前往<a href="https://zh.wikipedia.org/zh-tw/%E9%AD%8F%E7%8E%9B">威瑪</a>，成為李斯特（<a href="https://zh.wikipedia.org/zh-tw/%E6%9D%8E%E6%96%AF%E7%89%B9%C2%B7%E8%B4%B9%E4%BC%A6%E8%8C%A8">Franz Liszt</a>）晚年最後一批親傳弟子之一。在李斯特的協助與引薦下，魏因加特納的歌劇《沙恭達羅》（Sakuntala）於1884年順利首演，正式開啟了他的職業生涯。</p>
+<p>歐陸各大劇院的指揮巨擘（1884–1927）</p>
+<p>此後，他陸續在<a href="https://zh.wikipedia.org/zh-tw/%E6%9F%AF%E5%B0%BC%E6%96%AF%E5%A0%A1">柯尼斯堡</a>、<a href="https://zh.wikipedia.org/zh-tw/%E4%BD%86%E6%BE%A4%E8%87%AA%E7%94%B1%E5%B8%82">但澤</a>、<a href="https://zh.wikipedia.org/zh-tw/%E6%B1%89%E5%A0%A1">漢堡</a>與<a href="https://zh.wikipedia.org/zh-tw/%E6%9B%BC%E6%B5%B7%E5%A7%86">曼海姆</a>等地的歌劇院擔任指揮。</p>
+<p>1891–1907 年： 執掌<a href="https://zh.wikipedia.org/zh-tw/%E6%9F%8F%E6%9E%97%E5%9C%8B%E7%AB%8B%E6%AD%8C%E5%8A%87%E9%99%A2">柏林皇家歌劇院</a>及交響音樂會，奠定名聲。</p>
+<p>1908–1911 年： 接替因樂團人事糾紛離職的馬勒（<a href="https://zh.wikipedia.org/zh-tw/%E5%8F%A4%E6%96%AF%E5%A1%94%E5%A4%AB%C2%B7%E9%A6%AC%E5%8B%92">Gustav Mahler</a>），出任<a href="https://zh.wikipedia.org/zh-tw/%E7%BB%B4%E4%B9%9F%E7%BA%B3%E5%9B%BD%E7%AB%8B%E6%AD%8C%E5%89%A7%E9%99%A2">維也納宮廷歌劇院</a>（現維也納國家歌劇院）總監。</p>
+<p>1908–1927 年： 擔任<a href="https://zh.wikipedia.org/zh-tw/%E7%BB%B4%E4%B9%9F%E7%BA%B3%E7%88%B1%E4%B9%90%E4%B9%90%E5%9B%A2">維也納愛樂樂團</a>（VPO）的音樂指導與首席指揮，這段期間他將該團打造成世界頂尖樂團，並完成了許多歷史性錄音。</p>
+<p>移居瑞士與晚年（1927–1942）</p>
+<p>由於厭惡納粹勢力的抬頭與獨裁統治，魏因加特納於 1927 年遷居瑞士，並接掌<a href="https://en.wikipedia.org/wiki/Sinfonieorchester_Basel">巴塞爾交響樂團</a>與<a href="https://www.musik-akademie.ch/en.html">巴塞爾音樂學院</a>。晚年他依然以客席指揮身份活跃於歐美樂壇（如倫敦、波士頓等地）。1940 年他在倫敦舉行了人生最後一場音樂會，隨後隱居，並於 1942 年在瑞士溫特圖爾逝世，享壽78歲。</p>
+<p>二、 音樂著作與學術貢獻（Writings &amp; Editions）</p>
+<p>魏因加特納不僅用指揮棒詮釋音樂，更是一位極具洞察力的音樂理論家與作家。他反對當時盛行的華格納式極端主觀、任意改動速度（Rubato）的指揮風潮，主張尊重作曲家意圖。</p>
+<p>核心論著：</p>
+<ol>
+<li>《論指揮》（Über das Dirigieren, 1895）： 系統性闡述他客觀、乾淨、反對煽情誇張手法的指揮美學，成為後世指揮教學的必讀經典。</li>
+<li>《論貝多芬交響曲的演出》（Ratschläge für Aufführungen klassischer Symphonien: Beethoven, 1906）： 對貝多芬九首交響曲的配器、速度、動態進行了極其詳盡的樂譜文本分析與實務建議。</li>
+<li>《白遼士、舒曼與布拉姆斯交響曲演出建議》： 延續其古典主義視角對浪漫派交響樂進行的權威梳理。</li>
+<li>自傳： 出版過多卷本自傳《生命的交響曲》（Lebenserinnerungen），記錄了世紀之交歐洲樂壇的第一手珍貴史料。</li>
+<li>樂譜修訂（Editor）：他曾主導編輯並出版了大型的《白遼士作品全集》，也積極參與了李斯特作品全集的校勘工作。</li>
+</ol>
+<p>費利克斯·魏因加特納（<a href="https://zh.wikipedia.org/zh-tw/%E8%B4%B9%E5%88%A9%E5%85%8B%E6%96%AF%C2%B7%E9%AD%8F%E5%9B%A0%E5%8A%A0%E7%89%B9%E7%BA%B3">Felix Weingartner</a>）在 1907 年末至 1908 年初 接替古斯塔夫·馬勒（<a href="https://zh.wikipedia.org/zh-tw/%E5%8F%A4%E6%96%AF%E5%A1%94%E5%A4%AB%C2%B7%E9%A6%AC%E5%8B%92">Gustav Mahler</a>）出任維也納宮廷歌劇院總監，是歐洲音樂史上最具戲劇性、也是美學風格最極端碰撞的權力交替之一。</p>
+<p>這場「世紀交替」的權力轉移，包含了以下幾項核心細節：</p>
+<p>背景：</p>
+<p style="padding-left: 30px;">馬勒的「憤而離職」與危機馬勒自 1897 年起執掌維也納宮廷歌劇院，締造了無可取代的「黃金十年」。但他極端完美主義的暴君式排練、對行政官僚體制的蔑視，以及反猶太媒體長期的惡意攻擊，讓他精疲力竭。</p>
+<p>導火線：</p>
+<p style="padding-left: 30px;">1907 年夏天，馬勒遭遇人生慘劇（長女因病夭折、自己被診斷出嚴重的心臟病）。心灰意冷之下，他於 1907 年與美國紐約大都會歌劇院簽約。宮廷首肯： 負責管理皇家劇院的蒙特紐佛親王（Prince Montenuovo）開始物色繼任人選，他的首選正是當時在德奧樂壇如日中天的魏因加特納。</p>
+<p>幕後談判與魏因加特納的猶豫</p>
+<p style="padding-left: 30px;">1907 年 8 月，馬勒仍在多洛米蒂山脈休養時，蒙特紐佛親王便寫信告知馬勒，宮廷已正式收到柏林歌劇院的通知，魏因加特納已獲得解約並恢復自由身，確認可以前來維也納接任。</p>
+<p style="padding-left: 30px;">根據魏因加特納的自傳《生命的交響曲》記載，他一開始非常猶豫。因為他在柏林皇家歌劇院曾深受官僚體制之苦，深知維也納這個「音樂之都」的政治水有多深。但在蒙特紐佛親王給予極大的藝術自主權承諾下，他最終答應合約，並於 1908 年 1 月 1 日正式走馬上任。</p>
+<p>美學大清洗：全面推翻「馬勒體制」</p>
+<p>魏因加特納一上任，立刻展現出與馬勒截然相反的音樂美學，甚至被外界視為是一場對馬勒的「美學大清洗」：</p>
+<p>解雇阿爾弗雷德·羅勒（Alfred Roller）：</p>
+<p style="padding-left: 30px;">羅勒是維也納分離派畫家，也是馬勒最信任的舞台視覺總監。馬勒與羅勒共同創造了劃時代的暗色調、強烈光影對比與象徵主義舞台。魏因加特納上任後，認為這種現代主義視覺干擾了音樂本身，迅速迫使羅勒離職，並恢復了傳統、寫實、明亮的布景。</p>
+<p>修改華格納樂劇的「刪節法」：</p>
+<p style="padding-left: 30px;">馬勒生前強烈堅持華格納的樂劇（如《尼貝龍根的指環》）必須一字不刪地完整演出。魏因加特納上任後，出於票房與觀眾專注度的考量，重新引入了對長篇歌劇的合理刪節（Cuts），這激怒了維也納的「馬勒派」樂迷。</p>
+<p>速度與風格的轉變：</p>
+<p style="padding-left: 30px;">馬勒的指揮充滿極端的動態、戲劇性的拉扯與強烈的主觀情感（Rubato）。魏因加特納則帶來了絕對的古典主義理性、乾淨流暢的線條與精準的速度。這種轉變讓習慣了馬勒式激情的維也納觀眾感到有些「溫吞」。</p>
+<p>雙方短暫的「和解」與致敬</p>
+<p style="padding-left: 30px;">儘管美學方向南轅北轍，魏因加特納對馬勒的音樂才華仍保持了相當的敬意。</p>
+<p style="padding-left: 30px;">演出馬勒的作品： 魏因加特納上任後不久，便在維也納主辦並親自指揮了馬勒的《第四號交響曲》。</p>
+<p style="padding-left: 30px;">理查·史特勞斯的《厄勒克特拉》首演： 馬勒在任時因審查問題未能演出的理查·史特勞斯前衛歌劇《厄勒克特拉》（Elektra），最終是由魏因加特納於 1909 年在維也納完成了極其成功的首演。</p>
+<p>權力移交的後續結果</p>
+<p style="padding-left: 30px;">魏因加特納的歌劇院總監任期其實非常短暫（1908–1911，僅維持了三年），原因是他很快也陷入了與維也納歌劇院樂評人、保守官僚的無休止內耗中，最終在 1911 年主動辭去總監一職。</p>
+<p>本次接替最深遠的影響發生在維也納愛樂樂團（VPO）身上：</p>
+<p style="padding-left: 30px;">馬勒生前與維也納愛樂的關係非常緊張，在 1901 年便辭去了愛樂的指揮職務。魏因加特納接任後，雖然歌劇院總監只當了三年，但他與維也納愛樂樂團卻一拍即合。他連續擔任維也納愛樂的首席指揮長達 19 年（1908–1927），創下該團歷史紀錄，並帶領該團完成了歷史上首次的海外巡迴演出。</p>
+<p style="padding-left: 30px;">這場接替也象徵著維也納當時從「世紀末狂熱的表現主義（馬勒）」走向了「現代客觀古典主義（魏因加特納）」的開端。</p>
+<p>由魏因加特納（Felix Weingartner）指揮的貝多芬《艾格蒙序曲（Egmont Overture, Op. 84）》，在古典音樂唱片史上佔有極其崇高的里程碑地位。</p>
+<p>魏因加特納身為「歷史上首位灌錄貝多芬全套交響曲」的先驅，他留下的貝多芬序曲錄音，被公認為20世紀現代古典主義指揮美學的開山之作。</p>
+<p>核心錄音版本與歷史背景</p>
+<p>魏因加特納曾多次與不同樂團留下《艾格蒙序曲》的紀錄，其中最著名的<a href="https://youtu.be/vNutHxN1gJg?si=Cln2dTplYzkdE1zb">核心版本</a>為：</p>
+<p>錄音年份： 1937年（另有1936年代初期與倫敦樂團的<a href="https://www.youtube.com/watch?v=3VSlMpf2NaE">錄音</a>）。</p>
+<p>演奏樂團： 維也納愛樂樂團（Wiener Philharmoniker）。</p>
+<p>錄音技術：</p>
+<p style="padding-left: 30px;">78 轉黑膠唱片時代（SP），後由 Naxos、EMI（現 Warner Classics）等各大歷史復刻名廠進行數位修復與重製。當時正值二戰爆發前夕，德奧政局極度動盪，魏因加特納已移居瑞士。這張與維也納愛樂合作的《艾格蒙》，是他執掌該團近 20 年默契的最高結晶，也是他告別維也納前留下的珍貴遺產。</p>
+<p></p><br />Keats << <a href='Keats.html'>Previous</a> <a href='NX.html'>Next</a> >> NX</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cms/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cms/static/chimper/js/popper.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cms/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cms/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cms/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cms/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        
