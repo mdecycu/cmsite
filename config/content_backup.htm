@@ -193,8 +193,15 @@ emp = Employee("王小明", "1995-05-20")
 <p style="padding-left: 30px;">寫在類別內部的靜態方法是可以被子類別繼承或覆寫（Override）的。如果是寫在檔案外層的獨立函式，就無法享受物件導向的繼承架構。</p>
 <p></p>
 <h3>mobi</h3>
-<h2>Mojo</h2>
-<p><a href="https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular">https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-</a></p><h2>Mojo</h2>
+<p><a href="/downloads/mobi_to_html.py">mobi_to_html.py</a></p><h2>git</h2>
+<p>將已經提交的大檔案紀錄移除:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git filter-branch --force --index-filter "git rm --cached --ignore-unmatch downloads/big_file.7z" --prune-empty --tag-name-filter cat -- --all</pre>
+<p>當畫面開始跑出大量的 Rewrite ... 代表歷史紀錄正在順利修改。執行完畢後，請記得執行這兩行指令將修改後的歷史強制推送到遠端：</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git push origin --force --all
+git push origin --force --tags
+</pre>
+<p>雖然歷史紀錄被刪除了，但 Git 為了安全，預設會把舊的檔案備份在 refs/original/ 中。這會導致您的近端 .git 資料夾容量依然很大。請依序貼上並執行以下三行指令，強制清除備份並釋放硬碟空間：</p>
+<p></p><h2>Mojo</h2>
 <p><a href="https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular">https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular</a> </p>
 <p>Mojo 在 2026.8.18 正式開源。</p>
 <p><a href="https://www.modular.com/blog/mojo-open-source">https://www.modular.com/blog/mojo-open-source</a> </p>
@@ -299,15 +306,7 @@ emp = Employee("王小明", "1995-05-20")
 <li><a href="https://llvm.org/devmtg/2023-10/slides/keynote/Mojo.pdf">https://llvm.org/devmtg/2023-10/slides/keynote/Mojo.pdf</a> </li>
 <li><a href="https://ruhati.net/mojo/">https://ruhati.net/mojo/</a> </li>
 <li><a href="https://mojo-lang.com/miji/">https://mojo-lang.com/miji/</a> </li>
-</ol>
-<h3>WSL</h3>
-<p>以管理者身分啟動 Powershell</p>
-<pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 修正 PowerShell 亂碼與空格問題
-[console]::OutputEncoding = [System.Text.Encoding]::Unicode
-
-# 清除可能殘留的舊版本環境
-wsl --unregister Ubuntu
-w<h3>WSL</h3>
+</ol><h3>WSL</h3>
 <p>以管理者身分啟動 Powershell</p>
 <pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 修正 PowerShell 亂碼與空格問題
 [console]::OutputEncoding = [System.Text.Encoding]::Unicode
@@ -1833,4 +1832,4 @@ ending1: ;
 <p>ESP32</p>
 <p style="padding-left: 30px;">ESP32 是一款由樂鑫科技推出、整合 Wi-Fi 與藍牙功能的低成本、低功耗微控制器（MCU），廣泛應用於物聯網（IoT）與智慧家庭專案中。</p>
 <p>WS2812B ECO RGB LED Strip</p>
-<p style="padding-left: 30px;">WS2812B 是一種內建控制 IC 的智慧型可編程 RGB LED，可以透過單一訊號線獨立控制每一個燈珠的顏色與亮度。</p></pre>
+<p style="padding-left: 30px;">WS2812B 是一種內建控制 IC 的智慧型可編程 RGB LED，可以透過單一訊號線獨立控制每一個燈珠的顏色與亮度。</p>

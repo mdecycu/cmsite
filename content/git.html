@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='老年人和棒子.html'>老年人和棒子</a><li><a href='川口塔峰.html'>川口塔峰</a></li></ul><li class='has-children'><a href='CMS.html'>CMS</a><ul class='dropdown'><li class='has-children'><a href='Python.html'>Python</a><ul class='dropdown'><li><a href='mobi.html'>mobi</a></li></ul><li><a href='Mojo-1.html'>Mojo-1</a><li class='has-children'><a href='Mojo-2.html'>Mojo-2</a><ul class='dropdown'><li><a href='WSL-1.html'>WSL-1</a><li><a href='WSL-2.html'>WSL-2</a></li></li></ul></ul><li class='has-children'><a href='Dialog.html'>Dialog</a><ul class='dropdown'><li><a href='Plato.html'>Plato</a><li><a href='Locke.html'>Locke</a><li><a href='PPE.html'>PPE</a><li><a href='孟子.html'>孟子</a><li><a href='Woodruff.html'>Woodruff</a><li><a href='Keats.html'>Keats</a></li></ul><li class='has-children'><a href='NX.html'>NX</a><ul class='dropdown'><li class='has-children'><a href='NX2512.html'>NX2512</a><ul class='dropdown'><li><a href='docs.html'>docs</a></li></ul><li><a href='NX2312.html'>NX2312</a><li class='has-children'><a href='NX3.html'>NX3</a><ul class='dropdown'><li><a href='ugopen.html'>ugopen</a><li><a href='NX3_hints.html'>NX3_hints</a><li><a href='DPV.html'>DPV</a><li><a href='Datum.html'>Datum</a><li><a href='PDD.html'>PDD</a><li><a href='AC.html'>AC</a><li><a href='SS.html'>SS</a></li></ul><li><a href='Open C.html'>Open C</a><li><a href='Robotics.html'>Robotics</a></li></ul><li class='has-children'><a href='Ender-3.html'>Ender-3</a><ul class='dropdown'><li><a href='手電筒架.html'>手電筒架</a><li><a href='洞洞板.html'>洞洞板</a><li><a href='桌邊掛勾.html'>桌邊掛勾</a><li><a href='STEM.html'>STEM</a></li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='老年人和棒子.html'>老年人和棒子</a><li><a href='川口塔峰.html'>川口塔峰</a></li></ul><li class='has-children'><a href='CMS.html'>CMS</a><ul class='dropdown'><li class='has-children'><a href='Python.html'>Python</a><ul class='dropdown'><li><a href='mobi.html'>mobi</a></li></ul><li><a href='git.html'>git</a><li class='has-children'><a href='Mojo.html'>Mojo</a><ul class='dropdown'><li><a href='WSL.html'>WSL</a></li></li></ul></ul><li class='has-children'><a href='Dialog.html'>Dialog</a><ul class='dropdown'><li><a href='Plato.html'>Plato</a><li><a href='Locke.html'>Locke</a><li><a href='PPE.html'>PPE</a><li><a href='孟子.html'>孟子</a><li><a href='Woodruff.html'>Woodruff</a><li><a href='Keats.html'>Keats</a></li></ul><li class='has-children'><a href='NX.html'>NX</a><ul class='dropdown'><li class='has-children'><a href='NX2512.html'>NX2512</a><ul class='dropdown'><li><a href='docs.html'>docs</a></li></ul><li><a href='NX2312.html'>NX2312</a><li class='has-children'><a href='NX3.html'>NX3</a><ul class='dropdown'><li><a href='ugopen.html'>ugopen</a><li><a href='NX3_hints.html'>NX3_hints</a><li><a href='DPV.html'>DPV</a><li><a href='Datum.html'>Datum</a><li><a href='PDD.html'>PDD</a><li><a href='AC.html'>AC</a><li><a href='SS.html'>SS</a></li></ul><li><a href='Open C.html'>Open C</a><li><a href='Robotics.html'>Robotics</a></li></ul><li class='has-children'><a href='Ender-3.html'>Ender-3</a><ul class='dropdown'><li><a href='手電筒架.html'>手電筒架</a><li><a href='洞洞板.html'>洞洞板</a><li><a href='桌邊掛勾.html'>桌邊掛勾</a><li><a href='STEM.html'>STEM</a></li>
                       </ul>
                 </nav>
               </div>
@@ -141,8 +141,19 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">mobi << <a href='mobi.html'>Previous</a> <a href='Mojo-2.html'>Next</a> >> Mojo-2<br /><h1>Mojo-1</h1>
-<p><a href="https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular">https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-</a></p><br />mobi << <a href='mobi.html'>Previous</a> <a href='Mojo-2.html'>Next</a> >> Mojo-2</div>
+    <div id="tipue_search_content">mobi << <a href='mobi.html'>Previous</a> <a href='Mojo.html'>Next</a> >> Mojo<br /><h1>git</h1>
+<p>將已經提交的大檔案紀錄移除:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git filter-branch --force --index-filter "git rm --cached --ignore-unmatch downloads/big_file.7z" --prune-empty --tag-name-filter cat -- --all</pre>
+<p>當畫面開始跑出大量的 Rewrite ... 代表歷史紀錄正在順利修改。執行完畢後，請記得執行這兩行指令將修改後的歷史強制推送到遠端：</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git push origin --force --all
+git push origin --force --tags
+</pre>
+<p>雖然歷史紀錄被刪除了，但 Git 為了安全，預設會把舊的檔案備份在 refs/original/ 中。這會導致您的近端 .git 資料夾容量依然很大。請依序貼上並執行以下三行指令，強制清除備份並釋放硬碟空間：</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git update-ref -d refs/original/refs/heads/main
+git reflog expire --expire=now --all
+git gc --prune=now --aggressive
+</pre>
+<p></p><br />mobi << <a href='mobi.html'>Previous</a> <a href='Mojo.html'>Next</a> >> Mojo</div>
         
     <!-- footer -->
       <div class="container">
