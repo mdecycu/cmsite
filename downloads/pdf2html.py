@@ -108,7 +108,7 @@ def convert_pdf_to_html(pdf_path, output_html_path, rel_to_root):
         
         toc_html = f"""
         <div class="toc-box">
-            <h3>📑 {cc.convert("文件章節目錄")}</h3>
+            <h3>{cc.convert("文件章節目錄")}</h3>
             <ul class="toc-list">
                 {toc_items_html}
             </ul>
@@ -128,7 +128,7 @@ def convert_pdf_to_html(pdf_path, output_html_path, rel_to_root):
 </head>
 <body>
     <a href="{rel_to_root}index.html" class="btn">{cc.convert("回全站首頁")}</a>
-    <h1>📄 {doc_title}</h1>
+    <h1>{doc_title}</h1>
     {toc_html}
     <div class="card">
         {content_body}
@@ -189,7 +189,7 @@ def build_pdf_site(source_dir="./", output_dir="./dist"):
                 "path": rel_html_str,
                 "dir": str(rel_path.parent) if str(rel_path.parent) != '.' else "根目錄"
             })
-            print(f"    └─ 成功 ->{out_html_path.relative_to(out_path)}")
+            print(f"└─ 成功 ->{out_html_path.relative_to(out_path)}")
         else:
             failed_count += 1
 
