@@ -432,7 +432,33 @@ mojo build main.mojo -o my_app
 <p>從 Powershell 進入 WSL 中的 Ubuntu 22.04:</p>
 <pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false">wsl -d Ubuntu-22.04 -u username</pre>
 <p></p>
-<h1>Dialog</h1>
+<h2>ffmpeq</h2>
+<p>格式轉換:</p>
+<p style="padding-left: 30px;"><strong>ffmpeg -i input.mp4 output.avi</strong></p>
+<p>影片剪輯:</p>
+<p style="padding-left: 30px;">從指定時間開始截取固定時長的影片（-ss 為開始時間，-t 為持續時間，-c copy 表示直接複製不重新編碼，速度極快）</p>
+<p style="padding-left: 30px;"><strong>ffmpeg -ss 00:00:10 -i input.mp4 -t 00:00:30 -c copy output.mp4</strong></p>
+<p>取出音頻:</p>
+<p style="padding-left: 30px;"><strong>ffmpeg -i input.mp4 -vn -acodec libmp3lame output.mp3</strong></p>
+<p>從影片截圖:</p>
+<p style="padding-left: 30px;">fps=1：代表每秒擷取 1 幀（若要 5 秒擷取一幀，可寫成 fps=1/5）。</p>
+<p style="padding-left: 30px;">output_%04d.jpg：輸出檔名，%04d 代表自動生成 4 位數的流水號（如 0001.jpg, 0002.jpg）。</p>
+<p style="padding-left: 30px;"><strong>ffmpeg -i input.mp4 -vf "fps=1" output_%04d.jpg</strong></p>
+<p>圖片合成影片:</p>
+<p style="padding-left: 30px;">將一序列的圖片合併轉換為 24 幀（FPS）的 MP4 影片。指令中各個參數的具體含意如下：</p>
+<p style="padding-left: 30px;">-framerate 24：設定輸入圖片的影格率。這裡代表每秒會消耗 24 張圖片，生成的影片也會是 24 FPS。</p>
+<p style="padding-left: 30px;">-i img_%3d.jpg：指定輸入檔案的檔名格式。%3d 代表 3 位數的流水號（例如：img_001.jpg、img_002.jpg、img_003.jpg 等）。</p>
+<p style="padding-left: 30px;">-c:v libx264：指定影片編碼器。使用目前相容性最廣、最主流的 H.264 編碼。</p>
+<p style="padding-left: 30px;">output.mp4：最終輸出的影片檔名。</p>
+<p style="padding-left: 30px;"><strong>ffmpeg -framerate 24 -i img_%3d.jpg -c:v libx264 output.mp4</strong></p>
+<p>影片壓縮:</p>
+<p style="padding-left: 30px;">將影片的解析度縮放為 1280x720 (720p)，並將影片位元率（碼率）限制在 1000k bps。通常用於在保持一定清晰度的同時，大幅壓縮影片檔案大小。指令中各個參數的具體含意如下：</p>
+<p style="padding-left: 30px;">-i input.mp4：指定輸入的原始影片檔案。</p>
+<p style="padding-left: 30px;">-vf scale=1280:720：使用影片濾鏡（-vf）進行縮放（scale）。強制將畫面寬度改為 1280 像素，高度改為 720 像素。</p>
+<p style="padding-left: 30px;">-b:v 1000k：設定影片位元率（Bitrate）為 1000 kbps。位元率越低，產生的檔案就越小，但如果設得太低，畫面可能會出現嚴重的馬賽克。</p>
+<p style="padding-left: 30px;">output.mp4：最終輸出的壓縮影片檔名。</p>
+<p style="padding-left: 30px;"><strong>ffmpeg -i input.mp4 -vf scale=1280:720 -b:v 1000k output.mp4</strong></p>
+<p></p><h1>Dialog</h1>
 <h4>尼采的主張與對後代的影響</h4>
 <p>德國哲學家<a href="https://grokipedia.com/page/Friedrich_Nietzsche">弗里德里希·威廉·尼采</a> (<a href="https://zh.wikipedia.org/zh-tw/%E5%BC%97%E9%87%8C%E5%BE%B7%E9%87%8C%E5%B8%8C%C2%B7%E5%B0%BC%E9%87%87">Wikipedia</a>) 的核心主張包含上帝已死、超人與權力意志，並對後代的存在主義與後現代主義造成深遠影響。</p>
 <h4>尼采的主要主張</h4>
@@ -475,8 +501,7 @@ mojo build main.mojo -o my_app
 <p style="padding-left: 30px;">強烈的風格化：將自己的生命力轉化為具體的創造活動，如寫作、藝術、哲學思考。讓擴張的力量成為實質的文化與精神產物，而非流於暴力的發泄。</p>
 <p>4. 體現「超人」（Overman）的姿態</p>
 <p style="padding-left: 30px;">成為精神的立法者：不當隨波逐流的「末人」（The Last Man），而是成為給予世界意義的創造者。</p>
-<p style="padding-left: 30px;">絕對地肯定命運：面對「永恆輪迴」的極端考驗（如果人生要一模一樣地重來無數次），依然能熱愛自己的命運（Amor Fati），主動選擇並創造這樣的生命。尼采認為，一個僅僅「求生存」的人，過的是一種被動的、防禦性的生活；而一個「主動擴張與創造」的人，才是真正活出生命本能的強者。</p>
-<h2>Plato</h2>
+<p style="padding-left: 30px;">絕對地肯定命運：面對「永恆輪迴」的極端考驗（如果人生要一模一樣地重來無數次），依然能熱愛自己的命運（Amor Fati），主動選擇並創造這樣的生命。尼采認為，一個僅僅「求生存」的人，過的是一種被動的、防禦性的生活；而一個「主動擴張與創造」的人，才是真正活出生命本能的強者。</p><h2>Plato</h2>
 <p>"The laws of physics must be invariant under Lorentz transformations."</p>
 <p style="text-align: right;">-- Albert Einstein</p>
 <p>物理定律是由空間、時間以及內部空間的<strong>對稱性原理</strong>所「決定」與衍生出來的產物。</p>
@@ -782,7 +807,52 @@ mojo build main.mojo -o my_app
 <p>錄音年份： 1937年（另有1936年代初期與倫敦樂團的<a href="https://www.youtube.com/watch?v=3VSlMpf2NaE">錄音</a>）。</p>
 <p>演奏樂團： 維也納愛樂樂團（Wiener Philharmoniker）。</p>
 <p>錄音技術：</p>
-<p style="padding-left: 30px;">78 轉黑膠唱片時代（SP），後由 Naxos、EMI（現 Warner Classics）等各大歷史復刻名廠進行數位修復與重製。當時正值二戰爆發前夕，德奧政局極度動盪，魏因加特納已移居瑞士。這張與維也納愛樂合作的《艾格蒙》，是他執掌該團近 20 年默契的最高結晶，也是他告別維也納前留下的珍貴遺產。</p><h1>NX</h1>
+<p style="padding-left: 30px;">78 轉黑膠唱片時代（SP），後由 Naxos、EMI（現 Warner Classics）等各大歷史復刻名廠進行數位修復與重製。當時正值二戰爆發前夕，德奧政局極度動盪，魏因加特納已移居瑞士。這張與維也納愛樂合作的《艾格蒙》，是他執掌該團近 20 年默契的最高結晶，也是他告別維也納前留下的珍貴遺產。</p>
+<h2>Shaw</h2>
+<p>喬治·伯納德·蕭（<a href="https://en.wikipedia.org/wiki/George_Bernard_Shaw">George Bernard Shaw</a>，1856年—1950年）是世界著名的<a href="https://zh.wikipedia.org/zh-tw/%E7%88%B1%E5%B0%94%E5%85%B0">愛爾蘭</a>劇作家、評論家與社會活動家。</p>
+<p>生平與成就</p>
+<p style="padding-left: 30px;">生卒年：1856 年 7 月 26 日出生於愛爾蘭<a href="https://zh.wikipedia.org/zh-tw/%E9%83%BD%E6%9F%8F%E6%9E%97">都柏林</a>，1950 年 11 月 2 日逝世於英國，享壽 94 歲。</p>
+<p>早年經歷：</p>
+<p style="padding-left: 30px;">青年時期搬到<a href="https://zh.wikipedia.org/zh-tw/%E4%BC%A6%E6%95%A6">倫敦</a>，開始從事音樂與文學評論，並積極參與社會主義政治運動，為<a href="https://zh.wikipedia.org/zh-tw/%E5%80%AB%E6%95%A6%E6%94%BF%E6%B2%BB%E7%B6%93%E6%BF%9F%E5%AD%B8%E9%99%A2">倫敦政治經濟學院</a>的創辦人之一。</p>
+<p>諾貝爾獎：</p>
+<p style="padding-left: 30px;">1925 年因作品具有理想主義與人道主義，獲得諾貝爾文學獎。他同時也是歷史上極少數同時獲得諾貝爾文學獎與奧斯卡最佳劇本獎的人。</p>
+<p>文學特色幽默諷刺：</p>
+<p style="padding-left: 30px;">他是英國文學史上最詼諧的作家之一，善用機智、諷刺與幽默的對白，揭露社會的虛偽與矛盾。思想深度：作品經常探討社會問題、道德、階級與女性主義，不只追求娛樂，更具有強烈的批判性與教育意義。</p>
+<p>代表作品《賣花女》（Pygmalion）：</p>
+<p style="padding-left: 30px;">講述一位語言學家將賣花女孩訓練成高貴淑女的故事，探討階級與語言的關係，後來被改編為著名音樂劇與電影《窈窕淑女》。</p>
+<p>《聖女貞德》（Saint Joan）：</p>
+<p style="padding-left: 30px;">描繪法國歷史英雄貞德的生平，被視為他戲劇創作的巔峰之作。</p>
+<p>《華倫夫人的職業》（Mrs. Warren's Profession）：</p>
+<p style="padding-left: 30px;">尖銳批判資本主義社會與道德雙重標準的早期名作。</p>
+<p>政治與社會觀點：</p>
+<p style="padding-left: 30px;">費邊社的溫和社會主義喬治·伯納德·蕭是費邊社（Fabian Society）的早期核心成員，這個組織對後來的英國工黨產生了深遠的影響。</p>
+<p>漸進式改革：</p>
+<p style="padding-left: 30px;">與馬克思主義的主張不同，蕭反對暴力革命。他認為應該透過民主選舉、立法與教育等溫和手段，逐步將國家改造為社會主義社會。</p>
+<p>社會公平與女性主義：</p>
+<p style="padding-left: 30px;">他強烈批判資本主義帶來的貧富差距，並在作品中大力倡導女性權利、反對階級特權。</p>
+<p>爭議性觀點：</p>
+<p style="padding-left: 30px;">他在晚年對蘇聯的史達林政權以及墨索里尼等獨裁者抱持同情態度，這在當時引發了極大的爭議。</p>
+<p>得獎、拒獎的趣事與幽默名言</p>
+<p style="padding-left: 30px;">蕭以其傲骨與毒舌聞名，他對世俗榮譽的態度非常特立獨行。</p>
+<p>拒領諾貝爾獎金：</p>
+<p style="padding-left: 30px;">1925 年獲頒諾貝爾文學獎時，他原本想直接拒絕，後來在妻子的勸說下接受了榮譽，但堅決拒絕領取獎金。他諷刺道：「這筆錢就像是一個溺水者已經安全游上岸後，別人拋給他的救生圈。」最終他將獎金全數捐出，用於將瑞典文學翻譯成英文。</p>
+<p>奧斯卡與門牌：</p>
+<p style="padding-left: 30px;">1938 年他憑藉《賣花女》獲得奧斯卡最佳改編劇本獎。據傳他把奧斯卡獎座拿來擋門（當作門擋），以此表達他對好萊塢商業文化的蔑視。</p>
+<p>經典名言：</p>
+<p style="padding-left: 30px;">「想結婚的就結婚，想單身的就單身，反正最後你們都會後悔。」</p>
+<p style="padding-left: 30px;">「人生不是尋找自我，而是創造自我。」</p>
+<p style="padding-left: 30px;">「世界上有兩大悲劇：一是沒有得到你心愛的東西，二是得到了。」</p>
+<p>代表作解析：</p>
+<p style="padding-left: 30px;">《賣花女》（Pygmalion）這是蕭最家喻戶曉的劇作，結構嚴謹且諷刺力道十足。</p>
+<p style="padding-left: 30px;">【核心劇情】語言學教授希金斯（Higgins）和朋友打了個賭，宣稱自己能在幾個月內，透過矯正發音與禮儀訓練，將粗俗的倫敦賣花女伊莉莎（Eliza）包裝成一位出入上流社會舞會、連伯爵都認不出來的高貴淑女。</p>
+<p>劇本核心探討：</p>
+<p>階級的虛偽性：</p>
+<p style="padding-left: 30px;">蕭透過劇情指出，上流社會與底層階級的唯一差別，僅僅在於「穿著」與「說話方式」，而不是靈魂的高低。</p>
+<p>女性的自主覺醒：</p>
+<p style="padding-left: 30px;">當伊莉莎成功大變身、幫教授贏得賭局後，她發現自己變成了教授的「作品」，失去了原本的自主權。故事結尾，伊莉莎勇敢地離開了希金斯，拒絕再當一個精美的芭比娃娃。</p>
+<p>與改編電影的不同：</p>
+<p style="padding-left: 30px;">在後來的改編音樂劇《窈窕淑女》（My Fair Lady）中，結局被修改為男女主角浪漫復合。但蕭本人非常反對這個走向，他堅持這是一部女性獨立的劇作，而不是一部膚淺的愛情喜劇。</p>
+<p></p><h1>NX</h1>
 <p>摘要<br/><br/>早期的 Unigraphics（UG）至中期的 I-DEAS、中後期的 NX，再至 2026 年 Designcenter 的演進，並非單純的產品改名或使用者介面更新，而是一條由數值控制（Numerical Control, NC）、電腦輔助製造（Computer-Aided Manufacturing, CAM）、電腦輔助設計（Computer-Aided Design, CAD）、電腦輔助工程（Computer-Aided Engineering, CAE）、產品資料管理（Product Data Management, PDM）逐步整合至產品生命週期管理（Product Lifecycle Management, PLM），並進一步向數位主線（Digital Thread）、雲端工程（Cloud Engineering）與人工智慧輔助工程（AI-assisted Engineering）延伸的技術發展歷程。<br/><br/>此一技術血統可追溯至 1960 年代 United Computing 所發展之 APT/UNIAPT 技術，1970 年代形成 UNI-GRAPHICS，1976 年進入 McDonnell Douglas 體系；1990 年代進入 EDS 時代；2001 年 EDS 將 UGS 與 SDRC 納入同一 PLM 組織，促成 Unigraphics 與 I-DEAS 技術整合；2002 年正式推出 NX；2007 年 Siemens 收購 UGS；2019 年導入 Continuous Release；2022 年改採年份與月份作為版本標識；2025 年將 NX 納入 Designcenter 品牌；2026 年 6 月進一步以 Designcenter 2606 作為統一產品名稱。</p>
 <p>從技術史角度觀察，這條演進路徑的核心並非「CAD 功能越來越多」，而是產品資訊的數位化邊界持續擴張：由幾何描述擴張至產品結構，由產品結構擴張至工程分析與製造，再由工程資料擴張至整個產品生命週期，最終形成設計、模擬、製造、資料管理、協作、雲端與 AI 相互連接的工程平台。</p>
 <p>一、研究範圍與歷史定位<br/><br/>現代 Designcenter 的技術來源具有多重企業與產品血統，其中最重要者包括 United Computing、Unigraphics、McDonnell Douglas、EDS、UGS、SDRC、I-DEAS 以及 Siemens。</p>

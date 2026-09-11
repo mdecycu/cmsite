@@ -141,69 +141,51 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">CMS << <a href='CMS.html'>Previous</a> <a href='Converter.html'>Next</a> >> Converter<br /><h1>Python</h1>
-<p>為了讓熟悉 C++ 或 Java 的用戶方便使用，在 Python 2.2 中，放入 @staticmethod (靜態方法) 裝飾器的用法，以便在類別 (Class) 中定義一個不需要存取類別屬性 (Class attributes) 或實例屬性 (Instance attributes) 的方法。本質上就是一個寫在類別內部的普通函式。</p>
-<p>核心語法與特色</p>
-<ol>
-<li>不綁定參數：普通方法需要 self，類別方法需要 cls，但靜態方法不需要這兩個參數。</li>
-<li>呼叫方式：可以用 類別名稱.方法名稱() 直接呼叫，也可以透過實例呼叫 (但推薦用類別名稱)。</li>
-<li>無法直接存取狀態：因為沒有 self 和 cls，它無法直接讀取或修改類別或實例的變數。</li>
-</ol>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">class Demo:
-    @staticmethod
-    def my_static_method(arg1, arg2):
-        # 這裡只能使用傳入的參數 arg1 和 arg2
-        return arg1 + arg2
-</pre>
-<p>範例：日期格式驗證器</p>
-<p>假設要寫一個處理「員工（Employee）」資料的系統。需要一個功能來檢查使用者輸入的生日格式（字串）是否正確（例如必須是 YYYY-MM-DD）。這個檢查邏輯與特定的某個員工無關，只是一個純粹的工具函式，此時最適合用 @staticmethod：</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from datetime import datetime
-
-class Employee:
-    def __init__(self, name, birthday_str):
-        self.name = name
-        
-        # 在初始化時，呼叫靜態方法來驗證資料
-        if Employee.validate_date(birthday_str):
-            self.birthday = birthday_str
-        else:
-            raise ValueError("日期格式錯誤，必須是 YYYY-MM-DD")
-
-    # 定義靜態方法
-    @staticmethod
-    def validate_date(date_text):
-        """檢查字串是否符合 YYYY-MM-DD 格式"""
-        try:
-            datetime.strptime(date_text, '%Y-%m-%d')
-            return True
-        except ValueError:
-            return False
-
-# ===== 如何使用 =====
-
-# 1. 無需建立實例，直接用「類別名稱」呼叫靜態方法來測試
-is_valid = Employee.validate_date("2026-08-08")
-print(f"格式是否正確: {is_valid}")  # 輸出: True
-
-# 2. 正常建立實例（內部會自動呼叫該靜態方法）
-emp = Employee("王小明", "1995-05-20")
-
-# 3. 輸入錯誤格式，觸發錯誤
-# emp_error = Employee("張三", "1995/05/20") # 這行會拋出 ValueError
-</pre>
-<p>什麼時候該用 @staticmethod？</p>
-<p>當你發現某個方法符合以下條件時，就應該加上 @staticmethod：</p>
-<ol>
-<li>邏輯相關性：這個方法的功能在邏輯上完全屬於這個類別（例如：屬於 Employee 類別的日期驗證，或是屬於 Math 類別的平方根計算）。</li>
-<li>獨立性：方法內部完全不需要用到 self.variable 或 cls.variable。</li>
-</ol>
-<p>其實 Python 語法允許將工具函式直接寫在檔案外層，那為什麼還要保留 @staticmethod 呢？主要原因有兩個：</p>
-<p>程式碼封裝與命名空間（Namespace）：</p>
-<p style="padding-left: 30px;">如果這個工具函式只跟某個類別高度相關（例如前述的 validate_date 只服務於 Employee 類別），把它塞進類別內部作為 @staticmethod，可以避免污染外部的命名空間。開發者看到 Employee.validate_date() 就會立刻明白它的依賴關係。</p>
-<p>支援繼承與多型（Polymorphism）：</p>
-<p style="padding-left: 30px;">寫在類別內部的靜態方法是可以被子類別繼承或覆寫（Override）的。如果是寫在檔案外層的獨立函式，就無法享受物件導向的繼承架構。</p>
-<p></p>
-<br />CMS << <a href='CMS.html'>Previous</a> <a href='Converter.html'>Next</a> >> Converter</div>
+    <div id="tipue_search_content">Weingartner << <a href='Weingartner.html'>Previous</a> <a href='NX.html'>Next</a> >> NX<br /><h1>Shaw</h1>
+<p>喬治·伯納德·蕭（<a href="https://en.wikipedia.org/wiki/George_Bernard_Shaw">George Bernard Shaw</a>，1856年—1950年）是世界著名的<a href="https://zh.wikipedia.org/zh-tw/%E7%88%B1%E5%B0%94%E5%85%B0">愛爾蘭</a>劇作家、評論家與社會活動家。</p>
+<p>生平與成就</p>
+<p style="padding-left: 30px;">生卒年：1856 年 7 月 26 日出生於愛爾蘭<a href="https://zh.wikipedia.org/zh-tw/%E9%83%BD%E6%9F%8F%E6%9E%97">都柏林</a>，1950 年 11 月 2 日逝世於英國，享壽 94 歲。</p>
+<p>早年經歷：</p>
+<p style="padding-left: 30px;">青年時期搬到<a href="https://zh.wikipedia.org/zh-tw/%E4%BC%A6%E6%95%A6">倫敦</a>，開始從事音樂與文學評論，並積極參與社會主義政治運動，為<a href="https://zh.wikipedia.org/zh-tw/%E5%80%AB%E6%95%A6%E6%94%BF%E6%B2%BB%E7%B6%93%E6%BF%9F%E5%AD%B8%E9%99%A2">倫敦政治經濟學院</a>的創辦人之一。</p>
+<p>諾貝爾獎：</p>
+<p style="padding-left: 30px;">1925 年因作品具有理想主義與人道主義，獲得諾貝爾文學獎。他同時也是歷史上極少數同時獲得諾貝爾文學獎與奧斯卡最佳劇本獎的人。</p>
+<p>文學特色幽默諷刺：</p>
+<p style="padding-left: 30px;">他是英國文學史上最詼諧的作家之一，善用機智、諷刺與幽默的對白，揭露社會的虛偽與矛盾。思想深度：作品經常探討社會問題、道德、階級與女性主義，不只追求娛樂，更具有強烈的批判性與教育意義。</p>
+<p>代表作品《賣花女》（Pygmalion）：</p>
+<p style="padding-left: 30px;">講述一位語言學家將賣花女孩訓練成高貴淑女的故事，探討階級與語言的關係，後來被改編為著名音樂劇與電影《窈窕淑女》。</p>
+<p>《聖女貞德》（Saint Joan）：</p>
+<p style="padding-left: 30px;">描繪法國歷史英雄貞德的生平，被視為他戲劇創作的巔峰之作。</p>
+<p>《華倫夫人的職業》（Mrs. Warren's Profession）：</p>
+<p style="padding-left: 30px;">尖銳批判資本主義社會與道德雙重標準的早期名作。</p>
+<p>政治與社會觀點：</p>
+<p style="padding-left: 30px;">費邊社的溫和社會主義喬治·伯納德·蕭是費邊社（Fabian Society）的早期核心成員，這個組織對後來的英國工黨產生了深遠的影響。</p>
+<p>漸進式改革：</p>
+<p style="padding-left: 30px;">與馬克思主義的主張不同，蕭反對暴力革命。他認為應該透過民主選舉、立法與教育等溫和手段，逐步將國家改造為社會主義社會。</p>
+<p>社會公平與女性主義：</p>
+<p style="padding-left: 30px;">他強烈批判資本主義帶來的貧富差距，並在作品中大力倡導女性權利、反對階級特權。</p>
+<p>爭議性觀點：</p>
+<p style="padding-left: 30px;">他在晚年對蘇聯的史達林政權以及墨索里尼等獨裁者抱持同情態度，這在當時引發了極大的爭議。</p>
+<p>得獎、拒獎的趣事與幽默名言</p>
+<p style="padding-left: 30px;">蕭以其傲骨與毒舌聞名，他對世俗榮譽的態度非常特立獨行。</p>
+<p>拒領諾貝爾獎金：</p>
+<p style="padding-left: 30px;">1925 年獲頒諾貝爾文學獎時，他原本想直接拒絕，後來在妻子的勸說下接受了榮譽，但堅決拒絕領取獎金。他諷刺道：「這筆錢就像是一個溺水者已經安全游上岸後，別人拋給他的救生圈。」最終他將獎金全數捐出，用於將瑞典文學翻譯成英文。</p>
+<p>奧斯卡與門牌：</p>
+<p style="padding-left: 30px;">1938 年他憑藉《賣花女》獲得奧斯卡最佳改編劇本獎。據傳他把奧斯卡獎座拿來擋門（當作門擋），以此表達他對好萊塢商業文化的蔑視。</p>
+<p>經典名言：</p>
+<p style="padding-left: 30px;">「想結婚的就結婚，想單身的就單身，反正最後你們都會後悔。」</p>
+<p style="padding-left: 30px;">「人生不是尋找自我，而是創造自我。」</p>
+<p style="padding-left: 30px;">「世界上有兩大悲劇：一是沒有得到你心愛的東西，二是得到了。」</p>
+<p>代表作解析：</p>
+<p style="padding-left: 30px;">《賣花女》（Pygmalion）這是蕭最家喻戶曉的劇作，結構嚴謹且諷刺力道十足。</p>
+<p style="padding-left: 30px;">【核心劇情】語言學教授希金斯（Higgins）和朋友打了個賭，宣稱自己能在幾個月內，透過矯正發音與禮儀訓練，將粗俗的倫敦賣花女伊莉莎（Eliza）包裝成一位出入上流社會舞會、連伯爵都認不出來的高貴淑女。</p>
+<p>劇本核心探討：</p>
+<p>階級的虛偽性：</p>
+<p style="padding-left: 30px;">蕭透過劇情指出，上流社會與底層階級的唯一差別，僅僅在於「穿著」與「說話方式」，而不是靈魂的高低。</p>
+<p>女性的自主覺醒：</p>
+<p style="padding-left: 30px;">當伊莉莎成功大變身、幫教授贏得賭局後，她發現自己變成了教授的「作品」，失去了原本的自主權。故事結尾，伊莉莎勇敢地離開了希金斯，拒絕再當一個精美的芭比娃娃。</p>
+<p>與改編電影的不同：</p>
+<p style="padding-left: 30px;">在後來的改編音樂劇《窈窕淑女》（My Fair Lady）中，結局被修改為男女主角浪漫復合。但蕭本人非常反對這個走向，他堅持這是一部女性獨立的劇作，而不是一部膚淺的愛情喜劇。</p>
+<p></p><br />Weingartner << <a href='Weingartner.html'>Previous</a> <a href='NX.html'>Next</a> >> NX</div>
         
     <!-- footer -->
       <div class="container">
