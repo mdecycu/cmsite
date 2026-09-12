@@ -2,7 +2,7 @@
         <head>
         <title>MDialog</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cms/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap.min.css">
@@ -141,29 +141,9 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">ugopen << <a href='ugopen.html'>Previous</a> <a href='DPV.html'>Next</a> >> DPV<br /><h1>NX3_hints</h1>
-<h4>Sketches can be reused in multiple features.</h4>
-<p>同一個 Sketch 可以被多個特徵重複使用。且各特徵完成之後，單一 Sketch 會分別在各特徵下自動參照複製 (如 Leo Editor 中的 Shadow 節點)，一旦被多個特徵引用的 Sketch 經過編修之後，所以引用的特徵會自動參照到最新的 Sketch。</p>
-<h4>Features and sketches can be copied within a part, or between parts using Copy and Paste.</h4>
-<p>Feature 與 Sketch 不只能在同一個 Part 內複製，也可以從一個 Part 複製到另一個 Part。在同一個零件中的 Insert - Associated Copy - Instance 所複製的物件會自行連動。</p>
-<p>若是跨零件的 Copy 物件需要連動，則必須透過 WAVE Geometry Linker / Interpart Modeling。</p>
-<p>「跨零件 Copy 後還要保持連動」可視為 Master Part → Derived Part 的設計架構。</p>
-<p>WAVE Geometry Linker 架構下的 Copy/Paste 物件是重新在目標 Part 中建立一個具有 associativity 的 linked object，使來源 Part 成為幾何的上游來源。</p>
-<p>Insert - Associated Copy - WAVE Geometry Linker</p>
-<p>操作方法: 在目標零件中建立 WAVE Geometry Linker，選擇用來源零件中的特定 Sketch 作為 associated 物件，NX3 就會在目標零件中建立一個對應的 linked Geometry。任何在目標零件中使用此幾何外形所建立的特徵，都會與來源零件中的原始幾何外形的設計連動。</p>
-<h4>Direct modeling allows you to add parameters to orphan geometry.</h4>
-<p>直接建模（Direct Modeling）允許對沒有原始 Feature 歷史關係的 orphan geometry 加入參數。</p>
-<p>所謂的 orphan geometry 是指沒有完整參數化 Feature 歷史、缺乏原始設計意圖的幾何物件，亦即，幾何資料可能是透過 Import 導入，但是原始建模歷史或 Feature 定義並不存在，這些 organ geometry 在 Part Navigator 中會以 Body/Solid 呈現。針對這些幾何物件，NX3 可以透過直接建模納入設計參數。</p>
-<p>NX3 在 Import STL 零件時，採 ASCII 格式才能，由於 Solvespace 只能輸出 Binary STL 檔案，此時可以透過 <a href="./../downloads/binary_to_ascii.py">binary_to_ascii.py</a> 進行轉檔。但 NX3 並無法利用 Direct Modeling 處理 STL 格式零件。但可以透過 Siemens NX2312 版本處理 STL 格式的零件。</p>
-<p>Direct modeling commands in NX can be used to:</p>
-<ol>
-<li>Add parameters to imported orphan geometry.</li>
-<li>Directly change size and shape of geometry that was imported using IGES and STEP.</li>
-</ol>
-<p>Use the menus Insert → Direct Modeling to add parameters to faces. These commands directly modify faces and add parameters at the same time.</p>
-<p>For example, use the Resize Face command to resize holes. In the part shown, the red holes were resized on this part that was imported without history. This adds parameters that can be used to drive the hole diameters for future modifications.</p>
-<p></p>
-<br />ugopen << <a href='ugopen.html'>Previous</a> <a href='DPV.html'>Next</a> >> DPV</div>
+    <div id="tipue_search_content">桌邊掛勾 << <a href='桌邊掛勾.html'>Previous</a> <a href='STEM.html'>Next</a> >> STEM<br /><h1>Nut</h1>
+<p>吉他上弦枕: <a href="./../downloads/guitar_nut.7z">guitar_nut.7z</a></p>
+<br />桌邊掛勾 << <a href='桌邊掛勾.html'>Previous</a> <a href='STEM.html'>Next</a> >> STEM</div>
         
     <!-- footer -->
       <div class="container">
