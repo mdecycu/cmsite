@@ -1,0 +1,202 @@
+<!DOCTYPE html><html>
+        <head>
+        <title>MDialog</title>
+        <meta charset="utf-8">
+<meta property="head" content="H2">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cms/static/favicons.png">
+        
+        <style type='text/css'>
+            .site-section {
+            background-color: #FFFF;
+            padding: 40px 40px;
+            }
+            body > div > div.dropdown.open {
+                display: block;
+            }
+        </style>
+    
+        <!-- <script src="./../cms/static/jquery.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="tipuesearch_content.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch.js"></script>
+        <!-- for Wink3 客製化關閉 -->
+        <!--
+        <link rel="stylesheet" type="text/css" href="./../cms/static/winkPlayer.css" />
+        <script type="text/javascript" src="./../cms/static/winkPlayer.js"></script>
+        -->
+        <script>
+            /* original tipuesearch
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+            */
+            // customed doSearch
+            function doSearch() {
+                $('#tipue_search_input').tipuesearch({
+                    newWindow: true, 
+                    minimumLength: 2,
+                    wholeWords: false, // for search 中文
+                });
+            }
+            $(document).ready(doSearch);
+        </script>
+        
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDiff.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushMojo.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushWbt.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDart.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushRust.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cms/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<!-- 暫時不用
+<script src="./../cms/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cms/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cms/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cms/static/gearUtils-05.js"></script>
+-->
+<!-- for Brython 暫時不用
+<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
+<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
+-->
+<style>
+img.add_border {
+    border: 3px solid blue;
+}
+</style>
+
+</head>
+<body>
+<div class='container'><nav>
+        
+    <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+            <header class="site-navbar py-4 bg-white" role="banner">
+              <div class="container">
+                <div class="row align-items-center">
+                <h1>Dialog</h1>
+                <div class="pl-4">
+                    <form>
+                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
+                    </form>
+                </div>
+                  <!-- <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">Dialog</a></h1> 
+                  </div>
+                  -->
+                  <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
+                        <li class="active has-children"><a href="index.html">Home</a>
+                        <ul class="dropdown">
+                            <li><a href="sitemap.html">SMap</a></li>
+                            <li><a href="./../blog/index.html">blog</a></li>
+                        </ul>
+                      </li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='川口塔峰.html'>川口塔峰</a><li><a href='幸福之路.html'>幸福之路</a><li><a href='AI.html'>AI</a><li><a href='Windows.html'>Windows</a><li><a href='Meshtastic.html'>Meshtastic</a></li></ul><li class='has-children'><a href='CMS.html'>CMS</a><ul class='dropdown'><li class='has-children'><a href='Python.html'>Python</a><ul class='dropdown'><li><a href='Converter.html'>Converter</a></li></ul><li><a href='git.html'>git</a><li class='has-children'><a href='Mojo.html'>Mojo</a><ul class='dropdown'><li><a href='WSL.html'>WSL</a></li></ul><li><a href='ffmpeq.html'>ffmpeq</a></li></ul><li class='has-children'><a href='Dialog.html'>Dialog</a><ul class='dropdown'><li><a href='Plato.html'>Plato</a><li><a href='Locke.html'>Locke</a><li><a href='PPE.html'>PPE</a><li><a href='孟子.html'>孟子</a><li><a href='Woodruff.html'>Woodruff</a><li><a href='Keats.html'>Keats</a><li><a href='Weingartner.html'>Weingartner</a><li><a href='Shaw.html'>Shaw</a><li><a href='White.html'>White</a><li><a href='宋美齡.html'>宋美齡</a></li></ul><li class='has-children'><a href='NX.html'>NX</a><ul class='dropdown'><li class='has-children'><a href='NX2512.html'>NX2512</a><ul class='dropdown'><li><a href='docs.html'>docs</a></li></ul><li><a href='NX2312.html'>NX2312</a><li class='has-children'><a href='NX3.html'>NX3</a><ul class='dropdown'><li><a href='ugopen.html'>ugopen</a><li><a href='NX3_hints.html'>NX3_hints</a><li><a href='DPV.html'>DPV</a><li><a href='Datum.html'>Datum</a><li><a href='PDD.html'>PDD</a><li><a href='AC.html'>AC</a><li><a href='SS.html'>SS</a></li></ul><li><a href='Open C.html'>Open C</a><li><a href='Robotics.html'>Robotics</a></li></ul><li class='has-children'><a href='Ender-3.html'>Ender-3</a><ul class='dropdown'><li><a href='手電筒架.html'>手電筒架</a><li><a href='洞洞板.html'>洞洞板</a><li><a href='桌邊掛勾.html'>桌邊掛勾</a><li><a href='Nut.html'>Nut</a><li><a href='STEM.html'>STEM</a></li>
+                      </ul>
+                </nav>
+              </div>
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+              </div>
+
+            </div>
+          </div>
+          
+        </header>
+    <div id="tipue_search_content">White << <a href='White.html'>Previous</a> <a href='NX.html'>Next</a> >> NX<br /><h1>宋美齡</h1>
+<p>1943 年 2 月 18 日，在中國抗日戰爭最艱難的時期，宋美齡 (May Ling Soong Chiang) 以「中華民國第一夫人」的身分訪美並在美國眾議院議事廳（House Chamber）發表 20 分鐘的演說，她以流利的英語、感人的語言，向美國國會議員和美國人民介紹了中國人民奮力抗戰的艱苦歷程。宋美齡的美國之行，喚起了美國朝野對中國的同情與更進一步的支持，提升了當時中國的國際地位。宋美齡的演講不時被掌聲打斷。她在結語中的一句話，獲得了滿堂彩，她斬釘截鐵地說：「我中國人民根據五年又半之經驗，確信光明正大之甘冒失敗，較諸卑鄙可恥之接受失敗，更為明智。」眾院議事廳爆出了歷久不歇的掌聲，一位議員說他從來沒有見過這樣的場面，宋美齡差點讓他掉下眼淚。宋美齡是歷史上第一位在美國國會上演講的中國人，以下是當天演講全文:<br/><br/>"<audio id="local-soong" src="https://mde.tw/cmsite/downloads/Soong_Address_1943_02_18.mp3"></audio> <a onclick="document.getElementById('local-soong').play();" style="text-decoration: underline; color: blue; cursor: pointer;">Address to the U.S. House of Representatives</a>"<br/><br/>Mr. Speaker and Members of the Congress of the United States, at any time it would be a privilege for me to address Congress, more especially this present august body which will have so much to do in shaping the destiny of the world. In speaking to Congress I am literally speaking to the American people. The Seventy-seventh Congress, as their representatives, fulfilled the obligations and responsibilities of its trust by declaring war on the aggressors. That part of the duty of the people’s representatives was discharged in 1941. The task now confronting you is to help win the war and to create and uphold a lasting peace which will justify the sacrifices and sufferings of the victims of aggression.<br/><br/>議長先生、美國眾議院各位議員：不論在任何時候，我能向貴國國會致詞，都是極大的榮幸；特別是在今天，能向貴院這樣一個對世界命運具有舉足輕重影響力的莊嚴偉大團體致詞，更顯得意義非凡。我向貴國國會演說，實際上就是向全體美國人民演說。貴國第七十七屆國會，以代表美國人民的資格對侵略者宣戰，已經履行了人民所信託的義務與責任。這是人民代表的一部分職責，且早在 1941 年就已完成。諸位議員目前的當務之急，是協助爭取最終勝利，並建立與維護一種永久的和平，好讓這次所有遭受侵略者所付出的犧牲與痛苦，都具有深刻的意義。<br/><br/>Before enlarging on this subject, I should like to tell you a little about my long and vividly interesting trip to your country from my own land which has bled and borne unflinchingly the burden of war for more than five and half years. I shall not dwell, however, upon the part China has played in our united effort to free mankind from brutality and violence. I shall try to convey to you, however imperfectly, the impressions gained during the trip.<br/><br/>在深入探討這個主題之前，我想先向各位稍微聊聊我這次漫長且极其生動有趣的旅程。我是從自己的祖國來到貴國的，而我的祖國在過去五年半多的時間裡，早已灑盡鮮血，卻仍始終不屈不撓地默默承受著這場戰爭的沉重重擔。然而，我不打算在演說中過多渲染中國在我們攜手解放人類免受殘暴與暴力荼毒的共同努力中所扮演的角色。我只想試著將自己在這次旅程中所獲得的點滴印象，即便可能表達得不夠完美，也希望能忠實地傳達給各位。<br/><br/>First of all, I want to assure you that the American people have every right to be proud of their fighting men in so many parts of the world. I am particularly thinking of those of your boys in the far-flung, out-of-the-way stations and areas where life is attended by dreary drabness—this because their duty is not one of spectacular performance and they are not buoyed up by excitement of battle. They are called upon, day after colorless day, to perform routine duties such as safeguarding defenses and preparing for possible enemy action. It has been said, and I find it true from personal experience, that it is easier to risk one’s life on the battlefield than it is to perform customary humble and humdrum duties which, however, are just as necessary to winning the war. Some of your troops are stationed in isolated spots quite out of reach of ordinary communications. Some of your boys have had to fly hundreds of hours over the sea from an improvised airfield in quests often disappointingly fruitless, of enemy submarines.<br/><br/>首先，我想向各位確切表達，美國人民對於分佈在世界各地的美國戰士，絕對有理由感到無比自豪。我特別感念那些駐守在偏遠荒涼地區、生活極其孤寂的貴國官兵。因為他們所承擔的任務，既沒有顯赫的戰功可以表揚，也沒有能振奮精神的激烈戰事，而是一天又一天，僅僅奉命履行枯燥的例行職務，例如看守防禦工事，並時刻準備抵抗敵人可能發起的蠢動。曾有人說，親臨前線陣地、在生死之間搏鬥，往往比日復一日忍受低微單調的工作還要容易，我過去的經驗也確實證實了這句話。然而，後面這種默默堅守的工作，對於贏得抗戰勝利而言，和前線作戰同樣是不可或缺的。貴國有部分部隊駐紮在極為遙遠且與世隔絕的地點，那是平時交通根本無法抵達的地方。有些貴國官兵必須利用臨時搶築出來的機場升空，在廣闊的海面上飛行長達數百小時去搜尋敵方潛艇，而且往往一無所獲、只能無功而返。<br/><br/>They, and others, have to stand the monotony of waiting—just waiting. But, as I told them, true patriotism lies in possessing the morale and physical stamina to perform faithfully and conscientiously the daily tasks so that in the sum total the weakest link is the strongest.<br/><br/>貴國這群優秀的健兒以及其他勇士，都在進行著單調乏味的守候——那是一天又一天、永無止境的堅守。但我曾告訴他們，真正的愛國心，正是在於擁有能夠忠誠執行日常枯燥任務的士氣與體魄，如此一來，才能確保在最終的整體戰力中，原本最脆弱的一環，也能蛻變成最堅固、最強大的一環。<br/><br/>Your soldiers have shown conclusively that they are able stoically to endure homesickness, the glaring dryness, and scorching heat of the Tropics, and keep themselves fit and in excellent fighting trim. They are amongst the unsung heroes of this war, and everything possible to lighten their tedium and buoy up their morale should be done. That sacred duty is yours. The American Army is better fed than any army in the world. This does not mean, however, that they can live indefinitely on canned food without having the effects tell on them. These admittedly are the minor hardships of war, especially when we pause to consider that in many parts of the world, starvation prevails. But peculiarly enough, oftentimes it is not the major problems of existence which irk a man’s soul; it is rather the pin pricks, especially those incidental to a life of deadly sameness, with tempers frayed out and nervous systems torn to shreds.<br/><br/>貴國士兵已經切實證明了，他們能夠沉著堅毅地忍受思鄉之苦、忍受熱帶地區的乾燥與酷熱，並且始終保持著準備隨時投入戰鬥的強健體魄與高昂精神。他們同樣屬於這場戰爭中無名英雄的一員。因此，任何能夠減輕他們煩悶、振奮他們精神的可能措施，都應該一一採取。這項神聖的責任，自然落在諸位議員的肩上。就美國軍隊的飲食而言，雖然確實比任何其他國家軍隊的飲食都還要優越，但這並不意味著他們可以長期只依賴罐頭食物，而健康卻完全不受到任何影響。以上所列舉的，或許只是戰爭中比較輕微的困苦；如果一想到世界上許多地方此時正流行著飢荒，就會更覺得上述的困苦是微不足道的。然而，天下事往往也有難以言喻的一面。真正擾亂人心、讓人感到無比煩悶的，往往並非攸關生存的大問題，反而是那些瑣碎的刺激——尤其是在單調無聊的生活中所承受的瑣碎刺激，最足以讓人性情暴躁、心神俱裂。<br/><br/>The second impression of my trip is that America is not only the cauldron of democracy, but the incubator of democratic principles. At some of the places I visited, I met the crews of your air bases. There I found first generation Germans, Italians, Frenchmen, Poles, Czechoslovakians, and other nationals. Some of them had accents so thick that, if such a thing were possible, one could not cut them with a butter knife. But there they were—all Americans, all devoted to the same ideals, all working for the same cause and united by the same high purpose. No suspicion or rivalry existed between them. This increased my belief and faith that devotion to common principles eliminates differences in race, and that identity of ideals is the strongest possible solvent of racial dissimilarities.<br/><br/>我在這次行程中所獲得的第二個印象，就是美國不僅是民主制度的熔爐，更是孕育民主主義的搖籃。當我參訪各地時，曾在好幾個地方遇見貴國空軍基地的飛行服務人員。在這些人員當中，我發現有德國、義大利、法國、波蘭、捷克以及其他國籍遷居美國的第一代移民。他們之中有些人說英語的家鄉口音之重，簡直難以形容。然而，他們卻能一同遠征海外，每個人都以身為美國人為榮，每個人都忠心於共同的理想，每個人都為同一個目標而奮鬥，每個人也都為同一個崇高的宗旨而精誠團結，既不彼此猜忌，也不互相爭鬥。這項事實，更加深了我一向所抱持的信念與信仰：那就是對於共同原則的忠誠，絕對可以泯滅種族的差異；而且理想的契合，正是化解種族分歧最強效的溶解劑。<br/><br/>I have reached your country, therefore, with no misgivings, but with my belief that the American people are building and carrying out a true pattern of the Nation conceived by your forebears, strengthened and confirmed. You, as representatives of the American people, have before you the glorious opportunity of carrying on the pioneer work of your ancestors, beyond the frontiers of physical and geographical limitations. Their brawn and thews braved undauntedly almost unbelievable hardships to open up a new continent. The modern world lauds them for their vigor and intensity of purpose, and for their accomplishment. Your have today before you the immeasurably greater opportunity to implement these same ideals and to help bring about the liberation of man’s spirit in every part of the world. In order to accomplish this purpose, we of the United Nations must now so prosecute the war that victory will be ours decisively and with all good speed.<br/><br/>正因如此，我這次抵達貴國，內心不僅毫無憂慮，反而充滿了信心，深信美國人民正在建立並實踐其祖先當年所懷抱的立國典範。而這樣的信心，在隨後的見聞中更加得到了加強與證實。諸位議員作為美國人民的代表，此時正迎來一個光榮的契機，得以讓你們祖先的開國大業發揚光大，超越物質與地理界線的藩籬。你們的祖先曾以大無畏的精神，冒著不可思議的艱難困苦，篳路藍縷地開發了這片新大陸。現代人無不讚嘆他們過人的精力、堅定的宗旨以及卓越的成就。而今日擺在諸位面前的，正是一個更加無限偉大的機會，可以繼續發揚你們祖先所懷抱的理想，並協助完成解放全球人類精神的志業。為了達成這個目標，身為同盟國（聯合國）的一員，我們必須竭盡全力加強作戰，好讓同盟國能早日贏得最終的勝利。<br/><br/>Sun-tse, the well-known Chinese strategist said, "In order to win, know thyself and thy enemy." We have also the saying: "It takes little effort to watch the other fellow carry the load."<br/><br/>中國著名兵學大師孫子曾說：「知己知彼，百戰不殆。」而在我們民間另外還有一句諺語說：「看人挑擔不吃力。」<br/><br/>In spite of these teachings from a wise old past, which are shared by every nation, there has been a tendency to belittle the strength of our opponents.<br/><br/>這些名言雖然來自睿智久遠的古代，且實為每個民族所共有，然而，當前卻仍存在著一種輕視我們敵人力量的趨勢。<br/><br/>When Japan thrust total war on China in 1937 military experts of every nation did not give China even a ghost of a chance. But when Japan failed to bring China cringing to her knees as she vaunted, the world took solace in this phenomenon by declaring that they had overestimated Japan’s military might.<br/><br/>當1937年日本軍閥發動全面侵華戰爭時，各國的軍事專家都一致認為，中國毫無一線獲勝的希望。然而，日本最終並未能如其所誇口的那樣，迫使中國屈膝投降；於是舉世各國的人們，對這個出乎意料的現象深感欣慰，並開始認為當初對日本的軍事力量估計得太高了。<br/><br/>Nevertheless, when the greedy flames of war inexorably spread in the Pacific following the perfidious attack on Pearl Harbor, Malaya, and lands in and around the China Sea, and one after another of these places fell, the pendulum swung to the other extreme. Doubts and fears lifted their ugly heads and the world began to think that the Japanese were Nietzschean supermen, superior in intellect and physical prowess, a belief which the Gobineaus and the Houston Chamberlains and their apt pupils, the Nazi racists, had propounded about the Nordics.<br/><br/>然而，自從日本對珍珠港、馬來亞以及南洋一帶發動了背信忘義且無恥的偷襲後，戰爭的瘋狂烈焰瞬間席捲了整個太平洋，而上述地區也相繼失守。一時之間，世人的看法竟然又走向了另一個極端。於是，懷疑與憂懼的猙獰面目便暴露無遺。世界各地的人們甚至開始把日本人視為尼采筆下的「超人」，認為他們在智力與體力上都超越了其他國家的人民。其實，這種盲目的信念，就如同當年戈比諾派、豪斯敦·張伯倫派以及他們的得意門徒納粹種族主義者，對所謂「北歐日耳曼人」所吹捧的優越論調如出一轍。<br/><br/>Again, now the prevailing opinion seems to consider the defeat of the Japanese as of relative unimportance and that Hitler is our first concern. This is not borne out by actual facts, nor is it to the interests of the United Nations as a whole to allow Japan to continue not only as a vital potential threat but as a waiting sword of Damocles, ready to descend at a moment’s notice.<br/><br/>不僅如此，就目前流行的輿論來看，似乎普遍認為擊敗日本在現階段是比較次要的事，而我們首要對付的目標應該是希特勒。但事實證明，情況並非如此。而且即使是為了同盟國（聯合國）的整體利益著想，我們也不應該繼續放任日本，讓它不僅成為一個主要的潛在威脅，更像是一把懸在頭頂的達摩克利斯（Damocles）之劍，隨時都可能墜落。</p>
+<p>Let us not forget that Japan in her occupied areas today has greater resources at her command than Germany.</p>
+<p>請我們不要忘記，今日日本在其實際佔領區內所能掌控的資源，甚至遠比德國還要龐大。<br/><br/>Let us not forget that the longer Japan is left in undisputed possession of these resources, the stronger she must become. Each passing day takes more toll in lives of both Americans and Chinese.</p>
+<p>請我們不要忘記，放任日本毫無爭議地佔有這些資源的時間愈久，它就勢必會變得愈發強大。隨著日子一天天過去，這都將奪走更多美國人與中國人的寶貴生命。<br/><br/>Let us not forget that the Japanese are an intransigent people.</p>
+<p>請我們不要忘記，日本人是一個頑固不化、絕不輕言妥協的民族。</p>
+<p>Let us not forget that during the first four and half years of total aggression China has borne Japan’s sadistic fury unaided and alone.</p>
+<p>請我們不要忘記，在這場全面侵略最初的四年半中，中國是在毫無援助且孤立無援的情況下，獨自承受著日本那慘無人道的肆虐與狂暴。</p>
+<p>The victories won by the United Sates Navy at Midway and the Coral Sea are doubtless steps in the right direction—they are merely steps in the right direction—for the magnificent fight that was waged at Guadal canal during the past 6 months attests to the fact that the defeat of the forces of evil though long and arduous will finally come to pass. For have we not on the side of righteousness and justice staunch allies in Great Britain, Russia, and other brave and indomitable peoples? Meanwhile the peril of the Japanese juggernaut remains. Japanese military might must be decimated as a fighting force before its threat to civilization is removed.<br/><br/>美國海軍在中途島及珊瑚海所贏得的勝利，其戰略方向顯然是無庸置疑的，然而這也僅僅是朝向正確方向邁進的初步階段而已。因為過去六個月在瓜達康納爾島（瓜島）的英勇作戰，已經證明了一個事實：邪惡勢力的潰敗雖然還需要時間與心血，但最終必然會到來。我們站在正義與公道的一方，難道沒有英國、蘇聯以及其他英勇不屈的民族作為我們忠實的盟友嗎？只是，日本侵略惡魔繼續危害世界的可能性依然存在。我們必須將日本的軍事力量徹底摧毀，使其永遠喪失作戰能力，才能真正解除日本對人類文明的威脅。<br/><br/>When the Seventy-seventh Congress declared war against Japan, Germany, and Italy, Congress for the moment had done its work. It now remains for you, the present Representatives of the American people, to point the way to win the war, to help construct a world in which all peoples may henceforth live in harmony and peace.<br/><br/>貴國第七十七屆國會向日、德、義三國宣戰。就當時而言，貴國國會確實已經完成了它的階段性工作。然而就今日而論，未來的歷史重任則有待於諸位。諸位作為美國人民的代表，應當挺身而出，指引一條取得最終勝利的途徑，並協助建立一個嶄新的世界，讓此後所有民族都能在融洽與和平中共同生活。<br/><br/>May I not hope that it is the resolve of Congress to devote itself to the creation of the post-war world? To dedicate itself to the preparation for the brighter future that a stricken world so eagerly awaits?<br/><br/>我又怎能不寄予厚望，期盼美國國會能下定決心，全力投入創立戰後的嶄新世界，並全力為這個正處於水深火熱、殷切期盼著更光明前途的世界做好準備呢？<br/><br/>We of this generation who are privileged to help make a better world for ourselves and for posterity should remember that, while we must not be visionary, we must have vision so that peace should not be punitive in spirit and should not be provincial or nationalistic or even continental in concept, but universal in scope and humanitarian in action, for modern science has so annihilated distance that what affects one people must of necessity affect all other peoples.<br/><br/>我們生於這個世代，擁有了為我們自身以及子子孫孫建立一個更美滿世界的光榮機會。我們應當牢記在心的是：一方面固然不可抱持不切實際的過高理想，但另一方面也必須具備相當的理想高度。這樣一來，未來的和平在精神上才不至於變成單純對戰敗者的懲罰；在概念上，也不至於只以某個區域、某個國家、甚至某個大陸為對象，而是以全世界為範圍，並且其行動也必須完全符合人道主義。因為現代科學已經將空間距離縮短到如此程度，以致於任何影響到單一民族的事物，勢必都會同時影響到其他所有的民族。<br/><br/>The term "hands and feet" is often used in China to signify the relationship between brothers. Since international interdependence is now so universally recognized, can we not also say that all nations should become members of one corporate body?<br/><br/>在中國，「手足」一詞是用來形容同胞兄弟之間的親密關係。如今，國際社會既已普遍承認各國之間相互依存、唇齒相依的關係，我們難道不能說，世界上的一切國家，都應當成為一個命運共同體（集合體）之中的一份子嗎？<br/><br/>The 160 years of traditional friendship between our two great peoples, China and America, which has never been marred by misunderstandings, is unsurpassed in the annals of the world.<br/><br/>在中國與美國兩大民族之間，長達一百六十年來的傳統友誼中，從未染上任何誤會的污痕。這在整個世界歷史當中，實在是沒有其他國家能與之相比的。<br/><br/>I can also assure you that China is eager and ready to cooperate with you and other peoples to lay a true and lasting foundation for a sane and progressive world society which would make it impossible for any arrogant or predatory neighbor to plunge future generations into another orgy of blood. In the past China has not computed the cost to her manpower in her fight against aggression, although she well realized that manpower is the real wealth of a nation and it takes generations to grow it. She has been soberly conscious of her responsibilities and has not concerned herself with privileges and gains which she might have obtained through compromise of principles. Nor will she demean herself and all she holds dear to the practice of the market place.<br/><br/>我也可以向各位確切地保證，我們無比渴望並早已做好準備，要與諸位以及其他民族攜手合作，共同奠定一個真實且持久的基礎，以此建設一個合理且進步的世界社會，讓任何驕橫跋扈或劫掠成性的鄰國，再也無法讓我們的後代子孫重蹈流血的慘劇。中國雖然深知「人力」是一國真正的富源，且需要經歷數代的光陰才能培育成長，然而中國在這場反侵略戰爭中，卻從未去計較過自身在人力方面所遭受的巨大損失。中國對自己所肩負的各項歷史責任，有著無比深切的明瞭；而對於如何透過在原則上妥協讓步，來換取眼前的種種權益，我們則是從未考慮過。中國對待自己，以及對待自己所珍愛與尊重的一切，也絕不會稍降人格與國格，去做出商場上那種市儈平庸的利益交易。<br/><br/>We in China, like you, want a better world, not for ourselves alone, but for all mankind, and we must have it. It is not enough, however, to proclaim our ideals or even to be convinced that we have them. In order to preserve, uphold, and maintain them, there are times when we should throw all we cherish into our effort to fulfill these ideals even at the risk of failure.<br/><br/>我們中國國民正與諸位議員相同，不僅是為了我們自己，更是為了全人類，期盼著能有一個更美好的世界；事實上，我們也必須擁有這個更美好的世界。然而，僅僅宣布我們的理想，甚至只是堅信我們擁有這樣的理想，依然是遠遠不夠的。因為想要保存、支撐並維護這些理想，有時我們必須不惜犧牲一切，甚至甘冒失敗的危險，去努力促成理想的實現。<br/><br/>The teachings drawn from our late leader, Dr. Sun Yat-sen, have given our people the fortitude to carry on. From five and half years of experience we in China are convinced that it is the better part of wisdom not to accept failure ignominiously, but to risk it gloriously. We shall have faith that, at the writing of peace, America and our other gallant allies will not be obtunded by the mirage of contingent reasons of expediency.<br/><br/>我們已故的領袖孫逸仙博士所留下的訓示與典範，早已給予我國人民奮鬥前進的無比毅力。我中國人民根據五年半以來的切身經驗，深切確信：光明正大地甘冒失敗，比起卑鄙可恥地接受失敗，更為明智。我們始終抱持著一項堅定的信念，那就是在未來訂立和平條約之時，美國以及其他英勇的盟友們，將不至於被一時的種種權宜之計或利益藉口所迷惑。<br/><br/>Man’s mettle is tested both in adversity and in success. Twice is this true of the soul of a nation.<br/><br/>個人的品德，在遭遇困厄時可以得到考驗，在獲得成功時也同樣可以得到考驗。而如果要用這句話來形容一個國家的精神，更是倍加真確。</p><br />White << <a href='White.html'>Previous</a> <a href='NX.html'>Next</a> >> NX</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cms/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cms/static/chimper/js/popper.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cms/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cms/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cms/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cms/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        
