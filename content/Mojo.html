@@ -144,8 +144,8 @@ img.add_border {
     <div id="tipue_search_content">git << <a href='git.html'>Previous</a> <a href='WSL.html'>Next</a> >> WSL<br /><h1>Mojo</h1>
 <p><a href="https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular">https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular</a> </p>
 <p>Mojo 在 2026.8.18 正式開源。</p>
-<p><a 07="" 2026="" href="https://www.modular.com/blog/mojo-op&lt;h2&gt;Mojo&lt;/h2&gt;
-&lt;p&gt;&lt;a href=" https:="" news="" qualcomm-completes-acquisition-of-modular"="" releases="" www.qualcomm.com="">https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular</a> </p>
+<p><a 07="" 2026="" com="" href="https://www.modular.com/blog/mojo-op&lt;h2&gt;Mojo&lt;/h2&gt;
+&lt;p&gt;&lt;a href=" https:="" news="" qualcomm="" qualcomm-completes-acquisition-of-modular="" releases="" www="">https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular</a> </p>
 <p>Mojo 在 2026.8.18 正式開源。</p>
 <p><a href="https://www.modular.com/blog/mojo-open-source">https://www.modular.com/blog/mojo-open-source</a> </p>
 <p><a href="https://github.com/modular/modular">https://github.com/modular/modular</a> </p>
@@ -158,9 +158,9 @@ img.add_border {
 <p>1.1 歷史背景與雙語言痛點</p>
 <p>在人工智慧、量化金融與大數據處理領域，長年存在著軟體工程的兩極妥協。Python 憑藉親切的語法與高度動態性，成為科學研究（PyTorch、NumPy）與快速原型設計的絕對霸主；然而，Python 作為高階直譯式語言（Interpreted Language），受限於全域解譯器鎖（GIL）與高昂的記憶體開銷，無法直接壓榨硬體極限。為了將模型部署於車載晶片、邊緣裝置或資料中心，企業往往需要龐大的工程團隊將 Python 代碼手動重寫（Porting）為 C++ 或 CUDA。這種「雙語言問題」大幅拉長了產品落地週期，更埋下了大量移植 Bug 與維護包袱。</p>
 <p>1.2 創始契機</p>
-<p>為了解決這個全球硬體與 AI 巨頭的共同痛點，由 LLVM、Clang 與 Swift 語言的開發者——克里斯·拉特納（Chris Lattner），聯合提姆·戴維斯（Tim Davis）於 2022 年創立了 Modular 公司。創始團隊的第一性原理非常明確：不應該強迫科學家去適應複雜的 C++ 或 Rust，而是應該為全球數百萬 Python 開發者賦能，打造一款擁有 Python 外殼、卻具備 C++ 效能的系統級語言。 這便是 Mojo 的誕生起源。</p>
+<p>為了解決這個全球硬體與 AI 巨頭的共同痛點，由 LLVM、Clang 與 Swift 語言的開發者——克里斯·拉特納（Chris Lattner），聯合提姆·戴維斯（Tim Davis）於 2022 年創立了 Modular 公司。創始團隊的第一性原理非常明確：不應該強迫科學家去適應複雜的 C++ 或 Rust，反而應該為全球數百萬 Python 開發者賦能，打造一款擁有 Python 外殼、卻具備 C++ 效能的系統級語言。 這便是 Mojo 的誕生起源。</p>
 <p>二、 開發過程使用的核心技術與嘗試解決的問題 (Core Technologies &amp; Problem Solving)</p>
-<p>Mojo 能夠打破效能障礙，並非單純在 Python 之上套用 JIT（即時編譯），而是從編譯器硬核底層進行了典範轉移。</p>
+<p>Mojo 能夠打破效能障礙，並非單純在 Python 之上套用 JIT（即時編譯），Mojo 是從編譯器硬核底層進行了典範轉移。</p>
 <p>2.1 多級中間表示 (MLIR) 技術</p>
 <p>傳統編譯器（如 Rust 與 C++ 所依賴的 LLVM）在處理高階抽象時，會直接將代碼下放到低階的單一中間表示（LLVM IR）。這在處理通用的標量（Scalar）計算時極為優秀，但在面對 AI 特有的「張量（Tensor）計算與矩陣並行優化」時，LLVM 無法理解高階的語意。</p>
 <p>解決方案： Mojo 直接架構在 MLIR（Multi-Level Intermediate Representation） 之上。MLIR 允許 Mojo 在編譯期間定義多個不同抽象層級的「方言（Dialects）」。這意味著 Mojo 的編譯器可以在高層級理解矩陣乘法，在中間層級自動進行並行化與硬體暫存器對齊，在底層直達硬體指令。這使得 Mojo 天生具備極強的異質計算（Heterogeneous Computing）優化能力。</p>
@@ -232,7 +232,7 @@ img.add_border {
 <p>資料中心推論的突圍： Modular 的軟體基石成為高通進軍 AI 資料中心推論（Inference）市場的核心武器，幫助企業在 token 成本高昂的時代，大幅榨乾伺服器的「每瓦效能」，實現高效率建置。</p>
 <p>3.3 重新定義晶片工業界的競爭賽局</p>
 <p>此案對全球半導體產業生態系投下了震撼彈：</p>
-<p>對 NVIDIA 的實質合圍： 高通收購 Modular 本質上是一場「軟體借道、硬體超車」的戰略布局。它不與 NVIDIA 直接拼硬體產能，而是聯合 AMD、Intel 等多硬體廠商，意圖透過 Mojo 建立起一個「打破 CUDA 鎖定、多晶片相容」的開放聯盟。</p>
+<p>對 NVIDIA 的實質合圍： 高通收購 Modular 本質上是一場「軟體借道、硬體超車」的戰略布局。它不與 NVIDIA 直接拼硬體產能，反而聯合 AMD、Intel 等多硬體廠商，意圖透過 Mojo 建立起一個「打破 CUDA 鎖定、多晶片相容」的開放聯盟。</p>
 <p>從技術蠻荒邁向商業主流： 過去 Mojo 語言常被視為極客（Geek）圈的前衛玩具，但在獲得高通 40 億美元級別的資金注入與晶片硬體 Day-Zero（出廠首日）的原生相容承諾後，Mojo 正式跨過技術鴻溝，演變為具備企業級落地安全性的主流系統程式設計語言。</p>
 <p>四、 結論與未來展望 (Conclusion &amp; Future Outlook)</p>
 <p>高通收購 Modular 案，在商業與軟體工程史上記下一筆重要的交易。前因在於產業對打破垂直生態壟斷、降低運算成本的極度渴望；後因則促成了軟體編譯黑科技（MLIR/Mojo）與全球硬體巨頭（Qualcomm）的強強聯手。未來展望：儘管此一戰略方向極其精準，但正如產業分析師所指出，要徹底破除全球開發者對 CUDA 長達十年的路徑依賴，絕非一朝一夕之功。這場收購的最終成敗，將取決於 2027 年及以後，全球主流企業與 AI 科學家是否真正將他們核心的生產力管線大量遷移（Migrate）至 Mojo 與 MAX 的生態中。然而可以確定的是，Mojo 的背後從此擁有了無比龐大的商業資本與硬體通路，其作為下一代系統級與 AI 程式語言的生命週期，已被永久性地延長與鞏固。</p>
