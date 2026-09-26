@@ -1,0 +1,2558 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>基瑟廖夫算術 — 完整中文翻譯版 (1938)</title>
+<link href="en.css" rel="stylesheet">
+<style>
+:root {
+  --cream: #F8F3E8;
+  --paper: #FDFAF4;
+  --ink: #1C1A14;
+  --ink-light: #3D3829;
+  --red: #B5171C;
+  --gold: #B8860B;
+  --gold-light: #D4A017;
+  --border: #D8CEB8;
+  --sidebar-w: 280px;
+  --note-bg: #F0EAD6;
+  --demo-bg: #1C1A14;
+  --demo-text: #F8F3E8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "EB Garamond", Georgia, serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.72;
+}
+
+/* ── 側邊欄 ── */
+#sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--ink);
+  color: #C8BFA8;
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+#sidebar-header {
+  padding: 1.4rem 1.2rem 1rem;
+  border-bottom: 1px solid #3D3829;
+  flex-shrink: 0;
+}
+
+#sidebar-header .author {
+  font-family: "Playfair Display", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+#sidebar-header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #F8F3E8;
+  line-height: 1.3;
+}
+
+#sidebar-header .year {
+  font-size: 0.75rem;
+  color: #6B6050;
+  margin-top: 0.3rem;
+}
+
+#toc {
+  padding: 0.8rem 0;
+  flex: 1;
+}
+
+.toc-part {
+  padding: 0.5rem 1.2rem 0.2rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  margin-top: 0.6rem;
+}
+
+.toc-link {
+  display: block;
+  padding: 0.22rem 1.2rem 0.22rem 1.6rem;
+  font-size: 0.82rem;
+  color: #A09580;
+  text-decoration: none;
+  transition: all 0.15s;
+  line-height: 1.35;
+  font-family: "EB Garamond", serif;
+}
+
+.toc-link:hover, .toc-link.active {
+  color: #F8F3E8;
+  background: rgba(255,255,255,0.05);
+}
+
+/* ── 主要內容 ── */
+#main {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+  background: var(--paper);
+}
+
+#content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3rem 3rem 6rem;
+}
+
+/* ── 書名頁 ── */
+.title-page {
+  text-align: center;
+  padding: 4rem 0 3rem;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 4rem;
+}
+
+.title-page .badge {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  margin-bottom: 1.5rem;
+  font-family: "EB Garamond", serif;
+}
+
+.title-page h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.title-page .subtitle {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink-light);
+  margin-bottom: 2rem;
+}
+
+.title-page .author-line {
+  font-size: 0.95rem;
+  color: var(--ink-light);
+  margin-bottom: 0.3rem;
+}
+
+.title-page .publisher {
+  font-size: 0.8rem;
+  color: #7A6E60;
+  margin-top: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+/* ── 部標題 ── */
+.part-heading {
+  text-align: center;
+  padding: 3rem 0 2rem;
+  margin: 3rem 0 2.5rem;
+  border-top: 2px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.part-heading .part-number {
+  font-family: "Playfair Display", serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+
+.part-heading h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ── 章標題 ── */
+.chapter-heading {
+  margin: 2.5rem 0 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.chapter-heading .ch-number {
+  font-family: "Playfair Display", serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.chapter-heading h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ── 節內文 ── */
+.section {
+  margin-bottom: 1.6rem;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.4rem;
+}
+
+.sec-num {
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--red);
+  min-width: 2rem;
+  flex-shrink: 0;
+}
+
+.sec-title {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.section p {
+  margin-bottom: 0.6rem;
+}
+
+.section p:first-of-type::first-letter {
+  font-size: 1.4em;
+  line-height: 1;
+  float: left;
+  margin-right: 0.06em;
+  margin-top: 0.07em;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: var(--red);
+}
+
+/* ── 法則 / 定理 ── */
+.rule-box {
+  background: var(--note-bg);
+  border-left: 4px solid var(--gold);
+  padding: 0.9rem 1.1rem;
+  margin: 1rem 0;
+  font-style: italic;
+}
+
+.rule-box strong {
+  font-style: normal;
+  color: var(--ink);
+  font-family: "Playfair Display", serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── 備註 / 說明 ── */
+.remark {
+  font-size: 0.9em;
+  color: var(--ink-light);
+  padding-left: 1.2rem;
+  border-left: 2px solid var(--border);
+  margin: 0.7rem 0;
+}
+
+/* ── 數學運算式 ── */
+.math {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+}
+
+.display-math {
+  text-align: center;
+  padding: 0.6rem 0;
+  font-size: 1.05em;
+  overflow-x: auto;
+}
+
+.calc-example {
+  font-family: "Inconsolata", monospace;
+  background: #F2EDE0;
+  padding: 0.7rem 1rem;
+  margin: 0.7rem 0;
+  border-radius: 3px;
+  font-size: 0.92em;
+  white-space: pre;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+}
+
+/* ── 視覺化演示方塊 ── */
+.demo-box {
+  background: var(--ink);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.8rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-box::before {
+  content: "視覺化演示";
+  position: absolute;
+  top: 0.7rem;
+  right: 1rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  font-family: "EB Garamond", serif;
+  text-transform: uppercase;
+}
+
+.demo-box h4 {
+  color: var(--gold-light);
+  font-family: "Playfair Display", serif;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.demo-box canvas, .demo-box svg {
+  display: block;
+  margin: 0 auto;
+}
+
+/* 演示控制項 */
+.demo-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.demo-btn {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: "EB Garamond", serif;
+  font-size: 0.85rem;
+  transition: all 0.15s;
+}
+
+.demo-btn:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.demo-input {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid #4A4232;
+  color: #F8F3E8;
+  padding: 0.3rem 0.6rem;
+  border-radius: 3px;
+  font-family: "Inconsolata", monospace;
+  font-size: 0.9rem;
+  width: 80px;
+}
+
+/* 演示輸出區域 */
+.demo-output {
+  font-family: "Inconsolata", monospace;
+  font-size: 0.88rem;
+  color: #D4C89A;
+  margin-top: 0.8rem;
+  min-height: 2rem;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* ── 九九乘法表 ── */
+#mult-table table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+#mult-table td {
+  width: 28px;
+  height: 28px;
+  text-align: center;
+  font-family: "Inconsolata", monospace;
+  font-size: 0.8rem;
+  border: 1px solid #3A3224;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: #C8BFA8;
+}
+
+#mult-table td:hover { background: #B8860B; color: #1C1A14; }
+#mult-table td.header { background: #2C2820; color: var(--gold); font-weight: 600; cursor: default; }
+#mult-table td.highlight { background: var(--gold); color: var(--ink); font-weight: 700; }
+
+/* ── 分數演示 ── */
+.frac-bar-wrap { margin: 0.5rem 0; }
+.frac-label { color: #C8BFA8; font-family: "Inconsolata", monospace; font-size: 0.78rem; margin-bottom: 0.2rem; }
+.frac-bar { height: 24px; background: #2C2820; border-radius: 3px; overflow: hidden; position: relative; display: flex; }
+.frac-segment { border-right: 1px solid var(--ink); transition: all 0.3s; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: rgba(0,0,0,0.6); }
+
+/* ── 位值演示 ── */
+.pv-display {
+  display: flex;
+  gap: 0.2rem;
+  justify-content: center;
+  margin: 0.5rem 0;
+  flex-wrap: wrap;
+}
+
+.pv-cell {
+  text-align: center;
+  min-width: 48px;
+}
+
+.pv-name {
+  font-size: 0.6rem;
+  color: #7A6E55;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.2rem;
+}
+
+.pv-digit {
+  font-family: "Inconsolata", monospace;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #F8F3E8;
+  background: #2C2820;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  border-bottom: 3px solid var(--gold);
+  min-width: 44px;
+  display: inline-block;
+  text-align: center;
+}
+
+.pv-digit.active { border-bottom-color: var(--red); color: #FFD580; }
+
+/* 加法演示樣式 */
+.add-col {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.add-grid {
+  font-family: "Inconsolata", monospace;
+  font-size: 1.1rem;
+  color: #C8BFA8;
+}
+
+.add-grid .carry { color: #FFD580; font-size: 0.75rem; }
+.add-grid .result { color: #7DDE92; border-top: 1px solid #4A4232; padding-top: 0.2rem; margin-top: 0.2rem; }
+.add-grid .active-digit { color: #FFD580; font-weight: 700; }
+
+/* ── 直式長除法演示 ── */
+.div-layout {
+  font-family: "Inconsolata", monospace;
+  font-size: 1rem;
+  color: #C8BFA8;
+  line-height: 1.6;
+}
+
+.div-step { 
+  transition: all 0.3s;
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.div-step.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.div-step .active { color: #FFD580; }
+.div-step .quotient { color: #7DDE92; }
+.div-step .subtracted { color: #F08080; }
+
+/* ── 捲軸 ── */
+#sidebar::-webkit-scrollbar { width: 4px; }
+#sidebar::-webkit-scrollbar-track { background: transparent; }
+#sidebar::-webkit-scrollbar-thumb { background: #3A3224; border-radius: 2px; }
+
+/* ── 響應式設計 ── */
+@media (max-width: 900px) {
+  :root { --sidebar-w: 240px; }
+  #content { padding: 2rem 1.5rem 4rem; }
+  .title-page h1 { font-size: 2.2rem; }
+}
+
+@media (max-width: 680px) {
+  #sidebar { display: none; }
+  #main { margin-left: 0; }
+  #content { padding: 1.5rem 1rem 4rem; }
+}
+
+/* 章節分隔線 */
+hr.section-sep {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+/* 腳註 */
+.footnote {
+  font-size: 0.82em;
+  color: #5A5042;
+  padding-left: 1rem;
+  margin-top: 0.3rem;
+  border-left: 2px solid var(--border);
+}
+
+/* 行內分數 */
+.frac-inline {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.85em;
+  vertical-align: middle;
+  margin: 0 0.15em;
+  line-height: 1.1;
+}
+.frac-inline .num { border-bottom: 1px solid currentColor; padding: 0 0.1em; }
+.frac-inline .den { padding: 0 0.1em; }
+
+/* 直式算式版面布局 */
+.col-op {
+  font-family: "Inconsolata", monospace;
+  font-size: 1rem;
+  display: inline-block;
+  text-align: right;
+  padding: 0.5rem 1rem;
+  background: #F2EDE0;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  margin: 0.5rem 0;
+  white-space: pre;
+}
+
+</style>
+<!-- Cloudflare Web Analytics -->
+<script type="module" src="index_files/beacon.min_uk4o_O6FC.js" data-cf-beacon="{&quot;token&quot;: &quot;1c045cecc3f64da1a64ad3f146a11977&quot;}"></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<!-- ═══════════════════ 側邊欄 ═══════════════════ -->
+<nav id="sidebar">
+  <div id="sidebar-header">
+    <div class="author">A. 基瑟廖夫 · A. 辛欽</div>
+    <h1>算術</h1>
+    <div class="year">莫斯科，1938年 &nbsp;·&nbsp; 完整中文翻譯版</div>
+  </div>
+  <div id="toc">
+    <div class="toc-part">前言</div>
+    <a href="#preface" class="toc-link">辛欽的前言</a>
+
+    <div class="toc-part">第一部 — 整數</div>
+    <a href="#ch1" class="toc-link">I. 命名稱呼與記法</a>
+    <a href="#ch2" class="toc-link">II. 進位制 · 羅馬數字</a>
+    <a href="#ch3" class="toc-link">III. 加法</a>
+    <a href="#ch4" class="toc-link">IV. 減法</a>
+    <a href="#ch5" class="toc-link">V. 運算符號 · 括號 · 公式</a>
+    <a href="#ch6" class="toc-link">VI. 乘法</a>
+    <a href="#ch7" class="toc-link">VII. 除法</a>
+
+    <div class="toc-part">第二部 — 整除性</div>
+    <a href="#div1" class="toc-link">I. 整除判別法</a>
+    <a href="#div2" class="toc-link">II. 質因數分解</a>
+    <a href="#div3" class="toc-link">III. 合數的因數</a>
+    <a href="#div4" class="toc-link">IV. 最大公因數</a>
+    <a href="#div5" class="toc-link">V. 最小公倍數</a>
+
+    <div class="toc-part">第三部 — 度量</div>
+    <a href="#meas" class="toc-link">公制單位系統</a>
+
+    <div class="toc-part">第四部 — 真分數與假分數</div>
+    <a href="#frac1" class="toc-link">I. 基本概念</a>
+    <a href="#frac2" class="toc-link">II. 分數數值的變化</a>
+    <a href="#frac3" class="toc-link">III. 約分</a>
+    <a href="#frac4" class="toc-link">IV. 通分（公分母）</a>
+    <a href="#frac5" class="toc-link">V. 分數運算</a>
+
+    <div class="toc-part">第五部 — 十進位分數（小數）</div>
+    <a href="#dec1" class="toc-link">I. 基本性質</a>
+    <a href="#dec2" class="toc-link">II. 小數運算</a>
+    <a href="#dec3" class="toc-link">III. 一般分數轉換</a>
+    <a href="#dec4" class="toc-link">IV. 循環小數</a>
+
+    <div class="toc-part">第六部 — 比例關係量</div>
+    <a href="#prop1" class="toc-link">I. 比例式</a>
+    <a href="#prop2" class="toc-link">II. 比例依存關係</a>
+    <a href="#prop3" class="toc-link">III. 按比例分配</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════ 主內容 ═══════════════════ -->
+<main id="main">
+<div id="content">
+
+<!-- 書名頁 -->
+<div class="title-page">
+  <div class="badge">完整中文翻譯版</div>
+  <h1>算術</h1>
+  <div class="subtitle">初級中學與高級中學五年級教科書</div>
+  <div class="author-line">A. 基瑟廖夫（A. Kiselev）著</div>
+  <div class="author-line" style="font-style:italic; color:#7A6E60;">A. 雅. 辛欽（A. Ya. Khinchin）教授修訂</div>
+  <div class="publisher">國立教育與教學出版社 · 莫斯科 · 1938年</div>
+</div>
+
+<!-- 前言 -->
+<section id="preface">
+<div class="part-heading">
+  <div class="part-number">前言</div>
+  <h2>關於本次修訂的說明</h2>
+</div>
+
+<p>擺在每一位教科書作者面前的許多棘手問題，只有在確立明確的指導原則後才能得到令人滿意的解決[cite: 1]。在修訂 A. P. 基瑟廖夫的算術課程時，我的出發點是堅信每一本教科書——即使是供中學五年級使用的教科書——都必須構成一個邏輯嚴密的整體[cite: 1]。這一原則對教學材料的選取與編排產生了、也必然會產生決定性的影響[cite: 1]。</p>
+
+<p>在材料選取方面，我认为不應僅局限於每個五年級學生能夠且應該掌握的內容[cite: 1]。對邏輯完整性的要求，使得有必要納入一定比例的材料，這些材料通常只有高年級學生在複習課程時才能真正吸收[cite: 1]。所有這類材料均以小字排版，且教科書的結構使得所有以小字印刷的內容皆可省略，而不會對理解後續內容造成任何損失[cite: 1]。</p>
+
+<p>另一方面，對統一性的要求迫使我大幅精簡、有時甚至完全省略傳統上包含在算術教科書中的許多章節——例如三項律的理論探討、混合與合金問題等等[cite: 1]。初等算術是研究有理數運算的學問[cite: 1]。中學的特殊需求使其有必要對此定義進行廣義理解，並將度量與比例關係量的研究納入算術課程中[cite: 1]。這雖然在一定程度上破壞了課程的統一性，但並未造成嚴重的缺陷，因為新增的內容僅相當於幾個相對獨立的補充章節[cite: 1]。然而，如果納入那些缺乏共同理論基礎的個別實用題型的解題方法，就會從科學指導退化為單純的習題解答集[cite: 1]。</p>
+
+<p>這項基本原則對材料的編排也產生了深遠的影響[cite: 1]。對度量的研究、單位與名數的概念，自然而然地在整數與分數的邊界處作為獨立章節找到了定位[cite: 1]。當然，這並不意味著在生動的教學過程中，只有在完成包括整數整除性在內的全部理論後，才能首次提及公尺與公斤[cite: 1]。</p>
+
+<p>沿著相同的思考邏輯，我認為有必要從教科書中刪除關於百分比的獨立章節[cite: 1]。我的出發點是堅信：這一章節將數學上不同、僅由共同實用背景聯繫起來的問題聚集在一起，是「綜合」教學法的殘餘，其性質在很大程度上造成了建立紮實百分比計算技能的特殊困難[cite: 1]。學生自然會產生一種觀念，認為百分比計算與普通的分數運算相比是一種根本全新的東西，而這種觀念阻礙了將已掌握的技能應用於僅僅是包裝了新形式、但本質上並非新事物的問題上[cite: 1]。</p>
+
+<p>基瑟廖夫教科書的全文經過了極為嚴格的修訂，朝著更高的科學精確度和更易於理解的闡述方向進行[cite: 1]。在許多地方，原有的例題已被替換為新例題，且例題數量有所增加[cite: 1]。然而，本書的結構與風格很大程度上仍由其原著決定；修訂者的目標並非創造一本全新的教科書[cite: 1]。</p>
+
+<p style="text-align:right; margin-top:1.5rem; font-family:'Playfair Display',serif; font-style:italic;">A. 辛欽</p>
+</section>
+
+<hr class="section-sep">
+<!-- 第一部 -->
+<div class="part-heading" id="part1">
+  <div class="part-number">第一部</div>
+  <h2>整數</h2>
+</div>
+
+<!-- 第一章 -->
+<div class="chapter-heading" id="ch1">
+  <span class="ch-number">第一章</span>
+  <h3>整數 — 其名稱與記法</h3>
+</div>
+
+<div class="section" id="s1">
+<div class="section-head"><span class="sec-num">1.</span><span class="sec-title">整數的概念</span></div>
+<p>一個物件和一個物件合起來是兩個物件；兩個物件和一個物件合起來是三個物件；三個和一個合起來是四個；以此類推[cite: 1]。一、二、三、四等稱為<em>整數</em>[cite: 1]。</p>
+<p>數字「一」也稱為<em>單位</em>[cite: 1]。數字「二」可視為兩個單位的集合，數字「三」可視為三個單位的集合，以此類推[cite: 1]。因此，每個整數要麼是一個單位，要麼是若干個單位的集合[cite: 1]。</p>
+<p>除了整數之外，算術還研究其他種類的數[cite: 1]。我們稍後會遇到這些數[cite: 1]。</p>
+</div>
+
+<div class="section" id="s2">
+<div class="section-head"><span class="sec-num">2.</span><span class="sec-title">自然數列</span></div>
+<p>如果我們在一個單位上記上另一個單位，並在獲得的數上記上一個單位，以此類推，我們就得到了數的<em>自然數列</em>：一、二、三、四、五、六、七等等[cite: 1]。</p>
+<p>這個數列中最小的數是一；沒有最大的數，因為對於任何數，無論多大，我們總是可以再加一個單位並獲得更大的數[cite: 1]。因此，自然數列可以無限延伸；稱之為<em>無窮的</em>[cite: 1]。</p>
+<p>在兩個不同的數中，在自然數列中較早出現的數較小，較晚出現的數較大[cite: 1]。</p>
+</div>
+
+<div class="section" id="s3">
+<div class="section-head"><span class="sec-num">3.</span><span class="sec-title">計數</span></div>
+<p>要找出教室裡有多少張課桌或果園裡有多少棵樹，我們必須清點它們[cite: 1]。計數包括將一個物件與另一個物件分開——實際上或僅在腦海中——並在每一步說出分開的物件數量[cite: 1]。如果在分開最後一個物件時我們說例如「八」，那麼就有八個物件；在這種情況下，數字八就是<em>計數的結果</em>[cite: 1]。</p>
+<p>我們將「計數的結果不取決於我們清點物件的順序」視為顯而易見的真理[cite: 1]。重要的只是在計數中沒有遺漏任何物件，也沒有任何物件被重複計算[cite: 1]。</p>
+</div>
+
+<!-- 位值視覺化演示 -->
+<div class="demo-box" id="demo-place-value">
+  <h4>十進位位值 — 位置如何賦予數字意義</h4>
+  <p style="color:#A09580; font-size:0.85rem; margin-bottom:1rem;">輸入任意數字，查看每個數字的位置如何決定其數值。</p>
+  <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:1rem;">
+    <input class="demo-input" id="pv-input" value="56284" style="width:110px;" maxlength="9">
+    <button class="demo-btn" onclick="updatePlaceValue()">顯示</button>
+  </div>
+  <div id="pv-display" class="pv-display"><div class="pv-cell"><div class="pv-name">萬位</div><div class="pv-digit active">5</div></div><div class="pv-cell"><div class="pv-name">千位</div><div class="pv-digit active">6</div></div><div class="pv-cell"><div class="pv-name">百位</div><div class="pv-digit active">2</div></div><div class="pv-cell"><div class="pv-name">十位</div><div class="pv-digit active">8</div></div><div class="pv-cell"><div class="pv-name">個位</div><div class="pv-digit active">4</div></div></div>
+  <div id="pv-total" style="color:#A09580; font-size:0.82rem; margin-top:0.8rem; font-family:'Inconsolata',monospace;">展開式：5×10^4=50000 + 6×10^3=6000 + 2×10^2=200 + 8×10^1=80 + 4×10^0=4 = 56284</div>
+</div>
+
+<div class="section" id="s4">
+<div class="section-head"><span class="sec-num">4.</span><span class="sec-title">一千以內數的名稱</span></div>
+<p>自然數列的前十個數具有以下名稱：一、二、三、四、五、六、七、八、九、十[cite: 1]。</p>
+<p>借助這些名稱和其他一些名稱，還可以表示進一步的數[cite: 1]。假設我們想命名這裡顯示的筆畫數：</p>
+<p style="text-align:center; letter-spacing:0.15em; font-size:1.2rem; color: var(--red);">| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |</p>
+<p>我們數出十畫並將它們與其餘部分分開，然後再數出十畫並再次分開[cite: 1]。我們繼續以十為單位進行計數，直到沒有剩餘筆畫或剩餘筆畫少於十畫[cite: 1]。然後我們數出十的個數和剩餘的筆畫（單位）[cite: 1]。如果有四個十和三個剩餘筆畫，我們將總數命名為：<em>四個十和三個單位</em>（即四十三）[cite: 1]。</p>
+<p>當一個數包含超過十個十時，我們數出十個十，然後再數出十個十，以此類推[cite: 1]。每十個十被稱為一個詞：<em>一百</em>[cite: 1]。</p>
+<p>如果一個數包含三個百、五個剩餘的十和七個剩餘的單位，它可以被命名為：<em>三個百、五個十和七個單位</em>（即三百五十七）[cite: 1]。</p>
+<p>如果有超過十個百，百也是以十為單位進行計數[cite: 1]。每十個百被稱為<em>一千</em>[cite: 1]。</p>
+</div>
+
+<div class="section" id="s5">
+<div class="section-head"><span class="sec-num">5.</span><span class="sec-title">某些數的簡稱</span></div>
+<p>在我們的語言中，普遍使用一些數的簡寫名稱[cite: 1]。例如十加一稱為<em>十一</em>，十加二稱為<em>十二</em>，以此類推[cite: 1]。兩個十稱為<em>二十</em>，三個十稱為<em>三十</em>，四個十稱為<em>四十</em>[cite: 1]。兩個百稱為<em>二百</em>，三個百稱為<em>三百</em>，以此類推[cite: 1]。</p>
+</div>
+
+<div class="section" id="s6">
+<div class="section-head"><span class="sec-num">6.</span><span class="sec-title">一千以內數的書寫</span></div>
+<p>前九個數字是通過稱為<em>數字</em>的特殊符號來書寫的：</p>
+<div class="display-math">1 &nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; 5 &nbsp; 6 &nbsp; 7 &nbsp; 8 &nbsp; 9</div>
+<p>借助這九個數字和第十個數字 <strong>0</strong>（稱為<em>零</em>，表示沒有數量），任何數都可以被書寫[cite: 1]。</p>
+<p>為此，約定簡單單位寫在自右數起的第一位，十位寫在自右數起的第二位，百位寫在自右數起的第三位[cite: 1]。例如：</p>
+<div class="calc-example">四十二                  42
+四十                    40
+三百四十五              345
+三百四十                340
+三百零七                307
+三百                    300</div>
+<p>除零以外的所有數字都稱為<em>有效數字</em>[cite: 1]。這些例子說明了為什麼需要零：在書寫<em>三百四十</em>時，我們不能省略零，因為 34 會表示三十四[cite: 1]。另一方面，第一個有效數字左側的零可以省略：045 與 45 的意思相同[cite: 1]。</p>
+<p>用一個數字書寫的數稱為<em>一位數</em>；用兩個數字書寫的數稱為<em>兩位數</em>；以此類推[cite: 1]。</p>
+</div>
+
+<div class="section" id="s7">
+<div class="section-head"><span class="sec-num">7.</span><span class="sec-title">大於一千的數的名稱</span></div>
+<p>當計數超過一千時，我們形成盡可能多的千，計數千和剩餘的單位，並命名這兩者的數量[cite: 1]。例如：<em>二十四萬零五百六十二個單位</em>[cite: 1]。</p>
+<p>一千個千構成一<em>百萬</em>（million）；一千個百萬構成一<em>十億</em>（milliard，或稱 billion）；一千個十億構成一<em>兆</em>（trillion）；以此類推[cite: 1]。</p>
+</div>
+
+<div class="section" id="s8">
+<div class="section-head"><span class="sec-num">8.</span><span class="sec-title">大於一千的數的書寫</span></div>
+<p>假設我們想書寫數字<em>三百五十億八百零六萬七千零六十三</em>[cite: 1]。它可以結合數字和文字寫成：350億 806百萬 7千 63單位[cite: 1]。求完全不用文字，約定首先將十億、百萬、千和簡單單位的組自左向右在一行中並排書寫，其次總是用三個數字書寫每個這樣的組[cite: 1]。因此，我們不寫 63 個單位，而是寫 063；不寫 7 千，而是寫 007，以此類推[cite: 1]：</p>
+<div class="display-math">035 806 007 063</div>
+<p>像以前一樣，前面的零被省略，得到：<strong>35 806 007 063</strong>，或者沒有空格：35806007063[cite: 1]。</p>
+<p>當回讀這樣一個數時，自右數起的前三個數字給出單位的數量，接下來的三個給出千的數量，接下來的三個給出百萬的數量，以此類推[cite: 1]：</p>
+<div class="calc-example">567002301   =  5億 6700萬 2千 301個單位
+15000026    =  1500萬 0026個單位
+2008001020  =  20億 0800萬 1千 020個單位</div>
+</div>
+
+<div class="section" id="s9">
+<div class="section-head"><span class="sec-num">9.</span><span class="sec-title">如何讀一長串數字</span></div>
+<p>為了更容易讀出一個數，請在腦海中將其自右向左每三位分為一組[cite: 1]。例如 5183000567029 讀作：<em>5兆 1830億 0567萬 029</em>[cite: 1]。帶有空格書寫——5 183 000 567 029——無需心算分組即可直接閱讀[cite: 1]。</p>
+</div>
+
+<div class="section" id="s10">
+<div class="section-head"><span class="sec-num">10.</span><span class="sec-title">數字所占位置（數位）的意義</span></div>
+<p>每個位置都有其固定的意義[cite: 1]：</p>
+<div class="calc-example">自右數起第 1 位  →  個位（簡單單位）
+自右數起第 2 位  →  十位
+自右數起第 3 位  →  百位
+自右數起第 4 位  →  千位
+自右數起第 5 位  →  萬位（十千）
+自右數起第 6 位  →  十萬位（百千）
+自右數起第 7 位  →  百萬位
+自右數起第 8 位  →  千萬位
+自右數起第 9 位  →  億位（百百萬）
+自右數起第 10 位 →  十億位</div>
+<p>我們的記數系統建立在十個數字之上，這些數字被賦予雙重意義：一種意義取決於數字的形狀，另一種意義取決於其位置[cite: 1]。在並排的兩個數字中，左邊的數字表示比右邊數字大十倍的單位[cite: 1]。</p>
+</div>
+
+<div class="section" id="s11">
+<div class="section-head"><span class="sec-num">11.</span><span class="sec-title">單位的階（Orders of units）</span></div>
+<p>個、十、百、千等有時被稱為另一個名稱：個稱為<em>第一階單位</em>，十稱為<em>第二階單位</em>，百稱為<em>第三階單位</em>，以此類推[cite: 1]。</p>
+<p>除簡單單位以外的所有單位都稱為<em>複合單位</em>[cite: 1]。十、百和千都是複合單位[cite: 1]。每個複合單位都包含十個下一低階的單位[cite: 1]。</p>
+</div>
+
+<div class="section" id="s12">
+<div class="section-head"><span class="sec-num">12.</span><span class="sec-title">單位的級（Classes of units）</span></div>
+<p>單位的階被分組為<em>級</em>[cite: 1]。第一級包含前三個階：百、十和個[cite: 1]。第二級包含接下來的三個階：千、萬（十千）和十萬（百千）[cite: 1]。第一級是<em>個級</em>；第二級是<em>千級</em>[cite: 1]。</p>
+</div>
+
+<div class="section" id="s13">
+<div class="section-head"><span class="sec-num">13.</span><span class="sec-title">如何求一個數中包含多少個指定階的單位</span></div>
+<p>要求數字 56,284 中包含多少個百，我們注意到簡單百占據自右數起的第三位，那裡的數字是 2：兩個簡單百[cite: 1]。千位數字 (6) 表示 6 個千 = 60 個百[cite: 1]。萬位數字 (5) 表示 5 個萬 = 500 個百[cite: 1]。總共：500 + 60 + 2 = <strong>562 個百</strong>[cite: 1]。</p>
+<div class="rule-box"><strong>法則。</strong> 要求一個數中包含多少個指定階的單位，請劃去所有表示較低階的數字，並讀出由剩餘數字組成的數[cite: 1]。</div>
+</div>
+<!-- 第二章 -->
+<div class="chapter-heading" id="ch2">
+  <span class="ch-number">第二章</span>
+  <h3>不同的進位制 · 羅馬數字</h3>
+</div>
+
+<div class="section" id="s14">
+<div class="section-head"><span class="sec-num">14.</span><span class="sec-title">進位制（記數系統）的概念</span></div>
+<p>任何命名和書寫數字的通用方法都稱為<em>進位制</em>[cite: 1]。我們的系統稱為<em>十進位制</em>，因為在其中一個階的 10 個單位構成下一個較高階的 1 個單位[cite: 1]。因此，數字 10 被稱為十進位制的<em>基數</em>[cite: 1]。每個數 <em>N</em> 表示為[cite: 1]：</p>
+<div class="display-math"><em>N</em> = <em>a</em> + <em>b</em>·10 + <em>c</em>·10² + <em>d</em>·10³ + …</div>
+<p>可以想像具有不同基數的其他系統[cite: 1]。基數為 5（<em>五進位制</em>），一個階的 5 個單位構成下一個階的 1 個單位，每個數的形式為[cite: 1]：</p>
+<div class="display-math"><em>N</em> = <em>a</em> + <em>b</em>·5 + <em>c</em>·5² + <em>d</em>·5³ + <em>e</em>·5⁴ + …</div>
+<p>其中 <em>a, b, c, d, e, …</em> 中的每一個都小於 5[cite: 1]。</p>
+</div>
+
+<div class="section" id="s15">
+<div class="section-head"><span class="sec-num">15.</span><span class="sec-title">指定進位制所需的數字數量</span></div>
+<p>十進位制使用十個符號[cite: 1]。五進位制只需要五個：0, 1, 2, 3, 4[cite: 1]。在其中，數字 5 將被寫為 10（第二階的一個單位）[cite: 1]。對於基數大於 10 的系統，必須發明新符號——在十二進位制（基數 12）中，10 和 11 需要特殊符號[cite: 1]。</p>
+</div>
+
+<div class="section" id="s16">
+<div class="section-head"><span class="sec-num">16.</span><span class="sec-title">將十進位數轉換為另一種基數</span></div>
+<p>要在五進位制中表示 1766，請連續除以 5 並記錄餘數[cite: 1]：</p>
+<div class="calc-example">1766 ÷ 5 = 353  餘 1
+ 353 ÷ 5 =  70  餘 3
+  70 ÷ 5 =  14  餘 0
+  14 ÷ 5 =   2  餘 4
+   2 ÷ 5 =   0  餘 2
+
+由下往上讀取餘數：1766₁₀ = 24031₅</div>
+</div>
+
+<div class="section" id="s17">
+<div class="section-head"><span class="sec-num">17.</span><span class="sec-title">從另一種基數轉換為十進位</span></div>
+<p>要將 5623₈（八進位）轉換為十進位，請使用巢狀乘法（霍納法/秦九韶演算法）[cite: 1]：</p>
+<div class="calc-example">5 × 8 + 6 = 46
+46 × 8 + 2 = 370
+370 × 8 + 3 = 2963
+
+因此 5623₈ = 2963₁₀</div>
+<div class="remark">十進位制幾乎是通用的，可能是因為人類用十根手指計數[cite: 1]。十二進位制（基數 12）在某些方面會更方便，因為 12 可以被 2、3、4 和 6 整除[cite: 1]。二進位制（基數 2）在理論上是最優雅的，但在實踐中很繁瑣（數字 70 在二進位中變成 1000110）[cite: 1]。我們的數字借自阿拉伯人（約西元 10 世紀），而阿拉伯人可能又從印度人那裡採用了這個系統[cite: 1]。</div>
+</div>
+
+<div class="section" id="s18">
+<div class="section-head"><span class="sec-num">18.</span><span class="sec-title">羅馬數字</span></div>
+<p>羅馬人只使用七個符號[cite: 1]：</p>
+<div class="calc-example">I = 1    V = 5    X = 10    L = 50
+C = 100  D = 500  M = 1000</div>
+<p>羅馬數字無論位置如何都保持其數值[cite: 1]。當並排書寫時，它們的值相加：XXV = 10 + 10 + 5 = 25[cite: 1]。有六個例外，其中較大的數字之前的較小數字會被<em>減去</em>[cite: 1]：</p>
+<div class="calc-example">IV = 4   IX = 9   XL = 40   XC = 90   CD = 400   CM = 900</div>
+<div class="calc-example">I=1   II=2   III=3   IV=4    V=5     VI=6
+VII=7  VIII=8  IX=9   X=10   XIV=14  XVIII=18
+XIX=19  XX=20  XXIX=29  XLII=42  LXXXIV=84
+XCV=95  CCC=300  MCMXXXVII=1937</div>
+</div>
+
+<!-- 第三章 -->
+<div class="chapter-heading" id="ch3">
+  <span class="ch-number">第三章</span>
+  <h3>加法</h3>
+</div>
+
+<!-- 加法演示 -->
+<div class="demo-box" id="demo-addition">
+  <h4>直式加法 — 步驟拆解</h4>
+  <p style="color:#A09580; font-size:0.85rem; margin-bottom:1rem;">輸入兩個數字，觀看帶有進位的加法步驟動畫演示。</p>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="add-a" value="13653" style="width:100px;">
+    <span style="color:#C8BFA8;">+</span>
+    <input class="demo-input" id="add-b" value="22409" style="width:100px;">
+    <button class="demo-btn" onclick="runAddition()">加總</button>
+    <button class="demo-btn" onclick="stepAddition()">單步 →</button>
+  </div>
+  <canvas id="add-canvas" width="500" height="200" style="max-width:100%; background:#1C1A14;"></canvas>
+  <div id="add-explain" class="demo-output" style="min-height:1.5rem;">13653 + 22409 = 36062</div>
+</div>
+
+<div class="section" id="s19">
+<div class="section-head"><span class="sec-num">19.</span><span class="sec-title">什麼是加法</span></div>
+<p>組成幾個數的單位可以組合成一個集合[cite: 1]。通過計算所有這些單位獲得的數稱為<em>和</em>，被組合的數稱為<em>被加數與加數</em>[cite: 1]。例如：5 根火柴、7 根火柴和 2 根火柴組合成一個包含 14 根火柴的集合[cite: 1]。數字 14 是三個加數 5、7 和 2 的和[cite: 1]。</p>
+<p>加數可以視為和的組成部分[cite: 1]。</p>
+<p>形成幾個數的和的運算稱為<em>加法</em>[cite: 1]。加法的符號是 <strong>+</strong>（加）[cite: 1]。加法總是可能的，並且總是給出唯一的結果[cite: 1]。</p>
+</div>
+
+<div class="section" id="s20">
+<div class="section-head"><span class="sec-num">20.</span><span class="sec-title">和的基本性質</span></div>
+<p><strong>1) 加法交換律。</strong> 當改變加數的順序時，和不會改變[cite: 1]：</p>
+<div class="display-math">5 + 7 + 2 = 2 + 7 + 5 = 7 + 5 + 2 = 14</div>
+<p>一般而言：對於任何數 <em>a, b, c</em>，<em>a + b + c = b + a + c = …</em>[cite: 1]。</p>
+<p><strong>2) 加法結合律。</strong> 如果將任何一組加數替換為它們的和，則和不會改變[cite: 1]：</p>
+<div class="display-math">5 + 7 + 2 = 5 + 9 = 14</div>
+<p>一般而言：<em>a + b + c = (a + b) + c = a + (b + c)</em>[cite: 1]。</p>
+</div>
+
+<div class="section" id="s21">
+<div class="section-head"><span class="sec-num">21.</span><span class="sec-title">如何加上一個和，以及如何將數加到一個和上</span></div>
+<p><strong>1)</strong> 要將幾個數的和加到某個數上，請逐個加上每個加數[cite: 1]：</p>
+<div class="display-math">100 + (20 + 7 + 3) = 100 + 20 + 7 + 3</div>
+<p><strong>2)</strong> 要將某個數加到一個和上，請將其加到任意一個加數上[cite: 1]：</p>
+<div class="display-math">(35 + 15 + 20) + 10 = (35 + 10) + 15 + 20 = 35 + (15 + 10) + 20 = …</div>
+</div>
+
+<div class="section" id="s22">
+<div class="section-head"><span class="sec-num">22.</span><span class="sec-title">兩個一位數的加法</span></div>
+<p>要求兩個一位數的和，請將一個數的所有單位加到另一個數上[cite: 1]。要快速相加所有數字，請熟記一對一位數產生的所有和[cite: 1]。</p>
+<div class="remark">因為零意味著沒有單位：5 + 0 = 5 以及 0 + 5 = 5[cite: 1]。將任何數與零相加，或零與任何數相加，總是得到該數[cite: 1]。</div>
+</div>
+
+<div class="section" id="s23">
+<div class="section-head"><span class="sec-num">23.</span><span class="sec-title">多位數與一位數的加法</span></div>
+<p>將 37 與 8 相加：從 37 中分出 7 個單位，將它們加到 8 上得到 15；將 15 加到 30：因為 15 = 10 + 5，所以將 10 加到 30 得到 40，且 40 + 5 = 45[cite: 1]。</p>
+<p>或者：37 需要再加 3 才能達到 40；從 8 中分出 3；37 + 3 = 40，剩下 5：40 + 5 = 45[cite: 1]。</p>
+<div class="calc-example">37 + 8 = (30 + 7) + 8 = 30 + (7 + 8) = 30 + 15 = 45
+37 + 8 = 37 + (3 + 5) = (37 + 3) + 5 = 40 + 5 = 45</div>
+</div>
+
+<div class="section" id="s24">
+<div class="section-head"><span class="sec-num">24.</span><span class="sec-title">多位數的加法</span></div>
+<p>書寫加數，使個位對齊個位，十位對齊十位，百位對齊百位，以此類推[cite: 1]。在最後一個加數下方劃一條線[cite: 1]。然後自右向左逐列相加，每當一列的和達到 10 或更多時進行進位[cite: 1]。</p>
+<div class="calc-example">  13653
+  22409
+   1608
++   346
+------
+  38016</div>
+<p>個位相加：3+9+8+6 = 26 = 2個十 + 6個單位；寫 6，進位 2[cite: 1]。十位相加：5+0+0+4+2 = 11 = 1個百 + 1個十；寫 1，進位 1[cite: 1]。以此類推[cite: 1]。</p>
+</div>
+
+<div class="section" id="s25">
+<div class="section-head"><span class="sec-num">25.</span><span class="sec-title">零是一個數</span></div>
+<p>我們現在同意將零作為一個與所有其他數字平等的數字來對待；零小於所有其他數字[cite: 1]。</p>
+</div>
+
+<div class="section" id="s26">
+<div class="section-head"><span class="sec-num">26.</span><span class="sec-title">將一個數增加幾個單位</span></div>
+<p>將一個數增加幾個單位意味著將這些單位加到它上面[cite: 1]。將一個數增加一定數量是通過加法進行的[cite: 1]。</p>
+</div>
+
+<div class="section" id="s27">
+<div class="section-head"><span class="sec-num">27.</span><span class="sec-title">當加數改變時和如何改變</span></div>
+<p>如果將幾個單位<em>加到</em>一個加數上（其他加數不變），則和會<em>增加</em>相應的單位數量[cite: 1]。<br>
+如果從一個加數中<em>減去</em>幾個單位，則和會<em>減少</em>相應的單位數量[cite: 1]。<br>
+如果將相同數量的單位加到一個加數上並從另一個加數中減去，則和<em>保持不變</em>[cite: 1]。</p>
+</div>
+
+<!-- 第四章 -->
+<div class="chapter-heading" id="ch4">
+  <span class="ch-number">第四章</span>
+  <h3>減法</h3>
+</div>
+
+<!-- 減法演示 -->
+<div class="demo-box" id="demo-subtraction">
+  <h4>帶有借位的直式減法</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="sub-a" value="60072" style="width:100px;">
+    <span style="color:#C8BFA8;">−</span>
+    <input class="demo-input" id="sub-b" value="7345" style="width:100px;">
+    <button class="demo-btn" onclick="runSubtraction()">相減</button>
+    <button class="demo-btn" onclick="stepSubtraction()">單步 →</button>
+  </div>
+  <canvas id="sub-canvas" width="500" height="200" style="max-width:100%; background:#1C1A14;"></canvas>
+  <div id="sub-explain" class="demo-output" style="min-height:1.5rem;">60072 − 7345 = 52727</div>
+</div>
+
+<div class="section" id="s28">
+<div class="section-head"><span class="sec-num">28.</span><span class="sec-title">什麼是減法</span></div>
+<p>從一個數中拿走與另一個給定數包含的一樣多的單位的運算稱為<em>減法</em>[cite: 1]。</p>
+<p>我們從中減去的數是<em>被減數</em>；被減去的數是<em>減數</em>；結果是<em>差（餘數）</em>[cite: 1]。減法的符號是 −（減號）：7 − 3 = 4[cite: 1]。</p>
+<p>減數不能超過被減數[cite: 1]。</p>
+</div>
+
+<div class="section" id="s29">
+<div class="section-head"><span class="sec-num">29.</span><span class="sec-title">減法與加法的比較</span></div>
+<p>在減法中，被減數被拆分為兩個數：減數和差[cite: 1]。將它們組合成被減數——所以被減數是和，減數和差是加數[cite: 1]。在加法中，給定加數並求和；在減法中，給定和和一個加數，求另一個加數[cite: 1]。<em>減法是加法的逆運算。</em>[cite: 1]</p>
+</div>
+
+<div class="section" id="s30">
+<div class="section-head"><span class="sec-num">30.</span><span class="sec-title">說明</span></div>
+<p>只要減數不大於被減數，減法總是可能的，並且給出唯一的結果[cite: 1]。如果 <em>b</em> = <em>a</em>，則差為零；如果 <em>b</em> &gt; <em>a</em>，則減法是不可能的（在整數領域內）[cite: 1]。</p>
+</div>
+
+<div class="section" id="s31">
+<div class="section-head"><span class="sec-num">31.</span><span class="sec-title">一位數的減法</span></div>
+<p>通過使用加法可以輕鬆找到所需的差[cite: 1]。例如：15 − 8 = ? —— 回想 8 + 7 = 15，所以 15 − 8 = 7[cite: 1]。</p>
+<div class="remark">7 − 0 = 7（減去零保持數字不變）[cite: 1]。8 − 8 = 0（兩個相等數字的差為零）[cite: 1]。零不能減去任何其他數字[cite: 1]。</div>
+</div>
+
+<div class="section" id="s32">
+<div class="section-head"><span class="sec-num">32.</span><span class="sec-title">多位數的減法</span></div>
+<p>將減數寫在被減數下方，按數位對齊[cite: 1]。自右向左逐列相減[cite: 1]。當被減數的數字太小時，從下一個較高階<em>借 1</em>[cite: 1]。</p>
+<div class="calc-example">  60072   （被減數）
+−  7345   （減數）
+-------
+  52727   （差）</div>
+<p>個位：不能從 2 中減去 5；從十位借位，做成 12 − 5 = 7[cite: 1]。十位：借位後只剩下 6；6 − 4 = 2[cite: 1]。百位：被減數中沒有，必須從萬位借位，然後是千位[cite: 1]。所有借位後：7 個百[cite: 1]。千位：9 − 7 = 2[cite: 1]。萬位：5 − 0 = 5[cite: 1]。結果：52727[cite: 1]。</p>
+</div>
+
+<div class="section" id="s33">
+<div class="section-head"><span class="sec-num">33.</span><span class="sec-title">如何減去一個和，以及如何從一個和中減去</span></div>
+<p><strong>1)</strong> 要減去一個和，請分別減去每個加數：<em>a − (b + c + …) = a − b − c − …</em>[cite: 1]</p>
+<p><strong>2)</strong> 要從一個和中減去一個數，請從任意一個加數中減去它：<em>(a + b + c) − m = (a − m) + b + c</em>[cite: 1]</p>
+</div>
+
+<div class="section" id="s34">
+<div class="section-head"><span class="sec-num">34.</span><span class="sec-title">驗算加法</span></div>
+<p>以不同的順序再次相加加數（例如自下而上）[cite: 1]。如果得到相同的和，則加法很可能是正確的[cite: 1]。或者，從和中減去一個加數；結果應等於其餘加數的和[cite: 1]。</p>
+</div>
+
+<div class="section" id="s35">
+<div class="section-head"><span class="sec-num">35.</span><span class="sec-title">用加法驗算減法</span></div>
+<p>將減數和差相加；結果應等於被減數[cite: 1]。或者，從被減數中減去差；結果應等於減數[cite: 1]。</p>
+</div>
+
+<div class="section" id="s36">
+<div class="section-head"><span class="sec-num">36.</span><span class="sec-title">將一個數減少幾個單位</span></div>
+<p>將一個數減少幾個單位意味著從中減去這些單位[cite: 1]。這是通過減法進行的[cite: 1]。</p>
+</div>
+
+<div class="section" id="s37">
+<div class="section-head"><span class="sec-num">37.</span><span class="sec-title">比較兩個數</span></div>
+<p>要求出一個數比另一個數大多少，請從較大的數中減去較小的數[cite: 1]。例如：35 − 20 = 15，所以 35 比 20 大 15[cite: 1]。</p>
+</div>
+
+<div class="section" id="s38">
+<div class="section-head"><span class="sec-num">38.</span><span class="sec-title">當給定數字改變時差如何改變</span></div>
+<p>增加被減數會使差增加相同的數量[cite: 1]。<br>
+減少被減數會使差減少相同的數量[cite: 1]。<br>
+增加減數會使差減少相同的數量[cite: 1]。<br>
+減少減數會使差增加相同的數量[cite: 1]。</p>
+<p>值得注意的是：<strong>如果被減數和減數同時增加或減少相同的數，則差不會改變</strong>：(11 + 6) − (3 + 6) = 11 − 3 = 8[cite: 1]。</p>
+</div>
+
+<div class="section" id="s39">
+<div class="section-head"><span class="sec-num">39.</span><span class="sec-title">如何減去一個差</span></div>
+<p>要從 30 中減去 (12 − 8)：將 30 和減數 (12 − 8) 都增加 8，得到 38 − 12 = 26[cite: 1]。或者：30 − 12 = 18，然後加回 8：18 + 8 = 26[cite: 1]。</p>
+<div class="rule-box"><strong>法則。</strong> 要減去一個差，請加上減數然後減去被減數；或者減去被減數然後加上減數[cite: 1]：<br>
+<em>a − (b − c) = a + c − b</em> &nbsp;與&nbsp; <em>a − (b − c) = a − b + c</em>[cite: 1]</div>
+</div>
+
+<!-- 第五章 -->
+<div class="chapter-heading" id="ch5">
+  <span class="ch-number">第五章</span>
+  <h3>運算符號 · 等號與不等號 · 括號</h3>
+</div>
+
+<div class="section" id="s40">
+<div class="section-head"><span class="sec-num">40.</span><span class="sec-title">符號</span></div>
+<p>要在不執行運算的情況下指示運算，請在數字之間寫上適當的符號[cite: 1]：</p>
+<p>10 + 15 + 20（讀作：「十加十五加二十」或「10、15、20的和」）[cite: 1]<br>
+10 − 8（讀作：「十減八」或「10 與 8 的差」）[cite: 1]</p>
+<p>常用其他符號：<strong>=</strong>（等於）、<strong>&gt;</strong>（大於）、<strong>&lt;</strong>（小於）、<strong>≠</strong>（不等於）、<strong>≤</strong>（小於或等於）、<strong>≥</strong>（大於或等於）[cite: 1]。</p>
+<p>符號 &gt; 和 &lt; 必須將其尖角指向較小的數[cite: 1]。</p>
+</div>
+
+<div class="section" id="s41">
+<div class="section-head"><span class="sec-num">41.</span><span class="sec-title">括號與公式</span></div>
+<p>括號顯示必須首先執行哪些運算[cite: 1]。例如：200 − (35 + 20) 意味著從 200 中減去和 35 + 20[cite: 1]。巢狀括號使用不同的形狀[cite: 1]：</p>
+<div class="display-math">100 + {160 − [60 − (7 + 8)]}</div>
+<p>意味著：計算 7+8=15；從 60 中減去得到 45；從 160 中減去得到 115；加到 100 得到 215[cite: 1]。最內層的括號總是首先求值[cite: 1]。</p>
+<p>當沒有括號時：<strong>在僅顯示加法和減法的算式中，自左向右執行運算</strong>[cite: 1]。因此 20 − 2 + 4 − 5 意味著 ((20 − 2) + 4) − 5 = 17[cite: 1]。</p>
+<p>表示要對給定數字執行哪些運算以及按什麼順序執行以獲得所需結果的算式稱為<em>公式</em>[cite: 1]。<em>求值</em>一個公式意味著找出所有指定運算產生的數字[cite: 1]。</p>
+</div>
+
+<!-- 第六章 -->
+<div class="chapter-heading" id="ch6">
+  <span class="ch-number">第六章</span>
+  <h3>乘法</h3>
+</div>
+
+<!-- 乘法表演示 -->
+<div class="demo-box" id="demo-mult-table">
+  <h4>九九乘法表 — 點擊任意儲存格以高亮顯示其行和列</h4>
+  <div id="mult-table" style="overflow-x:auto;"><table><tbody><tr><td class="header">×</td><td class="header">1</td><td class="header">2</td><td class="header">3</td><td class="header">4</td><td class="header">5</td><td class="header">6</td><td class="header">7</td><td class="header">8</td><td class="header">9</td><td class="header">10</td></tr><tr><td class="header">1</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr><tr><td class="header">2</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td><td>14</td><td>16</td><td>18</td><td>20</td></tr><tr><td class="header">3</td><td>3</td><td>6</td><td>9</td><td>12</td><td>15</td><td>18</td><td>21</td><td>24</td><td>27</td><td>30</td></tr><tr><td class="header">4</td><td>4</td><td>8</td><td>12</td><td>16</td><td>20</td><td>24</td><td>28</td><td>32</td><td>36</td><td>40</td></tr><tr><td class="header">5</td><td>5</td><td>10</td><td>15</td><td>20</td><td>25</td><td>30</td><td>35</td><td>40</td><td>45</td><td>50</td></tr><tr><td class="header">6</td><td>6</td><td>12</td><td>18</td><td>24</td><td>30</td><td>36</td><td>42</td><td>48</td><td>54</td><td>60</td></tr><tr><td class="header">7</td><td>7</td><td>14</td><td>21</td><td>28</td><td>35</td><td>42</td><td>49</td><td>56</td><td>63</td><td>70</td></tr><tr><td class="header">8</td><td>8</td><td>16</td><td>24</td><td>32</td><td>40</td><td>48</td><td>56</td><td>64</td><td>72</td><td>80</td></tr><tr><td class="header">9</td><td>9</td><td>18</td><td>27</td><td>36</td><td>45</td><td>54</td><td>63</td><td>72</td><td>81</td><td>90</td></tr><tr><td class="header">10</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td><td>60</td><td>70</td><td>80</td><td>90</td><td>100</td></tr></tbody></table></div>
+</div>
+
+<div class="section" id="s42">
+<div class="section-head"><span class="sec-num">42.</span><span class="sec-title">什麼是乘法</span></div>
+<p><em>乘法是相同加數的連加。</em>[cite: 1]</p>
+<p>作為加數重複的數是<em>被乘數</em>；顯示採納了多少個這樣加數的數是<em>乘數</em>；結果是<em>積</em>[cite: 1]。兩者都稱為<em>因數</em>[cite: 1]。</p>
+<p>乘法符號是 ·（點）或 ×（乘號）：85·6 = 510[cite: 1]。當因數是字母時，不需要符號：<em>ab</em> 意味著 <em>a</em> 乘以 <em>b</em>[cite: 1]。</p>
+<div class="remark">被乘數可以表示具名單位（公尺、盧布等）；積具有與被乘數相同的名稱單位[cite: 1]。乘數是無因次的[cite: 1]。</div>
+</div>
+
+<div class="section" id="s43">
+<div class="section-head"><span class="sec-num">43.</span><span class="sec-title">乘法的特殊情況</span></div>
+<p>1·5 = 5（被乘數 = 1：積等於乘數）[cite: 1]。<br>
+0·4 = 0（被乘數 = 0：積為零）[cite: 1]。<br>
+5·1 = 5（乘數 = 1：積等於被乘數）[cite: 1]。<br>
+5·0 = 0（乘數 = 0：積為零）[cite: 1]。</p>
+</div>
+
+<div class="section" id="s44">
+<div class="section-head"><span class="sec-num">44.</span><span class="sec-title">將一個數擴大若干倍</span></div>
+<p>將一個數擴大 2, 3, 4 … 倍意味著形成那麼多個相等加數的和，每個加數等於給定的數[cite: 1]。這是通過乘法進行的[cite: 1]。（比較：增加一個數是加法；擴大一個倍數是乘法[cite: 1]。）</p>
+</div>
+
+<div class="section" id="s45">
+<div class="section-head"><span class="sec-num">45.</span><span class="sec-title">對調因數不會改變積</span></div>
+<p>考慮一個矩形筆畫陣列——7 行，每行 3 個[cite: 1]。按行計算給出 7·3；按列計算給出 3·7[cite: 1]。總數相同[cite: 1]。一般而言：<em>a·b = b·a</em>（乘法交換律）[cite: 1]。</p>
+</div>
+
+<div class="section" id="s46">
+<div class="section-head"><span class="sec-num">46.</span><span class="sec-title">乘法表</span></div>
+<p>要快速相乘，請熟記一對一位數的所有積——<em>乘法表</em>[cite: 1]。參見上面的互動式乘法表[cite: 1]。</p>
+</div>
+
+<div class="section" id="s48">
+<div class="section-head"><span class="sec-num">48.</span><span class="sec-title">多位數乘以一位數</span></div>
+<p>要將 846 乘以 5：先乘個位，然後是十位，然後是百位，根據需要進行進位[cite: 1]。</p>
+<div class="calc-example">  846
+×   5
+-----
+ 4230
+
+5×6 = 30 → 寫 0，進位 3
+5×4 = 20+3 = 23 → 寫 3，進位 2
+5×8 = 40+2 = 42 → 寫 42</div>
+</div>
+
+<div class="section" id="s49">
+<div class="section-head"><span class="sec-num">49.</span><span class="sec-title">乘以十的次方</span></div>
+<div class="rule-box"><strong>法則。</strong> 要將任何數乘以 1 後面帶有零的數，只需在被乘數的右側補上與乘數中相同數量的零[cite: 1]。<br>
+358 × 10 = 3580 &nbsp;·&nbsp; 296 × 1000 = 296000[cite: 1]</div>
+</div>
+
+<div class="section" id="s50">
+<div class="section-head"><span class="sec-num">50.</span><span class="sec-title">乘以末尾有零的數</span></div>
+<div class="rule-box"><strong>法則。</strong> 乘以有效數字部分，然後補上零：248 × 30 → 248 × 3 = 744 → 7440[cite: 1]。</div>
+</div>
+
+<!-- 乘法演示 -->
+<div class="demo-box" id="demo-multiplication">
+  <h4>直式乘法 — 部分積（部分乘積）</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="mul-a" value="3826" style="width:90px;">
+    <span style="color:#C8BFA8;">×</span>
+    <input class="demo-input" id="mul-b" value="472" style="width:90px;">
+    <button class="demo-btn" onclick="runMultiplication()">相乘</button>
+    <button class="demo-btn" onclick="stepMultiplication()">單步 →</button>
+  </div>
+  <canvas id="mul-canvas" width="500" height="240" style="max-width:100%; background:#1C1A14;"></canvas>
+  <div id="mul-explain" class="demo-output" style="min-height:1.5rem;">3826 × 472 = 1805872</div>
+</div>
+
+<div class="section" id="s51">
+<div class="section-head"><span class="sec-num">51.</span><span class="sec-title">多位數乘以多位數</span></div>
+<p>分別乘以乘數的每個數字（部分積），每個連續數字對應的部分積向左位移一位[cite: 1]。然後將所有部分積相加[cite: 1]。</p>
+<div class="calc-example">   3826
+×   472
+------
+   7652   (3826 × 2)
+  26782   (3826 × 7，左移1位)
+  15304   (3826 × 4，左移2位)
+--------
+ 1805872</div>
+</div>
+
+<div class="section" id="s52">
+<div class="section-head"><span class="sec-num">52.</span><span class="sec-title">末尾有零的數相乘</span></div>
+<p>忽略末尾的零，將有效數字部分相乘，然後補上末尾零的總數[cite: 1]：</p>
+<div class="calc-example">2700 × 15  →  27 × 15 = 405  →  40500
+358 × 23000  →  358 × 23 = 8234  →  8234000
+57000 × 3200  →  57 × 32 = 1824  →  182400000</div>
+</div>
+
+<div class="section" id="s53">
+<div class="section-head"><span class="sec-num">53.</span><span class="sec-title">當因數改變時積如何改變</span></div>
+<p>如果一個因數乘以 <em>n</em>，則積乘以 <em>n</em>[cite: 1]。<br>
+如果一個因數除以 <em>n</em>，則積除以 <em>n</em>[cite: 1]。<br>
+如果一個因數乘以 <em>n</em>，另一個因數除以 <em>n</em>，則積保持不變[cite: 1]。</p>
+</div>
+
+<div class="section" id="s55">
+<div class="section-head"><span class="sec-num">55.</span><span class="sec-title">三個或更多因數的積</span></div>
+<p>積 3·4·2·7 意味著 ((3·4)·2)·7[cite: 1]。無論因數的分組或順序如何，結果都是相同的[cite: 1]。</p>
+</div>
+
+<div class="section" id="s56">
+<div class="section-head"><span class="sec-num">56.</span><span class="sec-title">重新排序不會改變積</span></div>
+<p>在所有排序中，2·5·3·4·7 = 2·3·4·5·7 = 4·7·3·2·5 = 840（乘法交換律，擴展到任意數量的因數）[cite: 1]。</p>
+</div>
+
+<div class="section" id="s57">
+<div class="section-head"><span class="sec-num">57.</span><span class="sec-title">因數可以以任何方式分組</span></div>
+<p>3·4·(5·2) = 12·10 = 120 = 3·4·5·2（乘法結合律）：<em>abc = (ab)c = a(bc)</em>[cite: 1]。</p>
+</div>
+
+<div class="section" id="s59">
+<div class="section-head"><span class="sec-num">59.</span><span class="sec-title">一個和乘以一個數</span></div>
+<div class="rule-box"><strong>分配律。</strong> 要將一個和乘以一個數，請分別乘以每個加數並將結果相加[cite: 1]：<br>
+<em>(a + b + c) · m = a·m + b·m + c·m</em>[cite: 1]<br>
+要將一個數乘以一個和，請分別乘以每個加數並相加[cite: 1]：<br>
+<em>m · (a + b + c) = m·a + m·b + m·c</em>[cite: 1]</div>
+<div class="remark">約定：當公式包含不帶括號的加法、減法和乘法時，請在加法和減法之前先執行乘法[cite: 1]。</div>
+</div>
+
+<!-- 第七章 -->
+<div class="chapter-heading" id="ch7">
+  <span class="ch-number">第七章</span>
+  <h3>除法</h3>
+</div>
+
+<!-- 除法演示 -->
+<div class="demo-box" id="demo-division">
+  <h4>直式長除法 — 步驟拆解</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="div-a" value="64528" style="width:100px;">
+    <span style="color:#C8BFA8;">÷</span>
+    <input class="demo-input" id="div-b" value="23" style="width:80px;">
+    <button class="demo-btn" onclick="runDivision()">相除</button>
+    <button class="demo-btn" onclick="stepDivision()">單步 →</button>
+  </div>
+  <canvas id="div-canvas" width="500" height="260" style="max-width:100%; background:#1C1A14;"></canvas>
+  <div id="div-explain" class="demo-output" style="min-height:1.5rem;">64528 ÷ 23 = 2805 餘 13</div>
+</div>
+
+<div class="section" id="s61">
+<div class="section-head"><span class="sec-num">61.</span><span class="sec-title">什麼是除法</span></div>
+<p>當給定積和其中一個因數時，尋找兩個因數之一的運算稱為<em>除法</em>[cite: 1]。</p>
+<p>給定的積是<em>被除數</em>；給定的因數是<em>除數</em>；未知因數是<em>商</em>[cite: 1]。</p>
+<p>除法用 ÷ 或水平分數線表示：75 ÷ 3 = 25[cite: 1]。</p>
+</div>
+
+<div class="section" id="s63">
+<div class="section-head"><span class="sec-num">63.</span><span class="sec-title">不允許除以零</span></div>
+<p>如果被除數不為零，除以零將需要尋找一個乘以零得到被除數的數——但不存在這樣的數[cite: 1]。如果被除數也是零，商可以是任何數，因此結果不唯一[cite: 1]。<em>零不能作為除數。</em>[cite: 1]</p>
+</div>
+
+<div class="section" id="s64">
+<div class="section-head"><span class="sec-num">64.</span><span class="sec-title">帶餘數的除法（有餘除法）</span></div>
+<p>當整除不可能時（27 ÷ 6 沒有整數解），我們稱之為<em>帶餘數的除法</em>[cite: 1]。<em>不完全商</em>是最大的整數 <em>q</em>，使得 <em>q</em> × (除數) ≤ 被除數[cite: 1]。<em>餘數</em>是其差值[cite: 1]。餘數總是小於除數[cite: 1]。</p>
+<div class="display-math">27 ÷ 6 = 4（餘 3） &nbsp; 因為 &nbsp; 27 = 6×4 + 3</div>
+</div>
+
+<div class="section" id="s65">
+<div class="section-head"><span class="sec-num">65.</span><span class="sec-title">整數除法的一般定義</span></div>
+<p>將 <em>a</em> 除以 <em>b</em> (b ≠ 0) 意味著找到整數 <em>q</em>（商）和 <em>r</em>（餘數），使得[cite: 1]：</p>
+<div class="display-math"><em>a = b·q + r</em> &nbsp;且&nbsp; <em>0 ≤ r &lt; b</em></div>
+<p>這對 <em>(q, r)</em> 總是存在且唯一的[cite: 1]。商顯示除數可以放入被除數中多少次[cite: 1]。餘數可以是從 0 到 <em>b</em> − 1 的任何值；除以 <em>b</em> 時有 <em>b</em> 個不同的可能餘數[cite: 1]。</p>
+</div>
+
+<div class="section" id="s66">
+<div class="section-head"><span class="sec-num">66.</span><span class="sec-title">除法與乘法比較</span></div>
+<p>在乘法中，給定兩個因數並求積[cite: 1]。在除法中，給定積和一個因數，求另一個因數[cite: 1]。<em>除法是乘法的逆運算。</em>[cite: 1]</p>
+</div>
+
+<div class="section" id="s69">
+<div class="section-head"><span class="sec-num">69.</span><span class="sec-title">商是一位數嗎？</span></div>
+<p>將除數乘以 10 並與被除數比較[cite: 1]。如果被除數較小，則商是一位數；否則不是[cite: 1]。</p>
+<div class="calc-example">534 ÷ 68: 68×10=680 &gt; 534 → 商是一位數
+534 ÷ 37: 37×10=370 &lt; 534 → 商不是一位數</div>
+</div>
+
+<div class="section" id="s71">
+<div class="section-head"><span class="sec-num">71.</span><span class="sec-title">直式長除法 — 一般方法</span></div>
+<p>將 64528 除以 23[cite: 1]。將其想像為將 64528 平均分配到 23 個部分中[cite: 1]。</p>
+<div class="calc-example">64528 ÷ 23:
+
+步驟 1: 64 個千 ÷ 23 → 2（給出 46 個千），餘 18 個千
+步驟 2: 185 個百 ÷ 23 → 8（給出 184 個百），餘 1 個百
+步驟 3: 12 個十 ÷ 23 → 0，餘 12 個十
+步驟 4: 128 個個位 ÷ 23 → 5（給出 115），餘 13
+
+商：2805    餘數：13</div>
+</div>
+
+<div class="section" id="s73">
+<div class="section-head"><span class="sec-num">73.</span><span class="sec-title">當除數末尾有零時</span></div>
+<div class="rule-box"><strong>法則。</strong> 如果除數末尾有零，請從除數和被除數中去掉這些零（相同數量的位數），執行除法，然後將被除數去掉的數字補到餘數上[cite: 1]。<br>
+<br>
+54634 ÷ 1000 = 54（餘 634） — 直接讀出[cite: 1]。<br>
+389224 ÷ 7300: 去掉兩個零 → 3892 ÷ 73 = 53 餘 23；實際餘數 = 2324[cite: 1]。</div>
+</div>
+
+<div class="section" id="s76">
+<div class="section-head"><span class="sec-num">76.</span><span class="sec-title">除以一個積</span></div>
+<p>要除以一個積，請連續除以每個因數：60 ÷ (5·3) = 60 ÷ 5 ÷ 3 = 12 ÷ 3 = 4[cite: 1]。</p>
+</div>
+
+<div class="section" id="s77">
+<div class="section-head"><span class="sec-num">77.</span><span class="sec-title">當被除數或除數改變時商如何改變</span></div>
+<p>被除數乘以 <em>n</em> → 商乘以 <em>n</em>[cite: 1]。<br>
+被除數除以 <em>n</em> → 商除以 <em>n</em>[cite: 1]。<br>
+除數乘以 <em>n</em> → 商除以 <em>n</em>[cite: 1]。<br>
+除數除以 <em>n</em> → 商乘以 <em>n</em>[cite: 1]。<br>
+兩者同乘以 <em>n</em>，或同除以 <em>n</em> → 商<strong>保持不變</strong>[cite: 1]。</p>
+</div>
+
+<div class="section" id="s79">
+<div class="section-head"><span class="sec-num">79.</span><span class="sec-title">和或差的除法</span></div>
+<p><strong>1)</strong> 要除以一個和，請分別除以每個加數（假設能整除）：(21 + 14 + 35) ÷ 7 = 3 + 2 + 5 = 10[cite: 1]。</p>
+<p><strong>2)</strong> 要除以一個差，請分別除以被減數和減數：(40 − 25) ÷ 5 = 8 − 5 = 3[cite: 1]。</p>
+</div>
+
+<div class="section" id="s80">
+<div class="section-head"><span class="sec-num">80.</span><span class="sec-title">運算順序</span></div>
+<p>加法和減法稱為<em>第一級運算</em>；乘法和除法是<em>第二級運算</em>[cite: 1]。當沒有括號時：<strong>先進行第二級運算，再進行第一級運算（先乘除後加減）</strong>[cite: 1]。例如：2 + 3·4 − 6÷2 = 2 + 12 − 3 = 11[cite: 1]。</p>
+</div>
+<!-- 第二部 -->
+<div class="part-heading" id="part2">
+  <div class="part-number">第二部</div>
+  <h2>數字的整除性</h2>
+</div>
+
+<div class="section">
+<p>在四則算術運算中，有兩種——加法和乘法——總是可以在任何數字上執行[cite: 1]。減法並不總是可能的，但判別很簡單：被減數不能小於減數[cite: 1]。除法更為精細：它往往不能精確進行，而且在沒有實際相除之前，一個數是否能被另一個數整除可能並不顯而易見[cite: 1]。因此，算術中最難的問題都與除法緊密相關[cite: 1]。我們將在本部分研究其中一些問題[cite: 1]。</p>
+<p>當一個數除以另一個數而沒有餘數時，我們簡單地說第一個數能被第二個數<em>整除</em>[cite: 1]。在這種情況下，第一個數也稱為第二個數的<em>倍數</em>，第二個數稱為第一個數的<em>因數（約數）</em>[cite: 1]。所以 15 是 3 的倍數，3 是 15 的因數[cite: 1]。</p>
+<p class="remark">零能被任何非零數字整除，此時商為零[cite: 1]。</p>
+</div>
+
+<!-- 整除性測試演示 -->
+<div class="demo-box" id="demo-divisibility">
+  <h4>整除判別法 — 輸入任意數字嘗試</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="div-test-n" value="2457" style="width:120px;">
+    <button class="demo-btn" onclick="runDivisibilityTest()">測試</button>
+  </div>
+  <div id="div-test-out" class="demo-output">測試 2457：
+÷2: ✗  (個位數 7 為奇數)
+÷3: ✓  (數字和 18 可被 3 整除)
+÷4: ✗  (末兩位 57 不能被 4 整除)
+÷5: ✗  (個位數為 7)
+÷6: ✗  (奇數，且數字和 18 可被 3 整除)
+÷8: ✗  (末三位 457 不能被 8 整除)
+÷9: ✓  (數字和 18 可被 9 整除)
+÷10: ✗  (個位數為 7)
+÷12: ✗  (可被 4 和 3 整除)
+÷25: ✗  (末兩位為 57)
+</div>
+</div>
+
+<div class="chapter-heading" id="div1">
+  <span class="ch-number">第一章</span>
+  <h3>整除判別法</h3>
+</div>
+
+<div class="section" id="s82">
+<div class="section-head"><span class="sec-num">82.</span><span class="sec-title">和與差的整除性</span></div>
+<p>在建立整除判別法時，我們經常使用這些性質[cite: 1]：</p>
+<div class="rule-box">
+1) 如果每個加數都能被某個數整除，則它們的和也能被該數整除[cite: 1]。<br>
+2) 如果除了一個加數外，所有加數都能被某個數整除，則它們的和<em>不能</em>被該數整除[cite: 1]。<br>
+3) 如果被減數和減數都能被某個數整除，則它們的差也能被該數整除[cite: 1]。
+</div>
+</div>
+
+<div class="section" id="s83">
+<div class="section-head"><span class="sec-num">83.</span><span class="sec-title">2 的整除判別法</span></div>
+<p>能被 2 整除的數稱為<em>偶數</em>；其餘的稱為<em>奇數</em>[cite: 1]。奇數和偶數在自然數列中交替出現[cite: 1]。</p>
+<p>任何以 0 結尾的數都是十的倍數和[cite: 1]。每個十都能被 2 整除，所以任何以 0 結尾的數都能被 2 整除[cite: 1]。如果一個數以任何偶數數字（2, 4, 6, 8）結尾，請將其寫為 10 的倍數加上該數字：兩部分都能被 2 整除，因此和也能整除[cite: 1]。如果它以奇數數字結尾，則和不能被 2 整除[cite: 1]。</p>
+<div class="rule-box"><strong>2 的判別法：</strong> 一個數能被 2 整除，當且僅當其個位數字是偶數（0, 2, 4, 6 或 8）[cite: 1]。</div>
+</div>
+
+<div class="section" id="s84">
+<div class="section-head"><span class="sec-num">84.</span><span class="sec-title">4 的整除判別法</span></div>
+<p>每個百都能被 4 整除 (100 = 4 × 25)[cite: 1]。因此，任何以兩個零結尾的數都能被 4 整除[cite: 1]。</p>
+<div class="rule-box"><strong>4 的判別法：</strong> 一個數能被 4 整除，當且僅當其末兩位數字組成的數能被 4 整除[cite: 1]。<br>
+同樣地：<strong>8 的判別法：</strong> 一個數能被 8 整除，當且僅當其末三位數字組成的數能被 8 整除[cite: 1]。</div>
+<div class="calc-example">2348: 末兩位 48 → 48÷4=12 → 可被 4 整除 ✓
+2350: 末兩位 50 → 50÷4=12 餘 2 → 不能被 4 整除 ✗</div>
+</div>
+
+<div class="section" id="s85">
+<div class="section-head"><span class="sec-num">85.</span><span class="sec-title">5 和 10 的整除判別法</span></div>
+<div class="rule-box"><strong>5 的判別法：</strong> 一個數能被 5 整除，當且僅當其個位數字為 0 或 5[cite: 1]。<br>
+<strong>10 的判別法：</strong> 一個數能被 10 整除，當且僅當其個位數字為 0[cite: 1]。<br>
+<strong>25 的判別法：</strong> 一個數能被 25 整除，當且僅當其末兩位數字為 00, 25, 50 或 75[cite: 1]。</div>
+</div>
+
+<div class="section" id="s86">
+<div class="section-head"><span class="sec-num">86.</span><span class="sec-title">3 和 9 的整除判別法</span></div>
+<p>由重複數字 9 組成的每個數（9, 99, 999, …）都能被 3 和 9 整除[cite: 1]。每個千 = 999 + 1，每個百 = 99 + 1，每個十 = 9 + 1[cite: 1]。將一個數拆分為其各個數字[cite: 1]：</p>
+<div class="calc-example">2457 = (999+999) + (99+99+99+99) + (9+9+9+9+9) + (2+4+5+7)
+     = 3 和 9 的倍數  +  數字和 18</div>
+<p>因此，能否被 3（或 9）整除完全取決於數字和[cite: 1]。</p>
+<div class="rule-box"><strong>3 的判別法：</strong> 一個數能被 3 整除，當且僅當其數字和能被 3 整除[cite: 1]。<br>
+<strong>9 的判別法：</strong> 一個數能被 9 整除，當且僅當其數字和能被 9 整除[cite: 1]。</div>
+<div class="calc-example">2457: 數字和 = 2+4+5+7 = 18 → 能被 3 和 9 整除 ✓
+17331: 數字和 = 1+7+3+3+1 = 15 → 能被 3 整除 ✓，不能被 9 整除 ✗</div>
+</div>
+
+<div class="section" id="s87">
+<div class="section-head"><span class="sec-num">87.</span><span class="sec-title">6, 12, 15 的整除判別法</span></div>
+<div class="rule-box">
+<strong>6 的判別法：</strong> 一個數能被 6 整除，當且僅當它同時能被 2 和 3 整除[cite: 1]。<br>
+<strong>12 的判別法：</strong> 一個數能被 12 整除，當且僅當它同時能被 4 和 3 整除[cite: 1]。<br>
+<strong>15 的判別法：</strong> 一個數能被 15 整除，當且僅當它同時能被 5 和 3 整除[cite: 1]。
+</div>
+<p>6-法則的理由：如果一個數可以拆分為若干個 6，那麼這些 6 就可以拆分為 2 和 3，所以它能同時被 2 和 3 整除[cite: 1]。反之，如果它能同時被 2 和 3 整除，將其寫為 3·<em>k</em>，其中 <em>k</em> 是偶數（因為該數能被 2 整除，且 3 是奇數，<em>k</em> 必須是偶數），所以 3·<em>k</em> = 3·2·<em>m</em> = 6·<em>m</em>[cite: 1]。</p>
+</div>
+
+<div class="chapter-heading" id="div2">
+  <span class="ch-number">第二章</span>
+  <h3>質因數分解</h3>
+</div>
+
+<div class="section" id="s91">
+<div class="section-head"><span class="sec-num">91.</span><span class="sec-title">質數與合數</span></div>
+<p>每個大於 1 的整數都至少有兩個因數：1 和它本身[cite: 1]。恰好有兩個因數的數稱為<em>質數</em>：2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47 …[cite: 1]</p>
+<p>有超過兩個因數的數稱為<em>合數</em>：4, 6, 8, 9, 10, 12, 14, 15, 16, 18, …[cite: 1]</p>
+<p>數字 1 既不是質數也不是合數[cite: 1]。</p>
+</div>
+
+<div class="section" id="s92">
+<div class="section-head"><span class="sec-num">92.</span><span class="sec-title">質數有無限多個</span></div>
+<p>假設質數只有有限多個：<em>p</em>₁, <em>p</em>₂, …, <em>p</em>ₙ[cite: 1]。構造數 <em>N</em> = <em>p</em>₁·<em>p</em>₂·…·<em>p</em>ₙ + 1[cite: 1]。當除以任何已知的質數時，它都留下餘數 1，因此它們都不能整除 <em>N</em>[cite: 1]。但是 <em>N</em> 要麼是質數（給出一個新質數），要麼是合數（並且必須有一個不在我們列表中的質因數）[cite: 1]。無論哪種方式，列表都是不完整的——產生矛盾[cite: 1]。所以質數在數量上是無限的[cite: 1]。</p>
+</div>
+
+<div class="section" id="s93">
+<div class="section-head"><span class="sec-num">93.</span><span class="sec-title">如何檢驗一個數是否為質數</span></div>
+<p>如果一個數 <em>N</em> 沒有 ≤ √<em>N</em> 的質因數，則它是質數[cite: 1]。</p>
+<div class="calc-example">223 是質數嗎？  √223 ≈ 14.9
+檢驗：2, 3, 5, 7, 11, 13 — 都不能精確整除 223。
+因此 223 是質數。</div>
+</div>
+
+<div class="section" id="s94">
+<div class="section-head"><span class="sec-num">94.</span><span class="sec-title">質因數分解</span></div>
+<div class="rule-box"><strong>算術基本定理。</strong> 每個合數都可以表示為質因數的乘積，並且除了因數的順序之外，這種表示是唯一的[cite: 1]。</div>
+<div class="calc-example">84 = 2 × 42 = 2 × 2 × 21 = 2 × 2 × 3 × 7 = 2² × 3 × 7
+
+方法 — 在每一步除以能整除的最質數：
+84 ÷ 2 = 42
+42 ÷ 2 = 21
+21 ÷ 3 = 7
+7 是質數 → 停止。   84 = 2 × 2 × 3 × 7</div>
+</div>
+
+<!-- 質因數分解演示 -->
+<div class="demo-box" id="demo-primes">
+  <h4>質因數分解</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="prime-n" value="360" style="width:100px;">
+    <button class="demo-btn" onclick="runPrimeFactors()">分解</button>
+  </div>
+  <div id="prime-out" class="demo-output">360 ÷ 2 = 180
+180 ÷ 2 = 90
+90 ÷ 2 = 45
+45 ÷ 3 = 15
+15 ÷ 3 = 5
+5 是質數
+
+360 = 2 × 2 × 2 × 3 × 3 × 5 = 2^3 × 3^2 × 5</div>
+</div>
+
+<div class="chapter-heading" id="div4">
+  <span class="ch-number">第四章</span>
+  <h3>最大公因數</h3>
+</div>
+
+<div class="section" id="s99">
+<div class="section-head"><span class="sec-num">99.</span><span class="sec-title">公因數與最大公因數 (GCD)</span></div>
+<p>作為幾個給定數字中每一個數字的因數的數稱為<em>公因數</em>[cite: 1]。最大的這種數是<em>最大公因數</em> (GCD)[cite: 1]。</p>
+<p>求 12 和 18 的最大公因數：12 的質因數 = 2²·3，18 的質因數 = 2·3²[cite: 1]。公共因數：2¹·3¹ = 6[cite: 1]。GCD(12,18) = 6[cite: 1]。</p>
+<div class="rule-box"><strong>法則。</strong> 最大公因數是所有數共有質因數的乘積，每個質因數取其在任何數中出現的最低次次方[cite: 1]。</div>
+</div>
+
+<div class="section" id="s100">
+<div class="section-head"><span class="sec-num">100.</span><span class="sec-title">輾轉相除法（歐幾里得演算法）</span></div>
+<p>將較大的數除以較小的數；然後將之前的除數除以餘數；繼續直到餘數為零[cite: 1]。最後一個非零餘數就是最大公因數[cite: 1]。</p>
+<div class="calc-example">GCD(168, 252):
+252 = 168 × 1 + 84
+168 = 84 × 2 + 0
+GCD = 84</div>
+</div>
+
+<!-- GCD/LCM 演示 -->
+<div class="demo-box" id="demo-gcd">
+  <h4>最大公因數 (GCD) 與最小公倍數 (LCM) — 輾轉相除法</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="gcd-a" value="168" style="width:90px;">
+    <span style="color:#C8BFA8;">,</span>
+    <input class="demo-input" id="gcd-b" value="252" style="width:90px;">
+    <button class="demo-btn" onclick="runGCD()">計算</button>
+  </div>
+  <div id="gcd-out" class="demo-output">使用輾轉相除法求 GCD(168, 252)：
+168 = 252 × 0 + 168
+252 = 168 × 1 + 84
+168 = 84 × 2 + 0
+
+GCD(168,252) = 84
+LCM(168,252) = 168×252/GCD = 42336/84 = 504
+驗算：LCM × GCD = 504 × 84 = 42336 = 168 × 252 ✓</div>
+</div>
+
+<div class="chapter-heading" id="div5">
+  <span class="ch-number">第五章</span>
+  <h3>最小公倍數</h3>
+</div>
+
+<div class="section" id="s103">
+<div class="section-head"><span class="sec-num">103.</span><span class="sec-title">公倍數與最小公倍數 (LCM)</span></div>
+<p>作為幾個給定數字中每一個數字的倍數的數是<em>公倍數</em>[cite: 1]。最小的正整數是<em>最小公倍數</em> (LCM)[cite: 1]。</p>
+<div class="rule-box"><strong>法則。</strong> 最小公倍數 = 在任何數中出現的所有質因數的乘積，每個質因數取其在任何數中出現的最高次次方[cite: 1]。<br><br>
+此外：LCM(<em>a</em>,<em>b</em>) × GCD(<em>a</em>,<em>b</em>) = <em>a</em> × <em>b</em>[cite: 1]</div>
+<div class="calc-example">LCM(12, 18):
+12 = 2² × 3¹
+18 = 2¹ × 3²
+LCM = 2² × 3² = 4 × 9 = 36</div>
+</div>
+<!-- 第三部 -->
+<div class="part-heading" id="part3">
+  <div class="part-number">第三部</div>
+  <h2>量的度量 · 公制單位系統</h2>
+</div>
+
+<div class="chapter-heading" id="meas">
+  <span class="ch-number">第三部</span>
+  <h3>度量與公制單位系統</h3>
+</div>
+
+<div class="section" id="s106">
+<div class="section-head"><span class="sec-num">106.</span><span class="sec-title">導言</span></div>
+<p>到目前為止，我們只處理了整數[cite: 1]。整數的歷史起源首先是計數的需求，整數完全滿足了這種需求[cite: 1]。但是自古以來人類的活動就產生了整數無法滿足的需求[cite: 1]。有必要引入新數字[cite: 1]。使這成為必要的根本活動之一是<em>量的度量</em>[cite: 1]。因此，在繼續研究這些新數字之前，我們暫停一下來審視什麼是度量[cite: 1]。</p>
+</div>
+
+<div class="section" id="s107">
+<div class="section-head"><span class="sec-num">107.</span><span class="sec-title">度量量值</span></div>
+<p>要測量房間的長度，我們使用某個常見的長度單位——比如公尺——並計算它沿房間長度能容納多少次[cite: 1]。如果它恰好能容納 10 次，房間就是 10 公尺長[cite: 1]。同樣地，要測量重量，我們使用重量單位（例如公克）並計算它能容納多少次[cite: 1]。</p>
+<div class="rule-box"><strong>定義。</strong> 度量一個量意味著找出另一個同類型的量——作為<em>單位</em>——能放入其中的次數[cite: 1]。</div>
+<p>公尺是長度單位；公克是重量單位；以此類推[cite: 1]。對於每一種量，可以使用多個單位——較大的單位和較小的單位[cite: 1]。公克與公斤、公噸和毫克一起使用[cite: 1]。</p>
+</div>
+
+<!-- 單位轉換器演示 -->
+<div class="demo-box" id="demo-units">
+  <h4>公制單位轉換器</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:0.8rem;">
+    <input class="demo-input" id="unit-val" value="1" style="width:80px;">
+    <select id="unit-from" style="background:#2C2820; border:1px solid #4A4232; color:#C8BFA8; padding:0.3rem; border-radius:3px; font-family:'EB Garamond',serif;">
+      <option value="km">公里 (km)</option><option value="m" selected="selected">公尺 (m)</option>
+      <option value="cm">公分 (cm)</option><option value="mm">毫米 (mm)</option>
+    </select>
+    <span style="color:#C8BFA8;">→</span>
+    <select id="unit-to" style="background:#2C2820; border:1px solid #4A4232; color:#C8BFA8; padding:0.3rem; border-radius:3px; font-family:'EB Garamond',serif;">
+      <option value="km">公里 (km)</option><option value="m">公尺 (m)</option>
+      <option value="cm" selected="selected">公分 (cm)</option><option value="mm">毫米 (mm)</option>
+    </select>
+    <button class="demo-btn" onclick="runUnitConvert()">轉換</button>
+  </div>
+  <div id="unit-out" class="demo-output">1 公尺 = 100 公分</div>
+</div>
+
+<div class="section" id="s109">
+<div class="section-head"><span class="sec-num">109.</span><span class="sec-title">公制單位系統</span></div>
+<p>公制系統目前在蘇聯和許多其他國家使用[cite: 1]。其長度單位是<em>公尺</em>[cite: 1]。縮小單位由拉丁文前綴形成：<em>deci-</em>（分/十分之一）、<em>centi-</em>（厘/百分之一）、<em>milli-</em>（毫/千分之一）[cite: 1]。放大單位使用希臘文前綴：<em>deca-</em>（十/×10）、<em>hecto-</em>（百/×100）、<em>kilo-</em>（千/×1000）[cite: 1]。</p>
+<div class="calc-example">長度：
+  1 公里 = 1000 公尺        1 公引 = 100 公尺
+  1 公丈 = 10 公尺          1 公分（分米） = 0.1 公尺
+  1 公分 = 0.01 公尺        1 毫米 = 0.001 公尺
+
+重量（質量）：
+  1 公噸 = 1000 公斤        1 公斤 = 1000 公克
+  1 公克 = 1000 毫克
+
+面積：
+  1 平方公里 = 1000000 平方公尺    1 公頃 = 10000 平方公尺
+  1 公畝 = 100 平方公尺            1 平方公尺 = 10000 平方公分
+  1 平方公分 = 100 平方毫米
+
+體積/容積：
+  1 立方公尺 = 1000 立方公分    1 立方公分 = 1 公升
+  1 公升 = 1000 毫升 = 1000 立方公分</div>
+</div>
+
+<div class="section" id="s110">
+<div class="section-head"><span class="sec-num">110.</span><span class="sec-title">名數及其運算</span></div>
+<p>顯示某種量的度量結果的數字稱為<em>名數</em>[cite: 1]。在對它們進行操作時，在加或減之前總是先轉換為統一的單位[cite: 1]。</p>
+<div class="calc-example">5公尺 7公分 + 3公尺 6公分 = 8公尺 13公分 = 9公尺 3公分
+2公斤 400克 × 3 = 6公斤 1200克 = 7公斤 200克
+17公尺 25公分 ÷ 5 = 3公尺 45公分</div>
+</div>
+
+<!-- 第四部 -->
+<div class="part-heading" id="part4">
+  <div class="part-number">第四部</div>
+  <h2>真分數與假分數（一般分數）</h2>
+</div>
+
+<div class="chapter-heading" id="frac1">
+  <span class="ch-number">第一章</span>
+  <h3>基本概念</h3>
+</div>
+
+<!-- 分數視覺化演示 -->
+<div class="demo-box" id="demo-fractions">
+  <h4>分數視覺化工具</h4>
+  <p style="color:#A09580; font-size:0.85rem; margin-bottom:1rem;">輸入分數並查看繪製為圖條比例的樣貌。</p>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="frac-num" value="3" style="width:60px; text-align:center;">
+    <span style="color:#C8BFA8; font-size:1.3rem;">/</span>
+    <input class="demo-input" id="frac-den" value="5" style="width:60px; text-align:center;">
+    <button class="demo-btn" onclick="runFractionViz()">繪製</button>
+  </div>
+  <canvas id="frac-canvas" width="480" height="120" style="max-width:100%; background:#1C1A14; border-radius:4px;"></canvas>
+  <div id="frac-out" class="demo-output">3/5 = 0.6000</div>
+</div>
+
+<div class="section" id="s115">
+<div class="section-head"><span class="sec-num">115.</span><span class="sec-title">單位的份額（分量）</span></div>
+<p>一公分是一公尺的百分之一；一小時是一天的二十四分之一[cite: 1]。在這種情況下，我們將一公分稱為一公尺的「百分之一份額」，將一小時稱為一天的「二十四分之一份額」[cite: 1]。一分鐘是一小時的六十分之一[cite: 1]。在這種情況下，<em>分數</em>（fraction）一詞取代了「部分」（俄語單詞 <em>доля</em> 更精確，意思是測量出來的一份）[cite: 1]。</p>
+<p>二分之一通常稱為<em>一半</em>，三分之一稱為<em>三分之一</em>，四分之一稱為<em>四分之一</em>[cite: 1]。</p>
+</div>
+
+<div class="section" id="s116">
+<div class="section-head"><span class="sec-num">116.</span><span class="sec-title">分數數（Fractional number）</span></div>
+<p>一個單位的某份額，或幾個相同份額的集合，稱為<em>分數</em>[cite: 1]。例如：十分之一、五分之三、七分之十二[cite: 1]。整數與分數一起構成<em>帶分數</em>：「3 又八分之七」[cite: 1]。分數與帶分數統稱為<em>分數數</em>，以區別於整數[cite: 1]。</p>
+</div>
+
+<div class="section" id="s117">
+<div class="section-head"><span class="sec-num">117.</span><span class="sec-title">分數的書寫</span></div>
+<p>將分數的數量寫在橫線上方；在橫線下方寫上單位被等分為多少個部分[cite: 1]。</p>
+<div class="display-math">五分之三 = <span class="frac-inline"><span class="num">3</span><span class="den">5</span></span> &nbsp;&nbsp; 七分之十二 = <span class="frac-inline"><span class="num">12</span><span class="den">7</span></span></div>
+<p>線上方的數字是<em>分子</em>（採納了多少份）；下方是<em>分母</em>（單位被等分為多少份）[cite: 1]。兩者合稱為分數的<em>項</em>[cite: 1]。</p>
+<p>帶分數寫成整數，分數寫在其右側：3<span class="frac-inline"><span class="num">2</span><span class="den">7</span></span>[cite: 1]。</p>
+</div>
+
+<div class="section" id="s119">
+<div class="section-head"><span class="sec-num">119.</span><span class="sec-title">通過等分獲得分數</span></div>
+<p>將 5 公斤麵包等分為 8 個部分[cite: 1]。想像每個公斤被等分為 8 個部分：5 公斤包含 5×8=40 個這樣的解答部分[cite: 1]。5 公斤的八分之一是這些解答部分中的 40÷8=5 個[cite: 1]。所以 5 公斤的八分之一是 <span class="frac-inline"><span class="num">5</span><span class="den">8</span></span> 公斤[cite: 1]。</p>
+<div class="rule-box">將 <em>m</em> 除以 <em>n</em> 得到 <span class="frac-inline"><span class="num"><em>m</em></span><span class="den"><em>n</em></span></span>[cite: 1]。反之，<span class="frac-inline"><span class="num"><em>m</em></span><span class="den"><em>n</em></span></span> = <em>m</em> ÷ <em>n</em>[cite: 1]。分數是書寫除法的另一種方式[cite: 1]。</div>
+</div>
+
+<div class="section" id="s120">
+<div class="section-head"><span class="sec-num">120.</span><span class="sec-title">真分數與假分數</span></div>
+<p>當分子小於分母時，分數是<em>真分數</em>（<span class="frac-inline"><span class="num">3</span><span class="den">5</span></span>, <span class="frac-inline"><span class="num">7</span><span class="den">12</span></span>）：其數值小於 1[cite: 1]。<em>假分數</em>的分子 ≥ 分母（<span class="frac-inline"><span class="num">7</span><span class="den">5</span></span>, <span class="frac-inline"><span class="num">9</span><span class="den">3</span></span>）：其數值 ≥ 1[cite: 1]。</p>
+<p>每個假分數都可以通過分子除以分母轉換為整數或帶分數：<span class="frac-inline"><span class="num">17</span><span class="den">5</span></span> = 3<span class="frac-inline"><span class="num">2</span><span class="den">5</span></span>；反之，3<span class="frac-inline"><span class="num">2</span><span class="den">5</span></span> = <span class="frac-inline"><span class="num">17</span><span class="den">5</span></span>[cite: 1]。</p>
+</div>
+
+<div class="chapter-heading" id="frac2">
+  <span class="ch-number">第二章</span>
+  <h3>分數數值如何隨其項改變</h3>
+</div>
+
+<div class="section" id="s122">
+<div class="section-head"><span class="sec-num">122.</span><span class="sec-title">比較同分母分數</span></div>
+<p>當分母相同時，分子較大的分數較大：<span class="frac-inline"><span class="num">5</span><span class="den">9</span></span> &gt; <span class="frac-inline"><span class="num">3</span><span class="den">9</span></span>[cite: 1]。</p>
+</div>
+
+<div class="section" id="s123">
+<div class="section-head"><span class="sec-num">123.</span><span class="sec-title">分子與分母同乘以相同的數</span></div>
+<div class="rule-box">分子與分母同乘以相同的數，分數的數值不變[cite: 1]。<br>
+對於任何 n ≠ 0，<span class="frac-inline"><span class="num">3</span><span class="den">5</span></span> = <span class="frac-inline"><span class="num">6</span><span class="den">10</span></span> = <span class="frac-inline"><span class="num">12</span><span class="den">20</span></span> = <span class="frac-inline"><span class="num">3<em>n</em></span><span class="den">5<em>n</em></span></span>[cite: 1]</div>
+</div>
+
+<div class="section" id="s124">
+<div class="section-head"><span class="sec-num">124.</span><span class="sec-title">分子與分母同除以相同的數</span></div>
+<div class="rule-box">分子與分母同除以相同的數，分數的數值不變[cite: 1]。<br>
+<span class="frac-inline"><span class="num">12</span><span class="den">20</span></span> = <span class="frac-inline"><span class="num">6</span><span class="den">10</span></span> = <span class="frac-inline"><span class="num">3</span><span class="den">5</span></span>[cite: 1]</div>
+</div>
+
+<div class="chapter-heading" id="frac3">
+  <span class="ch-number">第三章</span>
+  <h3>約分</h3>
+</div>
+
+<div class="section" id="s126">
+<div class="section-head"><span class="sec-num">126.</span><span class="sec-title">約分</span></div>
+<p>約分意味著將分數的兩項同除以一個公因數[cite: 1]。當分子與分母的最大公因數為 1（它們<em>互質</em>）時，分數處於<em>最簡分數</em>形態[cite: 1]。要化簡為最簡分數，請將兩項同除以它們的最大公因數 (GCD)[cite: 1]。</p>
+<div class="calc-example"><span class="frac-inline"><span class="num">84</span><span class="den">126</span></span>:  GCD(84,126)=42 → <span class="frac-inline"><span class="num">84÷42</span><span class="den">126÷42</span></span> = <span class="frac-inline"><span class="num">2</span><span class="den">3</span></span></div>
+</div>
+
+<div class="chapter-heading" id="frac4">
+  <span class="ch-number">第四章</span>
+  <h3>將分數化為公分母（通分）</h3>
+</div>
+
+<div class="section" id="s130">
+<div class="section-head"><span class="sec-num">130.</span><span class="sec-title">將分數化為公分母</span></div>
+<p>要比較或相加具有不同分母的分數，請將它們轉換為具有相同的分母——<em>最小公分母</em> (LCD) = 原始分母的最小公倍數 (LCM)[cite: 1]。</p>
+<div class="calc-example">將 <span class="frac-inline"><span class="num">5</span><span class="den">6</span></span> 與 <span class="frac-inline"><span class="num">7</span><span class="den">8</span></span> 通分（化為公分母）：
+LCM(6,8) = 24
+<span class="frac-inline"><span class="num">5</span><span class="den">6</span></span> = <span class="frac-inline"><span class="num">20</span><span class="den">24</span></span>  （同乘以 4）
+<span class="frac-inline"><span class="num">7</span><span class="den">8</span></span> = <span class="frac-inline"><span class="num">21</span><span class="den">24</span></span>  （同乘以 3）
+現在可以比較：<span class="frac-inline"><span class="num">20</span><span class="den">24</span></span> &lt; <span class="frac-inline"><span class="num">21</span><span class="den">24</span></span>，所以 <span class="frac-inline"><span class="num">5</span><span class="den">6</span></span> &lt; <span class="frac-inline"><span class="num">7</span><span class="den">8</span></span></div>
+</div>
+
+<!-- PART FIVE -->
+<div class="part-heading" id="part5">
+  <div class="part-number">第五部分</div>
+  <h2>小數</h2>
+</div>
+
+<div class="chapter-heading" id="dec1">
+  <span class="ch-number">第一章</span>
+  <h3>小數的基本性質</h3>
+</div>
+
+<!-- DECIMAL DEMO -->
+<div class="demo-box" id="demo-decimal">
+  <h4>小數數位與位值 — 小數的讀法與寫法</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="dec-input" value="25.703" style="width:120px;">
+    <button class="demo-btn" onclick="runDecimalViz()">分析</button>
+  </div>
+  <div id="dec-out" class="demo-output">數字：25.703
+整數部分：25
+小數數位：
+  十分位：7 (= 7/10)
+  百分位：0 (= 0/100)
+  千分位：3 (= 3/1000)
+
+表示為分數：25.703</div>
+</div>
+
+<div class="section" id="s158">
+<div class="section-head"><span class="sec-num">158.</span><span class="sec-title">單位的十進分數</span></div>
+<p>將一個單位分成 10、100、1000……等份所獲得的分數，稱為<em>十進分數</em>：</p>
+<div class="display-math"><span class="frac-inline"><span class="num">1</span><span class="den">10</span></span>, &nbsp; <span class="frac-inline"><span class="num">1</span><span class="den">100</span></span>, &nbsp; <span class="frac-inline"><span class="num">1</span><span class="den">1000</span></span>, &nbsp; <span class="frac-inline"><span class="num">1</span><span class="den">10000</span></span>, &nbsp; …</div>
+<p>每一個數階的十進分數，都包含 10 個低一階的十進分數。</p>
+</div>
+
+<div class="section" id="s159">
+<div class="section-head"><span class="sec-num">159.</span><span class="sec-title">小數（十進分數）</span></div>
+<p>分母為 1 後面接零的分數稱為<em>十進分數（小數）</em>：<span class="frac-inline"><span class="num">3</span><span class="den">10</span></span>, <span class="frac-inline"><span class="num">27</span><span class="den">100</span></span>, <span class="frac-inline"><span class="num">27401</span><span class="den">1000</span></span>。分母為其他任何數的分數則稱為<em>普通分數</em>或<em>繁分數</em>。</p>
+</div>
+
+<div class="section" id="s160">
+<div class="section-head"><span class="sec-num">160.</span><span class="sec-title">小數記法</span></div>
+<p>在整數中，左邊的每一個數位所代表的單位，都是其右邊數位的 10 倍。我們將這個規則延伸到個位數（簡單單位）的右邊。我們使用<em>逗點</em>（在本課本中）或小數點將整數部分與小數部分隔開。</p>
+<div class="calc-example">63,48259 表示：
+  6 個十 + 3 個一 + 4 個十分之一 + 8 個百分之一
+  + 2 個千分之一 + 5 個萬分之一 + 9 個十萬分之一
+
+0,0203  = 2 個百分之一 + 3 個萬分之一
+25,703  = 25 個一 + 7 個十分之一 + 3 個千分之一</div>
+<p>逗點右邊的數字稱為<em>小數數位</em>。</p>
+</div>
+
+<div class="section" id="s161">
+<div class="section-head"><span class="sec-num">161.</span><span class="sec-title">不帶分母的小數寫法</span></div>
+<div class="rule-box">若要寫出不帶分母的小數：先寫出分子，然後根據分母中零的個數，將小數點向左移動相同的位數。必要時在前面補零。<br>
+<span class="frac-inline"><span class="num">27</span><span class="den">1000</span></span> = 0,027 &nbsp;·&nbsp; <span class="frac-inline"><span class="num">5</span><span class="den">100</span></span> = 0,05 &nbsp;·&nbsp; <span class="frac-inline"><span class="num">3049</span><span class="den">10000</span></span> = 0,3049</div>
+</div>
+
+<div class="section" id="s163">
+<div class="section-head"><span class="sec-num">163.</span><span class="sec-title">在末尾添加或去零</span></div>
+<div class="rule-box">在小數末尾添加或去掉零，不會改變其數值：<br>
+0,7 = 0,70 = 0,700 &nbsp;·&nbsp; 2,3500 = 2,35</div>
+<p>這是根據分數擴分與約分的規則得出：0,7 = <span class="frac-inline"><span class="num">7</span><span class="den">10</span></span> = <span class="frac-inline"><span class="num">70</span><span class="den">100</span></span> = 0,70。</p>
+</div>
+
+<div class="section" id="s164">
+<div class="section-head"><span class="sec-num">164.</span><span class="sec-title">比較小數大小</span></div>
+<p>首先比較整數部分，整數部分較大者數值較大。若整數部分相同，則比較十分位；若十分位相同，再比較百分位；以此類推。為方便比較，可在末尾補零以補齊相同的小數位數：</p>
+<div class="calc-example">比較 0,37 與 0,4：
+0,4 = 0,40 → 0,40 &gt; 0,37 → 0,4 &gt; 0,37</div>
+</div>
+
+<div class="chapter-heading" id="dec2">
+  <span class="ch-number">第二章</span>
+  <h3>小數的運算</h3>
+</div>
+
+<div class="section" id="s166">
+<div class="section-head"><span class="sec-num">166.</span><span class="sec-title">小數的加法與減法</span></div>
+<div class="rule-box">將小數點對齊（必要時補零），然後像整數一樣進行加法或減法。在計算結果中的對應位置直接點上小數點（逗點）。</div>
+<div class="calc-example">  12,035
++  0,700
++  3,042
+-------
+  15,777</div>
+</div>
+
+<div class="section" id="s167">
+<div class="section-head"><span class="sec-num">167.</span><span class="sec-title">小數乘以整數</span></div>
+<div class="rule-box">先忽略小數點進行乘法計算；然後在積中，從右邊起數出與被乘數相同的小數位數並點上小數點。</div>
+<div class="calc-example">7,23 × 8 = 57,84  （2 位小數）
+0,046 × 7 = 0,322  （3 位小數）</div>
+</div>
+
+<div class="section" id="s168">
+<div class="section-head"><span class="sec-num">168.</span><span class="sec-title">小數乘以 10 的次方的乘法</span></div>
+<div class="rule-box">根據 0 的個數將小數點向右移動相同的位數：乘以 10 → 向右移 1 位；乘以 100 → 向右移 2 位；以此類推。必要時補零。<br>
+3,87 × 10 = 38,7 &nbsp;·&nbsp; 3,87 × 100 = 387 &nbsp;·&nbsp; 3,87 × 1000 = 3870</div>
+</div>
+
+<div class="section" id="s169">
+<div class="section-head"><span class="sec-num">169.</span><span class="sec-title">兩小數相乘</span></div>
+<div class="rule-box">先按整數乘法進行計算，然後點上小數點，使積的小數位數等於兩個因數小數位數之和。</div>
+<div class="calc-example">5,47 × 3,2：
+  547 × 32 = 17504
+  5,47 有 2 位小數；3,2 有 1 位 → 共 3 位
+  結果：17,504</div>
+</div>
+
+<div class="section" id="s170">
+<div class="section-head"><span class="sec-num">170.</span><span class="sec-title">小數除以整數</span></div>
+<div class="rule-box">像整數一樣進行除法，當算到被除數的小數點時，在商中點上小數點。若整數部分不夠除，在商的整數位置寫 0，然後繼續計算小數部分。</div>
+<div class="calc-example">17,04 ÷ 8：
+  17 ÷ 8 = 2 餘 1
+  10 ÷ 8 = 1 餘 2 → 在此處點上小數點：2,1
+  24 ÷ 8 = 3
+  結果：2,13</div>
+</div>
+
+<div class="section" id="s172">
+<div class="section-head"><span class="sec-num">172.</span><span class="sec-title">小數除以 10 的次方</span></div>
+<div class="rule-box">將小數點向左移動：除以 10 向左移 1 位；除以 100 向左移 2 位；以此類推。<br>
+53,72 ÷ 10 = 5,372 &nbsp;·&nbsp; 53,72 ÷ 1000 = 0,05372</div>
+</div>
+
+<div class="section" id="s173">
+<div class="section-head"><span class="sec-num">173.</span><span class="sec-title">小數除以小數</span></div>
+<div class="rule-box">將被除數和除數同時乘以適當的 10 的次方，使除數變成整數，然後按照一般方法進行除法。<br>
+5,472 ÷ 0,24 → 兩者皆乘以 100 → 547,2 ÷ 24 = 22,8</div>
+</div>
+
+<!-- DECIMAL CALCULATOR DEMO -->
+<div class="demo-box" id="demo-deccalc">
+  <h4>小數算術演示器</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="dca" value="5.472" style="width:90px;">
+    <select id="dc-op" style="background:#2C2820; border:1px solid #4A4232; color:#C8BFA8; padding:0.3rem; border-radius:3px;">
+      <option selected="selected">+</option><option>−</option><option>×</option><option value="div">÷</option>
+    </select>
+    <input class="demo-input" id="dcb" value="0.24" style="width:90px;">
+    <button class="demo-btn" onclick="runDecCalc()">=</button>
+  </div>
+  <div id="dc-out" class="demo-output">5.472 + 0.24 = 5.712000000000001</div>
+</div>
+
+<div class="chapter-heading" id="dec3">
+  <span class="ch-number">第三章</span>
+  <h3>將普通分數化為小數</h3>
+</div>
+
+<div class="section" id="s177">
+<div class="section-head"><span class="sec-num">177.</span><span class="sec-title">轉換方法</span></div>
+<div class="rule-box">在分子後面補一個零（或數個零）並除以分母。繼續在每個餘數後面補零進行除法，直到餘數為零或出現循環規律為止。</div>
+<div class="calc-example"><span class="frac-inline"><span class="num">3</span><span class="den">8</span></span>: 30 ÷ 8 = 3 餘 6；60 ÷ 8 = 7 餘 4；40 ÷ 8 = 5 餘 0 → 0,375
+<span class="frac-inline"><span class="num">1</span><span class="den">3</span></span>: 10 ÷ 3 = 3 餘 1；10 ÷ 3 = 3 餘 1；… → 0,333… = 0,3̄</div>
+</div>
+
+<div class="section" id="s178">
+<div class="section-head"><span class="sec-num">178.</span><span class="sec-title">有限小數與循環小數</span></div>
+<p>一個最簡分數，若其分母的質因數只有 2 和 5，則可化為<em>有限小數</em>。其他任何分數都會化為<em>循環小數</em> —— 即含有重複數字區塊（<em>循環節</em>）的小數。</p>
+<div class="calc-example">有限小數：<span class="frac-inline"><span class="num">3</span><span class="den">8</span></span> = 0,375 (8 = 2³)
+循環小數：<span class="frac-inline"><span class="num">1</span><span class="den">3</span></span> = 0,(3)&nbsp;&nbsp;&nbsp;<span class="frac-inline"><span class="num">1</span><span class="den">7</span></span> = 0,(142857)&nbsp;&nbsp;&nbsp;<span class="frac-inline"><span class="num">5</span><span class="den">6</span></span> = 0,8(3)</div>
+</div>
+
+<div class="chapter-heading" id="dec4">
+  <span class="ch-number">第四章</span>
+  <h3>將循環小數化為普通分數</h3>
+</div>
+
+<div class="section" id="s181">
+<div class="section-head"><span class="sec-num">181.</span><span class="sec-title">純循環小數</span></div>
+<div class="rule-box">純循環小數等於一個分數，其分子為重複的數字區塊（循環節），分母由與循環節位數相同數量的 9 組成：<br>
+0,(3) = <span class="frac-inline"><span class="num">3</span><span class="den">9</span></span> = <span class="frac-inline"><span class="num">1</span><span class="den">3</span></span> &nbsp;&nbsp; 0,(142857) = <span class="frac-inline"><span class="num">142857</span><span class="den">999999</span></span> = <span class="frac-inline"><span class="num">1</span><span class="den">7</span></span></div>
+</div>
+
+<div class="section" id="s182">
+<div class="section-head"><span class="sec-num">182.</span><span class="sec-title">混循環小數</span></div>
+<div class="rule-box">將小數部分整體視為整數，減去不循環的部分作為分子；分母則由循環節位數個數的 9，後方接不循環部分位數個數的 0 組成：<br>
+0,8(3)：分子 = 83 − 8 = 75；分母 = 90；結果 = <span class="frac-inline"><span class="num">75</span><span class="den">90</span></span> = <span class="frac-inline"><span class="num">5</span><span class="den">6</span></span></div>
+</div>
+
+<!-- PART SIX -->
+<div class="part-heading" id="part6">
+  <div class="part-number">第六部分</div>
+  <h2>比例量</h2>
+</div>
+
+<div class="chapter-heading" id="prop1">
+  <span class="ch-number">第一章</span>
+  <h3>比例式</h3>
+</div>
+
+<!-- PROPORTION DEMO -->
+<div class="demo-box" id="demo-proportion">
+  <h4>比例式求解器 — 求解未知項</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <span style="color:#C8BFA8; font-size:1rem;">a/b = c/d &nbsp; 求解：</span>
+    <input class="demo-input" id="pr-a" placeholder="a" style="width:55px; text-align:center;">
+    <input class="demo-input" id="pr-b" placeholder="b" style="width:55px; text-align:center;">
+    <input class="demo-input" id="pr-c" placeholder="c" style="width:55px; text-align:center;">
+    <input class="demo-input" id="pr-d" placeholder="d" style="width:55px; text-align:center;">
+    <button class="demo-btn" onclick="runProportion()">求解</button>
+  </div>
+  <p style="color:#7A6E55; font-size:0.78rem; margin-bottom:0.5rem;">請恰好留空一個欄位（輸入 "?" 或保持空白）。</p>
+  <div id="pr-out" class="demo-output"></div>
+</div>
+
+<div class="section" id="s195">
+<div class="section-head"><span class="sec-num">195.</span><span class="sec-title">比例式</span></div>
+<p><em>比例式</em>是表示兩個比值相等的等式：</p>
+<div class="display-math"><span class="frac-inline"><span class="num">3</span><span class="den">4</span></span> = <span class="frac-inline"><span class="num">9</span><span class="den">12</span></span> &nbsp; 讀作「3 比 4 等於 9 比 12」</div>
+<p>每個比例式都有兩個<em>前項</em>和兩個<em>後項</em>。在比例式 a:b = c:d 中，外側的兩項 <em>a</em> 與 <em>d</em> 稱為<em>外項</em>；內側的兩項 <em>b</em> 與 <em>c</em> 稱為<em>內項</em>。</p>
+</div>
+
+<div class="section" id="s196">
+<div class="section-head"><span class="sec-num">196.</span><span class="sec-title">比例的基本性質</span></div>
+<div class="rule-box"><strong>外項之積等於內項之積：</strong><br>
+若 a/b = c/d，則 <em>a·d = b·c</em><br>
+反之，若 <em>a·d = b·c</em>，則 a/b = c/d（且 d/b = c/a 等）</div>
+<p>這可直接透過將等式兩邊同乘以 <em>bd</em> 交叉相乘推導得出。</p>
+</div>
+
+<div class="section" id="s197">
+<div class="section-head"><span class="sec-num">197.</span><span class="sec-title">衍生比例式</span></div>
+<p>從一個比例式中，可以推導出另外三個成立的比例式。若 <span class="frac-inline"><span class="num">a</span><span class="den">b</span></span> = <span class="frac-inline"><span class="num">c</span><span class="den">d</span></span>，則亦有：<span class="frac-inline"><span class="num">b</span><span class="den">a</span></span> = <span class="frac-inline"><span class="num">d</span><span class="den">c</span></span> &nbsp;以及&nbsp; <span class="frac-inline"><span class="num">a</span><span class="den">c</span></span> = <span class="frac-inline"><span class="num">b</span><span class="den">d</span></span> &nbsp;以及&nbsp; <span class="frac-inline"><span class="num">c</span><span class="den">a</span></span> = <span class="frac-inline"><span class="num">d</span><span class="den">b</span></span>。</p>
+</div>
+
+<div class="section" id="s199">
+<div class="section-head"><span class="sec-num">199.</span><span class="sec-title">求解第四項（第四比例項）</span></div>
+<p>若已知其中三項，可由 <em>a·d = b·c</em> 求出第四項：</p>
+<div class="calc-example">3/4 = x/12   →   x = 3·12/4 = 9
+x/5 = 12/15  →   x = 5·12/15 = 4</div>
+</div>
+
+<div class="chapter-heading" id="prop2">
+  <span class="ch-number">第二章</span>
+  <h3>量的比例依賴關係</h3>
+</div>
+
+<div class="section" id="s200">
+<div class="section-head"><span class="sec-num">200.</span><span class="sec-title">正比例</span></div>
+<p>當一個量乘以或除以某倍數，另一個量也隨之發生相同的倍數變化時，這兩個量成<em>正比例</em>。它們的比值保持不變。</p>
+<div class="calc-example">5 名工人一天賺 £60。
+8 名工人賺 £x。
+
+5/8 = 60/x  →  x = 60·8/5 = £96</div>
+</div>
+
+<div class="section" id="s201">
+<div class="section-head"><span class="sec-num">201.</span><span class="sec-title">反比例</span></div>
+<p>當一個量增加，導致另一個量成比例地減少，且兩者的乘積保持不變時，這兩個量成<em>反比例</em>。</p>
+<div class="calc-example">4 名工人花費 15 天完成一項工作。
+6 名工人花費 x 天。
+
+4·15 = 6·x  →  x = 60/6 = 10 天
+
+或使用比例式：4/6 = x/15  →  x = 10。</div>
+</div>
+
+<!-- PROPORTION CHART DEMO -->
+<div class="demo-box" id="demo-prop-chart">
+  <h4>正比例與反比例 — 視覺化圖表</h4>
+  <div style="display:flex; gap:0.5rem; margin-bottom:0.8rem; flex-wrap:wrap;">
+    <button class="demo-btn" onclick="drawPropChart('direct')" id="btn-direct">正比例</button>
+    <button class="demo-btn" onclick="drawPropChart('inverse')" id="btn-inverse">反比例</button>
+    <input class="demo-input" id="prop-k" value="24" style="width:60px;">
+    <span style="color:#A09580; font-size:0.82rem; margin-left:0.2rem; align-self:center;">常數 k</span>
+  </div>
+  <canvas id="prop-canvas" width="460" height="220" style="max-width:100%; background:#1C1A14;"></canvas>
+</div>
+
+<div class="chapter-heading" id="prop3">
+  <span class="ch-number">第三章</span>
+  <h3>按比例分配問題</h3>
+</div>
+
+<div class="section" id="s204">
+<div class="section-head"><span class="sec-num">204.</span><span class="sec-title">按比例分配</span></div>
+<p>若要將一個數按給定比例分配：先求出比的各項總和；將該數除以總和以求出每份單元值；然後將比的各項分別乘以每份單元值。</p>
+<div class="calc-example">將 240 按 3:5 的比例分配：
+  比的各項總和 = 3+5 = 8
+  每份單元值 = 240/8 = 30
+  各部分為：30×3 = 90 以及 30×5 = 150
+  驗算：90+150 = 240 ✓</div>
+</div>
+
+<div class="section" id="s205">
+<div class="section-head"><span class="sec-num">205.</span><span class="sec-title">百分比（百分數）</span></div>
+<p><em>百分比</em>是指一個量的百分之一（源自拉丁文 <em>per centum</em>）。符號為 %。1% = <span class="frac-inline"><span class="num">1</span><span class="den">100</span></span> = 0,01。</p>
+<div class="calc-example">求 360 的 15%： 360 × 0,15 = 54
+54 佔 360 的百分之幾？ 54/360 = 0,15 = 15%
+若某數的 15% 為 54，求該數整體： 54/0,15 = 360</div>
+</div>
+
+<hr class="section-sep">
+
+<div style="text-align:center; padding:2rem 0 1rem; font-family:'Playfair Display',serif;">
+  <div style="color:var(--gold); font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.5rem;">正文結束</div>
+  <p style="color:#7A6E60; font-size:0.9rem; font-style:italic;">A. 基謝廖夫（A. Kiselev）· <em>算術</em> · 莫斯科國家教育與教學出版社，1938年<br>
+  A. 雅. 辛欽（A. Ya. Khinchin）教授修訂 · 根據 1938 年版本翻譯</p>
+</div>
+
+</div><!-- #content -->
+</main>
+<script>
+// ═══════════════════ UTILITIES ═══════════════════
+function gcd(a,b){return b===0?a:gcd(b,a%b);}
+function lcm(a,b){return (a/gcd(a,b))*b;}
+
+function clearCanvas(id){
+  const c=document.getElementById(id);
+  const ctx=c.getContext('2d');
+  ctx.clearRect(0,0,c.width,c.height);
+  return {c,ctx};
+}
+
+// Scroll highlighting
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id;
+      document.querySelectorAll('.toc-link').forEach(l=>{
+        l.classList.toggle('active', l.getAttribute('href')==='#'+id);
+      });
+    }
+  });
+},{threshold:0.1, rootMargin:'-20% 0px -70% 0px'});
+
+document.querySelectorAll('[id]').forEach(el=>observer.observe(el));
+
+// ═══════════════════ PLACE VALUE ═══════════════════
+function updatePlaceValue(){
+  const raw = document.getElementById('pv-input').value.replace(/[^0-9]/g,'').slice(0,9);
+  if(!raw){return;}
+  const names=['Units','Tens','Hundreds','Thousands','Ten-Thous.','Hund.-Thous.','Millions','Ten-Mill.','Hund.-Mill.'];
+  const disp = document.getElementById('pv-display');
+  const tot = document.getElementById('pv-total');
+  disp.innerHTML='';
+  const n=raw.length;
+  for(let i=0;i<n;i++){
+    const pos=n-1-i;
+    const d=raw[i];
+    const cell=document.createElement('div');
+    cell.className='pv-cell';
+    cell.innerHTML=`<div class="pv-name">${names[pos]||'?'}</div><div class="pv-digit${d!=='0'?' active':''}">${d}</div>`;
+    disp.appendChild(cell);
+  }
+  // Expanded form
+  let parts=[];
+  for(let i=0;i<n;i++){
+    const pos=n-1-i; const d=parseInt(raw[i]);
+    if(d){
+      const v=d*Math.pow(10,pos);
+      parts.push(`${d}×10^${pos}=${v}`);
+    }
+  }
+  tot.textContent='Expanded: '+parts.join(' + ')+' = '+parseInt(raw);
+}
+updatePlaceValue();
+
+// ═══════════════════ ADDITION ═══════════════════
+let addState={a:0,b:0,steps:[],step:0};
+
+function buildAddSteps(a,b){
+  const sa=String(a).padStart(Math.max(String(a).length,String(b).length)+1,'0');
+  const sb=String(b).padStart(sa.length,'0');
+  const steps=[]; let carry=0; let result='';
+  for(let i=sa.length-1;i>=0;i--){
+    const da=parseInt(sa[i]), db=parseInt(sb[i]);
+    const sum=da+db+carry;
+    const digit=sum%10; carry=Math.floor(sum/10);
+    result=(digit)+result;
+    steps.push({col:i,da,db,carry_in:carry-(sum>=10?1:0),carry_out:carry,digit,partial_result:result, total_a:sa, total_b:sb});
+  }
+  return steps;
+}
+
+function drawAddCanvas(steps, curStep, a, b){
+  const {c,ctx}=clearCanvas('add-canvas');
+  const W=c.width, H=c.height;
+  ctx.fillStyle='#F8F3E8';
+  ctx.font='bold 20px Inconsolata, monospace';
+  const sa=String(a), sb=String(b);
+  const maxLen=Math.max(sa.length, sb.length, curStep>=0&&steps.length?steps[steps.length-1].partial_result.length:1);
+  const result=curStep>=0&&steps.length?steps[Math.min(curStep,steps.length-1)].partial_result:'';
+  const padA=sa.padStart(maxLen+1,' ');
+  const padB=sb.padStart(maxLen+1,' ');
+  const padR=result.padStart(maxLen+1,' ');
+  const charW=13, x0=W/2-(maxLen+1)*charW/2;
+  
+  ctx.fillStyle='#C8BFA8'; ctx.textAlign='left';
+  ctx.fillText(padA, x0, 45);
+  ctx.fillStyle='#A09580';
+  ctx.fillText('+', x0-charW, 80);
+  ctx.fillText(padB, x0, 80);
+  ctx.strokeStyle='#4A4232'; ctx.beginPath();
+  ctx.moveTo(x0-charW, 95); ctx.lineTo(x0+(maxLen+1)*charW, 95); ctx.stroke();
+  ctx.fillStyle='#7DDE92';
+  ctx.fillText(padR, x0, 120);
+  
+  if(curStep>=0&&curStep<steps.length){
+    const s=steps[curStep];
+    const ci=maxLen-s.col-1;
+    // Highlight active column
+    const hx=x0+(maxLen-ci)*charW;
+    ctx.fillStyle='rgba(184,134,11,0.25)';
+    ctx.fillRect(hx-2,10,charW+2,115);
+    if(s.carry_out>0){
+      ctx.fillStyle='#FFD580'; ctx.font='12px Inconsolata, monospace';
+      ctx.fillText(s.carry_out, hx, 22);
+    }
+  }
+}
+
+function runAddition(){
+  const a=parseInt(document.getElementById('add-a').value)||0;
+  const b=parseInt(document.getElementById('add-b').value)||0;
+  addState={a,b,steps:buildAddSteps(a,b),step:addState.steps.length};
+  drawAddCanvas(addState.steps, addState.steps.length-1, a, b);
+  document.getElementById('add-explain').textContent=`${a} + ${b} = ${a+b}`;
+}
+
+function stepAddition(){
+  const a=parseInt(document.getElementById('add-a').value)||0;
+  const b=parseInt(document.getElementById('add-b').value)||0;
+  if(addState.a!==a||addState.b!==b){
+    addState={a,b,steps:buildAddSteps(a,b),step:-1};
+  }
+  addState.step=(addState.step+1)%addState.steps.length;
+  const s=addState.steps[addState.step];
+  drawAddCanvas(addState.steps, addState.step, a, b);
+  const col=s.total_a.length-1-s.col+1;
+  document.getElementById('add-explain').textContent=
+    `Column ${col}: ${s.da}+${s.db}${s.carry_in>0?'+'+s.carry_in+' carry':''} = ${s.da+s.db+s.carry_in} → write ${s.digit}${s.carry_out>0?', carry '+s.carry_out:''}`;
+}
+
+// ═══════════════════ SUBTRACTION ═══════════════════
+let subState={a:0,b:0,steps:[],step:0};
+
+function buildSubSteps(a,b){
+  const sa=String(a); const sb=String(b).padStart(sa.length,'0');
+  const arr=sa.split('').map(Number);
+  const brr=sb.split('').map(Number);
+  const steps=[]; const borrowed=arr.slice();
+  for(let i=arr.length-1;i>=0;i--){
+    let top=borrowed[i], bot=brr[i], borrow=0;
+    if(top<bot){borrow=1; borrowed[i-1]--; top+=10;}
+    const digit=top-bot;
+    steps.push({col:i,top,bot,borrow,digit,arr:borrowed.slice()});
+    borrowed[i]=digit;
+  }
+  return {steps, result: parseInt(borrowed.join(''))};
+}
+
+function drawSubCanvas(s_arr, curStep, a, b){
+  const {c,ctx}=clearCanvas('sub-canvas');
+  const W=c.width;
+  const sa=String(a), sb=String(b).padStart(sa.length,' ');
+  const maxLen=sa.length;
+  const charW=14, x0=W/2-maxLen*charW/2;
+  ctx.font='bold 20px Inconsolata, monospace';
+  ctx.textAlign='left';
+  ctx.fillStyle='#C8BFA8'; ctx.fillText(sa, x0, 45);
+  ctx.fillStyle='#A09580'; ctx.fillText('−', x0-charW, 80);
+  ctx.fillText(sb, x0, 80);
+  ctx.strokeStyle='#4A4232'; ctx.beginPath();
+  ctx.moveTo(x0-charW,95); ctx.lineTo(x0+maxLen*charW,95); ctx.stroke();
+  const res=s_arr.result;
+  ctx.fillStyle='#7DDE92';
+  ctx.fillText(String(res).padStart(maxLen,' '), x0, 120);
+  if(curStep>=0&&curStep<s_arr.steps.length){
+    const s=s_arr.steps[curStep];
+    const hx=x0+(maxLen-1-s.col)*charW+x0*0;
+    // Just highlight position
+    ctx.fillStyle='rgba(184,134,11,0.25)';
+    ctx.fillRect(x0+(s.col)*charW-2, 10, charW, 110);
+  }
+}
+
+function runSubtraction(){
+  const a=parseInt(document.getElementById('sub-a').value)||0;
+  const b=parseInt(document.getElementById('sub-b').value)||0;
+  if(a<b){document.getElementById('sub-explain').textContent='Minuend must be ≥ subtrahend'; return;}
+  subState={a,b,...buildSubSteps(a,b),step:100};
+  drawSubCanvas(subState, subState.steps.length-1, a, b);
+  document.getElementById('sub-explain').textContent=`${a} − ${b} = ${a-b}`;
+}
+
+function stepSubtraction(){
+  const a=parseInt(document.getElementById('sub-a').value)||0;
+  const b=parseInt(document.getElementById('sub-b').value)||0;
+  if(a<b){return;}
+  if(subState.a!==a||subState.b!==b){
+    subState={a,b,...buildSubSteps(a,b),step:-1};
+  }
+  subState.step=(subState.step+1)%subState.steps.length;
+  const s=subState.steps[subState.step];
+  drawSubCanvas(subState, subState.step, a, b);
+  document.getElementById('sub-explain').textContent=
+    `Column ${subState.steps.length-subState.step}: ${s.top}−${s.bot}=${s.digit}${s.borrow?' (borrowed 1 from left)':''}`;
+}
+
+// ═══════════════════ MULTIPLICATION TABLE ═══════════════════
+(function buildTable(){
+  const wrap=document.getElementById('mult-table');
+  const t=document.createElement('table');
+  for(let r=0;r<=10;r++){
+    const tr=document.createElement('tr');
+    for(let c=0;c<=10;c++){
+      const td=document.createElement('td');
+      if(r===0&&c===0){td.textContent='×'; td.className='header';}
+      else if(r===0){td.textContent=c; td.className='header';}
+      else if(c===0){td.textContent=r; td.className='header';}
+      else{
+        td.textContent=r*c;
+        td.onclick=function(){
+          t.querySelectorAll('td').forEach(x=>x.classList.remove('highlight'));
+          t.querySelectorAll('tr').forEach((row,ri)=>{
+            row.querySelectorAll('td').forEach((cell,ci)=>{
+              if((ri===r||ci===c||ri===0||ci===0)&&ri>0&&ci>0&&(ri===r||ci===c)) cell.classList.add('highlight');
+            });
+          });
+          td.style.background='#B5171C'; td.style.color='white';
+        };
+      }
+      tr.appendChild(td);
+    }
+    t.appendChild(tr);
+  }
+  wrap.appendChild(t);
+})();
+
+// ═══════════════════ MULTIPLICATION ═══════════════════
+let mulState={a:0,b:0,partials:[],step:0};
+
+function runMultiplication(){
+  const a=parseInt(document.getElementById('mul-a').value)||0;
+  const b=parseInt(document.getElementById('mul-b').value)||0;
+  const sb=String(b);
+  const partials=[];
+  for(let i=sb.length-1;i>=0;i--){
+    const d=parseInt(sb[i]);
+    const shift=sb.length-1-i;
+    const p=a*d;
+    partials.push({d,shift,partial:p,shifted:p*Math.pow(10,shift)});
+  }
+  mulState={a,b,partials,step:100};
+  drawMulCanvas(partials, partials.length-1, a, b);
+  document.getElementById('mul-explain').textContent=`${a} × ${b} = ${a*b}`;
+}
+
+function stepMultiplication(){
+  const a=parseInt(document.getElementById('mul-a').value)||0;
+  const b=parseInt(document.getElementById('mul-b').value)||0;
+  if(mulState.a!==a||mulState.b!==b){
+    runMultiplication();
+    mulState.step=-1;
+  }
+  mulState.step=(mulState.step+1)%mulState.partials.length;
+  drawMulCanvas(mulState.partials, mulState.step, a, b);
+  const s=mulState.partials[mulState.step];
+  document.getElementById('mul-explain').textContent=
+    `${a} × ${s.d} = ${s.partial} (shifted ${s.shift} places = ${s.shifted})`;
+}
+
+function drawMulCanvas(partials, curStep, a, b){
+  const {c,ctx}=clearCanvas('mul-canvas');
+  const W=c.width, x0=40;
+  ctx.font='16px Inconsolata, monospace';
+  ctx.textAlign='right';
+  ctx.fillStyle='#C8BFA8';
+  ctx.fillText(a, W-40, 30);
+  ctx.fillStyle='#A09580';
+  ctx.fillText('× '+b, W-40, 52);
+  ctx.strokeStyle='#4A4232'; ctx.beginPath(); ctx.moveTo(x0,62); ctx.lineTo(W-40,62); ctx.stroke();
+  let y=82;
+  partials.forEach((p,i)=>{
+    ctx.fillStyle=i===curStep?'#FFD580':'#A09580';
+    ctx.fillText(String(p.partial)+'0'.repeat(p.shift), W-40, y);
+    y+=22;
+  });
+  ctx.strokeStyle='#4A4232'; ctx.beginPath(); ctx.moveTo(x0,y); ctx.lineTo(W-40,y); ctx.stroke();
+  y+=20;
+  ctx.fillStyle='#7DDE92';
+  ctx.fillText(String(a*b), W-40, y);
+}
+
+// ═══════════════════ LONG DIVISION ═══════════════════
+let divState={a:0,b:0,steps:[],step:0};
+
+function buildDivSteps(a,b){
+  const steps=[]; let current=0; const quotient=[];
+  const ds=String(a);
+  for(let i=0;i<ds.length;i++){
+    current=current*10+parseInt(ds[i]);
+    const q=Math.floor(current/b);
+    const rem=current%b;
+    quotient.push(q);
+    steps.push({bring:ds[i],current,q,rem,quotient:quotient.slice(),index:i});
+    current=rem;
+  }
+  return {steps,quotient:parseInt(quotient.join('')),remainder:current};
+}
+
+function drawDivCanvas(result, curStep, a, b){
+  const {c,ctx}=clearCanvas('div-canvas');
+  const W=c.width;
+  ctx.font='16px Inconsolata, monospace';
+  ctx.textAlign='left';
+  ctx.fillStyle='#C8BFA8';
+  ctx.fillText(`${a}  ÷  ${b}`, 20, 30);
+  // Draw division bracket
+  ctx.strokeStyle='#4A4232'; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(160,18); ctx.lineTo(160,38); ctx.lineTo(240,38); ctx.stroke();
+  ctx.fillStyle='#7DDE92';
+  const q=result.quotient;
+  ctx.fillText(`${q}`, 165, 30);
+  if(result.remainder>0) ctx.fillText(` remainder ${result.remainder}`, 165+String(q).length*10, 30);
+  
+  if(curStep>=0&&curStep<result.steps.length){
+    let y=60;
+    for(let i=0;i<=curStep;i++){
+      const s=result.steps[i];
+      ctx.fillStyle=i===curStep?'#FFD580':'#666050';
+      ctx.fillText(`Bring down ${s.bring}: ${s.current} ÷ ${b} = ${s.q}, remainder ${s.rem}`, 20, y);
+      y+=24;
+    }
+  }
+}
+
+function runDivision(){
+  const a=parseInt(document.getElementById('div-a').value)||0;
+  const b=parseInt(document.getElementById('div-b').value)||1;
+  divState={a,b,...buildDivSteps(a,b),step:100};
+  drawDivCanvas(divState, divState.steps.length-1, a, b);
+  document.getElementById('div-explain').textContent=`${a} ÷ ${b} = ${divState.quotient} remainder ${divState.remainder}`;
+}
+
+function stepDivision(){
+  const a=parseInt(document.getElementById('div-a').value)||0;
+  const b=parseInt(document.getElementById('div-b').value)||1;
+  if(divState.a!==a||divState.b!==b){divState={a,b,...buildDivSteps(a,b),step:-1};}
+  divState.step=(divState.step+1)%divState.steps.length;
+  const s=divState.steps[divState.step];
+  drawDivCanvas(divState, divState.step, a, b);
+  document.getElementById('div-explain').textContent=
+    `Step ${divState.step+1}: bring down ${s.bring}, working number=${s.current}, goes ${s.q} time(s), remainder=${s.rem}`;
+}
+
+// ═══════════════════ DIVISIBILITY TESTS ═══════════════════
+function runDivisibilityTest(){
+  const n=parseInt(document.getElementById('div-test-n').value)||0;
+  const results=[];
+  const ds=n.toString().split('').map(Number);
+  const digitSum=ds.reduce((a,b)=>a+b,0);
+  const last=n%10, last2=n%100, last3=n%1000;
+  
+  const tests=[
+    [2, n%2===0, `Last digit ${last} is ${n%2===0?'even':'odd'}`],
+    [3, n%3===0, `Digit sum ${digitSum} ${n%3===0?'is':'is not'} divisible by 3`],
+    [4, n%4===0, `Last two digits ${last2} ${n%4===0?'is':'is not'} divisible by 4`],
+    [5, n%5===0, `Last digit is ${last}`],
+    [6, n%6===0, `${n%2===0?'Even':'Odd'} and digit sum ${digitSum} ${n%3===0?'divisible':'not divisible'} by 3`],
+    [8, n%8===0, `Last three digits ${last3} ${n%8===0?'is':'is not'} divisible by 8`],
+    [9, n%9===0, `Digit sum ${digitSum} ${n%9===0?'is':'is not'} divisible by 9`],
+    [10, n%10===0, `Last digit is ${last}`],
+    [12, n%12===0, `Divisible by 4 and 3`],
+    [25, n%25===0, `Last two digits ${last2}`],
+  ];
+  
+  let out=`Testing ${n}:\n`;
+  tests.forEach(([d,ok,why])=>{
+    out+=`÷${d}: ${ok?'✓':'✗'}  (${why})\n`;
+  });
+  document.getElementById('div-test-out').textContent=out;
+}
+
+// ═══════════════════ PRIME FACTORISATION ═══════════════════
+function runPrimeFactors(){
+  let n=parseInt(document.getElementById('prime-n').value)||360;
+  if(n<2){document.getElementById('prime-out').textContent='Enter a number ≥ 2'; return;}
+  const orig=n;
+  const steps=[];
+  const factors=[];
+  for(let p=2;p*p<=n;p++){
+    while(n%p===0){
+      steps.push(`${n} ÷ ${p} = ${n/p}`);
+      factors.push(p);
+      n/=p;
+    }
+  }
+  if(n>1){factors.push(n); steps.push(`${n} is prime`);}
+  // Group into powers
+  const freq={};
+  factors.forEach(f=>freq[f]=(freq[f]||0)+1);
+  const expr=Object.entries(freq).map(([p,e])=>e>1?`${p}^${e}`:p).join(' × ');
+  const out=steps.join('\n')+`\n\n${orig} = ${factors.join(' × ')} = ${expr}`;
+  document.getElementById('prime-out').textContent=out;
+}
+
+// ═══════════════════ GCD ═══════════════════
+function runGCD(){
+  let a=parseInt(document.getElementById('gcd-a').value)||168;
+  let b=parseInt(document.getElementById('gcd-b').value)||252;
+  const steps=[`Finding GCD(${a}, ${b}) using Euclidean algorithm:`];
+  let x=a,y=b;
+  while(y){
+    const q=Math.floor(x/y), r=x%y;
+    steps.push(`${x} = ${y} × ${q} + ${r}`);
+    x=y; y=r;
+  }
+  steps.push(`\nGCD(${a},${b}) = ${x}`);
+  const l=lcm(a,b);
+  steps.push(`LCM(${a},${b}) = ${a}×${b}/GCD = ${a*b}/${x} = ${l}`);
+  steps.push(`Check: LCM × GCD = ${l} × ${x} = ${l*x} = ${a} × ${b} ✓`);
+  document.getElementById('gcd-out').textContent=steps.join('\n');
+}
+
+// ═══════════════════ UNIT CONVERTER ═══════════════════
+const unitFactors={km:1000,m:1,cm:0.01,mm:0.001};
+function runUnitConvert(){
+  const v=parseFloat(document.getElementById('unit-val').value)||1;
+  const fr=document.getElementById('unit-from').value;
+  const to=document.getElementById('unit-to').value;
+  const metres=v*unitFactors[fr];
+  const result=metres/unitFactors[to];
+  document.getElementById('unit-out').textContent=`${v} ${fr} = ${result} ${to}`;
+}
+
+// ═══════════════════ FRACTION VISUALISER ═══════════════════
+function runFractionViz(){
+  const num=parseInt(document.getElementById('frac-num').value)||1;
+  const den=parseInt(document.getElementById('frac-den').value)||1;
+  if(den<=0){return;}
+  const {c,ctx}=clearCanvas('frac-canvas');
+  const W=c.width, H=c.height;
+  const segW=(W-40)/Math.max(den,1);
+  
+  // Draw segments
+  for(let i=0;i<Math.max(den,1);i++){
+    const x=20+i*segW;
+    ctx.fillStyle=i<num?'#B8860B':'#2C2820';
+    ctx.fillRect(x+1,30,segW-2,50);
+    ctx.strokeStyle='#1C1A14';
+    ctx.strokeRect(x+1,30,segW-2,50);
+    ctx.fillStyle='#C8BFA8'; ctx.font='12px Inconsolata'; ctx.textAlign='center';
+    if(segW>18) ctx.fillText(i+1, x+segW/2, 100);
+  }
+  
+  ctx.fillStyle='#FFD580'; ctx.font='bold 16px Inconsolata'; ctx.textAlign='left';
+  const g=gcd(Math.abs(num),den);
+  const rn=num/g, rd=den/g;
+  const val=(num/den).toFixed(4);
+  let txt=`${num}/${den} = ${val}`;
+  if(g>1) txt+=`  (reduced: ${rn}/${rd})`;
+  document.getElementById('frac-out').textContent=txt;
+}
+runFractionViz();
+
+// ═══════════════════ FRACTION CALCULATOR ═══════════════════
+function runFracCalc(){
+  const n1=parseInt(document.getElementById('fc-n1').value)||1;
+  const d1=parseInt(document.getElementById('fc-d1').value)||1;
+  const n2=parseInt(document.getElementById('fc-n2').value)||1;
+  const d2=parseInt(document.getElementById('fc-d2').value)||1;
+  const op=document.getElementById('fc-op').value;
+  let rn,rd;
+  if(op==='+'){rn=n1*d2+n2*d1; rd=d1*d2;}
+  else if(op==='−'){rn=n1*d2-n2*d1; rd=d1*d2;}
+  else if(op==='×'){rn=n1*n2; rd=d1*d2;}
+  else{rn=n1*d2; rd=d1*n2;} // ÷
+  if(rd===0){document.getElementById('fc-out').textContent='Division by zero'; return;}
+  const g=gcd(Math.abs(rn),Math.abs(rd));
+  const srn=rn/g, srd=rd/g;
+  let out=`${n1}/${d1} ${op} ${n2}/${d2} = ${rn}/${rd}`;
+  if(g>1) out+=` = ${srn}/${srd} (reduced)`;
+  out+=`  ≈ ${(srn/srd).toFixed(4)}`;
+  if(srd===1) out=`${n1}/${d1} ${op} ${n2}/${d2} = ${srn}`;
+  document.getElementById('fc-out').textContent=out;
+}
+
+// ═══════════════════ DECIMAL VISUALISER ═══════════════════
+function runDecimalViz(){
+  const raw=document.getElementById('dec-input').value.trim();
+  const parts=raw.split(/[.,]/);
+  const whole=parts[0]||'0'; const dec=parts[1]||'';
+  const places=['Tenths','Hundredths','Thousandths','Ten-Thous.','Hund.-Thous.'];
+  let out=`Number: ${raw}\nWhole part: ${whole}\nDecimal places:\n`;
+  for(let i=0;i<dec.length;i++){
+    out+=`  ${places[i]||'Pos '+(i+1)}: ${dec[i]} (= ${dec[i]}/${Math.pow(10,i+1)})\n`;
+  }
+  out+=`\nAs fraction: ${raw.replace(',','.')*1}`;
+  document.getElementById('dec-out').textContent=out;
+}
+
+// ═══════════════════ DECIMAL CALCULATOR ═══════════════════
+function runDecCalc(){
+  const a=parseFloat(document.getElementById('dca').value)||0;
+  const b=parseFloat(document.getElementById('dcb').value)||1;
+  const op=document.getElementById('dc-op').value;
+  let result;
+  if(op==='+') result=a+b;
+  else if(op==='−') result=a-b;
+  else if(op==='×') result=a*b;
+  else{if(b===0){document.getElementById('dc-out').textContent='Cannot divide by zero'; return;} result=a/b;}
+  // Count decimal places
+  const pa=(a.toString().split('.')[1]||'').length;
+  const pb=(b.toString().split('.')[1]||'').length;
+  let out=`${a} ${op} ${b} = ${result}`;
+  if(op==='×') out+=`\n(${pa}+${pb}=${pa+pb} decimal places)`;
+  if(op==='÷') out+=`\n(multiply both by 10^${pb} to clear divisor)`;
+  document.getElementById('dc-out').textContent=out;
+}
+
+// ═══════════════════ PROPORTION SOLVER ═══════════════════
+function runProportion(){
+  const vals=['pr-a','pr-b','pr-c','pr-d'].map(id=>{
+    const v=document.getElementById(id).value.trim();
+    return (v===''||v==='?')?null:parseFloat(v);
+  });
+  const nulls=vals.filter(v=>v===null);
+  if(nulls.length!==1){document.getElementById('pr-out').textContent='Leave exactly one term blank.'; return;}
+  const [a,b,c,d]=vals;
+  let result, msg;
+  // a*d = b*c
+  if(a===null){result=b*c/d; msg=`a = b×c/d = ${b}×${c}/${d} = ${result}`;}
+  else if(b===null){result=a*d/c; msg=`b = a×d/c = ${a}×${d}/${c} = ${result}`;}
+  else if(c===null){result=a*d/b; msg=`c = a×d/b = ${a}×${d}/${b} = ${result}`;}
+  else{result=b*c/a; msg=`d = b×c/a = ${b}×${c}/${a} = ${result}`;}
+  document.getElementById('pr-out').textContent=msg+`\nProof: ${vals.map((v,i)=>v===null?result:v).slice(0,2).join('/')} = ${vals.map((v,i)=>v===null?result:v).slice(2).join('/')} = ${(vals[0]===null?result:vals[0])/(vals[1]===null?result:vals[1])}`;
+}
+
+// ═══════════════════ PROPORTION CHART ═══════════════════
+let propMode='direct';
+function drawPropChart(mode){
+  propMode=mode;
+  const {c,ctx}=clearCanvas('prop-canvas');
+  const W=c.width, H=c.height;
+  const k=parseFloat(document.getElementById('prop-k').value)||24;
+  const pad=40;
+  
+  ctx.strokeStyle='#3A3224'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(pad,pad); ctx.lineTo(pad,H-pad); ctx.lineTo(W-pad,H-pad); ctx.stroke();
+  
+  // Labels
+  ctx.fillStyle='#7A6E55'; ctx.font='11px EB Garamond'; ctx.textAlign='center';
+  ctx.fillText('x', W/2, H-8);
+  ctx.textAlign='right';
+  ctx.fillText('y', pad-5, H/2);
+  
+  const N=40; const xs=[];
+  for(let i=1;i<=N;i++) xs.push(i);
+  
+  const ys=xs.map(x=>mode==='direct'?k*x:k/x);
+  const maxY=Math.max(...ys.filter(isFinite));
+  
+  function toScreen(x,y){
+    return [
+      pad+(x/N)*(W-2*pad),
+      H-pad-(y/maxY)*(H-2*pad)
+    ];
+  }
+  
+  ctx.strokeStyle=mode==='direct'?'#B8860B':'#7DDE92';
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  xs.forEach((x,i)=>{
+    const [px,py]=toScreen(x,ys[i]);
+    if(!isFinite(py)) return;
+    i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+  });
+  ctx.stroke();
+  
+  // Label
+  ctx.fillStyle=mode==='direct'?'#B8860B':'#7DDE92';
+  ctx.font='bold 13px EB Garamond'; ctx.textAlign='left';
+  ctx.fillText(mode==='direct'?`y = ${k}x  (direct proportion)`:`y = ${k}/x  (inverse proportion)`, pad+5, pad+15);
+}
+drawPropChart('direct');
+
+// ═══════════════════ INIT ALL DEMOS ═══════════════════
+(function(){
+  runAddition(); runSubtraction(); runDivision(); runMultiplication();
+  runDecimalViz(); runFractionViz();
+  runDivisibilityTest(); runPrimeFactors(); runGCD();
+  runUnitConvert(); runFracCalc(); runDecCalc();
+})();
+</script>
+</body>
+</html>

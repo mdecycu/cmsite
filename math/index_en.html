@@ -1,0 +1,2615 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiselev's Arithmetic — Complete English Translation (1938)</title>
+<link href="en.css" rel="stylesheet">
+<style>
+:root {
+  --cream: #F8F3E8;
+  --paper: #FDFAF4;
+  --ink: #1C1A14;
+  --ink-light: #3D3829;
+  --red: #B5171C;
+  --gold: #B8860B;
+  --gold-light: #D4A017;
+  --border: #D8CEB8;
+  --sidebar-w: 280px;
+  --note-bg: #F0EAD6;
+  --demo-bg: #1C1A14;
+  --demo-text: #F8F3E8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "EB Garamond", Georgia, serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.72;
+}
+
+/* ── Sidebar ── */
+#sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--ink);
+  color: #C8BFA8;
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+#sidebar-header {
+  padding: 1.4rem 1.2rem 1rem;
+  border-bottom: 1px solid #3D3829;
+  flex-shrink: 0;
+}
+
+#sidebar-header .author {
+  font-family: "Playfair Display", serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+#sidebar-header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #F8F3E8;
+  line-height: 1.3;
+}
+
+#sidebar-header .year {
+  font-size: 0.75rem;
+  color: #6B6050;
+  margin-top: 0.3rem;
+}
+
+#toc {
+  padding: 0.8rem 0;
+  flex: 1;
+}
+
+.toc-part {
+  padding: 0.5rem 1.2rem 0.2rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  margin-top: 0.6rem;
+}
+
+.toc-link {
+  display: block;
+  padding: 0.22rem 1.2rem 0.22rem 1.6rem;
+  font-size: 0.82rem;
+  color: #A09580;
+  text-decoration: none;
+  transition: all 0.15s;
+  line-height: 1.35;
+  font-family: "EB Garamond", serif;
+}
+
+.toc-link:hover, .toc-link.active {
+  color: #F8F3E8;
+  background: rgba(255,255,255,0.05);
+}
+
+/* ── Main content ── */
+#main {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+  background: var(--paper);
+}
+
+#content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3rem 3rem 6rem;
+}
+
+/* ── Title page ── */
+.title-page {
+  text-align: center;
+  padding: 4rem 0 3rem;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 4rem;
+}
+
+.title-page .badge {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  margin-bottom: 1.5rem;
+  font-family: "EB Garamond", serif;
+}
+
+.title-page h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.title-page .subtitle {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink-light);
+  margin-bottom: 2rem;
+}
+
+.title-page .author-line {
+  font-size: 0.95rem;
+  color: var(--ink-light);
+  margin-bottom: 0.3rem;
+}
+
+.title-page .publisher {
+  font-size: 0.8rem;
+  color: #7A6E60;
+  margin-top: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+/* ── Part headings ── */
+.part-heading {
+  text-align: center;
+  padding: 3rem 0 2rem;
+  margin: 3rem 0 2.5rem;
+  border-top: 2px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.part-heading .part-number {
+  font-family: "Playfair Display", serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+
+.part-heading h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ── Chapter headings ── */
+.chapter-heading {
+  margin: 2.5rem 0 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.chapter-heading .ch-number {
+  font-family: "Playfair Display", serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.chapter-heading h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ── Section paragraphs ── */
+.section {
+  margin-bottom: 1.6rem;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.4rem;
+}
+
+.sec-num {
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--red);
+  min-width: 2rem;
+  flex-shrink: 0;
+}
+
+.sec-title {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.section p {
+  margin-bottom: 0.6rem;
+}
+
+.section p:first-of-type::first-letter {
+  font-size: 1.4em;
+  line-height: 1;
+  float: left;
+  margin-right: 0.06em;
+  margin-top: 0.07em;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: var(--red);
+}
+
+/* ── Rules / Theorems ── */
+.rule-box {
+  background: var(--note-bg);
+  border-left: 4px solid var(--gold);
+  padding: 0.9rem 1.1rem;
+  margin: 1rem 0;
+  font-style: italic;
+}
+
+.rule-box strong {
+  font-style: normal;
+  color: var(--ink);
+  font-family: "Playfair Display", serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Remarks / Notes ── */
+.remark {
+  font-size: 0.9em;
+  color: var(--ink-light);
+  padding-left: 1.2rem;
+  border-left: 2px solid var(--border);
+  margin: 0.7rem 0;
+}
+
+/* ── Math expressions ── */
+.math {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+}
+
+.display-math {
+  text-align: center;
+  padding: 0.6rem 0;
+  font-size: 1.05em;
+  overflow-x: auto;
+}
+
+.calc-example {
+  font-family: "Inconsolata", monospace;
+  background: #F2EDE0;
+  padding: 0.7rem 1rem;
+  margin: 0.7rem 0;
+  border-radius: 3px;
+  font-size: 0.92em;
+  white-space: pre;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+}
+
+/* ── Visual Demo boxes ── */
+.demo-box {
+  background: var(--ink);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.8rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-box::before {
+  content: "VISUAL DEMONSTRATION";
+  position: absolute;
+  top: 0.7rem;
+  right: 1rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  font-family: "EB Garamond", serif;
+  text-transform: uppercase;
+}
+
+.demo-box h4 {
+  color: var(--gold-light);
+  font-family: "Playfair Display", serif;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.demo-box canvas, .demo-box svg {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Controls in demo */
+.demo-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.demo-btn {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: "EB Garamond", serif;
+  font-size: 0.85rem;
+  transition: all 0.15s;
+}
+
+.demo-btn:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.demo-input {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid #4A4232;
+  color: #F8F3E8;
+  padding: 0.3rem 0.6rem;
+  border-radius: 3px;
+  font-family: "Inconsolata", monospace;
+  font-size: 0.9rem;
+  width: 80px;
+}
+
+/* Demo output area */
+.demo-output {
+  font-family: "Inconsolata", monospace;
+  font-size: 0.88rem;
+  color: #D4C89A;
+  margin-top: 0.8rem;
+  min-height: 2rem;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* ── Multiplication table ── */
+#mult-table table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+#mult-table td {
+  width: 28px;
+  height: 28px;
+  text-align: center;
+  font-family: "Inconsolata", monospace;
+  font-size: 0.8rem;
+  border: 1px solid #3A3224;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: #C8BFA8;
+}
+
+#mult-table td:hover { background: #B8860B; color: #1C1A14; }
+#mult-table td.header { background: #2C2820; color: var(--gold); font-weight: 600; cursor: default; }
+#mult-table td.highlight { background: var(--gold); color: var(--ink); font-weight: 700; }
+
+/* ── Fraction demo ── */
+.frac-bar-wrap { margin: 0.5rem 0; }
+.frac-label { color: #C8BFA8; font-family: "Inconsolata", monospace; font-size: 0.78rem; margin-bottom: 0.2rem; }
+.frac-bar { height: 24px; background: #2C2820; border-radius: 3px; overflow: hidden; position: relative; display: flex; }
+.frac-segment { border-right: 1px solid var(--ink); transition: all 0.3s; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: rgba(0,0,0,0.6); }
+
+/* ── Place value demo ── */
+.pv-display {
+  display: flex;
+  gap: 0.2rem;
+  justify-content: center;
+  margin: 0.5rem 0;
+  flex-wrap: wrap;
+}
+
+.pv-cell {
+  text-align: center;
+  min-width: 48px;
+}
+
+.pv-name {
+  font-size: 0.6rem;
+  color: #7A6E55;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.2rem;
+}
+
+.pv-digit {
+  font-family: "Inconsolata", monospace;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #F8F3E8;
+  background: #2C2820;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  border-bottom: 3px solid var(--gold);
+  min-width: 44px;
+  display: inline-block;
+  text-align: center;
+}
+
+.pv-digit.active { border-bottom-color: var(--red); color: #FFD580; }
+
+/* Addition demo styles */
+.add-col {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.add-grid {
+  font-family: "Inconsolata", monospace;
+  font-size: 1.1rem;
+  color: #C8BFA8;
+}
+
+.add-grid .carry { color: #FFD580; font-size: 0.75rem; }
+.add-grid .result { color: #7DDE92; border-top: 1px solid #4A4232; padding-top: 0.2rem; margin-top: 0.2rem; }
+.add-grid .active-digit { color: #FFD580; font-weight: 700; }
+
+/* ── Long division demo ── */
+.div-layout {
+  font-family: "Inconsolata", monospace;
+  font-size: 1rem;
+  color: #C8BFA8;
+  line-height: 1.6;
+}
+
+.div-step { 
+  transition: all 0.3s;
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.div-step.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.div-step .active { color: #FFD580; }
+.div-step .quotient { color: #7DDE92; }
+.div-step .subtracted { color: #F08080; }
+
+/* ── Scrollbar ── */
+#sidebar::-webkit-scrollbar { width: 4px; }
+#sidebar::-webkit-scrollbar-track { background: transparent; }
+#sidebar::-webkit-scrollbar-thumb { background: #3A3224; border-radius: 2px; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  :root { --sidebar-w: 240px; }
+  #content { padding: 2rem 1.5rem 4rem; }
+  .title-page h1 { font-size: 2.2rem; }
+}
+
+@media (max-width: 680px) {
+  #sidebar { display: none; }
+  #main { margin-left: 0; }
+  #content { padding: 1.5rem 1rem 4rem; }
+}
+
+/* Section separator */
+hr.section-sep {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+/* Footnotes */
+.footnote {
+  font-size: 0.82em;
+  color: #5A5042;
+  padding-left: 1rem;
+  margin-top: 0.3rem;
+  border-left: 2px solid var(--border);
+}
+
+/* In-line fraction */
+.frac-inline {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.85em;
+  vertical-align: middle;
+  margin: 0 0.15em;
+  line-height: 1.1;
+}
+.frac-inline .num { border-bottom: 1px solid currentColor; padding: 0 0.1em; }
+.frac-inline .den { padding: 0 0.1em; }
+
+/* Column addition layout */
+.col-op {
+  font-family: "Inconsolata", monospace;
+  font-size: 1rem;
+  display: inline-block;
+  text-align: right;
+  padding: 0.5rem 1rem;
+  background: #F2EDE0;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  margin: 0.5rem 0;
+  white-space: pre;
+}
+
+</style>
+<!-- Cloudflare Web Analytics -->
+<script type="module" src="index_files/beacon.min_uk4o_O6FC.js" data-cf-beacon="{&quot;token&quot;: &quot;1c045cecc3f64da1a64ad3f146a11977&quot;}"></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+
+<!-- ═══════════════════ SIDEBAR ═══════════════════ -->
+<nav id="sidebar">
+  <div id="sidebar-header">
+    <div class="author">A. Kiselev · A. Khinchin</div>
+    <h1>Arithmetic</h1>
+    <div class="year">Moscow, 1938 &nbsp;·&nbsp; Complete Translation</div>
+  </div>
+  <div id="toc">
+    <div class="toc-part">Preface</div>
+    <a href="#preface" class="toc-link">Khinchin's Preface</a>
+
+    <div class="toc-part">Part One — Whole Numbers</div>
+    <a href="#ch1" class="toc-link">I. Names &amp; Notation</a>
+    <a href="#ch2" class="toc-link">II. Numeration Systems · Roman Numerals</a>
+    <a href="#ch3" class="toc-link">III. Addition</a>
+    <a href="#ch4" class="toc-link">IV. Subtraction</a>
+    <a href="#ch5" class="toc-link">V. Signs · Brackets · Formulas</a>
+    <a href="#ch6" class="toc-link">VI. Multiplication</a>
+    <a href="#ch7" class="toc-link">VII. Division</a>
+
+    <div class="toc-part">Part Two — Divisibility</div>
+    <a href="#div1" class="toc-link">I. Divisibility Tests</a>
+    <a href="#div2" class="toc-link">II. Prime Factorisation</a>
+    <a href="#div3" class="toc-link">III. Divisors of Composite Numbers</a>
+    <a href="#div4" class="toc-link">IV. Greatest Common Divisor</a>
+    <a href="#div5" class="toc-link">V. Least Common Multiple</a>
+
+    <div class="toc-part">Part Three — Measurement</div>
+    <a href="#meas" class="toc-link">Metric System of Measures</a>
+
+    <div class="toc-part">Part Four — Common Fractions</div>
+    <a href="#frac1" class="toc-link">I. Basic Concepts</a>
+    <a href="#frac2" class="toc-link">II. Change in Value of a Fraction</a>
+    <a href="#frac3" class="toc-link">III. Reduction of Fractions</a>
+    <a href="#frac4" class="toc-link">IV. Common Denominator</a>
+    <a href="#frac5" class="toc-link">V. Operations with Fractions</a>
+
+    <div class="toc-part">Part Five — Decimal Fractions</div>
+    <a href="#dec1" class="toc-link">I. Basic Properties</a>
+    <a href="#dec2" class="toc-link">II. Operations with Decimals</a>
+    <a href="#dec3" class="toc-link">III. Converting Common Fractions</a>
+    <a href="#dec4" class="toc-link">IV. Recurring Decimals</a>
+
+    <div class="toc-part">Part Six — Proportional Quantities</div>
+    <a href="#prop1" class="toc-link">I. Proportions</a>
+    <a href="#prop2" class="toc-link">II. Proportional Dependence</a>
+    <a href="#prop3" class="toc-link">III. Proportional Division</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════ MAIN ═══════════════════ -->
+<main id="main">
+<div id="content">
+
+<!-- TITLE PAGE -->
+<div class="title-page">
+  <div class="badge">Complete English Translation</div>
+  <h1>Arithmetic</h1>
+  <div class="subtitle">Textbook for the 5th Grade of the Incomplete Secondary and Secondary School</div>
+  <div class="author-line">A. Kiselev</div>
+  <div class="author-line" style="font-style:italic; color:#7A6E60;">Revised by Prof. A. Ya. Khinchin</div>
+  <div class="publisher">State Educational &amp; Pedagogical Publishing House · Moscow · 1938</div>
+</div>
+
+<!-- PREFACE -->
+<section id="preface">
+<div class="part-heading">
+  <div class="part-number">Preface</div>
+  <h2>A Note on This Revision</h2>
+</div>
+
+<p>The many difficult questions that confront the author of every textbook can only be resolved satisfactorily if one begins from a clear guiding principle. In revising A. P. Kiselev's course of arithmetic I started from the conviction that every textbook — even one for the fifth grade of secondary school — must form a single logically organised whole. This principle had, and was bound to have, a decisive influence on the selection and arrangement of the material.</p>
+
+<p>On the question of selection, I did not think it right to confine myself to what can and should be mastered by every fifth-grade pupil. The demand for logical completeness made it necessary to include a certain proportion of material which, as a rule, can only be properly absorbed by pupils in the upper forms, when they are revising the course. All such material is set in small print, and the textbook is so constructed that everything printed in small type may be omitted without any loss to the understanding of what follows.</p>
+
+<p>On the other hand, the requirement of unity forced me to shorten considerably, and sometimes to omit altogether, a number of sections traditionally included in arithmetic textbooks — the theoretical treatment of the rule of three, of mixture and alloy problems, and so on. Elementary arithmetic is the study of operations on rational numbers. The special needs of the secondary school make it necessary to interpret this definition broadly and to include in the arithmetic course the study of measurement and of proportional quantities. This does some violence to the unity of the course, but does not create a serious defect, since what is added amounts to a few fairly self-contained supplementary chapters. To include, however, methods for solving individual practical problem-types that have no common theoretical basis would be to slide from a scientific guide into a mere workbook.</p>
+
+<p>The basic principle also had a significant influence on the arrangement of material. The study of measurement, the concept of units and denominate numbers, naturally found its place as a separate section on the boundary between whole numbers and fractions. This does not mean, of course, that in the living process of teaching, metres and kilograms should first be mentioned only after the entire theory of whole numbers including divisibility has been completed.</p>
+
+<p>Following the same line of thought, I found it necessary to remove from the textbook a separate section on percentages. I proceeded from the conviction that this section, which gathered together mathematically different problems united only by a common practical setting, was a survival of the "complex" method, and that its character was largely responsible for the specific difficulty of building sound skills in percentage calculation. The student would naturally form the idea that percentage calculation is something fundamentally new compared with ordinary operations on fractions, and this idea hindered the application of already acquired skills to problems that are merely dressed in a new form but are in themselves nothing new.</p>
+
+<p>The entire text of Kiselev's textbook has undergone very thorough revision in the direction of greater scientific precision and greater accessibility of exposition. In many places the given examples have been replaced by new ones, and the number of examples has been increased. Nevertheless the structure and style of the book were largely determined by its original text; the reviser could not aim to create a new textbook.</p>
+
+<p style="text-align:right; margin-top:1.5rem; font-family:'Playfair Display',serif; font-style:italic;">A. Khinchin</p>
+</section>
+
+<hr class="section-sep">
+<!-- PART ONE -->
+<div class="part-heading" id="part1">
+  <div class="part-number">Part One</div>
+  <h2>Whole Numbers</h2>
+</div>
+
+<!-- CHAPTER I -->
+<div class="chapter-heading" id="ch1">
+  <span class="ch-number">Chapter I</span>
+  <h3>Whole Numbers — Their Names and Notation</h3>
+</div>
+
+<div class="section" id="s1">
+<div class="section-head"><span class="sec-num">1.</span><span class="sec-title">The concept of a whole number</span></div>
+<p>One object and one object make two objects; two objects and one object make three objects; three and one make four; and so on. One, two, three, four, and so on are called <em>whole numbers</em>.</p>
+<p>The number one is also called a <em>unit</em>. The number two may be regarded as a collection of two units, the number three as a collection of three units, and so on. Thus every whole number is either a unit or a collection of several units.</p>
+<p>Besides whole numbers, arithmetic also studies other kinds of numbers. We shall meet those later.</p>
+</div>
+
+<div class="section" id="s2">
+<div class="section-head"><span class="sec-num">2.</span><span class="sec-title">The natural sequence</span></div>
+<p>If to a unit we add another unit, and to the number obtained we again add a unit, and so on, we obtain the <em>natural sequence</em> of numbers: one, two, three, four, five, six, seven, and so on.</p>
+<p>The smallest number in this sequence is one; there is no largest, because to any number, however large, we can always add another unit and obtain a still larger number. Thus the natural sequence can be continued without end; it is said to be <em>infinite</em>.</p>
+<p>Of two different numbers, the one that comes earlier in the natural sequence is the smaller, and the one that comes later is the larger.</p>
+</div>
+
+<div class="section" id="s3">
+<div class="section-head"><span class="sec-num">3.</span><span class="sec-title">Counting</span></div>
+<p>To find out how many desks there are in a classroom or how many trees in an orchard, we must count them. Counting consists in separating one object after another — actually or only in the mind — and naming at each step the number of objects separated. If at the separation of the last object we say, for example, eight, then there are eight objects; the number eight is in this case the <em>result of the count</em>.</p>
+<p>We take it as an obvious truth that the result of counting does not depend on the order in which we count the objects. The important thing is only that in counting no object is missed and none is counted twice.</p>
+</div>
+
+<!-- PLACE VALUE DEMO -->
+<div class="demo-box" id="demo-place-value">
+  <h4>Place Value — How position gives a digit its meaning</h4>
+  <p style="color:#A09580; font-size:0.85rem; margin-bottom:1rem;">Type any number and see how each digit's position determines its value.</p>
+  <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:1rem;">
+    <input class="demo-input" id="pv-input" value="56284" style="width:110px;" maxlength="9">
+    <button class="demo-btn" onclick="updatePlaceValue()">Show</button>
+  </div>
+  <div id="pv-display" class="pv-display"><div class="pv-cell"><div class="pv-name">Ten-Thous.</div><div class="pv-digit active">5</div></div><div class="pv-cell"><div class="pv-name">Thousands</div><div class="pv-digit active">6</div></div><div class="pv-cell"><div class="pv-name">Hundreds</div><div class="pv-digit active">2</div></div><div class="pv-cell"><div class="pv-name">Tens</div><div class="pv-digit active">8</div></div><div class="pv-cell"><div class="pv-name">Units</div><div class="pv-digit active">4</div></div></div>
+  <div id="pv-total" style="color:#A09580; font-size:0.82rem; margin-top:0.8rem; font-family:'Inconsolata',monospace;">Expanded: 5×10^4=50000 + 6×10^3=6000 + 2×10^2=200 + 8×10^1=80 + 4×10^0=4 = 56284</div>
+</div>
+
+<div class="section" id="s4">
+<div class="section-head"><span class="sec-num">4.</span><span class="sec-title">Names of numbers up to one thousand</span></div>
+<p>The first ten numbers of the natural sequence bear the following names: one, two, three, four, five, six, seven, eight, nine, ten.</p>
+<p>With the help of these names and a few others, further numbers may also be expressed. Suppose we wish to name the number of strokes shown here:</p>
+<p style="text-align:center; letter-spacing:0.15em; font-size:1.2rem; color: var(--red);">| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |</p>
+<p>We count off ten strokes and separate them from the rest, then count off another ten and separate them again. We continue counting by tens until either no strokes remain or fewer than ten remain. We then count the tens and the remaining strokes (units). If there are four tens and three remaining strokes, we name the total: <em>four tens three units</em>.</p>
+<p>When a number contains more than ten tens, we count off ten tens, then another ten tens, and so on. Every ten tens is called by a single word: <em>one hundred</em>, or <em>a hundred</em>.</p>
+<p>If a number contains three hundreds, five remaining tens, and seven remaining units, it may be named: <em>three hundreds five tens seven units</em>.</p>
+<p>If there are more than ten hundreds, the hundreds too are counted in tens. Every ten hundreds is called <em>one thousand</em>.</p>
+</div>
+
+<div class="section" id="s5">
+<div class="section-head"><span class="sec-num">5.</span><span class="sec-title">Shortened names of certain numbers</span></div>
+<p>In our language some shortened names of numbers are in common use. Thus ten-plus-one is called <em>eleven</em>, ten-plus-two is called <em>twelve</em>, and so on. Two tens are called <em>twenty</em>, three tens <em>thirty</em>, four tens <em>forty</em>. Two hundreds are called <em>two hundred</em>, three hundreds <em>three hundred</em>, and so on.</p>
+</div>
+
+<div class="section" id="s6">
+<div class="section-head"><span class="sec-num">6.</span><span class="sec-title">Writing numbers up to one thousand</span></div>
+<p>The first nine numbers are written by means of special signs called <em>digits</em>:</p>
+<div class="display-math">1 &nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; 5 &nbsp; 6 &nbsp; 7 &nbsp; 8 &nbsp; 9</div>
+<p>With the help of these nine digits and a tenth one, <strong>0</strong>, called <em>zero</em> and denoting the absence of number, any number may be written.</p>
+<p>For this purpose it is agreed that simple units are written in the first place from the right, tens in the second place from the right, hundreds in the third place. For example:</p>
+<div class="calc-example">forty-two              42
+forty                  40
+three hundred forty-five  345
+three hundred forty    340
+three hundred seven    307
+three hundred          300</div>
+<p>All digits except zero are called <em>significant digits</em>. These examples show why zero is needed: in writing <em>three hundred forty</em> we cannot omit the zero, because 34 would mean thirty-four. On the other hand, zeros on the left of the first significant digit may be omitted: 045 means the same as 45.</p>
+<p>A number written with one digit is called a <em>one-digit</em> number; with two digits, a <em>two-digit</em> number; and so on.</p>
+</div>
+
+<div class="section" id="s7">
+<div class="section-head"><span class="sec-num">7.</span><span class="sec-title">Names of numbers greater than one thousand</span></div>
+<p>When the count exceeds one thousand, we form as many thousands as possible, count the thousands and the remaining units, and name the number of both. For example: <em>two hundred forty thousand five hundred sixty-two units</em>.</p>
+<p>One thousand thousands make one <em>million</em>; one thousand millions make one <em>milliard</em> (or <em>billion</em>); one thousand milliards make one <em>trillion</em>; and so on.</p>
+</div>
+
+<div class="section" id="s8">
+<div class="section-head"><span class="sec-num">8.</span><span class="sec-title">Writing numbers greater than one thousand</span></div>
+<p>Suppose we wish to write the number <em>thirty-five milliard eight hundred six million seven thousand sixty-three</em>. It may be written using digits and words as: 35 milliard 806 million 7 thousand 63 units.</p>
+<p>To do away with words entirely, it was agreed first to write the groups of milliards, millions, thousands, and simple units side by side in one row from left to right, and second always to write each such group with three digits. Thus instead of 63 units we write 063, instead of 7 thousand we write 007, and so on:</p>
+<div class="display-math">035 806 007 063</div>
+<p>As before, leading zeros are omitted, giving: <strong>35 806 007 063</strong>, or without spaces: 35806007063.</p>
+<p>When reading back such a number, the first three digits from the right give the number of units, the next three the number of thousands, the next three the millions, and so on:</p>
+<div class="calc-example">567002301   =  567 million  2 thousand  301 units
+15000026    =   15 million  26 units
+2008001020  =    2 milliard  8 million  1 thousand  20 units</div>
+</div>
+
+<div class="section" id="s9">
+<div class="section-head"><span class="sec-num">9.</span><span class="sec-title">How to read a long row of digits</span></div>
+<p>To read a number more easily, separate it mentally from the right into groups of three. For example 5183000567029 is read as: <em>5 trillion 183 milliard 567 thousand 29</em>. Written with spaces — 5 183 000 567 029 — it can be read without mental grouping.</p>
+</div>
+
+<div class="section" id="s10">
+<div class="section-head"><span class="sec-num">10.</span><span class="sec-title">The meaning of the places occupied by digits</span></div>
+<p>Each position has its own fixed meaning:</p>
+<div class="calc-example">1st place from the right  →  simple units
+2nd place from the right  →  tens
+3rd place from the right  →  hundreds
+4th place from the right  →  units of thousands
+5th place from the right  →  tens of thousands
+6th place from the right  →  hundreds of thousands
+7th place from the right  →  units of millions
+8th place from the right  →  tens of millions
+9th place from the right  →  hundreds of millions
+10th place from the right →  units of milliards</div>
+<p>Our system of writing numbers rests on ten digits to which a double meaning is assigned: one meaning depends on the shape of the digit, the other on its position. Of two digits side by side, the left one denotes units ten times greater than the right one.</p>
+</div>
+
+<div class="section" id="s11">
+<div class="section-head"><span class="sec-num">11.</span><span class="sec-title">Orders of units</span></div>
+<p>Units, tens, hundreds, thousands, and so on are sometimes called by another name: units are called <em>units of the first order</em>, tens <em>units of the second order</em>, hundreds <em>units of the third order</em>, and so on.</p>
+<p>All units except simple units are called <em>compound units</em>. A ten, a hundred, and a thousand are compound units. Every compound unit contains ten units of the next lower order.</p>
+</div>
+
+<div class="section" id="s12">
+<div class="section-head"><span class="sec-num">12.</span><span class="sec-title">Classes of units</span></div>
+<p>The orders of units are grouped into <em>classes</em>. The first class contains the first three orders: hundreds, tens, and units. The second class contains the next three orders: thousands, tens of thousands, and hundreds of thousands. The first class is the <em>class of units</em>; the second is the <em>class of thousands</em>.</p>
+</div>
+
+<div class="section" id="s13">
+<div class="section-head"><span class="sec-num">13.</span><span class="sec-title">How to find how many units of a given order are in a number</span></div>
+<p>To find how many hundreds are contained in the number 56,284, we note that simple hundreds occupy the third place from the right, where the digit is 2: two simple hundreds. The thousands digit (6) represents 6 thousands = 60 hundreds. The ten-thousands digit (5) represents 5 ten-thousands = 500 hundreds. Altogether: 500 + 60 + 2 = <strong>562 hundreds</strong>.</p>
+<div class="rule-box"><strong>Rule.</strong> To find how many units of a given order are contained in a number, strike off all the digits representing lower orders and read the number formed by the remaining digits.</div>
+</div>
+<!-- CHAPTER II -->
+<div class="chapter-heading" id="ch2">
+  <span class="ch-number">Chapter II</span>
+  <h3>Different Numeration Systems · Roman Numerals</h3>
+</div>
+
+<div class="section" id="s14">
+<div class="section-head"><span class="sec-num">14.</span><span class="sec-title">The concept of numeration systems</span></div>
+<p>Any general method of naming and writing numbers is called a <em>numeration system</em>. Our system is called <em>decimal</em> (or denary) because in it 10 units of one order make one unit of the next higher order. The number 10 is therefore called the <em>base</em> of the decimal system. Every number <em>N</em> is represented as:</p>
+<div class="display-math"><em>N</em> = <em>a</em> + <em>b</em>·10 + <em>c</em>·10² + <em>d</em>·10³ + …</div>
+<p>Other systems can be imagined with a different base. With base 5 (the <em>quinary</em> system), 5 units of one order make one unit of the next, and every number takes the form:</p>
+<div class="display-math"><em>N</em> = <em>a</em> + <em>b</em>·5 + <em>c</em>·5² + <em>d</em>·5³ + <em>e</em>·5⁴ + …</div>
+<p>where each of <em>a, b, c, d, e, …</em> is less than 5.</p>
+</div>
+
+<div class="section" id="s15">
+<div class="section-head"><span class="sec-num">15.</span><span class="sec-title">The number of digits required for a given system</span></div>
+<p>The decimal system uses ten symbols. The quinary system needs only five: 0, 1, 2, 3, 4. In it, the number 5 would be written 10 (one unit of the second order). For a system with base greater than 10, new symbols would have to be invented — in the duodecimal system (base 12), special signs would be needed for 10 and 11.</p>
+</div>
+
+<div class="section" id="s16">
+<div class="section-head"><span class="sec-num">16.</span><span class="sec-title">Converting a decimal number to another base</span></div>
+<p>To express 1766 in the quinary system, divide successively by 5 and record the remainders:</p>
+<div class="calc-example">1766 ÷ 5 = 353  rem 1
+ 353 ÷ 5 =  70  rem 3
+  70 ÷ 5 =  14  rem 0
+  14 ÷ 5 =   2  rem 4
+   2 ÷ 5 =   0  rem 2
+
+Reading remainders bottom to top: 1766₁₀ = 24031₅</div>
+</div>
+
+<div class="section" id="s17">
+<div class="section-head"><span class="sec-num">17.</span><span class="sec-title">Converting from another base to decimal</span></div>
+<p>To convert 5623₈ (octal) to decimal, use nested multiplication (Horner's method):</p>
+<div class="calc-example">5 × 8 + 6 = 46
+46 × 8 + 2 = 370
+370 × 8 + 3 = 2963
+
+Therefore 5623₈ = 2963₁₀</div>
+<div class="remark">The decimal system is nearly universal, probably because humans count on ten fingers. The duodecimal system (base 12) would in some ways be more convenient, as 12 divides evenly by 2, 3, 4, and 6. The binary system (base 2) is most elegant for theory but cumbersome in practice (the number 70 becomes 1000110 in binary). Our digits are borrowed from the Arabs (c. 10th century), who in turn may have taken the system from the Indians.</div>
+</div>
+
+<div class="section" id="s18">
+<div class="section-head"><span class="sec-num">18.</span><span class="sec-title">Roman numerals</span></div>
+<p>The Romans used only seven signs:</p>
+<div class="calc-example">I = 1    V = 5    X = 10    L = 50
+C = 100  D = 500  M = 1000</div>
+<p>Roman digits retain their value regardless of position. When written side by side, their values are added: XXV = 10 + 10 + 5 = 25. There are six exceptions where a smaller digit before a larger digit is <em>subtracted</em>:</p>
+<div class="calc-example">IV = 4   IX = 9   XL = 40   XC = 90   CD = 400   CM = 900</div>
+<div class="calc-example">I=1   II=2   III=3   IV=4    V=5     VI=6
+VII=7  VIII=8  IX=9   X=10   XIV=14  XVIII=18
+XIX=19  XX=20  XXIX=29  XLII=42  LXXXIV=84
+XCV=95  CCC=300  MCMXXXVII=1937</div>
+</div>
+
+<!-- CHAPTER III -->
+<div class="chapter-heading" id="ch3">
+  <span class="ch-number">Chapter III</span>
+  <h3>Addition</h3>
+</div>
+
+<!-- ADDITION DEMO -->
+<div class="demo-box" id="demo-addition">
+  <h4>Column Addition — Step by Step</h4>
+  <p style="color:#A09580; font-size:0.85rem; margin-bottom:1rem;">Enter two numbers and watch addition with carries animated step by step.</p>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="add-a" value="13653" style="width:100px;">
+    <span style="color:#C8BFA8;">+</span>
+    <input class="demo-input" id="add-b" value="22409" style="width:100px;">
+    <button class="demo-btn" onclick="runAddition()">Add</button>
+    <button class="demo-btn" onclick="stepAddition()">Step →</button>
+  </div>
+  <canvas id="add-canvas" width="500" height="200" style="max-width:100%; background:#1C1A14;"></canvas>
+  <div id="add-explain" class="demo-output" style="min-height:1.5rem;">13653 + 22409 = 36062</div>
+</div>
+
+<div class="section" id="s19">
+<div class="section-head"><span class="sec-num">19.</span><span class="sec-title">What addition is</span></div>
+<p>The units that make up several numbers can be combined into one collection. The number obtained by counting all those units is called the <em>sum</em>, and the numbers being combined are called <em>addends</em>. For instance: 5 matches and 7 matches and 2 matches combine into a collection of 14 matches. The number 14 is the sum of three addends: 5, 7, and 2.</p>
+<p>The addends can be regarded as parts of the sum.</p>
+<p>The operation that consists in forming the sum of several numbers is called <em>addition</em>. The sign of addition is <strong>+</strong> (plus). Addition is always possible and always gives a unique result.</p>
+</div>
+
+<div class="section" id="s20">
+<div class="section-head"><span class="sec-num">20.</span><span class="sec-title">Basic properties of the sum</span></div>
+<p><strong>1) Commutative law.</strong> The sum does not change when the order of the addends is changed:</p>
+<div class="display-math">5 + 7 + 2 = 2 + 7 + 5 = 7 + 5 + 2 = 14</div>
+<p>In general: <em>a + b + c = b + a + c = …</em> for any numbers <em>a, b, c</em>.</p>
+<p><strong>2) Associative law.</strong> The sum does not change if any group of addends is replaced by their sum:</p>
+<div class="display-math">5 + 7 + 2 = 5 + 9 = 14</div>
+<p>In general: <em>a + b + c = (a + b) + c = a + (b + c)</em>.</p>
+</div>
+
+<div class="section" id="s21">
+<div class="section-head"><span class="sec-num">21.</span><span class="sec-title">How to add a sum, and how to add to a sum</span></div>
+<p><strong>1)</strong> To add the sum of several numbers to some number, add each addend one by one:</p>
+<div class="display-math">100 + (20 + 7 + 3) = 100 + 20 + 7 + 3</div>
+<p><strong>2)</strong> To add some number to a sum, add it to any one of the addends:</p>
+<div class="display-math">(35 + 15 + 20) + 10 = (35 + 10) + 15 + 20 = 35 + (15 + 10) + 20 = …</div>
+</div>
+
+<div class="section" id="s22">
+<div class="section-head"><span class="sec-num">22.</span><span class="sec-title">Addition of two single-digit numbers</span></div>
+<p>To find the sum of two single-digit numbers, add all the units of one to the other. To add all numbers quickly, memorise all sums arising from pairs of single-digit numbers.</p>
+<div class="remark">Since zero means no units: 5 + 0 = 5 and 0 + 5 = 5. Adding any number and zero, or zero and any number, always gives that number.</div>
+</div>
+
+<div class="section" id="s23">
+<div class="section-head"><span class="sec-num">23.</span><span class="sec-title">Adding a multi-digit number and a single-digit number</span></div>
+<p>To add 37 and 8: separate 7 units from 37, add them to 8 to get 15; add 15 to 30: since 15 = 10 + 5, adding 10 to 30 gives 40, and 40 + 5 = 45.</p>
+<p>Alternatively: 37 needs 3 more to reach 40; separate 3 from 8; 37 + 3 = 40, and 5 remain: 40 + 5 = 45.</p>
+<div class="calc-example">37 + 8 = (30 + 7) + 8 = 30 + (7 + 8) = 30 + 15 = 45
+37 + 8 = 37 + (3 + 5) = (37 + 3) + 5 = 40 + 5 = 45</div>
+</div>
+
+<div class="section" id="s24">
+<div class="section-head"><span class="sec-num">24.</span><span class="sec-title">Addition of multi-digit numbers</span></div>
+<p>Write the addends with units under units, tens under tens, hundreds under hundreds, and so on. Draw a line below the last addend. Then add column by column from right to left, carrying whenever a column sum reaches 10 or more.</p>
+<div class="calc-example">  13653
+  22409
+   1608
++   346
+------
+  38016</div>
+<p>Adding units: 3+9+8+6 = 26 = 2 tens + 6 units; write 6, carry 2. Adding tens: 5+0+0+4+2 = 11 = 1 hundred + 1 ten; write 1, carry 1. And so on.</p>
+</div>
+
+<div class="section" id="s25">
+<div class="section-head"><span class="sec-num">25.</span><span class="sec-title">Zero is a number</span></div>
+<p>We now agree to treat zero as a number on equal footing with all others; zero is less than every other number.</p>
+</div>
+
+<div class="section" id="s26">
+<div class="section-head"><span class="sec-num">26.</span><span class="sec-title">Increasing a number by several units</span></div>
+<p>To increase a number by several units means to add those units to it. Increasing a number by a certain amount is performed by addition.</p>
+</div>
+
+<div class="section" id="s27">
+<div class="section-head"><span class="sec-num">27.</span><span class="sec-title">How the sum changes when the addends change</span></div>
+<p>If several units are <em>added</em> to one addend (others unchanged), the sum <em>increases</em> by that many units.<br>
+If several units are <em>taken from</em> one addend, the sum <em>decreases</em> by that many units.<br>
+If the same number of units is added to one addend and taken from another, the sum <em>remains unchanged</em>.</p>
+</div>
+
+<!-- CHAPTER IV -->
+<div class="chapter-heading" id="ch4">
+  <span class="ch-number">Chapter IV</span>
+  <h3>Subtraction</h3>
+</div>
+
+<!-- SUBTRACTION DEMO -->
+<div class="demo-box" id="demo-subtraction">
+  <h4>Column Subtraction with Borrowing</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="sub-a" value="60072" style="width:100px;">
+    <span style="color:#C8BFA8;">−</span>
+    <input class="demo-input" id="sub-b" value="7345" style="width:100px;">
+    <button class="demo-btn" onclick="runSubtraction()">Subtract</button>
+    <button class="demo-btn" onclick="stepSubtraction()">Step →</button>
+  </div>
+  <canvas id="sub-canvas" width="500" height="200" style="max-width:100%; background:#1C1A14;"></canvas>
+  <div id="sub-explain" class="demo-output" style="min-height:1.5rem;">60072 − 7345 = 52727</div>
+</div>
+
+<div class="section" id="s28">
+<div class="section-head"><span class="sec-num">28.</span><span class="sec-title">What subtraction is</span></div>
+<p>The operation of taking from one number as many units as another given number contains is called <em>subtraction</em>.</p>
+<p>The number from which we subtract is the <em>minuend</em>; the number subtracted is the <em>subtrahend</em>; the result is the <em>remainder</em> or <em>difference</em>. The sign of subtraction is − (minus): 7 − 3 = 4.</p>
+<p>The subtrahend cannot exceed the minuend.</p>
+</div>
+
+<div class="section" id="s29">
+<div class="section-head"><span class="sec-num">29.</span><span class="sec-title">Comparing subtraction with addition</span></div>
+<p>In subtraction the minuend is broken into two numbers: subtrahend and remainder. Combining them gives back the minuend — so the minuend is the sum and the subtrahend and remainder are the addends. In addition, addends are given and the sum is sought; in subtraction, the sum and one addend are given and the other addend is sought. <em>Subtraction is the inverse operation to addition.</em></p>
+</div>
+
+<div class="section" id="s30">
+<div class="section-head"><span class="sec-num">30.</span><span class="sec-title">Remarks</span></div>
+<p>Subtraction is always possible and gives a unique result provided the subtrahend is not greater than the minuend. If <em>b</em> = <em>a</em>, the remainder is zero; if <em>b</em> &gt; <em>a</em>, subtraction is impossible (in the domain of whole numbers).</p>
+</div>
+
+<div class="section" id="s31">
+<div class="section-head"><span class="sec-num">31.</span><span class="sec-title">Subtraction of a single-digit number</span></div>
+<p>The required difference is easily found by using addition. For example: 15 − 8 = ? — recall that 8 + 7 = 15, so 15 − 8 = 7.</p>
+<div class="remark">7 − 0 = 7 (subtracting zero leaves the number unchanged). 8 − 8 = 0 (the difference of two equal numbers is zero). Zero cannot have any other number subtracted from it.</div>
+</div>
+
+<div class="section" id="s32">
+<div class="section-head"><span class="sec-num">32.</span><span class="sec-title">Subtraction of a multi-digit number</span></div>
+<p>Write the subtrahend below the minuend, aligning by place. Subtract column by column from right to left. When a digit of the minuend is too small, <em>borrow</em> 1 from the next higher order.</p>
+<div class="calc-example">  60072   (minuend)
+−  7345   (subtrahend)
+-------
+  52727   (remainder)</div>
+<p>Units: can't subtract 5 from 2; borrow from tens, making 12 − 5 = 7. Tens: only 6 remain after borrowing; 6 − 4 = 2. Hundreds: none in minuend, must borrow from ten-thousands, then thousands. After all borrowing: 7 hundreds. Thousands: 9 − 7 = 2. Ten-thousands: 5 − 0 = 5. Result: 52727.</p>
+</div>
+
+<div class="section" id="s33">
+<div class="section-head"><span class="sec-num">33.</span><span class="sec-title">How to subtract a sum, and how to subtract from a sum</span></div>
+<p><strong>1)</strong> To subtract a sum, subtract each addend separately: <em>a − (b + c + …) = a − b − c − …</em></p>
+<p><strong>2)</strong> To subtract a number from a sum, subtract it from any one addend: <em>(a + b + c) − m = (a − m) + b + c</em></p>
+</div>
+
+<div class="section" id="s34">
+<div class="section-head"><span class="sec-num">34.</span><span class="sec-title">Checking addition</span></div>
+<p>Add the addends again in a different order (e.g., bottom to top). If the same sum results, the addition is very probably correct. Alternatively, subtract one addend from the sum; the result should equal the sum of the remaining addends.</p>
+</div>
+
+<div class="section" id="s35">
+<div class="section-head"><span class="sec-num">35.</span><span class="sec-title">Checking subtraction by addition</span></div>
+<p>Add the subtrahend and the remainder; the result should equal the minuend. Alternatively, subtract the remainder from the minuend; the result should equal the subtrahend.</p>
+</div>
+
+<div class="section" id="s36">
+<div class="section-head"><span class="sec-num">36.</span><span class="sec-title">Decreasing a number by several units</span></div>
+<p>To decrease a number by several units means to subtract those units from it. This is performed by subtraction.</p>
+</div>
+
+<div class="section" id="s37">
+<div class="section-head"><span class="sec-num">37.</span><span class="sec-title">Comparing two numbers</span></div>
+<p>To find by how much one number exceeds another, subtract the smaller from the larger. For example: 35 − 20 = 15, so 35 is greater than 20 by 15.</p>
+</div>
+
+<div class="section" id="s38">
+<div class="section-head"><span class="sec-num">38.</span><span class="sec-title">How the difference changes when the given numbers change</span></div>
+<p>Adding to the minuend increases the remainder by the same amount.<br>
+Subtracting from the minuend decreases the remainder by the same amount.<br>
+Adding to the subtrahend decreases the remainder by the same amount.<br>
+Subtracting from the subtrahend increases the remainder by the same amount.</p>
+<p>Notably: <strong>the remainder does not change if both minuend and subtrahend are increased or decreased by the same number simultaneously</strong>: (11 + 6) − (3 + 6) = 11 − 3 = 8.</p>
+</div>
+
+<div class="section" id="s39">
+<div class="section-head"><span class="sec-num">39.</span><span class="sec-title">How to subtract a difference</span></div>
+<p>To subtract (12 − 8) from 30: increase both the 30 and the subtrahend (12 − 8) by 8, giving 38 − 12 = 26. Or: 30 − 12 = 18, then add back 8: 18 + 8 = 26.</p>
+<div class="rule-box"><strong>Rule.</strong> To subtract a difference, add the subtrahend and then subtract the minuend; or subtract the minuend and then add the subtrahend:<br>
+<em>a − (b − c) = a + c − b</em> &nbsp;and&nbsp; <em>a − (b − c) = a − b + c</em></div>
+</div>
+
+<!-- CHAPTER V -->
+<div class="chapter-heading" id="ch5">
+  <span class="ch-number">Chapter V</span>
+  <h3>Operation Signs · Signs of Equality and Inequality · Brackets</h3>
+</div>
+
+<div class="section" id="s40">
+<div class="section-head"><span class="sec-num">40.</span><span class="sec-title">Signs</span></div>
+<p>To indicate operations without performing them, write the numbers with the appropriate signs between them:</p>
+<p>10 + 15 + 20 (read: "ten plus fifteen plus twenty" or "the sum of 10, 15, 20")<br>
+10 − 8 (read: "ten minus eight" or "the difference of 10 and 8")</p>
+<p>Other signs in common use: <strong>=</strong> (equals), <strong>&gt;</strong> (greater than), <strong>&lt;</strong> (less than), <strong>≠</strong> (not equal to), <strong>≤</strong> (less than or equal to), <strong>≥</strong> (greater than or equal to).</p>
+<p>The signs &gt; and &lt; must have their point aimed at the smaller number.</p>
+</div>
+
+<div class="section" id="s41">
+<div class="section-head"><span class="sec-num">41.</span><span class="sec-title">Brackets and formulas</span></div>
+<p>Brackets show which operations must be performed first. For example: 200 − (35 + 20) means subtract the sum 35 + 20 from 200. Nested brackets use different shapes:</p>
+<div class="display-math">100 + {160 − [60 − (7 + 8)]}</div>
+<p>means: compute 7+8=15; subtract from 60 to get 45; subtract from 160 to get 115; add to 100 to get 215. The innermost brackets are always evaluated first.</p>
+<p>When no brackets are present: <strong>in an expression showing only additions and subtractions, carry out operations left to right</strong>. So 20 − 2 + 4 − 5 means ((20 − 2) + 4) − 5 = 17.</p>
+<p>An expression showing what operations are to be performed on given numbers and in what order, to obtain a required result, is called a <em>formula</em>. To <em>evaluate</em> a formula means to find the number resulting from all the indicated operations.</p>
+</div>
+
+<!-- CHAPTER VI -->
+<div class="chapter-heading" id="ch6">
+  <span class="ch-number">Chapter VI</span>
+  <h3>Multiplication</h3>
+</div>
+
+<!-- MULTIPLICATION TABLE DEMO -->
+<div class="demo-box" id="demo-mult-table">
+  <h4>Multiplication Table — Click any cell to highlight its row and column</h4>
+  <div id="mult-table" style="overflow-x:auto;"><table><tbody><tr><td class="header">×</td><td class="header">1</td><td class="header">2</td><td class="header">3</td><td class="header">4</td><td class="header">5</td><td class="header">6</td><td class="header">7</td><td class="header">8</td><td class="header">9</td><td class="header">10</td></tr><tr><td class="header">1</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr><tr><td class="header">2</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td><td>14</td><td>16</td><td>18</td><td>20</td></tr><tr><td class="header">3</td><td>3</td><td>6</td><td>9</td><td>12</td><td>15</td><td>18</td><td>21</td><td>24</td><td>27</td><td>30</td></tr><tr><td class="header">4</td><td>4</td><td>8</td><td>12</td><td>16</td><td>20</td><td>24</td><td>28</td><td>32</td><td>36</td><td>40</td></tr><tr><td class="header">5</td><td>5</td><td>10</td><td>15</td><td>20</td><td>25</td><td>30</td><td>35</td><td>40</td><td>45</td><td>50</td></tr><tr><td class="header">6</td><td>6</td><td>12</td><td>18</td><td>24</td><td>30</td><td>36</td><td>42</td><td>48</td><td>54</td><td>60</td></tr><tr><td class="header">7</td><td>7</td><td>14</td><td>21</td><td>28</td><td>35</td><td>42</td><td>49</td><td>56</td><td>63</td><td>70</td></tr><tr><td class="header">8</td><td>8</td><td>16</td><td>24</td><td>32</td><td>40</td><td>48</td><td>56</td><td>64</td><td>72</td><td>80</td></tr><tr><td class="header">9</td><td>9</td><td>18</td><td>27</td><td>36</td><td>45</td><td>54</td><td>63</td><td>72</td><td>81</td><td>90</td></tr><tr><td class="header">10</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td><td>60</td><td>70</td><td>80</td><td>90</td><td>100</td></tr></tbody></table><table><tr><td class="header">×</td><td class="header">1</td><td class="header">2</td><td class="header">3</td><td class="header">4</td><td class="header">5</td><td class="header">6</td><td class="header">7</td><td class="header">8</td><td class="header">9</td><td class="header">10</td></tr><tr><td class="header">1</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr><tr><td class="header">2</td><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td><td>14</td><td>16</td><td>18</td><td>20</td></tr><tr><td class="header">3</td><td>3</td><td>6</td><td>9</td><td>12</td><td>15</td><td>18</td><td>21</td><td>24</td><td>27</td><td>30</td></tr><tr><td class="header">4</td><td>4</td><td>8</td><td>12</td><td>16</td><td>20</td><td>24</td><td>28</td><td>32</td><td>36</td><td>40</td></tr><tr><td class="header">5</td><td>5</td><td>10</td><td>15</td><td>20</td><td>25</td><td>30</td><td>35</td><td>40</td><td>45</td><td>50</td></tr><tr><td class="header">6</td><td>6</td><td>12</td><td>18</td><td>24</td><td>30</td><td>36</td><td>42</td><td>48</td><td>54</td><td>60</td></tr><tr><td class="header">7</td><td>7</td><td>14</td><td>21</td><td>28</td><td>35</td><td>42</td><td>49</td><td>56</td><td>63</td><td>70</td></tr><tr><td class="header">8</td><td>8</td><td>16</td><td>24</td><td>32</td><td>40</td><td>48</td><td>56</td><td>64</td><td>72</td><td>80</td></tr><tr><td class="header">9</td><td>9</td><td>18</td><td>27</td><td>36</td><td>45</td><td>54</td><td>63</td><td>72</td><td>81</td><td>90</td></tr><tr><td class="header">10</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td><td>60</td><td>70</td><td>80</td><td>90</td><td>100</td></tr></table></div>
+</div>
+
+<div class="section" id="s42">
+<div class="section-head"><span class="sec-num">42.</span><span class="sec-title">What multiplication is</span></div>
+<p><em>Multiplication is the addition of equal addends.</em></p>
+<p>The number repeated as an addend is the <em>multiplicand</em>; the number showing how many such addends are taken is the <em>multiplier</em>; the result is the <em>product</em>. Both are called <em>factors</em>.</p>
+<p>The multiplication sign is · (dot) or × (cross): 85·6 = 510. When factors are letters, no sign is needed: <em>ab</em> means <em>a</em> times <em>b</em>.</p>
+<div class="remark">The multiplicand can denote named units (metres, roubles, etc.); the product has the same denomination as the multiplicand. The multiplier is dimensionless.</div>
+</div>
+
+<div class="section" id="s43">
+<div class="section-head"><span class="sec-num">43.</span><span class="sec-title">Special cases of multiplication</span></div>
+<p>1·5 = 5 (multiplicand = 1: product equals multiplier).<br>
+0·4 = 0 (multiplicand = 0: product is zero).<br>
+5·1 = 5 (multiplier = 1: product equals multiplicand).<br>
+5·0 = 0 (multiplier = 0: product is zero).</p>
+</div>
+
+<div class="section" id="s44">
+<div class="section-head"><span class="sec-num">44.</span><span class="sec-title">Increasing a number several times</span></div>
+<p>To increase a number 2, 3, 4 … times means to form the sum of that many equal addends, each equal to the given number. This is performed by multiplication. (Compare: increasing by a number is addition; increasing by a factor is multiplication.)</p>
+</div>
+
+<div class="section" id="s45">
+<div class="section-head"><span class="sec-num">45.</span><span class="sec-title">Swapping factors does not change the product</span></div>
+<p>Consider a rectangular array of strokes — 7 rows of 3. Counting by rows gives 7·3; counting by columns gives 3·7. The total is the same. In general: <em>a·b = b·a</em> (commutative law of multiplication).</p>
+</div>
+
+<div class="section" id="s46">
+<div class="section-head"><span class="sec-num">46.</span><span class="sec-title">The multiplication table</span></div>
+<p>To multiply quickly, memorise all products of pairs of single-digit numbers — the <em>multiplication table</em>. See the interactive table above.</p>
+</div>
+
+<div class="section" id="s48">
+<div class="section-head"><span class="sec-num">48.</span><span class="sec-title">Multiplication of a multi-digit number by a single-digit number</span></div>
+<p>To multiply 846 by 5: multiply units, then tens, then hundreds, carrying as needed.</p>
+<div class="calc-example">  846
+×   5
+-----
+ 4230
+
+5×6 = 30 → write 0, carry 3
+5×4 = 20+3 = 23 → write 3, carry 2
+5×8 = 40+2 = 42 → write 42</div>
+</div>
+
+<div class="section" id="s49">
+<div class="section-head"><span class="sec-num">49.</span><span class="sec-title">Multiplication by a power of ten</span></div>
+<div class="rule-box"><strong>Rule.</strong> To multiply any number by 1 followed by zeros, append as many zeros to the right of the multiplicand as there are zeros in the multiplier.<br>
+358 × 10 = 3580 &nbsp;·&nbsp; 296 × 1000 = 296000</div>
+</div>
+
+<div class="section" id="s50">
+<div class="section-head"><span class="sec-num">50.</span><span class="sec-title">Multiplication by a number ending in zeros</span></div>
+<div class="rule-box"><strong>Rule.</strong> Multiply by the significant part, then append the zeros: 248 × 30 → 248 × 3 = 744 → 7440.</div>
+</div>
+
+<!-- MULTIPLICATION DEMO -->
+<div class="demo-box" id="demo-multiplication">
+  <h4>Long Multiplication — Partial Products</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="mul-a" value="3826" style="width:90px;">
+    <span style="color:#C8BFA8;">×</span>
+    <input class="demo-input" id="mul-b" value="472" style="width:90px;">
+    <button class="demo-btn" onclick="runMultiplication()">Multiply</button>
+    <button class="demo-btn" onclick="stepMultiplication()">Step →</button>
+  </div>
+  <canvas id="mul-canvas" width="500" height="240" style="max-width:100%; background:#1C1A14;"></canvas>
+  <div id="mul-explain" class="demo-output" style="min-height:1.5rem;">3826 × 472 = 1805872</div>
+</div>
+
+<div class="section" id="s51">
+<div class="section-head"><span class="sec-num">51.</span><span class="sec-title">Multiplication by a multi-digit number</span></div>
+<p>Multiply by each digit of the multiplier separately (partial products), placing each one shifted one position left for each successive digit. Then add all partial products.</p>
+<div class="calc-example">   3826
+×   472
+------
+   7652   (3826 × 2)
+  26782   (3826 × 7, shifted 1)
+  15304   (3826 × 4, shifted 2)
+--------
+ 1805872</div>
+</div>
+
+<div class="section" id="s52">
+<div class="section-head"><span class="sec-num">52.</span><span class="sec-title">Multiplying numbers ending in zeros</span></div>
+<p>Ignore the trailing zeros, multiply the significant parts, then append the total count of trailing zeros:</p>
+<div class="calc-example">2700 × 15  →  27 × 15 = 405  →  40500
+358 × 23000  →  358 × 23 = 8234  →  8234000
+57000 × 3200  →  57 × 32 = 1824  →  182400000</div>
+</div>
+
+<div class="section" id="s53">
+<div class="section-head"><span class="sec-num">53.</span><span class="sec-title">How the product changes when factors change</span></div>
+<p>If one factor is multiplied by <em>n</em>, the product is multiplied by <em>n</em>.<br>
+If one factor is divided by <em>n</em>, the product is divided by <em>n</em>.<br>
+If one factor is multiplied by <em>n</em> and the other divided by <em>n</em>, the product is unchanged.</p>
+</div>
+
+<div class="section" id="s55">
+<div class="section-head"><span class="sec-num">55.</span><span class="sec-title">The product of three or more factors</span></div>
+<p>The product 3·4·2·7 means ((3·4)·2)·7. The result is the same regardless of grouping or order of factors.</p>
+</div>
+
+<div class="section" id="s56">
+<div class="section-head"><span class="sec-num">56.</span><span class="sec-title">The product does not change with reordering</span></div>
+<p>2·5·3·4·7 = 2·3·4·5·7 = 4·7·3·2·5 = 840 in all orderings (commutative law, extended to any number of factors).</p>
+</div>
+
+<div class="section" id="s57">
+<div class="section-head"><span class="sec-num">57.</span><span class="sec-title">Factors can be grouped in any way</span></div>
+<p>3·4·(5·2) = 12·10 = 120 = 3·4·5·2 (associative law of multiplication): <em>abc = (ab)c = a(bc)</em>.</p>
+</div>
+
+<div class="section" id="s59">
+<div class="section-head"><span class="sec-num">59.</span><span class="sec-title">Multiplying a sum by a number</span></div>
+<div class="rule-box"><strong>Distributive law.</strong> To multiply a sum by a number, multiply each addend separately and add the results:<br>
+<em>(a + b + c) · m = a·m + b·m + c·m</em><br>
+To multiply a number by a sum, multiply by each addend separately and add:<br>
+<em>m · (a + b + c) = m·a + m·b + m·c</em></div>
+<div class="remark">Convention: when a formula contains addition, subtraction, and multiplication without brackets, perform multiplication before addition and subtraction.</div>
+</div>
+
+<!-- CHAPTER VII -->
+<div class="chapter-heading" id="ch7">
+  <span class="ch-number">Chapter VII</span>
+  <h3>Division</h3>
+</div>
+
+<!-- LONG DIVISION DEMO -->
+<div class="demo-box" id="demo-division">
+  <h4>Long Division — Step by Step</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="div-a" value="64528" style="width:100px;">
+    <span style="color:#C8BFA8;">÷</span>
+    <input class="demo-input" id="div-b" value="23" style="width:80px;">
+    <button class="demo-btn" onclick="runDivision()">Divide</button>
+    <button class="demo-btn" onclick="stepDivision()">Step →</button>
+  </div>
+  <canvas id="div-canvas" width="500" height="260" style="max-width:100%; background:#1C1A14;"></canvas>
+  <div id="div-explain" class="demo-output" style="min-height:1.5rem;">64528 ÷ 23 = 2805 remainder 13</div>
+</div>
+
+<div class="section" id="s61">
+<div class="section-head"><span class="sec-num">61.</span><span class="sec-title">What division is</span></div>
+<p>The operation of finding one of two factors when the product and the other factor are given is called <em>division</em>.</p>
+<p>The given product is the <em>dividend</em>; the given factor is the <em>divisor</em>; the unknown factor is the <em>quotient</em>.</p>
+<p>Division is denoted ÷ or by a horizontal fraction bar: 75 ÷ 3 = 25.</p>
+</div>
+
+<div class="section" id="s63">
+<div class="section-head"><span class="sec-num">63.</span><span class="sec-title">Division by zero is not permitted</span></div>
+<p>If the dividend is not zero, dividing by zero would require finding a number that, when multiplied by zero, gives the dividend — but no such number exists. If the dividend is also zero, the quotient could be any number at all, so the result is not unique. <em>Zero cannot serve as a divisor.</em></p>
+</div>
+
+<div class="section" id="s64">
+<div class="section-head"><span class="sec-num">64.</span><span class="sec-title">Division with a remainder</span></div>
+<p>When exact division is impossible (27 ÷ 6 has no whole-number solution), we speak of <em>division with a remainder</em>. The <em>incomplete quotient</em> is the largest whole number <em>q</em> such that <em>q</em> × (divisor) ≤ dividend. The <em>remainder</em> is the difference. The remainder is always less than the divisor.</p>
+<div class="display-math">27 ÷ 6 = 4 (remainder 3) &nbsp; since &nbsp; 27 = 6×4 + 3</div>
+</div>
+
+<div class="section" id="s65">
+<div class="section-head"><span class="sec-num">65.</span><span class="sec-title">General definition of division of whole numbers</span></div>
+<p>To divide <em>a</em> by <em>b</em> (b ≠ 0) means to find whole numbers <em>q</em> (quotient) and <em>r</em> (remainder) such that:</p>
+<div class="display-math"><em>a = b·q + r</em> &nbsp;and&nbsp; <em>0 ≤ r &lt; b</em></div>
+<p>This pair <em>(q, r)</em> always exists and is unique. The quotient shows how many times the divisor fits into the dividend. The remainder can be any value from 0 to <em>b</em> − 1; there are <em>b</em> distinct possible remainders when dividing by <em>b</em>.</p>
+</div>
+
+<div class="section" id="s66">
+<div class="section-head"><span class="sec-num">66.</span><span class="sec-title">Division and multiplication compared</span></div>
+<p>In multiplication, two factors are given and the product is found. In division, the product and one factor are given and the other factor is sought. <em>Division is the inverse operation to multiplication.</em></p>
+</div>
+
+<div class="section" id="s69">
+<div class="section-head"><span class="sec-num">69.</span><span class="sec-title">Is the quotient a single-digit number?</span></div>
+<p>Multiply the divisor by 10 and compare with the dividend. If the dividend is smaller, the quotient is single-digit; otherwise it is not.</p>
+<div class="calc-example">534 ÷ 68: 68×10=680 &gt; 534 → quotient is single-digit
+534 ÷ 37: 37×10=370 &lt; 534 → quotient is NOT single-digit</div>
+</div>
+
+<div class="section" id="s71">
+<div class="section-head"><span class="sec-num">71.</span><span class="sec-title">Long division — the general method</span></div>
+<p>Divide 64528 by 23. Think of it as distributing 64528 equally into 23 parts.</p>
+<div class="calc-example">64528 ÷ 23:
+
+Step 1: 64 thousands ÷ 23 → 2 (giving 46 thousands), remain 18 thousands
+Step 2: 185 hundreds ÷ 23 → 8 (giving 184 hundreds), remain 1 hundred
+Step 3: 12 tens ÷ 23 → 0, remain 12 tens
+Step 4: 128 units ÷ 23 → 5 (giving 115), remain 13
+
+Quotient: 2805    Remainder: 13</div>
+</div>
+
+<div class="section" id="s73">
+<div class="section-head"><span class="sec-num">73.</span><span class="sec-title">When the divisor ends in zeros</span></div>
+<div class="rule-box"><strong>Rule.</strong> If the divisor ends in zeros, drop those zeros from both divisor and dividend (same number of digits), perform the division, then append the dropped digits of the dividend to the remainder.<br>
+<br>
+54634 ÷ 1000 = 54 (remainder 634) — simply read off.<br>
+389224 ÷ 7300: drop two zeros → 3892 ÷ 73 = 53 rem 23; actual remainder = 2324.</div>
+</div>
+
+<div class="section" id="s76">
+<div class="section-head"><span class="sec-num">76.</span><span class="sec-title">Dividing by a product</span></div>
+<p>To divide by a product, divide successively by each factor: 60 ÷ (5·3) = 60 ÷ 5 ÷ 3 = 12 ÷ 3 = 4.</p>
+</div>
+
+<div class="section" id="s77">
+<div class="section-head"><span class="sec-num">77.</span><span class="sec-title">How the quotient changes when dividend or divisor changes</span></div>
+<p>Multiply the dividend by <em>n</em> → quotient multiplied by <em>n</em>.<br>
+Divide the dividend by <em>n</em> → quotient divided by <em>n</em>.<br>
+Multiply the divisor by <em>n</em> → quotient divided by <em>n</em>.<br>
+Divide the divisor by <em>n</em> → quotient multiplied by <em>n</em>.<br>
+Multiply both by <em>n</em>, or divide both by <em>n</em> → quotient <strong>unchanged</strong>.</p>
+</div>
+
+<div class="section" id="s79">
+<div class="section-head"><span class="sec-num">79.</span><span class="sec-title">Dividing a sum or difference</span></div>
+<p><strong>1)</strong> To divide a sum, divide each addend separately (assuming exact division): (21 + 14 + 35) ÷ 7 = 3 + 2 + 5 = 10.</p>
+<p><strong>2)</strong> To divide a difference, divide minuend and subtrahend separately: (40 − 25) ÷ 5 = 8 − 5 = 3.</p>
+</div>
+
+<div class="section" id="s80">
+<div class="section-head"><span class="sec-num">80.</span><span class="sec-title">Order of operations</span></div>
+<p>Addition and subtraction are called <em>operations of the first level</em>; multiplication and division are <em>operations of the second level</em>. When no brackets are present: <strong>perform second-level operations before first-level operations</strong>. For example: 2 + 3·4 − 6÷2 = 2 + 12 − 3 = 11.</p>
+</div>
+<!-- PART TWO -->
+<div class="part-heading" id="part2">
+  <div class="part-number">Part Two</div>
+  <h2>Divisibility of Numbers</h2>
+</div>
+
+<div class="section">
+<p>Of the four arithmetic operations, two — addition and multiplication — can always be performed (on any numbers). Subtraction is not always possible, but the test is simple: the minuend must not be smaller than the subtrahend. Division is more subtle: it often cannot be carried out exactly, and it may not be at all obvious whether one number divides another without first actually dividing. For this reason, the hardest questions in arithmetic are bound up with division. We shall study some of them in this part.</p>
+<p>When one number divides another without remainder, we simply say the first number is <em>divisible</em> by the second. In this case the first is also called a <em>multiple</em> of the second, and the second is called a <em>divisor</em> of the first. So 15 is a multiple of 3, and 3 is a divisor of 15.</p>
+<p class="remark">Zero is divisible by any non-zero number, and the quotient is then zero.</p>
+</div>
+
+<!-- DIVISIBILITY DEMO -->
+<div class="demo-box" id="demo-divisibility">
+  <h4>Divisibility Tests — Try any number</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="div-test-n" value="2457" style="width:120px;">
+    <button class="demo-btn" onclick="runDivisibilityTest()">Test</button>
+  </div>
+  <div id="div-test-out" class="demo-output">Testing 2457:
+÷2: ✗  (Last digit 7 is odd)
+÷3: ✓  (Digit sum 18 is divisible by 3)
+÷4: ✗  (Last two digits 57 is not divisible by 4)
+÷5: ✗  (Last digit is 7)
+÷6: ✗  (Odd and digit sum 18 divisible by 3)
+÷8: ✗  (Last three digits 457 is not divisible by 8)
+÷9: ✓  (Digit sum 18 is divisible by 9)
+÷10: ✗  (Last digit is 7)
+÷12: ✗  (Divisible by 4 and 3)
+÷25: ✗  (Last two digits 57)
+</div>
+</div>
+
+<div class="chapter-heading" id="div1">
+  <span class="ch-number">Chapter I</span>
+  <h3>Divisibility Tests</h3>
+</div>
+
+<div class="section" id="s82">
+<div class="section-head"><span class="sec-num">82.</span><span class="sec-title">Divisibility of a sum and a difference</span></div>
+<p>We frequently use these properties when establishing divisibility tests:</p>
+<div class="rule-box">
+1) If every addend is divisible by some number, the sum is also divisible by it.<br>
+2) If all addends except one are divisible by a number, the sum is <em>not</em> divisible by it.<br>
+3) If both minuend and subtrahend are divisible by a number, the difference is also divisible by it.
+</div>
+</div>
+
+<div class="section" id="s83">
+<div class="section-head"><span class="sec-num">83.</span><span class="sec-title">Divisibility by 2</span></div>
+<p>Numbers divisible by 2 are called <em>even</em>; the rest are <em>odd</em>. Odd and even numbers alternate in the natural sequence.</p>
+<p>Any number ending in 0 is a sum of tens. Every ten is divisible by 2, so any number ending in 0 is divisible by 2. If a number ends in any even digit (2, 4, 6, 8), write it as a multiple of 10 plus that digit: both parts are divisible by 2, so the sum is also. If it ends in an odd digit, the sum is not divisible by 2.</p>
+<div class="rule-box"><strong>Test for 2:</strong> A number is divisible by 2 if and only if its last digit is even (0, 2, 4, 6, or 8).</div>
+</div>
+
+<div class="section" id="s84">
+<div class="section-head"><span class="sec-num">84.</span><span class="sec-title">Divisibility by 4</span></div>
+<p>Every hundred is divisible by 4 (100 = 4 × 25). So any number ending in two zeros is divisible by 4.</p>
+<div class="rule-box"><strong>Test for 4:</strong> A number is divisible by 4 if and only if its last two digits express a number divisible by 4.<br>
+Similarly: <strong>Test for 8:</strong> A number is divisible by 8 if and only if its last three digits are divisible by 8.</div>
+<div class="calc-example">2348: last two digits 48 → 48÷4=12 → divisible by 4 ✓
+2350: last two digits 50 → 50÷4=12 rem 2 → not divisible by 4 ✗</div>
+</div>
+
+<div class="section" id="s85">
+<div class="section-head"><span class="sec-num">85.</span><span class="sec-title">Divisibility by 5 and 10</span></div>
+<div class="rule-box"><strong>Test for 5:</strong> A number is divisible by 5 if and only if it ends in 0 or 5.<br>
+<strong>Test for 10:</strong> A number is divisible by 10 if and only if it ends in 0.<br>
+<strong>Test for 25:</strong> Divisible by 25 iff last two digits are 00, 25, 50, or 75.</div>
+</div>
+
+<div class="section" id="s86">
+<div class="section-head"><span class="sec-num">86.</span><span class="sec-title">Divisibility by 3 and 9</span></div>
+<p>Every number formed by repeating the digit 9 (9, 99, 999, …) is divisible by both 3 and 9. Every thousand = 999 + 1, every hundred = 99 + 1, every ten = 9 + 1. Splitting a number into its individual digits:</p>
+<div class="calc-example">2457 = (999+999) + (99+99+99+99) + (9+9+9+9+9) + (2+4+5+7)
+     = multiple of 3 and 9  +  digit sum 18</div>
+<p>So divisibility by 3 (or 9) depends entirely on the digit sum.</p>
+<div class="rule-box"><strong>Test for 3:</strong> A number is divisible by 3 if and only if its digit sum is divisible by 3.<br>
+<strong>Test for 9:</strong> A number is divisible by 9 if and only if its digit sum is divisible by 9.</div>
+<div class="calc-example">2457: digit sum = 2+4+5+7 = 18 → divisible by both 3 and 9 ✓
+17331: digit sum = 1+7+3+3+1 = 15 → divisible by 3 ✓, not by 9 ✗</div>
+</div>
+
+<div class="section" id="s87">
+<div class="section-head"><span class="sec-num">87.</span><span class="sec-title">Divisibility by 6, 12, 15</span></div>
+<div class="rule-box">
+<strong>Test for 6:</strong> Divisible by 6 iff divisible by both 2 and 3.<br>
+<strong>Test for 12:</strong> Divisible by 12 iff divisible by both 4 and 3.<br>
+<strong>Test for 15:</strong> Divisible by 15 iff divisible by both 5 and 3.
+</div>
+<p>The justification for the 6-rule: if a number breaks into 6's, then the 6's break into 2's and also into 3's, so it is divisible by both 2 and 3. Conversely, if it is divisible by both 2 and 3, write it as 3·<em>k</em> where <em>k</em> is even (since the number is divisible by 2, and 3 is odd, <em>k</em> must be even), so 3·<em>k</em> = 3·2·<em>m</em> = 6·<em>m</em>.</p>
+</div>
+
+<div class="chapter-heading" id="div2">
+  <span class="ch-number">Chapter II</span>
+  <h3>Prime Factorisation</h3>
+</div>
+
+<div class="section" id="s91">
+<div class="section-head"><span class="sec-num">91.</span><span class="sec-title">Prime and composite numbers</span></div>
+<p>Every whole number greater than 1 has at least two divisors: 1 and itself. Numbers that have exactly two divisors are called <em>prime</em> numbers: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47 …</p>
+<p>Numbers with more than two divisors are called <em>composite</em>: 4, 6, 8, 9, 10, 12, 14, 15, 16, 18, …</p>
+<p>The unit (1) is neither prime nor composite.</p>
+</div>
+
+<div class="section" id="s92">
+<div class="section-head"><span class="sec-num">92.</span><span class="sec-title">There are infinitely many prime numbers</span></div>
+<p>Suppose there were finitely many primes: <em>p</em>₁, <em>p</em>₂, …, <em>p</em>ₙ. Form the number <em>N</em> = <em>p</em>₁·<em>p</em>₂·…·<em>p</em>ₙ + 1. It leaves remainder 1 when divided by any of the known primes, so none of them divides <em>N</em>. But <em>N</em> is either prime (giving a new prime) or composite (and must have a prime divisor not in our list). Either way the list was incomplete — a contradiction. So primes are infinite in number.</p>
+</div>
+
+<div class="section" id="s93">
+<div class="section-head"><span class="sec-num">93.</span><span class="sec-title">How to test whether a number is prime</span></div>
+<p>If a number <em>N</em> has no prime divisors ≤ √<em>N</em>, it is prime.</p>
+<div class="calc-example">Is 223 prime?  √223 ≈ 14.9
+Test: 2, 3, 5, 7, 11, 13 — none divide 223 exactly.
+Therefore 223 is prime.</div>
+</div>
+
+<div class="section" id="s94">
+<div class="section-head"><span class="sec-num">94.</span><span class="sec-title">Prime factorisation</span></div>
+<div class="rule-box"><strong>Fundamental Theorem of Arithmetic.</strong> Every composite number can be expressed as a product of prime factors, and this representation is unique (apart from the order of factors).</div>
+<div class="calc-example">84 = 2 × 42 = 2 × 2 × 21 = 2 × 2 × 3 × 7 = 2² × 3 × 7
+
+Method — divide by the smallest prime that divides at each step:
+84 ÷ 2 = 42
+42 ÷ 2 = 21
+21 ÷ 3 = 7
+7 is prime → stop.   84 = 2 × 2 × 3 × 7</div>
+</div>
+
+<!-- PRIME FACTORISATION DEMO -->
+<div class="demo-box" id="demo-primes">
+  <h4>Prime Factorisation</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="prime-n" value="360" style="width:100px;">
+    <button class="demo-btn" onclick="runPrimeFactors()">Factorise</button>
+  </div>
+  <div id="prime-out" class="demo-output">360 ÷ 2 = 180
+180 ÷ 2 = 90
+90 ÷ 2 = 45
+45 ÷ 3 = 15
+15 ÷ 3 = 5
+5 is prime
+
+360 = 2 × 2 × 2 × 3 × 3 × 5 = 2^3 × 3^2 × 5</div>
+</div>
+
+<div class="chapter-heading" id="div4">
+  <span class="ch-number">Chapter IV</span>
+  <h3>Greatest Common Divisor</h3>
+</div>
+
+<div class="section" id="s99">
+<div class="section-head"><span class="sec-num">99.</span><span class="sec-title">Common divisors and the GCD</span></div>
+<p>A number that is a divisor of each of several given numbers is called a <em>common divisor</em>. The largest such number is the <em>greatest common divisor</em> (GCD).</p>
+<p>To find the GCD of 12 and 18: prime factors of 12 = 2²·3, prime factors of 18 = 2·3². Common factors: 2¹·3¹ = 6. GCD(12,18) = 6.</p>
+<div class="rule-box"><strong>Rule.</strong> The GCD is the product of all prime factors common to every number, each taken with the lowest power it appears in any of them.</div>
+</div>
+
+<div class="section" id="s100">
+<div class="section-head"><span class="sec-num">100.</span><span class="sec-title">The Euclidean algorithm</span></div>
+<p>Divide the larger number by the smaller; then divide the previous divisor by the remainder; continue until the remainder is zero. The last nonzero remainder is the GCD.</p>
+<div class="calc-example">GCD(168, 252):
+252 = 168 × 1 + 84
+168 = 84 × 2 + 0
+GCD = 84</div>
+</div>
+
+<!-- GCD/LCM DEMO -->
+<div class="demo-box" id="demo-gcd">
+  <h4>GCD and LCM — Euclidean Algorithm</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="gcd-a" value="168" style="width:90px;">
+    <span style="color:#C8BFA8;">,</span>
+    <input class="demo-input" id="gcd-b" value="252" style="width:90px;">
+    <button class="demo-btn" onclick="runGCD()">Compute</button>
+  </div>
+  <div id="gcd-out" class="demo-output">Finding GCD(168, 252) using Euclidean algorithm:
+168 = 252 × 0 + 168
+252 = 168 × 1 + 84
+168 = 84 × 2 + 0
+
+GCD(168,252) = 84
+LCM(168,252) = 168×252/GCD = 42336/84 = 504
+Check: LCM × GCD = 504 × 84 = 42336 = 168 × 252 ✓</div>
+</div>
+
+<div class="chapter-heading" id="div5">
+  <span class="ch-number">Chapter V</span>
+  <h3>Least Common Multiple</h3>
+</div>
+
+<div class="section" id="s103">
+<div class="section-head"><span class="sec-num">103.</span><span class="sec-title">Common multiples and the LCM</span></div>
+<p>A number that is a multiple of each of several given numbers is a <em>common multiple</em>. The smallest positive such number is the <em>least common multiple</em> (LCM).</p>
+<div class="rule-box"><strong>Rule.</strong> LCM = product of all prime factors appearing in any of the numbers, each taken with the highest power it appears in any of them.<br><br>
+Also: LCM(<em>a</em>,<em>b</em>) × GCD(<em>a</em>,<em>b</em>) = <em>a</em> × <em>b</em></div>
+<div class="calc-example">LCM(12, 18):
+12 = 2² × 3¹
+18 = 2¹ × 3²
+LCM = 2² × 3² = 4 × 9 = 36</div>
+</div>
+<!-- PART THREE -->
+<div class="part-heading" id="part3">
+  <div class="part-number">Part Three</div>
+  <h2>Measurement of Quantities · The Metric System</h2>
+</div>
+
+<div class="chapter-heading" id="meas">
+  <span class="ch-number">Part Three</span>
+  <h3>Measurement and the Metric System of Measures</h3>
+</div>
+
+<div class="section" id="s106">
+<div class="section-head"><span class="sec-num">106.</span><span class="sec-title">Introduction</span></div>
+<p>Until now we have dealt only with whole numbers. The historical origin of whole numbers was above all the need to count, and whole numbers satisfy that need completely. But human activity since antiquity has generated needs that whole numbers cannot meet. The necessity arose to introduce new numbers. One of the fundamental activities that made this necessary is the <em>measurement of quantities</em>. We therefore pause to examine what measurement is before proceeding to study these new numbers.</p>
+</div>
+
+<div class="section" id="s107">
+<div class="section-head"><span class="sec-num">107.</span><span class="sec-title">Measuring quantities</span></div>
+<p>To measure the length of a room, we use some familiar unit of length — say, a metre — and count how many times it fits along the room. If it fits exactly 10 times, the room is 10 metres long. Similarly, to measure a weight, we use a unit of weight (e.g., a gram) and count how many times it fits.</p>
+<div class="rule-box"><strong>Definition.</strong> To measure a quantity means to find how many times another quantity of the same kind — taken as the <em>unit</em> — fits into it.</div>
+<p>A metre is the unit of length; a gram is the unit of weight; and so on. For each kind of quantity several units may be used — larger ones and smaller ones. The gram is used alongside the kilogram, tonne, and milligram.</p>
+</div>
+
+<!-- UNIT CONVERTER DEMO -->
+<div class="demo-box" id="demo-units">
+  <h4>Metric Unit Converter</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:0.8rem;">
+    <input class="demo-input" id="unit-val" value="1" style="width:80px;">
+    <select id="unit-from" style="background:#2C2820; border:1px solid #4A4232; color:#C8BFA8; padding:0.3rem; border-radius:3px; font-family:'EB Garamond',serif;">
+      <option value="km">km</option><option value="m" selected="selected">m</option>
+      <option value="cm">cm</option><option value="mm">mm</option>
+    </select>
+    <span style="color:#C8BFA8;">→</span>
+    <select id="unit-to" style="background:#2C2820; border:1px solid #4A4232; color:#C8BFA8; padding:0.3rem; border-radius:3px; font-family:'EB Garamond',serif;">
+      <option value="km">km</option><option value="m">m</option>
+      <option value="cm" selected="selected">cm</option><option value="mm">mm</option>
+    </select>
+    <button class="demo-btn" onclick="runUnitConvert()">Convert</button>
+  </div>
+  <div id="unit-out" class="demo-output">1 m = 100 cm</div>
+</div>
+
+<div class="section" id="s109">
+<div class="section-head"><span class="sec-num">109.</span><span class="sec-title">The metric system of measures</span></div>
+<p>The metric system is now in use in the USSR and in many other countries. Its unit of length is the <em>metre</em>. Submultiples are formed with Latin prefixes: <em>deci-</em> (tenth), <em>centi-</em> (hundredth), <em>milli-</em> (thousandth). Multiples use Greek prefixes: <em>deca-</em> (×10), <em>hecto-</em> (×100), <em>kilo-</em> (×1000).</p>
+<div class="calc-example">Length:
+  1 km = 1000 m         1 hm = 100 m
+  1 dam = 10 m          1 dm = 0.1 m
+  1 cm = 0.01 m         1 mm = 0.001 m
+
+Weight (mass):
+  1 tonne = 1000 kg     1 kg = 1000 g
+  1 g = 1000 mg
+
+Area:
+  1 km² = 1000000 m²    1 ha = 10000 m²
+  1 a (are) = 100 m²    1 m² = 10000 cm²
+  1 cm² = 100 mm²
+
+Volume:
+  1 m³ = 1000 dm³       1 dm³ = 1 litre
+  1 litre = 1000 ml = 1000 cm³</div>
+</div>
+
+<div class="section" id="s110">
+<div class="section-head"><span class="sec-num">110.</span><span class="sec-title">Denominate numbers and operations on them</span></div>
+<p>Numbers that show the measurement of some quantity are called <em>denominate numbers</em>. When working with them, always convert to a common unit before adding or subtracting.</p>
+<div class="calc-example">5 m 7 dm + 3 m 6 dm = 8 m 13 dm = 9 m 3 dm
+2 kg 400 g × 3 = 6 kg 1200 g = 7 kg 200 g
+17 m 25 cm ÷ 5 = 3 m 45 cm</div>
+</div>
+
+<!-- PART FOUR -->
+<div class="part-heading" id="part4">
+  <div class="part-number">Part Four</div>
+  <h2>Common (Simple) Fractions</h2>
+</div>
+
+<div class="chapter-heading" id="frac1">
+  <span class="ch-number">Chapter I</span>
+  <h3>Basic Concepts</h3>
+</div>
+
+<!-- FRACTION VISUALISER DEMO -->
+<div class="demo-box" id="demo-fractions">
+  <h4>Fraction Visualiser</h4>
+  <p style="color:#A09580; font-size:0.85rem; margin-bottom:1rem;">Type a fraction and see it drawn as a portion of a bar.</p>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="frac-num" value="3" style="width:60px; text-align:center;">
+    <span style="color:#C8BFA8; font-size:1.3rem;">/</span>
+    <input class="demo-input" id="frac-den" value="5" style="width:60px; text-align:center;">
+    <button class="demo-btn" onclick="runFractionViz()">Draw</button>
+  </div>
+  <canvas id="frac-canvas" width="480" height="120" style="max-width:100%; background:#1C1A14; border-radius:4px;"></canvas>
+  <div id="frac-out" class="demo-output">3/5 = 0.6000</div>
+</div>
+
+<div class="section" id="s115">
+<div class="section-head"><span class="sec-num">115.</span><span class="sec-title">Parts of a unit</span></div>
+<p>One centimetre is the hundredth part of a metre; one hour is the twenty-fourth part of a day. We call a centimetre the "hundredth fraction" of a metre, and an hour the "twenty-fourth fraction" of a day. A minute is the sixtieth fraction of an hour. The word <em>fraction</em> replaces "part" in this context (the Russian word <em>доля</em> is more precise, meaning a measured portion).</p>
+<p>The second fraction is commonly called a <em>half</em>, the third a <em>third</em>, the fourth a <em>quarter</em>.</p>
+</div>
+
+<div class="section" id="s116">
+<div class="section-head"><span class="sec-num">116.</span><span class="sec-title">Fractional number</span></div>
+<p>One fraction, or a collection of several equal fractions of a unit, is called a <em>fraction</em>. Examples: one tenth, three fifths, twelve sevenths. A whole number together with a fraction forms a <em>mixed number</em>: "3 and seven eighths". Fractions and mixed numbers are called <em>fractional numbers</em>, in contrast to whole numbers.</p>
+</div>
+
+<div class="section" id="s117">
+<div class="section-head"><span class="sec-num">117.</span><span class="sec-title">Writing fractions</span></div>
+<p>Write the number of fractions above a horizontal line; below the line write how many equal parts the unit was divided into.</p>
+<div class="display-math">Three fifths = <span class="frac-inline"><span class="num">3</span><span class="den">5</span></span> &nbsp;&nbsp; Twelve sevenths = <span class="frac-inline"><span class="num">12</span><span class="den">7</span></span></div>
+<p>The number above the line is the <em>numerator</em> (how many fractions are taken); below is the <em>denominator</em> (how many parts the unit was divided into). Both together are the <em>terms</em> of the fraction.</p>
+<p>A mixed number is written as a whole number with the fraction written to its right: 3<span class="frac-inline"><span class="num">2</span><span class="den">7</span></span>.</p>
+</div>
+
+<div class="section" id="s119">
+<div class="section-head"><span class="sec-num">119.</span><span class="sec-title">Obtaining fractions by dividing into equal parts</span></div>
+<p>Divide 5 kg of bread into 8 equal parts. Imagine each kilogram divided into 8 equal parts: 5 kg contains 5×8=40 such parts. One eighth of 5 kg is 40÷8=5 of those parts. So one eighth of 5 kg is <span class="frac-inline"><span class="num">5</span><span class="den">8</span></span> kg.</p>
+<div class="rule-box">Dividing <em>m</em> by <em>n</em> gives <span class="frac-inline"><span class="num"><em>m</em></span><span class="den"><em>n</em></span></span>. Conversely, <span class="frac-inline"><span class="num"><em>m</em></span><span class="den"><em>n</em></span></span> = <em>m</em> ÷ <em>n</em>. A fraction is another way to write a division.</div>
+</div>
+
+<div class="section" id="s120">
+<div class="section-head"><span class="sec-num">120.</span><span class="sec-title">Proper and improper fractions</span></div>
+<p>A fraction is <em>proper</em> when the numerator is smaller than the denominator (<span class="frac-inline"><span class="num">3</span><span class="den">5</span></span>, <span class="frac-inline"><span class="num">7</span><span class="den">12</span></span>): its value is less than 1. An <em>improper</em> fraction has numerator ≥ denominator (<span class="frac-inline"><span class="num">7</span><span class="den">5</span></span>, <span class="frac-inline"><span class="num">9</span><span class="den">3</span></span>): its value is ≥ 1.</p>
+<p>Every improper fraction can be converted to a whole number or mixed number by dividing numerator by denominator: <span class="frac-inline"><span class="num">17</span><span class="den">5</span></span> = 3<span class="frac-inline"><span class="num">2</span><span class="den">5</span></span>; conversely, 3<span class="frac-inline"><span class="num">2</span><span class="den">5</span></span> = <span class="frac-inline"><span class="num">17</span><span class="den">5</span></span>.</p>
+</div>
+
+<div class="chapter-heading" id="frac2">
+  <span class="ch-number">Chapter II</span>
+  <h3>How the Value of a Fraction Changes with Its Terms</h3>
+</div>
+
+<div class="section" id="s122">
+<div class="section-head"><span class="sec-num">122.</span><span class="sec-title">Comparing fractions with the same denominator</span></div>
+<p>When the denominator is the same, the fraction with the larger numerator is larger: <span class="frac-inline"><span class="num">5</span><span class="den">9</span></span> &gt; <span class="frac-inline"><span class="num">3</span><span class="den">9</span></span>.</p>
+</div>
+
+<div class="section" id="s123">
+<div class="section-head"><span class="sec-num">123.</span><span class="sec-title">Multiplying numerator and denominator by the same number</span></div>
+<div class="rule-box">Multiplying both numerator and denominator by the same number does not change the value of the fraction.<br>
+<span class="frac-inline"><span class="num">3</span><span class="den">5</span></span> = <span class="frac-inline"><span class="num">6</span><span class="den">10</span></span> = <span class="frac-inline"><span class="num">12</span><span class="den">20</span></span> = <span class="frac-inline"><span class="num">3<em>n</em></span><span class="den">5<em>n</em></span></span> for any n ≠ 0</div>
+</div>
+
+<div class="section" id="s124">
+<div class="section-head"><span class="sec-num">124.</span><span class="sec-title">Dividing numerator and denominator by the same number</span></div>
+<div class="rule-box">Dividing both numerator and denominator by the same number does not change the value of the fraction.<br>
+<span class="frac-inline"><span class="num">12</span><span class="den">20</span></span> = <span class="frac-inline"><span class="num">6</span><span class="den">10</span></span> = <span class="frac-inline"><span class="num">3</span><span class="den">5</span></span></div>
+</div>
+
+<div class="chapter-heading" id="frac3">
+  <span class="ch-number">Chapter III</span>
+  <h3>Reducing Fractions</h3>
+</div>
+
+<div class="section" id="s126">
+<div class="section-head"><span class="sec-num">126.</span><span class="sec-title">Reduction</span></div>
+<p>To reduce a fraction means to divide both terms by a common divisor. A fraction is in its <em>lowest terms</em> when the GCD of numerator and denominator is 1 (they are <em>coprime</em>). To reduce to lowest terms, divide both terms by their GCD.</p>
+<div class="calc-example"><span class="frac-inline"><span class="num">84</span><span class="den">126</span></span>:  GCD(84,126)=42 → <span class="frac-inline"><span class="num">84÷42</span><span class="den">126÷42</span></span> = <span class="frac-inline"><span class="num">2</span><span class="den">3</span></span></div>
+</div>
+
+<div class="chapter-heading" id="frac4">
+  <span class="ch-number">Chapter IV</span>
+  <h3>Reducing Fractions to a Common Denominator</h3>
+</div>
+
+<div class="section" id="s130">
+<div class="section-head"><span class="sec-num">130.</span><span class="sec-title">Bringing fractions to a common denominator</span></div>
+<p>To compare or add fractions with different denominators, convert them to have the same denominator — the <em>least common denominator</em> (LCD) = LCM of the original denominators.</p>
+<div class="calc-example">Bring <span class="frac-inline"><span class="num">5</span><span class="den">6</span></span> and <span class="frac-inline"><span class="num">7</span><span class="den">8</span></span> to a common denominator:
+LCM(6,8) = 24
+<span class="frac-inline"><span class="num">5</span><span class="den">6</span></span> = <span class="frac-inline"><span class="num">20</span><span class="den">24</span></span>  (multiply by 4)
+<span class="frac-inline"><span class="num">7</span><span class="den">8</span></span> = <span class="frac-inline"><span class="num">21</span><span class="den">24</span></span>  (multiply by 3)
+Now comparable: <span class="frac-inline"><span class="num">20</span><span class="den">24</span></span> &lt; <span class="frac-inline"><span class="num">21</span><span class="den">24</span></span>, so <span class="frac-inline"><span class="num">5</span><span class="den">6</span></span> &lt; <span class="frac-inline"><span class="num">7</span><span class="den">8</span></span></div>
+</div>
+
+<div class="chapter-heading" id="frac5">
+  <span class="ch-number">Chapter V</span>
+  <h3>Operations on Fractions</h3>
+</div>
+
+<!-- FRACTION CALCULATOR DEMO -->
+<div class="demo-box" id="demo-fracalc">
+  <h4>Fraction Calculator</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="fc-n1" value="3" style="width:55px; text-align:center;">
+    <span style="color:#C8BFA8;">/</span>
+    <input class="demo-input" id="fc-d1" value="5" style="width:55px; text-align:center;">
+    <select id="fc-op" style="background:#2C2820; border:1px solid #4A4232; color:#C8BFA8; padding:0.3rem; border-radius:3px; width:50px; text-align:center;">
+      <option selected="selected">+</option><option>−</option><option>×</option><option>÷</option>
+    </select>
+    <input class="demo-input" id="fc-n2" value="2" style="width:55px; text-align:center;">
+    <span style="color:#C8BFA8;">/</span>
+    <input class="demo-input" id="fc-d2" value="7" style="width:55px; text-align:center;">
+    <button class="demo-btn" onclick="runFracCalc()">=</button>
+  </div>
+  <div id="fc-out" class="demo-output">3/5 + 2/7 = 31/35  ≈ 0.8857</div>
+</div>
+
+<div class="section" id="s132">
+<div class="section-head"><span class="sec-num">132.</span><span class="sec-title">Adding fractions with the same denominator</span></div>
+<div class="rule-box">Add the numerators; keep the denominator: <span class="frac-inline"><span class="num"><em>a</em></span><span class="den"><em>c</em></span></span> + <span class="frac-inline"><span class="num"><em>b</em></span><span class="den"><em>c</em></span></span> = <span class="frac-inline"><span class="num"><em>a</em>+<em>b</em></span><span class="den"><em>c</em></span></span></div>
+</div>
+
+<div class="section" id="s133">
+<div class="section-head"><span class="sec-num">133.</span><span class="sec-title">Adding fractions with different denominators</span></div>
+<div class="rule-box">Bring to the LCD, then add numerators.<br>
+<span class="frac-inline"><span class="num">5</span><span class="den">6</span></span> + <span class="frac-inline"><span class="num">7</span><span class="den">8</span></span> = <span class="frac-inline"><span class="num">20</span><span class="den">24</span></span> + <span class="frac-inline"><span class="num">21</span><span class="den">24</span></span> = <span class="frac-inline"><span class="num">41</span><span class="den">24</span></span> = 1<span class="frac-inline"><span class="num">17</span><span class="den">24</span></span></div>
+</div>
+
+<div class="section" id="s135">
+<div class="section-head"><span class="sec-num">135.</span><span class="sec-title">Subtracting fractions</span></div>
+<div class="rule-box">Bring to common denominator, then subtract numerators:<br>
+<span class="frac-inline"><span class="num"><em>a</em></span><span class="den"><em>c</em></span></span> − <span class="frac-inline"><span class="num"><em>b</em></span><span class="den"><em>c</em></span></span> = <span class="frac-inline"><span class="num"><em>a</em>−<em>b</em></span><span class="den"><em>c</em></span></span></div>
+</div>
+
+<div class="section" id="s138">
+<div class="section-head"><span class="sec-num">138.</span><span class="sec-title">Multiplying fractions</span></div>
+<div class="rule-box">Multiply numerators together and denominators together:<br>
+<span class="frac-inline"><span class="num"><em>a</em></span><span class="den"><em>b</em></span></span> × <span class="frac-inline"><span class="num"><em>c</em></span><span class="den"><em>d</em></span></span> = <span class="frac-inline"><span class="num"><em>ac</em></span><span class="den"><em>bd</em></span></span><br><br>
+Example: <span class="frac-inline"><span class="num">3</span><span class="den">7</span></span> × <span class="frac-inline"><span class="num">5</span><span class="den">11</span></span> = <span class="frac-inline"><span class="num">15</span><span class="den">77</span></span></div>
+<p>Cross-cancellation before multiplying saves work: if any numerator and any denominator share a common factor, cancel it first.</p>
+</div>
+
+<div class="section" id="s140">
+<div class="section-head"><span class="sec-num">140.</span><span class="sec-title">Dividing fractions</span></div>
+<div class="rule-box">To divide by a fraction, multiply by its reciprocal:<br>
+<span class="frac-inline"><span class="num"><em>a</em></span><span class="den"><em>b</em></span></span> ÷ <span class="frac-inline"><span class="num"><em>c</em></span><span class="den"><em>d</em></span></span> = <span class="frac-inline"><span class="num"><em>a</em></span><span class="den"><em>b</em></span></span> × <span class="frac-inline"><span class="num"><em>d</em></span><span class="den"><em>c</em></span></span> = <span class="frac-inline"><span class="num"><em>ad</em></span><span class="den"><em>bc</em></span></span><br><br>
+Example: <span class="frac-inline"><span class="num">5</span><span class="den">8</span></span> ÷ <span class="frac-inline"><span class="num">3</span><span class="den">4</span></span> = <span class="frac-inline"><span class="num">5</span><span class="den">8</span></span> × <span class="frac-inline"><span class="num">4</span><span class="den">3</span></span> = <span class="frac-inline"><span class="num">20</span><span class="den">24</span></span> = <span class="frac-inline"><span class="num">5</span><span class="den">6</span></span></div>
+</div>
+<!-- PART FIVE -->
+<div class="part-heading" id="part5">
+  <div class="part-number">Part Five</div>
+  <h2>Decimal Fractions</h2>
+</div>
+
+<div class="chapter-heading" id="dec1">
+  <span class="ch-number">Chapter I</span>
+  <h3>Basic Properties of Decimal Fractions</h3>
+</div>
+
+<!-- DECIMAL DEMO -->
+<div class="demo-box" id="demo-decimal">
+  <h4>Decimal Place Values — Reading and Writing Decimals</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="dec-input" value="25.703" style="width:120px;">
+    <button class="demo-btn" onclick="runDecimalViz()">Analyse</button>
+  </div>
+  <div id="dec-out" class="demo-output">Number: 25.703
+Whole part: 25
+Decimal places:
+  Tenths: 7 (= 7/10)
+  Hundredths: 0 (= 0/100)
+  Thousandths: 3 (= 3/1000)
+
+As fraction: 25.703</div>
+</div>
+
+<div class="section" id="s158">
+<div class="section-head"><span class="sec-num">158.</span><span class="sec-title">Decimal fractions of units</span></div>
+<p>The fractions obtained by dividing a unit into 10, 100, 1000, … equal parts are called <em>decimal fractions</em>:</p>
+<div class="display-math"><span class="frac-inline"><span class="num">1</span><span class="den">10</span></span>, &nbsp; <span class="frac-inline"><span class="num">1</span><span class="den">100</span></span>, &nbsp; <span class="frac-inline"><span class="num">1</span><span class="den">1000</span></span>, &nbsp; <span class="frac-inline"><span class="num">1</span><span class="den">10000</span></span>, &nbsp; …</div>
+<p>Each decimal fraction of one order contains 10 decimal fractions of the next lower order.</p>
+</div>
+
+<div class="section" id="s159">
+<div class="section-head"><span class="sec-num">159.</span><span class="sec-title">Decimal fraction</span></div>
+<p>A fraction whose denominator is 1 followed by zeros is called a <em>decimal fraction</em>: <span class="frac-inline"><span class="num">3</span><span class="den">10</span></span>, <span class="frac-inline"><span class="num">27</span><span class="den">100</span></span>, <span class="frac-inline"><span class="num">27401</span><span class="den">1000</span></span>. Fractions with any other denominator are called <em>common</em> or <em>vulgar</em> fractions.</p>
+</div>
+
+<div class="section" id="s160">
+<div class="section-head"><span class="sec-num">160.</span><span class="sec-title">Decimal notation</span></div>
+<p>In a whole number, each digit to the left represents units 10 times greater than the digit to its right. We extend this convention to the right of the simple units. We separate the whole part from the decimal fractions by a <em>comma</em> (in this text) or a dot.</p>
+<div class="calc-example">63,48259 means:
+  6 tens + 3 units + 4 tenths + 8 hundredths
+  + 2 thousandths + 5 ten-thousandths + 9 hundred-thousandths
+
+0,0203  = 2 hundredths + 3 ten-thousandths
+25,703  = 25 units + 7 tenths + 3 thousandths</div>
+<p>Digits to the right of the comma are called <em>decimal places</em>.</p>
+</div>
+
+<div class="section" id="s161">
+<div class="section-head"><span class="sec-num">161.</span><span class="sec-title">Writing a decimal without a denominator</span></div>
+<div class="rule-box">To write a decimal fraction without denominator: write the numerator and move the decimal point to the left by as many places as there are zeros in the denominator. Prefix zeros if needed.<br>
+<span class="frac-inline"><span class="num">27</span><span class="den">1000</span></span> = 0,027 &nbsp;·&nbsp; <span class="frac-inline"><span class="num">5</span><span class="den">100</span></span> = 0,05 &nbsp;·&nbsp; <span class="frac-inline"><span class="num">3049</span><span class="den">10000</span></span> = 0,3049</div>
+</div>
+
+<div class="section" id="s163">
+<div class="section-head"><span class="sec-num">163.</span><span class="sec-title">Adding or removing terminal zeros</span></div>
+<div class="rule-box">Appending or removing zeros at the end of a decimal fraction does not change its value:<br>
+0,7 = 0,70 = 0,700 &nbsp;·&nbsp; 2,3500 = 2,35</div>
+<p>This follows from the rule on multiplying/dividing fraction terms: 0,7 = <span class="frac-inline"><span class="num">7</span><span class="den">10</span></span> = <span class="frac-inline"><span class="num">70</span><span class="den">100</span></span> = 0,70.</p>
+</div>
+
+<div class="section" id="s164">
+<div class="section-head"><span class="sec-num">164.</span><span class="sec-title">Comparing decimals</span></div>
+<p>First compare whole parts; the one with the larger whole part is greater. If whole parts are equal, compare tenths; if those are equal, compare hundredths; and so on. To facilitate comparison, equalize the number of decimal places by appending zeros:</p>
+<div class="calc-example">Compare 0,37 and 0,4:
+0,4 = 0,40 → 0,40 &gt; 0,37 → 0,4 &gt; 0,37</div>
+</div>
+
+<div class="chapter-heading" id="dec2">
+  <span class="ch-number">Chapter II</span>
+  <h3>Operations with Decimal Fractions</h3>
+</div>
+
+<div class="section" id="s166">
+<div class="section-head"><span class="sec-num">166.</span><span class="sec-title">Adding and subtracting decimals</span></div>
+<div class="rule-box">Line up the decimal points (add zeros as needed), then add or subtract as with whole numbers. Place the comma directly below the others in the result.</div>
+<div class="calc-example">  12,035
++  0,700
++  3,042
+-------
+  15,777</div>
+</div>
+
+<div class="section" id="s167">
+<div class="section-head"><span class="sec-num">167.</span><span class="sec-title">Multiplying a decimal by a whole number</span></div>
+<div class="rule-box">Multiply ignoring the comma; then in the product, mark off as many decimal places from the right as are in the multiplicand.</div>
+<div class="calc-example">7,23 × 8 = 57,84  (2 decimal places)
+0,046 × 7 = 0,322  (3 decimal places)</div>
+</div>
+
+<div class="section" id="s168">
+<div class="section-head"><span class="sec-num">168.</span><span class="sec-title">Multiplying a decimal by a power of ten</span></div>
+<div class="rule-box">Move the decimal point right by as many places as there are zeros: multiply by 10 → shift 1 right; by 100 → shift 2 right; etc. Add zeros if needed.<br>
+3,87 × 10 = 38,7 &nbsp;·&nbsp; 3,87 × 100 = 387 &nbsp;·&nbsp; 3,87 × 1000 = 3870</div>
+</div>
+
+<div class="section" id="s169">
+<div class="section-head"><span class="sec-num">169.</span><span class="sec-title">Multiplying two decimals</span></div>
+<div class="rule-box">Multiply as whole numbers, then place the decimal point so that the product has as many decimal places as the sum of decimal places of the two factors.</div>
+<div class="calc-example">5,47 × 3,2:
+  547 × 32 = 17504
+  5,47 has 2 decimal places; 3,2 has 1 → total 3
+  Result: 17,504</div>
+</div>
+
+<div class="section" id="s170">
+<div class="section-head"><span class="sec-num">170.</span><span class="sec-title">Dividing a decimal by a whole number</span></div>
+<div class="rule-box">Divide as with whole numbers, placing the decimal point in the quotient when it is reached in the dividend. If the whole part does not divide, write 0 in the quotient and continue with the decimal part.</div>
+<div class="calc-example">17,04 ÷ 8:
+  17 ÷ 8 = 2 rem 1
+  10 ÷ 8 = 1 rem 2 → place decimal point here: 2,1
+  24 ÷ 8 = 3
+  Result: 2,13</div>
+</div>
+
+<div class="section" id="s172">
+<div class="section-head"><span class="sec-num">172.</span><span class="sec-title">Dividing a decimal by a power of ten</span></div>
+<div class="rule-box">Move the decimal point left: dividing by 10 shifts 1 left; by 100 shifts 2 left; etc.<br>
+53,72 ÷ 10 = 5,372 &nbsp;·&nbsp; 53,72 ÷ 1000 = 0,05372</div>
+</div>
+
+<div class="section" id="s173">
+<div class="section-head"><span class="sec-num">173.</span><span class="sec-title">Dividing by a decimal</span></div>
+<div class="rule-box">Multiply both dividend and divisor by the power of ten needed to make the divisor a whole number, then divide normally.<br>
+5,472 ÷ 0,24 → multiply both by 100 → 547,2 ÷ 24 = 22,8</div>
+</div>
+
+<!-- DECIMAL CALCULATOR DEMO -->
+<div class="demo-box" id="demo-deccalc">
+  <h4>Decimal Arithmetic Demonstrator</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <input class="demo-input" id="dca" value="5.472" style="width:90px;">
+    <select id="dc-op" style="background:#2C2820; border:1px solid #4A4232; color:#C8BFA8; padding:0.3rem; border-radius:3px;">
+      <option selected="selected">+</option><option>−</option><option>×</option><option value="div">÷</option>
+    </select>
+    <input class="demo-input" id="dcb" value="0.24" style="width:90px;">
+    <button class="demo-btn" onclick="runDecCalc()">=</button>
+  </div>
+  <div id="dc-out" class="demo-output">5.472 + 0.24 = 5.712000000000001</div>
+</div>
+
+<div class="chapter-heading" id="dec3">
+  <span class="ch-number">Chapter III</span>
+  <h3>Converting Common Fractions to Decimals</h3>
+</div>
+
+<div class="section" id="s177">
+<div class="section-head"><span class="sec-num">177.</span><span class="sec-title">Method of conversion</span></div>
+<div class="rule-box">Append a zero (or several zeros) to the numerator and divide by the denominator. Continue, appending zeros to each remainder, until the remainder is zero or a pattern appears.</div>
+<div class="calc-example"><span class="frac-inline"><span class="num">3</span><span class="den">8</span></span>: 30 ÷ 8 = 3 rem 6; 60 ÷ 8 = 7 rem 4; 40 ÷ 8 = 5 rem 0 → 0,375
+<span class="frac-inline"><span class="num">1</span><span class="den">3</span></span>: 10 ÷ 3 = 3 rem 1; 10 ÷ 3 = 3 rem 1; … → 0,333… = 0,3̄</div>
+</div>
+
+<div class="section" id="s178">
+<div class="section-head"><span class="sec-num">178.</span><span class="sec-title">Terminating and recurring decimals</span></div>
+<p>A fraction whose denominator (in lowest terms) has no prime factors other than 2 and 5 produces a <em>terminating decimal</em>. Any other fraction produces a <em>recurring decimal</em> — one with a repeating block (the <em>period</em>).</p>
+<div class="calc-example">Terminating: <span class="frac-inline"><span class="num">3</span><span class="den">8</span></span> = 0,375 (8 = 2³)
+Recurring: <span class="frac-inline"><span class="num">1</span><span class="den">3</span></span> = 0,(3)  &nbsp;  <span class="frac-inline"><span class="num">1</span><span class="den">7</span></span> = 0,(142857)  &nbsp;  <span class="frac-inline"><span class="num">5</span><span class="den">6</span></span> = 0,8(3)</div>
+</div>
+
+<div class="chapter-heading" id="dec4">
+  <span class="ch-number">Chapter IV</span>
+  <h3>Converting Recurring Decimals to Common Fractions</h3>
+</div>
+
+<div class="section" id="s181">
+<div class="section-head"><span class="sec-num">181.</span><span class="sec-title">Pure recurring decimals</span></div>
+<div class="rule-box">A pure recurring decimal equals a fraction whose numerator is the repeating block and denominator consists of as many 9s as there are digits in the block:<br>
+0,(3) = <span class="frac-inline"><span class="num">3</span><span class="den">9</span></span> = <span class="frac-inline"><span class="num">1</span><span class="den">3</span></span> &nbsp;&nbsp; 0,(142857) = <span class="frac-inline"><span class="num">142857</span><span class="den">999999</span></span> = <span class="frac-inline"><span class="num">1</span><span class="den">7</span></span></div>
+</div>
+
+<div class="section" id="s182">
+<div class="section-head"><span class="sec-num">182.</span><span class="sec-title">Mixed recurring decimals</span></div>
+<div class="rule-box">Subtract the non-recurring part from the decimal, treating both as whole numbers, and divide by the denominator made from 9s (for the period) followed by 0s (for the non-recurring part):<br>
+0,8(3): numerator = 83 − 8 = 75; denominator = 90; result = <span class="frac-inline"><span class="num">75</span><span class="den">90</span></span> = <span class="frac-inline"><span class="num">5</span><span class="den">6</span></span></div>
+</div>
+
+<!-- PART SIX -->
+<div class="part-heading" id="part6">
+  <div class="part-number">Part Six</div>
+  <h2>Proportional Quantities</h2>
+</div>
+
+<div class="chapter-heading" id="prop1">
+  <span class="ch-number">Chapter I</span>
+  <h3>Proportions</h3>
+</div>
+
+<!-- PROPORTION DEMO -->
+<div class="demo-box" id="demo-proportion">
+  <h4>Proportion Solver — Find the Missing Term</h4>
+  <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-bottom:1rem;">
+    <span style="color:#C8BFA8; font-size:1rem;">a/b = c/d &nbsp; Find:</span>
+    <input class="demo-input" id="pr-a" placeholder="a" style="width:55px; text-align:center;">
+    <input class="demo-input" id="pr-b" placeholder="b" style="width:55px; text-align:center;">
+    <input class="demo-input" id="pr-c" placeholder="c" style="width:55px; text-align:center;">
+    <input class="demo-input" id="pr-d" placeholder="d" style="width:55px; text-align:center;">
+    <button class="demo-btn" onclick="runProportion()">Solve</button>
+  </div>
+  <p style="color:#7A6E55; font-size:0.78rem; margin-bottom:0.5rem;">Leave exactly one field blank (type "?" or leave empty).</p>
+  <div id="pr-out" class="demo-output"></div>
+</div>
+
+<div class="section" id="s195">
+<div class="section-head"><span class="sec-num">195.</span><span class="sec-title">Proportions</span></div>
+<p>A <em>proportion</em> is an equality of two ratios:</p>
+<div class="display-math"><span class="frac-inline"><span class="num">3</span><span class="den">4</span></span> = <span class="frac-inline"><span class="num">9</span><span class="den">12</span></span> &nbsp; reads "3 is to 4 as 9 is to 12"</div>
+<p>Every proportion has two <em>antecedents</em> and two <em>consequents</em>. In the proportion a:b = c:d, the outer terms <em>a</em> and <em>d</em> are called the <em>extremes</em>; the inner terms <em>b</em> and <em>c</em> are the <em>means</em>.</p>
+</div>
+
+<div class="section" id="s196">
+<div class="section-head"><span class="sec-num">196.</span><span class="sec-title">The fundamental property of proportions</span></div>
+<div class="rule-box"><strong>The product of the extremes equals the product of the means:</strong><br>
+If a/b = c/d, then <em>a·d = b·c</em><br>
+Conversely, if <em>a·d = b·c</em>, then a/b = c/d (and d/b = c/a, etc.)</div>
+<p>This follows directly by cross-multiplying both sides by <em>bd</em>.</p>
+</div>
+
+<div class="section" id="s197">
+<div class="section-head"><span class="sec-num">197.</span><span class="sec-title">Derived proportions</span></div>
+<p>From one proportion, four valid proportions can be derived. If <span class="frac-inline"><span class="num">a</span><span class="den">b</span></span> = <span class="frac-inline"><span class="num">c</span><span class="den">d</span></span>, then also: <span class="frac-inline"><span class="num">b</span><span class="den">a</span></span> = <span class="frac-inline"><span class="num">d</span><span class="den">c</span></span> &nbsp;and&nbsp; <span class="frac-inline"><span class="num">a</span><span class="den">c</span></span> = <span class="frac-inline"><span class="num">b</span><span class="den">d</span></span> &nbsp;and&nbsp; <span class="frac-inline"><span class="num">c</span><span class="den">a</span></span> = <span class="frac-inline"><span class="num">d</span><span class="den">b</span></span>.</p>
+</div>
+
+<div class="section" id="s199">
+<div class="section-head"><span class="sec-num">199.</span><span class="sec-title">Finding the fourth term</span></div>
+<p>If three terms are known, the fourth is found from <em>a·d = b·c</em>:</p>
+<div class="calc-example">3/4 = x/12   →   x = 3·12/4 = 9
+x/5 = 12/15  →   x = 5·12/15 = 4</div>
+</div>
+
+<div class="chapter-heading" id="prop2">
+  <span class="ch-number">Chapter II</span>
+  <h3>Proportional Dependence of Quantities</h3>
+</div>
+
+<div class="section" id="s200">
+<div class="section-head"><span class="sec-num">200.</span><span class="sec-title">Direct proportion</span></div>
+<p>Two quantities are in <em>direct proportion</em> when an increase or decrease of one by a factor causes the same change in the other. Their ratio remains constant.</p>
+<div class="calc-example">5 workers earn £60 in a day.
+8 workers earn £x.
+
+5/8 = 60/x  →  x = 60·8/5 = £96</div>
+</div>
+
+<div class="section" id="s201">
+<div class="section-head"><span class="sec-num">201.</span><span class="sec-title">Inverse proportion</span></div>
+<p>Two quantities are in <em>inverse proportion</em> when an increase in one causes a proportional decrease in the other, their product remaining constant.</p>
+<div class="calc-example">4 workers take 15 days to finish a job.
+6 workers take x days.
+
+4·15 = 6·x  →  x = 60/6 = 10 days
+
+Or using proportion: 4/6 = x/15  →  x = 10.</div>
+</div>
+
+<!-- PROPORTION CHART DEMO -->
+<div class="demo-box" id="demo-prop-chart">
+  <h4>Direct vs Inverse Proportion — Visual</h4>
+  <div style="display:flex; gap:0.5rem; margin-bottom:0.8rem; flex-wrap:wrap;">
+    <button class="demo-btn" onclick="drawPropChart('direct')" id="btn-direct">Direct</button>
+    <button class="demo-btn" onclick="drawPropChart('inverse')" id="btn-inverse">Inverse</button>
+    <input class="demo-input" id="prop-k" value="24" style="width:60px;">
+    <span style="color:#A09580; font-size:0.82rem; margin-left:0.2rem; align-self:center;">constant k</span>
+  </div>
+  <canvas id="prop-canvas" width="460" height="220" style="max-width:100%; background:#1C1A14;"></canvas>
+</div>
+
+<div class="chapter-heading" id="prop3">
+  <span class="ch-number">Chapter III</span>
+  <h3>Problems of Proportional Division</h3>
+</div>
+
+<div class="section" id="s204">
+<div class="section-head"><span class="sec-num">204.</span><span class="sec-title">Proportional division</span></div>
+<p>To divide a number in a given ratio: find the sum of the ratio terms; divide the number by this sum to find the unit share; then multiply each ratio term by the unit share.</p>
+<div class="calc-example">Divide 240 in the ratio 3:5:
+  Sum of ratio terms = 3+5 = 8
+  Unit share = 240/8 = 30
+  Parts: 30×3 = 90 and 30×5 = 150
+  Check: 90+150 = 240 ✓</div>
+</div>
+
+<div class="section" id="s205">
+<div class="section-head"><span class="sec-num">205.</span><span class="sec-title">Percentages</span></div>
+<p>A <em>per cent</em> is one hundredth part of a quantity (from Latin <em>per centum</em>). The symbol is %. 1% = <span class="frac-inline"><span class="num">1</span><span class="den">100</span></span> = 0,01.</p>
+<div class="calc-example">Find 15% of 360:  360 × 0,15 = 54
+What % is 54 of 360?  54/360 = 0,15 = 15%
+If 15% = 54, find the whole:  54/0,15 = 360</div>
+</div>
+
+<hr class="section-sep">
+
+<div style="text-align:center; padding:2rem 0 1rem; font-family:'Playfair Display',serif;">
+  <div style="color:var(--gold); font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.5rem;">End of Text</div>
+  <p style="color:#7A6E60; font-size:0.9rem; font-style:italic;">A. Kiselev · <em>Arithmetic</em> · State Educational &amp; Pedagogical Publishing House, Moscow, 1938<br>
+  Revised by Prof. A. Ya. Khinchin · English translation prepared from the 1938 edition</p>
+</div>
+
+</div><!-- #content -->
+</main>
+<script>
+// ═══════════════════ UTILITIES ═══════════════════
+function gcd(a,b){return b===0?a:gcd(b,a%b);}
+function lcm(a,b){return (a/gcd(a,b))*b;}
+
+function clearCanvas(id){
+  const c=document.getElementById(id);
+  const ctx=c.getContext('2d');
+  ctx.clearRect(0,0,c.width,c.height);
+  return {c,ctx};
+}
+
+// Scroll highlighting
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id;
+      document.querySelectorAll('.toc-link').forEach(l=>{
+        l.classList.toggle('active', l.getAttribute('href')==='#'+id);
+      });
+    }
+  });
+},{threshold:0.1, rootMargin:'-20% 0px -70% 0px'});
+
+document.querySelectorAll('[id]').forEach(el=>observer.observe(el));
+
+// ═══════════════════ PLACE VALUE ═══════════════════
+function updatePlaceValue(){
+  const raw = document.getElementById('pv-input').value.replace(/[^0-9]/g,'').slice(0,9);
+  if(!raw){return;}
+  const names=['Units','Tens','Hundreds','Thousands','Ten-Thous.','Hund.-Thous.','Millions','Ten-Mill.','Hund.-Mill.'];
+  const disp = document.getElementById('pv-display');
+  const tot = document.getElementById('pv-total');
+  disp.innerHTML='';
+  const n=raw.length;
+  for(let i=0;i<n;i++){
+    const pos=n-1-i;
+    const d=raw[i];
+    const cell=document.createElement('div');
+    cell.className='pv-cell';
+    cell.innerHTML=`<div class="pv-name">${names[pos]||'?'}</div><div class="pv-digit${d!=='0'?' active':''}">${d}</div>`;
+    disp.appendChild(cell);
+  }
+  // Expanded form
+  let parts=[];
+  for(let i=0;i<n;i++){
+    const pos=n-1-i; const d=parseInt(raw[i]);
+    if(d){
+      const v=d*Math.pow(10,pos);
+      parts.push(`${d}×10^${pos}=${v}`);
+    }
+  }
+  tot.textContent='Expanded: '+parts.join(' + ')+' = '+parseInt(raw);
+}
+updatePlaceValue();
+
+// ═══════════════════ ADDITION ═══════════════════
+let addState={a:0,b:0,steps:[],step:0};
+
+function buildAddSteps(a,b){
+  const sa=String(a).padStart(Math.max(String(a).length,String(b).length)+1,'0');
+  const sb=String(b).padStart(sa.length,'0');
+  const steps=[]; let carry=0; let result='';
+  for(let i=sa.length-1;i>=0;i--){
+    const da=parseInt(sa[i]), db=parseInt(sb[i]);
+    const sum=da+db+carry;
+    const digit=sum%10; carry=Math.floor(sum/10);
+    result=(digit)+result;
+    steps.push({col:i,da,db,carry_in:carry-(sum>=10?1:0),carry_out:carry,digit,partial_result:result, total_a:sa, total_b:sb});
+  }
+  return steps;
+}
+
+function drawAddCanvas(steps, curStep, a, b){
+  const {c,ctx}=clearCanvas('add-canvas');
+  const W=c.width, H=c.height;
+  ctx.fillStyle='#F8F3E8';
+  ctx.font='bold 20px Inconsolata, monospace';
+  const sa=String(a), sb=String(b);
+  const maxLen=Math.max(sa.length, sb.length, curStep>=0&&steps.length?steps[steps.length-1].partial_result.length:1);
+  const result=curStep>=0&&steps.length?steps[Math.min(curStep,steps.length-1)].partial_result:'';
+  const padA=sa.padStart(maxLen+1,' ');
+  const padB=sb.padStart(maxLen+1,' ');
+  const padR=result.padStart(maxLen+1,' ');
+  const charW=13, x0=W/2-(maxLen+1)*charW/2;
+  
+  ctx.fillStyle='#C8BFA8'; ctx.textAlign='left';
+  ctx.fillText(padA, x0, 45);
+  ctx.fillStyle='#A09580';
+  ctx.fillText('+', x0-charW, 80);
+  ctx.fillText(padB, x0, 80);
+  ctx.strokeStyle='#4A4232'; ctx.beginPath();
+  ctx.moveTo(x0-charW, 95); ctx.lineTo(x0+(maxLen+1)*charW, 95); ctx.stroke();
+  ctx.fillStyle='#7DDE92';
+  ctx.fillText(padR, x0, 120);
+  
+  if(curStep>=0&&curStep<steps.length){
+    const s=steps[curStep];
+    const ci=maxLen-s.col-1;
+    // Highlight active column
+    const hx=x0+(maxLen-ci)*charW;
+    ctx.fillStyle='rgba(184,134,11,0.25)';
+    ctx.fillRect(hx-2,10,charW+2,115);
+    if(s.carry_out>0){
+      ctx.fillStyle='#FFD580'; ctx.font='12px Inconsolata, monospace';
+      ctx.fillText(s.carry_out, hx, 22);
+    }
+  }
+}
+
+function runAddition(){
+  const a=parseInt(document.getElementById('add-a').value)||0;
+  const b=parseInt(document.getElementById('add-b').value)||0;
+  addState={a,b,steps:buildAddSteps(a,b),step:addState.steps.length};
+  drawAddCanvas(addState.steps, addState.steps.length-1, a, b);
+  document.getElementById('add-explain').textContent=`${a} + ${b} = ${a+b}`;
+}
+
+function stepAddition(){
+  const a=parseInt(document.getElementById('add-a').value)||0;
+  const b=parseInt(document.getElementById('add-b').value)||0;
+  if(addState.a!==a||addState.b!==b){
+    addState={a,b,steps:buildAddSteps(a,b),step:-1};
+  }
+  addState.step=(addState.step+1)%addState.steps.length;
+  const s=addState.steps[addState.step];
+  drawAddCanvas(addState.steps, addState.step, a, b);
+  const col=s.total_a.length-1-s.col+1;
+  document.getElementById('add-explain').textContent=
+    `Column ${col}: ${s.da}+${s.db}${s.carry_in>0?'+'+s.carry_in+' carry':''} = ${s.da+s.db+s.carry_in} → write ${s.digit}${s.carry_out>0?', carry '+s.carry_out:''}`;
+}
+
+// ═══════════════════ SUBTRACTION ═══════════════════
+let subState={a:0,b:0,steps:[],step:0};
+
+function buildSubSteps(a,b){
+  const sa=String(a); const sb=String(b).padStart(sa.length,'0');
+  const arr=sa.split('').map(Number);
+  const brr=sb.split('').map(Number);
+  const steps=[]; const borrowed=arr.slice();
+  for(let i=arr.length-1;i>=0;i--){
+    let top=borrowed[i], bot=brr[i], borrow=0;
+    if(top<bot){borrow=1; borrowed[i-1]--; top+=10;}
+    const digit=top-bot;
+    steps.push({col:i,top,bot,borrow,digit,arr:borrowed.slice()});
+    borrowed[i]=digit;
+  }
+  return {steps, result: parseInt(borrowed.join(''))};
+}
+
+function drawSubCanvas(s_arr, curStep, a, b){
+  const {c,ctx}=clearCanvas('sub-canvas');
+  const W=c.width;
+  const sa=String(a), sb=String(b).padStart(sa.length,' ');
+  const maxLen=sa.length;
+  const charW=14, x0=W/2-maxLen*charW/2;
+  ctx.font='bold 20px Inconsolata, monospace';
+  ctx.textAlign='left';
+  ctx.fillStyle='#C8BFA8'; ctx.fillText(sa, x0, 45);
+  ctx.fillStyle='#A09580'; ctx.fillText('−', x0-charW, 80);
+  ctx.fillText(sb, x0, 80);
+  ctx.strokeStyle='#4A4232'; ctx.beginPath();
+  ctx.moveTo(x0-charW,95); ctx.lineTo(x0+maxLen*charW,95); ctx.stroke();
+  const res=s_arr.result;
+  ctx.fillStyle='#7DDE92';
+  ctx.fillText(String(res).padStart(maxLen,' '), x0, 120);
+  if(curStep>=0&&curStep<s_arr.steps.length){
+    const s=s_arr.steps[curStep];
+    const hx=x0+(maxLen-1-s.col)*charW+x0*0;
+    // Just highlight position
+    ctx.fillStyle='rgba(184,134,11,0.25)';
+    ctx.fillRect(x0+(s.col)*charW-2, 10, charW, 110);
+  }
+}
+
+function runSubtraction(){
+  const a=parseInt(document.getElementById('sub-a').value)||0;
+  const b=parseInt(document.getElementById('sub-b').value)||0;
+  if(a<b){document.getElementById('sub-explain').textContent='Minuend must be ≥ subtrahend'; return;}
+  subState={a,b,...buildSubSteps(a,b),step:100};
+  drawSubCanvas(subState, subState.steps.length-1, a, b);
+  document.getElementById('sub-explain').textContent=`${a} − ${b} = ${a-b}`;
+}
+
+function stepSubtraction(){
+  const a=parseInt(document.getElementById('sub-a').value)||0;
+  const b=parseInt(document.getElementById('sub-b').value)||0;
+  if(a<b){return;}
+  if(subState.a!==a||subState.b!==b){
+    subState={a,b,...buildSubSteps(a,b),step:-1};
+  }
+  subState.step=(subState.step+1)%subState.steps.length;
+  const s=subState.steps[subState.step];
+  drawSubCanvas(subState, subState.step, a, b);
+  document.getElementById('sub-explain').textContent=
+    `Column ${subState.steps.length-subState.step}: ${s.top}−${s.bot}=${s.digit}${s.borrow?' (borrowed 1 from left)':''}`;
+}
+
+// ═══════════════════ MULTIPLICATION TABLE ═══════════════════
+(function buildTable(){
+  const wrap=document.getElementById('mult-table');
+  const t=document.createElement('table');
+  for(let r=0;r<=10;r++){
+    const tr=document.createElement('tr');
+    for(let c=0;c<=10;c++){
+      const td=document.createElement('td');
+      if(r===0&&c===0){td.textContent='×'; td.className='header';}
+      else if(r===0){td.textContent=c; td.className='header';}
+      else if(c===0){td.textContent=r; td.className='header';}
+      else{
+        td.textContent=r*c;
+        td.onclick=function(){
+          t.querySelectorAll('td').forEach(x=>x.classList.remove('highlight'));
+          t.querySelectorAll('tr').forEach((row,ri)=>{
+            row.querySelectorAll('td').forEach((cell,ci)=>{
+              if((ri===r||ci===c||ri===0||ci===0)&&ri>0&&ci>0&&(ri===r||ci===c)) cell.classList.add('highlight');
+            });
+          });
+          td.style.background='#B5171C'; td.style.color='white';
+        };
+      }
+      tr.appendChild(td);
+    }
+    t.appendChild(tr);
+  }
+  wrap.appendChild(t);
+})();
+
+// ═══════════════════ MULTIPLICATION ═══════════════════
+let mulState={a:0,b:0,partials:[],step:0};
+
+function runMultiplication(){
+  const a=parseInt(document.getElementById('mul-a').value)||0;
+  const b=parseInt(document.getElementById('mul-b').value)||0;
+  const sb=String(b);
+  const partials=[];
+  for(let i=sb.length-1;i>=0;i--){
+    const d=parseInt(sb[i]);
+    const shift=sb.length-1-i;
+    const p=a*d;
+    partials.push({d,shift,partial:p,shifted:p*Math.pow(10,shift)});
+  }
+  mulState={a,b,partials,step:100};
+  drawMulCanvas(partials, partials.length-1, a, b);
+  document.getElementById('mul-explain').textContent=`${a} × ${b} = ${a*b}`;
+}
+
+function stepMultiplication(){
+  const a=parseInt(document.getElementById('mul-a').value)||0;
+  const b=parseInt(document.getElementById('mul-b').value)||0;
+  if(mulState.a!==a||mulState.b!==b){
+    runMultiplication();
+    mulState.step=-1;
+  }
+  mulState.step=(mulState.step+1)%mulState.partials.length;
+  drawMulCanvas(mulState.partials, mulState.step, a, b);
+  const s=mulState.partials[mulState.step];
+  document.getElementById('mul-explain').textContent=
+    `${a} × ${s.d} = ${s.partial} (shifted ${s.shift} places = ${s.shifted})`;
+}
+
+function drawMulCanvas(partials, curStep, a, b){
+  const {c,ctx}=clearCanvas('mul-canvas');
+  const W=c.width, x0=40;
+  ctx.font='16px Inconsolata, monospace';
+  ctx.textAlign='right';
+  ctx.fillStyle='#C8BFA8';
+  ctx.fillText(a, W-40, 30);
+  ctx.fillStyle='#A09580';
+  ctx.fillText('× '+b, W-40, 52);
+  ctx.strokeStyle='#4A4232'; ctx.beginPath(); ctx.moveTo(x0,62); ctx.lineTo(W-40,62); ctx.stroke();
+  let y=82;
+  partials.forEach((p,i)=>{
+    ctx.fillStyle=i===curStep?'#FFD580':'#A09580';
+    ctx.fillText(String(p.partial)+'0'.repeat(p.shift), W-40, y);
+    y+=22;
+  });
+  ctx.strokeStyle='#4A4232'; ctx.beginPath(); ctx.moveTo(x0,y); ctx.lineTo(W-40,y); ctx.stroke();
+  y+=20;
+  ctx.fillStyle='#7DDE92';
+  ctx.fillText(String(a*b), W-40, y);
+}
+
+// ═══════════════════ LONG DIVISION ═══════════════════
+let divState={a:0,b:0,steps:[],step:0};
+
+function buildDivSteps(a,b){
+  const steps=[]; let current=0; const quotient=[];
+  const ds=String(a);
+  for(let i=0;i<ds.length;i++){
+    current=current*10+parseInt(ds[i]);
+    const q=Math.floor(current/b);
+    const rem=current%b;
+    quotient.push(q);
+    steps.push({bring:ds[i],current,q,rem,quotient:quotient.slice(),index:i});
+    current=rem;
+  }
+  return {steps,quotient:parseInt(quotient.join('')),remainder:current};
+}
+
+function drawDivCanvas(result, curStep, a, b){
+  const {c,ctx}=clearCanvas('div-canvas');
+  const W=c.width;
+  ctx.font='16px Inconsolata, monospace';
+  ctx.textAlign='left';
+  ctx.fillStyle='#C8BFA8';
+  ctx.fillText(`${a}  ÷  ${b}`, 20, 30);
+  // Draw division bracket
+  ctx.strokeStyle='#4A4232'; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(160,18); ctx.lineTo(160,38); ctx.lineTo(240,38); ctx.stroke();
+  ctx.fillStyle='#7DDE92';
+  const q=result.quotient;
+  ctx.fillText(`${q}`, 165, 30);
+  if(result.remainder>0) ctx.fillText(` remainder ${result.remainder}`, 165+String(q).length*10, 30);
+  
+  if(curStep>=0&&curStep<result.steps.length){
+    let y=60;
+    for(let i=0;i<=curStep;i++){
+      const s=result.steps[i];
+      ctx.fillStyle=i===curStep?'#FFD580':'#666050';
+      ctx.fillText(`Bring down ${s.bring}: ${s.current} ÷ ${b} = ${s.q}, remainder ${s.rem}`, 20, y);
+      y+=24;
+    }
+  }
+}
+
+function runDivision(){
+  const a=parseInt(document.getElementById('div-a').value)||0;
+  const b=parseInt(document.getElementById('div-b').value)||1;
+  divState={a,b,...buildDivSteps(a,b),step:100};
+  drawDivCanvas(divState, divState.steps.length-1, a, b);
+  document.getElementById('div-explain').textContent=`${a} ÷ ${b} = ${divState.quotient} remainder ${divState.remainder}`;
+}
+
+function stepDivision(){
+  const a=parseInt(document.getElementById('div-a').value)||0;
+  const b=parseInt(document.getElementById('div-b').value)||1;
+  if(divState.a!==a||divState.b!==b){divState={a,b,...buildDivSteps(a,b),step:-1};}
+  divState.step=(divState.step+1)%divState.steps.length;
+  const s=divState.steps[divState.step];
+  drawDivCanvas(divState, divState.step, a, b);
+  document.getElementById('div-explain').textContent=
+    `Step ${divState.step+1}: bring down ${s.bring}, working number=${s.current}, goes ${s.q} time(s), remainder=${s.rem}`;
+}
+
+// ═══════════════════ DIVISIBILITY TESTS ═══════════════════
+function runDivisibilityTest(){
+  const n=parseInt(document.getElementById('div-test-n').value)||0;
+  const results=[];
+  const ds=n.toString().split('').map(Number);
+  const digitSum=ds.reduce((a,b)=>a+b,0);
+  const last=n%10, last2=n%100, last3=n%1000;
+  
+  const tests=[
+    [2, n%2===0, `Last digit ${last} is ${n%2===0?'even':'odd'}`],
+    [3, n%3===0, `Digit sum ${digitSum} ${n%3===0?'is':'is not'} divisible by 3`],
+    [4, n%4===0, `Last two digits ${last2} ${n%4===0?'is':'is not'} divisible by 4`],
+    [5, n%5===0, `Last digit is ${last}`],
+    [6, n%6===0, `${n%2===0?'Even':'Odd'} and digit sum ${digitSum} ${n%3===0?'divisible':'not divisible'} by 3`],
+    [8, n%8===0, `Last three digits ${last3} ${n%8===0?'is':'is not'} divisible by 8`],
+    [9, n%9===0, `Digit sum ${digitSum} ${n%9===0?'is':'is not'} divisible by 9`],
+    [10, n%10===0, `Last digit is ${last}`],
+    [12, n%12===0, `Divisible by 4 and 3`],
+    [25, n%25===0, `Last two digits ${last2}`],
+  ];
+  
+  let out=`Testing ${n}:\n`;
+  tests.forEach(([d,ok,why])=>{
+    out+=`÷${d}: ${ok?'✓':'✗'}  (${why})\n`;
+  });
+  document.getElementById('div-test-out').textContent=out;
+}
+
+// ═══════════════════ PRIME FACTORISATION ═══════════════════
+function runPrimeFactors(){
+  let n=parseInt(document.getElementById('prime-n').value)||360;
+  if(n<2){document.getElementById('prime-out').textContent='Enter a number ≥ 2'; return;}
+  const orig=n;
+  const steps=[];
+  const factors=[];
+  for(let p=2;p*p<=n;p++){
+    while(n%p===0){
+      steps.push(`${n} ÷ ${p} = ${n/p}`);
+      factors.push(p);
+      n/=p;
+    }
+  }
+  if(n>1){factors.push(n); steps.push(`${n} is prime`);}
+  // Group into powers
+  const freq={};
+  factors.forEach(f=>freq[f]=(freq[f]||0)+1);
+  const expr=Object.entries(freq).map(([p,e])=>e>1?`${p}^${e}`:p).join(' × ');
+  const out=steps.join('\n')+`\n\n${orig} = ${factors.join(' × ')} = ${expr}`;
+  document.getElementById('prime-out').textContent=out;
+}
+
+// ═══════════════════ GCD ═══════════════════
+function runGCD(){
+  let a=parseInt(document.getElementById('gcd-a').value)||168;
+  let b=parseInt(document.getElementById('gcd-b').value)||252;
+  const steps=[`Finding GCD(${a}, ${b}) using Euclidean algorithm:`];
+  let x=a,y=b;
+  while(y){
+    const q=Math.floor(x/y), r=x%y;
+    steps.push(`${x} = ${y} × ${q} + ${r}`);
+    x=y; y=r;
+  }
+  steps.push(`\nGCD(${a},${b}) = ${x}`);
+  const l=lcm(a,b);
+  steps.push(`LCM(${a},${b}) = ${a}×${b}/GCD = ${a*b}/${x} = ${l}`);
+  steps.push(`Check: LCM × GCD = ${l} × ${x} = ${l*x} = ${a} × ${b} ✓`);
+  document.getElementById('gcd-out').textContent=steps.join('\n');
+}
+
+// ═══════════════════ UNIT CONVERTER ═══════════════════
+const unitFactors={km:1000,m:1,cm:0.01,mm:0.001};
+function runUnitConvert(){
+  const v=parseFloat(document.getElementById('unit-val').value)||1;
+  const fr=document.getElementById('unit-from').value;
+  const to=document.getElementById('unit-to').value;
+  const metres=v*unitFactors[fr];
+  const result=metres/unitFactors[to];
+  document.getElementById('unit-out').textContent=`${v} ${fr} = ${result} ${to}`;
+}
+
+// ═══════════════════ FRACTION VISUALISER ═══════════════════
+function runFractionViz(){
+  const num=parseInt(document.getElementById('frac-num').value)||1;
+  const den=parseInt(document.getElementById('frac-den').value)||1;
+  if(den<=0){return;}
+  const {c,ctx}=clearCanvas('frac-canvas');
+  const W=c.width, H=c.height;
+  const segW=(W-40)/Math.max(den,1);
+  
+  // Draw segments
+  for(let i=0;i<Math.max(den,1);i++){
+    const x=20+i*segW;
+    ctx.fillStyle=i<num?'#B8860B':'#2C2820';
+    ctx.fillRect(x+1,30,segW-2,50);
+    ctx.strokeStyle='#1C1A14';
+    ctx.strokeRect(x+1,30,segW-2,50);
+    ctx.fillStyle='#C8BFA8'; ctx.font='12px Inconsolata'; ctx.textAlign='center';
+    if(segW>18) ctx.fillText(i+1, x+segW/2, 100);
+  }
+  
+  ctx.fillStyle='#FFD580'; ctx.font='bold 16px Inconsolata'; ctx.textAlign='left';
+  const g=gcd(Math.abs(num),den);
+  const rn=num/g, rd=den/g;
+  const val=(num/den).toFixed(4);
+  let txt=`${num}/${den} = ${val}`;
+  if(g>1) txt+=`  (reduced: ${rn}/${rd})`;
+  document.getElementById('frac-out').textContent=txt;
+}
+runFractionViz();
+
+// ═══════════════════ FRACTION CALCULATOR ═══════════════════
+function runFracCalc(){
+  const n1=parseInt(document.getElementById('fc-n1').value)||1;
+  const d1=parseInt(document.getElementById('fc-d1').value)||1;
+  const n2=parseInt(document.getElementById('fc-n2').value)||1;
+  const d2=parseInt(document.getElementById('fc-d2').value)||1;
+  const op=document.getElementById('fc-op').value;
+  let rn,rd;
+  if(op==='+'){rn=n1*d2+n2*d1; rd=d1*d2;}
+  else if(op==='−'){rn=n1*d2-n2*d1; rd=d1*d2;}
+  else if(op==='×'){rn=n1*n2; rd=d1*d2;}
+  else{rn=n1*d2; rd=d1*n2;} // ÷
+  if(rd===0){document.getElementById('fc-out').textContent='Division by zero'; return;}
+  const g=gcd(Math.abs(rn),Math.abs(rd));
+  const srn=rn/g, srd=rd/g;
+  let out=`${n1}/${d1} ${op} ${n2}/${d2} = ${rn}/${rd}`;
+  if(g>1) out+=` = ${srn}/${srd} (reduced)`;
+  out+=`  ≈ ${(srn/srd).toFixed(4)}`;
+  if(srd===1) out=`${n1}/${d1} ${op} ${n2}/${d2} = ${srn}`;
+  document.getElementById('fc-out').textContent=out;
+}
+
+// ═══════════════════ DECIMAL VISUALISER ═══════════════════
+function runDecimalViz(){
+  const raw=document.getElementById('dec-input').value.trim();
+  const parts=raw.split(/[.,]/);
+  const whole=parts[0]||'0'; const dec=parts[1]||'';
+  const places=['Tenths','Hundredths','Thousandths','Ten-Thous.','Hund.-Thous.'];
+  let out=`Number: ${raw}\nWhole part: ${whole}\nDecimal places:\n`;
+  for(let i=0;i<dec.length;i++){
+    out+=`  ${places[i]||'Pos '+(i+1)}: ${dec[i]} (= ${dec[i]}/${Math.pow(10,i+1)})\n`;
+  }
+  out+=`\nAs fraction: ${raw.replace(',','.')*1}`;
+  document.getElementById('dec-out').textContent=out;
+}
+
+// ═══════════════════ DECIMAL CALCULATOR ═══════════════════
+function runDecCalc(){
+  const a=parseFloat(document.getElementById('dca').value)||0;
+  const b=parseFloat(document.getElementById('dcb').value)||1;
+  const op=document.getElementById('dc-op').value;
+  let result;
+  if(op==='+') result=a+b;
+  else if(op==='−') result=a-b;
+  else if(op==='×') result=a*b;
+  else{if(b===0){document.getElementById('dc-out').textContent='Cannot divide by zero'; return;} result=a/b;}
+  // Count decimal places
+  const pa=(a.toString().split('.')[1]||'').length;
+  const pb=(b.toString().split('.')[1]||'').length;
+  let out=`${a} ${op} ${b} = ${result}`;
+  if(op==='×') out+=`\n(${pa}+${pb}=${pa+pb} decimal places)`;
+  if(op==='÷') out+=`\n(multiply both by 10^${pb} to clear divisor)`;
+  document.getElementById('dc-out').textContent=out;
+}
+
+// ═══════════════════ PROPORTION SOLVER ═══════════════════
+function runProportion(){
+  const vals=['pr-a','pr-b','pr-c','pr-d'].map(id=>{
+    const v=document.getElementById(id).value.trim();
+    return (v===''||v==='?')?null:parseFloat(v);
+  });
+  const nulls=vals.filter(v=>v===null);
+  if(nulls.length!==1){document.getElementById('pr-out').textContent='Leave exactly one term blank.'; return;}
+  const [a,b,c,d]=vals;
+  let result, msg;
+  // a*d = b*c
+  if(a===null){result=b*c/d; msg=`a = b×c/d = ${b}×${c}/${d} = ${result}`;}
+  else if(b===null){result=a*d/c; msg=`b = a×d/c = ${a}×${d}/${c} = ${result}`;}
+  else if(c===null){result=a*d/b; msg=`c = a×d/b = ${a}×${d}/${b} = ${result}`;}
+  else{result=b*c/a; msg=`d = b×c/a = ${b}×${c}/${a} = ${result}`;}
+  document.getElementById('pr-out').textContent=msg+`\nProof: ${vals.map((v,i)=>v===null?result:v).slice(0,2).join('/')} = ${vals.map((v,i)=>v===null?result:v).slice(2).join('/')} = ${(vals[0]===null?result:vals[0])/(vals[1]===null?result:vals[1])}`;
+}
+
+// ═══════════════════ PROPORTION CHART ═══════════════════
+let propMode='direct';
+function drawPropChart(mode){
+  propMode=mode;
+  const {c,ctx}=clearCanvas('prop-canvas');
+  const W=c.width, H=c.height;
+  const k=parseFloat(document.getElementById('prop-k').value)||24;
+  const pad=40;
+  
+  ctx.strokeStyle='#3A3224'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(pad,pad); ctx.lineTo(pad,H-pad); ctx.lineTo(W-pad,H-pad); ctx.stroke();
+  
+  // Labels
+  ctx.fillStyle='#7A6E55'; ctx.font='11px EB Garamond'; ctx.textAlign='center';
+  ctx.fillText('x', W/2, H-8);
+  ctx.textAlign='right';
+  ctx.fillText('y', pad-5, H/2);
+  
+  const N=40; const xs=[];
+  for(let i=1;i<=N;i++) xs.push(i);
+  
+  const ys=xs.map(x=>mode==='direct'?k*x:k/x);
+  const maxY=Math.max(...ys.filter(isFinite));
+  
+  function toScreen(x,y){
+    return [
+      pad+(x/N)*(W-2*pad),
+      H-pad-(y/maxY)*(H-2*pad)
+    ];
+  }
+  
+  ctx.strokeStyle=mode==='direct'?'#B8860B':'#7DDE92';
+  ctx.lineWidth=2;
+  ctx.beginPath();
+  xs.forEach((x,i)=>{
+    const [px,py]=toScreen(x,ys[i]);
+    if(!isFinite(py)) return;
+    i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+  });
+  ctx.stroke();
+  
+  // Label
+  ctx.fillStyle=mode==='direct'?'#B8860B':'#7DDE92';
+  ctx.font='bold 13px EB Garamond'; ctx.textAlign='left';
+  ctx.fillText(mode==='direct'?`y = ${k}x  (direct proportion)`:`y = ${k}/x  (inverse proportion)`, pad+5, pad+15);
+}
+drawPropChart('direct');
+
+// ═══════════════════ INIT ALL DEMOS ═══════════════════
+(function(){
+  runAddition(); runSubtraction(); runDivision(); runMultiplication();
+  runDecimalViz(); runFractionViz();
+  runDivisibilityTest(); runPrimeFactors(); runGCD();
+  runUnitConvert(); runFracCalc(); runDecCalc();
+})();
+</script>
+
+
+
+</body></html>
