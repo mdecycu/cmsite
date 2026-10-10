@@ -395,6 +395,9 @@ emp = Employee("王小明", "1995-05-20")
 <p>可攜系統有 pip 之後，再安裝 cms 所需模組:</p>
 <p style="padding-left: 30px;">pip install flask flask_cors bs4 lxml pelican markdown</p>
 <p>目前 cmsimde 已經改名為 cms，因此原先採 cms 批次檔案啟動的指令，改為 scms。</p>
+<p>另外，由於 Webots 2023b 與 NX2512 所使用的 Python 版本為 3.12，因此在 Python 3.15.0 環境下，無法使用 NX2512 的動態連結程式庫進行二次開發，必須退回 Python 3.12 可攜版本才行。</p>
+<p>以下為 Python 3.15.0 的可攜啟動批次檔案， Webots 2023b 與 NX2512 仍然可以配合啟動執行。</p>
+<p style="padding-left: 30px;"><a href="/downloads/start_python315.bat">start_python315.bat</a></p>
 <p></p><h2>git</h2>
 <p>將已經提交的大檔案紀錄移除:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git filter-branch --force --index-filter "git rm --cached --ignore-unmatch downloads/big_file.7z" --prune-empty --tag-name-filter cat -- --all</pre>
