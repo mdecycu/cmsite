@@ -385,7 +385,16 @@ emp = Employee("王小明", "1995-05-20")
 <p><a href="/downloads/zh_2_tw_pdf.py">zh_2_tw_pdf.py</a></p>
 <p><a href="/downloads/pdf2html.py">pdf2html.py</a></p>
 <p><a href="/downloads/pdf_to_epub.py">pdf_to_epub.py</a> (pdf 轉為 epub，send to kindle 後使用內建中文字型)</p>
-<h2>git</h2>
+<h2>PP</h2>
+<p>利用舊版的可攜 Python 建立 Portable Python 3.15.0。</p>
+<p>在 Scite 環境中執行下列 Python 程式:</p>
+<p style="padding-left: 30px;"><a href="/downloads/gen_portable_python315.py">gen_portable_python315.py</a></p>
+<p>接著修改舊版啟動可攜 Python 的批次檔案，將舊版路徑換為新版 Python 3.15.0 所在路徑。</p>
+<p>最後再利用 cmd 執行 python get-pip.py:</p>
+<p style="padding-left: 30px;"><a href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a> </p>
+<p>可攜系統有 pip 之後，再安裝 cms 所需模組:</p>
+<p style="padding-left: 30px;">pip install flask flask_cors bs4 lxml pelican markdown</p>
+<p></p><h2>git</h2>
 <p>將已經提交的大檔案紀錄移除:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git filter-branch --force --index-filter "git rm --cached --ignore-unmatch downloads/big_file.7z" --prune-empty --tag-name-filter cat -- --all</pre>
 <p>當畫面開始跑出大量的 Rewrite ... 代表歷史紀錄正在順利修改。執行完畢後，請記得執行這兩行指令將修改後的歷史強制推送到遠端：</p>
@@ -397,8 +406,7 @@ git push origin --force --tags
 git reflog expire --expire=now --all
 git gc --prune=now --aggressive
 </pre>
-<p></p>
-<h2>Mojo</h2>
+<p></p><h2>Mojo</h2>
 <p><a href="https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular">https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular</a> </p>
 <p>Mojo 在 2026.8.18 正式開源。</p>
 <p><a 07="" 2026="" com="" href="https://www.modular.com/blog/mojo-op&lt;h2&gt;Mojo&lt;/h2&gt;
@@ -642,7 +650,150 @@ mojo build main.mojo -o my_app
 <p>4. 體現「超人」（Overman）的姿態</p>
 <p style="padding-left: 30px;">成為精神的立法者：不當隨波逐流的「末人」（The Last Man），而成為給予世界意義的創造者。</p>
 <p style="padding-left: 30px;">絕對地肯定命運：面對「永恆輪迴」的極端考驗（如果人生要一模一樣地重來無數次），依然能熱愛自己的命運（Amor Fati），主動選擇並創造這樣的生命。尼采認為，一個僅僅「求生存」的人，過的是一種被動的、防禦性的生活；而一個「主動擴張與創造」的人，才是真正活出生命本能的強者。</p>
-<h2>Plato</h2>
+<h2>中國史</h2>
+<p><a href="https://zh.wikipedia.org/zh-tw/%E8%B2%BB%E6%AD%A3%E6%B8%85">費正清</a>於 1989 - 1991 年間所寫的中國新史:</p>
+<p>"1842年之後的整整一個世紀，中國一直被束縛在以不平等條約爲特徵的國際體系中。這個條約體系是由西方列強建立的，《南京條約》正是其開端，而它的終結則要等到1943年。</p>
+<p>在這激盪的百年間，中西社會的碰撞最終使得中國共產黨成功奪取政權。"</p>
+<h4>費正清的「條約世紀」：1842—1943</h4>
+<p>費正清這句話，其實是在提出一個很重要的歷史框架：<strong>把 1842—1943 年看成中國近代外交史上的「條約體系時代」或「條約世紀」</strong>。</p>
+<p>關鍵是理解他所說的「不平等條約」和「1943 年終結」究竟指什麼。</p>
+<h4>1. 為什麼從 1842 年開始？</h4>
+<p>1842 年是第一次鴉片戰爭結束，《南京條約》簽訂。</p>
+<p>它的重要性不只是「割香港、開五口」這幾項條款，而是它開啟了一種新的中外關係模式：</p>
+<ul>
+<li>中國被迫向西方國家開放若干通商口岸；</li>
+<li>英國取得香港；</li>
+<li>中國接受新的外交、通商安排；</li>
+<li>此後西方列強可以透過一系列條約，逐步取得更多特殊權利。</li>
+</ul>
+<p>而且，《南京條約》之後並沒有就此結束。1843 年的《虎門條約》進一步確立英國人在華的<strong>治外法權</strong>等特權；之後美國、法國等國又透過《望廈條約》《黃埔條約》等取得類似待遇。於是形成了一套不斷擴大的條約網絡。</p>
+<p>所以費正清把<strong>1842 年當作起點</strong>，不是說《南京條約》一簽訂，所有後來的不平等條款就已經全部出現，而是說：</p>
+<blockquote><strong>《南京條約》打開了這套國際關係結構的大門。</strong></blockquote>
+<h4>2. 「條約體系」到底是什麼？</h4>
+<p>這裡的「條約體系」不能簡單理解成「中國簽了一堆不平等條約」。</p>
+<p>它更像是一套<strong>特殊的國際秩序</strong>。</p>
+<p>在這套秩序中，中國名義上仍是一個主權國家，但西方列強透過條約取得了一系列超越一般外國人的權利。</p>
+<p>最典型的就是：</p>
+<h4>（1）治外法權</h4>
+<p>例如一名英國人在中國犯罪，在一定條件下<strong>不是按照中國法律、由中國法院審判，而是由英國領事法院等機構處理</strong>。</p>
+<p>換句話說：</p>
+<blockquote>外國人在中國領土內，卻不完全受中國司法管轄。</blockquote>
+<p>這對近代「主權國家」的原則來說，是非常特殊的。</p>
+<h4>（2）通商口岸</h4>
+<p>中國被迫開放一系列通商口岸。</p>
+<p>後來又出現租界、外國人居留區等制度，使外國人在中國部分城市擁有特殊的行政、司法與經濟地位。</p>
+<p>所以這不只是「開放貿易」這麼簡單，而是逐漸形成了<strong>外國人在中國境內享有特殊權利的空間</strong>。</p>
+<h4>（3）關稅自主權受到限制</h4>
+<p>清政府在對外貿易上也受到條約限制。</p>
+<p>這意味著中國不能完全按照自己的需要決定關稅政策。</p>
+<p>因此，從費正清的角度看，問題的核心其實是：</p>
+<blockquote><strong>中國雖然仍然存在一個中央政府，但它在自己的領土、司法、關稅與外交關係上，都受到列強條約權利的制約。</strong></blockquote>
+<p>這就是他所說的「以不平等條約為特徵的國際體系」。</p>
+<h4>3. 那為什麼說「西方列強建立」？</h4>
+<p>這句話也要稍微精確理解。</p>
+<p>不是說英國在 1842 年突然設計好了一套「一百年計畫」，然後其他國家照著執行。</p>
+<p>比較準確的說法是：</p>
+<p><strong>1842 年之後，西方列強相繼利用軍事、外交與談判優勢，要求中國接受一系列特殊條約安排；這些條約彼此疊加，最後形成一套制度化的國際關係結構。</strong></p>
+<p>例如：</p>
+<blockquote>1842《南京條約》<br/> ↓<br/> 1843《虎門條約》<br/> ↓<br/> 1844《望廈條約》《黃埔條約》<br/> ↓<br/> 第二次鴉片戰爭後的一系列條約<br/> ↓<br/> 19 世紀後期列強進一步取得租界、租借地、鐵路與其他權利<br/> ↓<br/> 20 世紀初《辛丑條約》等<br/> ↓<br/> <strong>1943 年開始正式大規模廢除治外法權等特權</strong></blockquote>
+<p>所以「條約體系」是一個<strong>逐漸形成的結構</strong>，而不是單獨某一份條約。</p>
+<h4>4. 最有意思的是：為什麼終點是 1943 年？</h4>
+<p>這可能正是你讀到費正清這段話時最容易困惑的地方。</p>
+<p>因為我們一般會想到：</p>
+<blockquote>「不是辛亥革命、五四運動、北伐、南京國民政府成立，才逐漸收回主權嗎？」</blockquote>
+<p>確實，<strong>中國收回主權是一個很長的過程</strong>。</p>
+<p>但費正清選擇<strong>1943 年</strong>，有一個非常具體的理由：</p>
+<h4>1943 年，中美、中英分別簽署了廢除治外法權的條約。</h4>
+<p>1943 年 1 月 11 日，中美簽訂《關於取消美國在華治外法權及處理有關問題的條約》；同一天，中英也簽署了相應條約。</p>
+<p>美國條約在 1943 年 5 月 20 日交換批准書後生效。美國國務院的外交文件也明確記載，這一條約就是要<strong>放棄美國在中國的治外法權</strong>。</p>
+<p>這非常重要，因為「治外法權」恰恰是近代不平等條約體系最具有象徵性的制度之一。</p>
+<p>也就是：</p>
+<blockquote><strong>1842 年：《南京條約》開啟這種特殊條約秩序。</strong><br/> <strong>1943 年：主要西方列強正式放棄最核心的治外法權。</strong></blockquote>
+<p>因此費正清才把這一百年概括成：</p>
+<p><strong>1842 → 1943 = 「條約世紀」</strong></p>
+<p>學術研究也直接把 1842—1943 年概括為治外法權與「不平等條約」的正式開始與結束，並指出這正是費正清所說的「treaty century」。</p>
+<h4>5. 但要注意：「1943 年終結」不等於中國所有不平等條約在這一年全部消失</h4>
+<p>這點非常重要。</p>
+<p>如果把費正清的話理解成：</p>
+<blockquote>「1943 年以前所有不平等條約都存在，1943 年全部一次性取消。」</blockquote>
+<p>那就不準確。</p>
+<p>實際上，<strong>廢除不平等條約是一個逐步過程</strong>。</p>
+<p>例如，中國早在 1920、1930 年代就已經開始收回部分權利；1928 年後南京國民政府也積極推動改訂不平等條約。</p>
+<p>而且不同國家的特權，是在不同時間、不同條件下取消的。</p>
+<p>所以費正清說的「1943 年終結」，更準確地說是：</p>
+<blockquote><strong>1943 年是這個舊式條約體系的關鍵制度性終點，而不是所有歷史遺留問題在那一天全部消失。</strong></blockquote>
+<h4>6. 為什麼偏偏是第二次世界大戰期間？</h4>
+<p>這裡還有一個很有意思的歷史背景。</p>
+<p>1943 年的中國已經是<strong>同盟國的一員</strong>，正在與美國、英國一起對抗日本。</p>
+<p>這使中美、中英關係發生了重大變化。</p>
+<p>美英開始認為，在戰時需要中國的合作，因此繼續維持治外法權等舊制度，政治上已經越來越不合適。</p>
+<p>美國外交文件甚至記載，當時美國政府已經討論「放棄治外法權」以及終止舊式特殊權利的問題。</p>
+<p>因此 1943 年的廢除並不單純是：</p>
+<blockquote>「西方終於承認以前做錯了。」</blockquote>
+<p>而是多種因素共同作用的結果，包括：</p>
+<ul>
+<li>中國長期要求廢除治外法權；</li>
+<li>中國民族主義與外交運動；</li>
+<li>南京國民政府多年來的修約努力；</li>
+<li>第二次世界大戰的國際政治；</li>
+<li>中國成為同盟國的重要成員；</li>
+<li>美英需要維持與中國的合作。</li>
+</ul>
+<p>所以它是一個<strong>中國長期爭取 + 國際格局改變</strong>共同造成的結果。</p>
+<h4>7. 用一張時間線就很好理解</h4>
+<table>
+<thead>
+<tr>
+<th>時間</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1842</strong></td>
+<td>《南京條約》——條約體系開始形成</td>
+</tr>
+<tr>
+<td><strong>1843</strong></td>
+<td>《虎門條約》——治外法權等進一步確立</td>
+</tr>
+<tr>
+<td><strong>1844</strong></td>
+<td>中美、中法取得類似特殊權利</td>
+</tr>
+<tr>
+<td><strong>1850–1900年代</strong></td>
+<td>條約體系不斷擴大，租界、治外法權、關稅等問題深化</td>
+</tr>
+<tr>
+<td><strong>1901</strong></td>
+<td>《辛丑條約》——列強特權達到另一個高峰</td>
+</tr>
+<tr>
+<td><strong>1910–1930年代</strong></td>
+<td>中國逐步爭取修約、收回主權</td>
+</tr>
+<tr>
+<td><strong>1937–1941</strong></td>
+<td>中日戰爭、第二次世界大戰，國際格局劇變</td>
+</tr>
+<tr>
+<td><strong>1943</strong></td>
+<td>中美、中英簽約，正式放棄治外法權等核心特權</td>
+</tr>
+<tr>
+<td><strong>1943</strong></td>
+<td>因此被費正清視為「條約世紀」的終點</td>
+</tr>
+</tbody>
+</table>
+<h4>8. 所以費正清真正想說的是什麼？</h4>
+<p>我會把他的原話翻譯成比較容易理解的現代中文：</p>
+<blockquote><strong>從第一次鴉片戰爭以後，中國雖然在形式上仍然是一個獨立國家，但它與西方列強的關係被一整套特殊條約所規範；這些條約使外國人在中國享有中國政府無法完全取消的特殊權利。這種國際秩序一直延續到第二次世界大戰期間，直到 1943 年中英、中美正式廢除治外法權等核心特權，這個舊的條約體系才可以說基本走到了終點。</strong></blockquote>
+<p>所以費正清的「1842—1943」其實是一個<strong>非常有意義的歷史分期</strong>：</p>
+<p><strong>1842 是「中國被納入近代西方主導的國際秩序」的標誌；1943 則是「這種特殊條約秩序開始制度性瓦解」的標誌。</strong></p>
+<p>而這也解釋了為什麼他不用 <strong>1842—1911</strong>、<strong>1842—1919</strong> 或 <strong>1842—1949</strong> 來劃分這一時期——他關注的不是中國內部政治制度何時改朝換代，而是<strong>中國與世界之間的「國際法律秩序」何時發生根本變化</strong>。</p>
+<p>"中國人總喜歡用過去的辦法應付當前的問題，而在 19 世紀的中國，這一特點可謂最爲突出。從公元前 213 年秦始皇焚書坑儒起，中國曆代君王都反覆強化思想的正統性，於是思想傳統得以長久延續，其維持者正是史官和諳熟經典的讀書人。朝廷以思想灌輸爲手段，確保臣民的忠順。其結果是，無論是非正統思想還是外來思想，都會對現政權構成潛在威脅。 我們必須特別注意 19 世紀中國知識分子思想背景中的三個要素，第一個是本族中心主義，甚至可稱爲“民族主義”，具體說來就是反對滿人異族統治的思想。第二個是早期天主教傳教士遺留的影響。第三個則是清政府對西方的傳統態度。"</p><h2>Plato</h2>
 <p>"The laws of physics must be invariant under Lorentz transformations."</p>
 <p style="text-align: right;">-- Albert Einstein</p>
 <p>物理定律是由空間、時間以及內部空間的<strong>對稱性原理</strong>所「決定」與衍生出來的產物。</p>
@@ -675,8 +826,7 @@ mojo build main.mojo -o my_app
 <p>物質與輻射都是「幾何對稱性的激發態」。</p>
 <p>電子是物質場的激發，光子是規範場的激發。</p>
 <p>能量不是一種像液體一樣流動的物質，乃是群論（Group Theory）變換中的一個「守恆不變量」。</p>
-<p>輻射傳遞能量，就像是高維度幾何形狀在旋轉和扭曲時，為了保持整體的和諧與對稱，在不同時空點之間所進行的一種「數學記帳與平衡」。</p>
-<h2>Locke</h2>
+<p>輻射傳遞能量，就像是高維度幾何形狀在旋轉和扭曲時，為了保持整體的和諧與對稱，在不同時空點之間所進行的一種「數學記帳與平衡」。</p><h2>Locke</h2>
 <p>人類所有思考所需的材料，都來自兩種經驗：一是對外在感官世界的觀察，二是對自己心智活動的反省。</p>
 <p style="text-align: right;">-- John Locke</p>
 <p><a href="https://grokipedia.com/page/John_Locke">約翰·洛克</a> (<a href="https://zh.wikipedia.org/zh-tw/%E7%BA%A6%E7%BF%B0%C2%B7%E6%B4%9B%E5%85%8B">John Locke</a>) 的 "人類理解論"（An Essay Concerning Human Understanding, 1689年出版）是西洋哲學史上的經典巨著。這本書奠定了經驗主義（Empiricism）的基礎，主要探討人類知識的起源、性質、範圍以及限制。</p>
@@ -2292,7 +2442,7 @@ ending1: ;
 <blockquote data-path-to-node="26">
 <p data-path-to-node="26,0"><b data-index-in-node="0" data-path-to-node="26,0">互動時間：</b></p>
 <p data-path-to-node="26,1"><b data-index-in-node="0" data-path-to-node="26,1">家長</b>：（擺出 3 個小盤子或小碗）「波波決定，給第一隻小狗 2 塊餅乾，給第二隻小狗 2 塊餅乾，給第三隻小狗也是 2 塊餅乾。」</p>
-<p data-path-to-node="26,2"><b data-index-in-node="0" data-path-to-node="26,2">家長</b>：（讓孩子在每個盤子裡擺 2 塊餅乾）「你看，這裡有 3 個盤子，每個盤子都有 2 塊餅乾。這就是 3 個 2！我們一起來數數看，波波一共發掉了幾塊餅乾？」</p>
+<p data-path-to-node="26,2"><b data-index-in-node="0" data-path-to-node="26,2">家長</b>：（讓小朋友在每個盤子裡擺 2 塊餅乾）「你看，這裡有 3 個盤子，每個盤子都有 2 塊餅乾。這就是 3 個 2！我們一起來數數看，波波一共發掉了幾塊餅乾？」</p>
 <p data-path-to-node="26,3">小朋友：「1、2、3、4、5、6！6 塊！」</p>
 <p data-path-to-node="26,4"><b data-index-in-node="0" data-path-to-node="26,4">家長</b>：「厲害！3 個 2 合起來，總共就是 6 塊餅乾喔！」</p>
 </blockquote>
@@ -2339,7 +2489,7 @@ ending1: ;
 <p data-path-to-node="5,1,0"><b data-index-in-node="0" data-path-to-node="5,1,0">策略 2：實體移動法（化抽象為具體）</b></p>
 <ul data-path-to-node="5,1,1">
 <li>
-<p data-path-to-node="5,1,1,0,0"><b data-index-in-node="0" data-path-to-node="5,1,1,0,0">做法</b>：不要讓物品排成一排靜止不動。讓孩子<b data-index-in-node="20" data-path-to-node="5,1,1,0,0">抓一顆、拿走一顆、放到盒子裡</b>，一邊放一邊唸數字。物體位置改變了，就不容易重複數或漏數。</p>
+<p data-path-to-node="5,1,1,0,0"><b data-index-in-node="0" data-path-to-node="5,1,1,0,0">做法</b>：不要讓物品排成一排靜止不動。讓<b>小朋友</b><b data-index-in-node="20" data-path-to-node="5,1,1,0,0">抓一顆、拿走一顆、放到盒子裡</b>，一邊放一邊唸數字。物體位置改變了，就不容易重複數或漏數。</p>
 </li>
 </ul>
 </li>
@@ -2371,7 +2521,7 @@ ending1: ;
 <p data-path-to-node="12"><b data-index-in-node="0" data-path-to-node="12">核心原因</b>：故事節奏太慢、聽講時間過長，或是道具比故事本身更有吸引力。</p>
 <ul data-path-to-node="13">
 <li>
-<p data-path-to-node="13,0,0"><b data-index-in-node="0" data-path-to-node="13,0,0">策略 1：把孩子的「分心物」直接編進故事裡</b></p>
+<p data-path-to-node="13,0,0"><b data-index-in-node="0" data-path-to-node="13,0,0">策略 1：把小朋友的「分心物」直接編進故事裡</b></p>
 <ul data-path-to-node="13,0,1">
 <li>
 <p data-path-to-node="13,0,1,0,0"><b data-index-in-node="0" data-path-to-node="13,0,1,0,0">做法</b>：如果小朋友突然拿起身邊的超人玩具或小汽車，<b data-index-in-node="23" data-path-to-node="13,0,1,0,0">不要阻止他</b>，立刻把超人納入《算術》劇情！</p>
@@ -2382,10 +2532,10 @@ ending1: ;
 </ul>
 </li>
 <li>
-<p data-path-to-node="13,1,0"><b data-index-in-node="0" data-path-to-node="13,1,0">策略 2：轉換角色，讓孩子當「主控者」</b></p>
+<p data-path-to-node="13,1,0"><b data-index-in-node="0" data-path-to-node="13,1,0">策略 2：轉換角色，讓小朋友當「主控者」</b></p>
 <ul data-path-to-node="13,1,1">
 <li>
-<p data-path-to-node="13,1,1,0,0">孩子分心往往是因為「一直在被動回答問題」。</p>
+<p data-path-to-node="13,1,1,0,0">小朋友分心往往是因為「一直在被動回答問題」。</p>
 </li>
 <li>
 <p data-path-to-node="13,1,1,1,0"><b data-index-in-node="0" data-path-to-node="13,1,1,1,0">引導話術</b>：「換你當森林裡的大魔王！你來出題目考媽媽，你要藏幾顆草莓讓我猜？」讓小朋友主導，他的注意力會瞬間收回。</p>
@@ -2424,7 +2574,7 @@ ending1: ;
 </li>
 </ol>
 <hr/>
-<p data-path-to-node="0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">當小朋友已經熟悉了基礎的「點數、簡單加減與平分」後，我們可以將基謝廖夫《算術》中更進階的邏輯——<b data-index-in-node="47" data-path-to-node="0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">「數的分解與合成（湊十法萌芽）」、「空間與圖形邏輯」、「規律與遞推（模式尋找）」</b> 以及 <b data-index-in-node="91" data-path-to-node="0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">「進階邏輯推理」</b>，同樣轉化為適合 5~6 歲孩子的互動遊戲。</p>
+<p data-path-to-node="0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">當小朋友已經熟悉了基礎的「點數、簡單加減與平分」後，我們可以將基謝廖夫《算術》中更進階的邏輯——<b data-index-in-node="47" data-path-to-node="0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">「數的分解與合成（湊十法萌芽）」、「空間與圖形邏輯」、「規律與遞推（模式尋找）」</b> 以及 <b data-index-in-node="91" data-path-to-node="0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">「進階邏輯推理」</b>，同樣轉化為適合 5~6 歲小朋友的互動遊戲。</p>
 <p data-path-to-node="1" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">這 6 個進階遊戲不需要枯燥的紙筆練習，而是透過「策略、推理與情境體驗」來鍛鍊小朋友的深層數感：</p>
 <h4 data-path-to-node="3" style="font-family: Google Sans, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">遊戲 1：神秘的怪獸手套（數的分解與合成 / 湊十/湊五基礎）</h4>
 <ul data-path-to-node="4" style="padding-inline-start: 32px; font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
@@ -2438,7 +2588,7 @@ ending1: ;
 <p data-path-to-node="4,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;"><b data-index-in-node="0" data-path-to-node="4,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">遊戲玩法</b>：</p>
 <ol data-path-to-node="4,2,1" start="1" style="padding-inline-start: 32px; font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
 <li style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
-<p data-path-to-node="4,2,1,0,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">家長向小朋友展示手中的 5 顆積木，讓孩子確認總數是 5。</p>
+<p data-path-to-node="4,2,1,0,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">家長向小朋友展示手中的 5 顆積木，讓小朋友確認總數是 5。</p>
 </li>
 <li style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
 <p data-path-to-node="4,2,1,1,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">家長將雙手放到背後，把 5 顆積木隨機分配在兩隻手（例如：左手藏 2 顆，右手藏 3 顆）。</p>
@@ -2474,7 +2624,7 @@ ending1: ;
 <p data-path-to-node="7,2,1,1,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">家長假裝被定身：「哎呀！魔術師的魔法路斷掉了！下一塊積木要放什麼顏色，城堡的大門才會打開？」</p>
 </li>
 <li style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
-<p data-path-to-node="7,2,1,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">引導孩子觀察前面的規律，找出下一個接續的顏色。</p>
+<p data-path-to-node="7,2,1,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">引導小朋友觀察前面的規律，找出下一個接續的顏色。</p>
 </li>
 </ol>
 </li>
@@ -2526,7 +2676,7 @@ ending1: ;
 <p data-path-to-node="13,2,1,1,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">驚嘆地對小朋友說：「哇！魔法剪刀把一個正方形變成了 2 個三角形！寶貝，換你當小偵探，能不能用這 2 個三角形，拼回原本的正方形？」</p>
 </li>
 <li style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
-<p data-path-to-node="13,2,1,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">讓孩子旋轉、翻轉圖形進行拼貼。</p>
+<p data-path-to-node="13,2,1,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">讓小朋友旋轉、翻轉圖形進行拼貼。</p>
 </li>
 </ol>
 </li>
@@ -2549,7 +2699,7 @@ ending1: ;
 <p data-path-to-node="16,2,1,0,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">設立「居家小超市」，給每樣物品標價（例如：蘋果標價 2 元，小車標價 3 元）。</p>
 </li>
 <li style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
-<p data-path-to-node="16,2,1,1,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">給孩子 5 枚「1元金幣」。</p>
+<p data-path-to-node="16,2,1,1,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">給小朋友 5 枚「1元金幣」。</p>
 </li>
 <li style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
 <p data-path-to-node="16,2,1,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;"><b data-index-in-node="0" data-path-to-node="16,2,1,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">情境題</b>：「你有 5 枚金幣，如果買了一顆 2 元的蘋果，你還剩下幾枚金幣？剩下的金幣還夠買 3 元的小車嗎？」</p>
@@ -2572,16 +2722,16 @@ ending1: ;
 <p data-path-to-node="19,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;"><b data-index-in-node="0" data-path-to-node="19,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">遊戲玩法</b>：</p>
 <ol data-path-to-node="19,2,1" start="1" style="padding-inline-start: 32px; font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
 <li style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
-<p data-path-to-node="19,2,1,0,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">讓孩子站在數字 <b data-index-in-node="8" data-path-to-node="19,2,1,0,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">5</b> 的格子上。</p>
+<p data-path-to-node="19,2,1,0,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">讓小朋友站在數字 <b data-index-in-node="8" data-path-to-node="19,2,1,0,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">5</b> 的格子上。</p>
 </li>
 <li style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
-<p data-path-to-node="19,2,1,1,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;"><b data-index-in-node="0" data-path-to-node="19,2,1,1,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">指令 1（順向）</b>：「向前走 2 步，請問你現在站在數字幾？」孩子邊跳邊數：「6、7，站在 7！」</p>
+<p data-path-to-node="19,2,1,1,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;"><b data-index-in-node="0" data-path-to-node="19,2,1,1,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">指令 1（順向）</b>：「向前走 2 步，請問你現在站在數字幾？」小朋友邊跳邊數：「6、7，站在 7！」</p>
 </li>
 <li style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
-<p data-path-to-node="19,2,1,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;"><b data-index-in-node="0" data-path-to-node="19,2,1,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">指令 2（逆向/減法）</b>：「大風吹來了！把你往後吹退了 3 步，你現在在哪裡？」孩子倒退跳並數數：「6、5、4，站在 4！」</p>
+<p data-path-to-node="19,2,1,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;"><b data-index-in-node="0" data-path-to-node="19,2,1,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">指令 2（逆向/減法）</b>：「大風吹來了！把你往後吹退了 3 步，你現在在哪裡？」小朋友倒退跳並數數：「6、5、4，站在 4！」</p>
 </li>
 <li style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
-<p data-path-to-node="19,2,1,3,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;"><b data-index-in-node="0" data-path-to-node="19,2,1,3,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">指令 3（目標倒推）</b>：「現在你站在 4，小熊在數字 8 的地方等你，你需要向前跳幾步才能抓到小熊？」讓孩子從目標倒推距離。</p>
+<p data-path-to-node="19,2,1,3,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;"><b data-index-in-node="0" data-path-to-node="19,2,1,3,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">指令 3（目標倒推）</b>：「現在你站在 4，小熊在數字 8 的地方等你，你需要向前跳幾步才能抓到小熊？」讓小朋友從目標倒推距離。</p>
 </li>
 </ol>
 </li>
@@ -2600,7 +2750,8 @@ ending1: ;
 <p data-path-to-node="24,2,0" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">「你是怎麼發現這個秘密（答案）的呀？可以講給媽媽/爸爸聽嗎？」</p>
 </li>
 </ul>
-<p data-path-to-node="25" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">讓小朋友在「玩」的過程中，自然建立起終身受用的抽象邏輯與數學直覺！</p><h3>Snap Circuits</h3>
+<p data-path-to-node="25" style="font-family: Google Sans Text, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">讓小朋友在「玩」的過程中，自然建立起終身受用的抽象邏輯與數學直覺！</p>
+<h3>Snap Circuits</h3>
 <p><a href="https://patents.google.com/patent/US7144255B2">US7144255B2</a>: 正極串聯 PTC resettable fuse 605</p>
 <p><a href="https://patents.google.com/patent/US7273377B2">US7273377B2</a></p>
 <p><a href="https://patents.google.com/patent/US8221182B2">US8221182B2</a></p>
@@ -2609,6 +2760,7 @@ ending1: ;
 <p><a href="https://patents.google.com/patent/US20190143236A1">US20190143236A1</a></p>
 <p><a href="/downloads/snap_circuits_part1.7z">snap_circuits_part1.7z</a> (using <a href="https://solvespace.com">Solvespace</a>)</p>
 <p><a href="/downloads/speaker_case.7z">speaker_case.7z</a> (using <a href="https://solvespace.com">Solvespace</a>)</p>
+<p><a href="/downloads/mp3_case.7z">mp3_case.7z</a></p>
 <p><img alt="" height="258" src="/images/snap_circuits_part1.png" width="300"/></p>
 <p>上列零件的金屬四合扣 (Snap Connectors) 橫跨兩個 Snap Circuits 單位，其每一個單位是採用英制 inch，採用 1.1 英吋作為一個單位距離。</p>
 <p>上蓋 (黃色) 孔徑為 5mm，用來裝 female connector (母扣 (Socket) 結合面扣 (Cap or Button))，底座 (灰色) 孔徑為 4mm，用來裝 male connector (子扣 (Stud) 結合底扣 (Post))。</p>
@@ -2641,8 +2793,67 @@ ending1: ;
 <p style="padding-left: 30px;">含齒輪箱長度約 2.4cm、扭力足。建議選擇轉速約 300 RPM 到 500 RPM 的規格，車子速度比較適合室內遊玩。</p>
 <p style="padding-left: 30px;">轉向機構: 1.7g 或 2g 微型線性舵機（Linear Servo）。</p>
 <p style="padding-left: 30px;">電源（動力來源）單芯鋰聚合物電池，Li-Po 3.7V，容量約 100mAh - 150mAh，鋰電池充電需搭配專用充電小板，如 TP4056。</p>
-<p style="padding-left: 30px;">馬達驅動晶片 MX1508 或 迷你版 L9110S（採無排針、純貼片元件的迷你版本）用來控制 N20 馬達的前進與後退。</p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p style="padding-left: 30px;">馬達驅動晶片 MX1508 或 迷你版 L9110S（採無排針、純貼片元件的迷你版本）用來控制 N20 馬達的前進與後退。</p><h1>Stocks</h1>
+<p>原始市場資料：TWSE 直接提供，例如開盤價、最高價、最低價、收盤價、成交量。<br/><br/>Python 計算出的衍生欄位：例如 return_20d、volatility_20d、volume_ratio、future_return_5d。這些不是交易所直接公布的數字，而是根據原始資料計算出來的研究特徵。</p>
+<p><a href="/downloads/python_get_stock_data.7z">python_get_stock_data.7z</a></p>
+<p>Date: 交易日</p>
+<p>Code: 股票代號</p>
+<p>StockName: 股票名稱</p>
+<p>ClosingPrice: 收盤價</p>
+<p>TradeVolume: 成交股數</p>
+<p>Transaction: 成交筆數</p>
+<p>TradeValue: 成交總金額</p>
+<p>OpeningPrice: 開盤價</p>
+<p>HighestPrice: 盤中最高價</p>
+<p>LowestPrice: 盤中最低價</p>
+<p>Change: 漲跌價差</p>
+<p>return_1d: 1 日報酬率</p>
+<p>volatility_20d: 20 日波動率 (最近 20 個交易日的「每日報酬率標準差」)</p>
+<p>annualized_volatility: 年化波動率</p>
+<p>volume_ma_20d: 20 日平均成交量</p>
+<p>volume_ratio: 成交量比</p>
+<p>intraday_range: 當日振幅</p>
+<p>gap: 跳空幅度</p>
+<p>volume_per_transaction — 平均每筆成交股數</p>
+<p>future_return_5d: 未來 5 日報酬率</p>
+<hr/>
+<p>return_1d</p>
+<p>return_5d</p>
+<p>return_20d</p>
+<p>volatility_20d<br/><br/>全部都建立在 Date 的時間順序上。</p>
+<hr/>
+<p>成交量則可以用來觀察：</p>
+<p style="padding-left: 30px;">市場參與程度</p>
+<p style="padding-left: 30px;">流動性</p>
+<p style="padding-left: 30px;">突然放量</p>
+<p style="padding-left: 30px;">突然縮量</p>
+<p style="padding-left: 30px;">趨勢確認</p>
+<p style="padding-left: 30px;">恐慌性交易</p>
+<p>例如：</p>
+<p>股價 ↑<br/>成交量 ↑</p>
+<p>通常表示：</p>
+<p style="padding-left: 30px;">上漲同時有大量市場參與。</p>
+<p>但不能單獨解讀成「一定會繼續漲」。</p>
+<hr/>
+<p>開盤價代表當天交易開始時的價格。<br/><br/>例如：<br/><br/>2025/01/02<br/><br/>開盤：198<br/>最高：201<br/>最低：196<br/>收盤：200<br/><br/>可以把一天理解成：<br/><br/>         最高 201<br/>             ▲<br/>             │<br/>開盤 198 ────┤<br/>             │<br/>             ▼<br/>         最低 196<br/><br/>收盤 200<br/><br/>量化含意<br/><br/>開盤價可以用來研究：<br/><br/>    跳空<br/><br/>    市場隔夜反應<br/><br/>    新聞事件<br/><br/>    前一天收盤與今天開盤的差異<br/><br/>這就是後面的：<br/><br/>gap</p>
+<hr/>
+<p>波動率不是「漲跌方向」。</p>
+<p>它描述的是：</p>
+<p>價格變動有多劇烈。</p>
+<hr/>
+<p>volume_ratio = 1.0<br/><br/>接近正常。<br/><br/>volume_ratio = 2.0<br/><br/>明顯放量。<br/><br/>volume_ratio = 0.5<br/><br/>成交量約只有平常一半。</p>
+<hr/>
+<p>gap: 跳空幅度</p>
+<p>例如：<br/><br/>昨天收盤：200<br/>今天開盤：206<br/><br/>則：<br/><br/>206 / 200 - 1<br/>= +3%<br/><br/>代表：<br/><br/>    今天開盤相對昨天收盤跳空上漲 3%。<br/><br/>如果：<br/><br/>昨天收盤：200<br/>今天開盤：194<br/><br/>就是：<br/><br/>-3%<br/><br/>為什麼重要？<br/><br/>它可以反映：<br/><br/>    隔夜新聞<br/><br/>    美國股市變化<br/><br/>    國際事件<br/><br/>    政策消息<br/><br/>    市場情緒<br/><br/>例如 2025 年 4 月關稅事件期間，這個欄位就可能非常有研究價值。</p>
+<hr/>
+<p>volume_per_transaction: 平均每筆成交股數</p>
+<hr/>
+<p>假設今天有一筆：<br/><br/>Date                2025-04-09<br/>ClosingPrice        170<br/>return_1d           -5.5%<br/>return_5d           -8.2%<br/>return_20d          -15.0%<br/><br/>volatility_20d      0.032<br/>volume_ma_20d       80M<br/>TradeVolume         240M<br/>volume_ratio        3.0<br/><br/>intraday_range      7.0%<br/>gap                 -4.0%<br/><br/>我們不需要先看新聞，就可以得到一個市場狀態描述：<br/><br/>價格<br/> ↓↓↓<br/>短期動能<br/> ↓↓↓<br/>中期動能<br/> ↓↓↓<br/><br/>波動率<br/> ↑↑↑<br/><br/>成交量<br/> ↑↑↑<br/><br/>跳空<br/> ↓↓↓<br/><br/>盤中振幅<br/> ↑↑↑<br/><br/>換成人話就是：<br/><br/>    市場正在快速下跌，而且波動劇烈，成交量異常放大，同時存在明顯的跳空與盤中震盪。<br/><br/>這就是量化資料的價值。<br/><br/>它不是告訴你：<br/><br/>    「一定要買。」<br/><br/>也不是告訴你：<br/><br/>    「一定要賣。」<br/><br/>而是先把「市場現在處於什麼狀態」用數字描述出來。</p>
+<hr/><h2>Stock1</h2>
+<p>從以下股票分析資料, 作為該股票的投資者通常會做甚麼動作, 請逐一用白話文詳細解說各數字所代表的含意:</p>
+<p>Date                2025-04-09<br/>ClosingPrice        170<br/>return_1d           -5.5%<br/>return_5d           -8.2%<br/>return_20d          -15.0%<br/><br/>volatility_20d      0.032<br/>volume_ma_20d       80M<br/>TradeVolume         240M<br/>volume_ratio        3.0<br/><br/>intraday_range      7.0%<br/>gap                 -4.0%</p>
+<hr/>
+<p>結論：單看你提供的這組數據，它描述的是一檔「短中期明顯走弱、當天出現大量成交、價格波動急劇放大」的股票。<br/>但這些數字本身不是「一定要賣」或「一定要買」的指令；投資者通常會把它當成風險升高、需要進一步確認的訊號。成交量本身代表市場參與程度，放量下跌通常比無量下跌更值得注意，但高成交量也可能是恐慌、換手或趨勢末端，不代表單一方向。</p>
+<p>下面逐項用白話解釋。<br/>1. Date：2025-04-09<br/><br/>這個很簡單：<br/><br/>代表這一整組數據是 2025 年 4 月 9 日這一天的資料。<br/><br/>所以你後面看到的：<br/><br/>    收盤價 170<br/><br/>    當日跌 5.5%<br/><br/>    5 日跌 8.2%<br/><br/>    20 日跌 15%<br/><br/>    成交量 240M<br/><br/>都是以 2025/4/9 這個交易日為基準。<br/>2. ClosingPrice：170<br/>白話<br/><br/>代表：<br/><br/>    這檔股票在 2025/4/9 收市時，價格是 170。<br/><br/>例如假設這是台股，意思就是：<br/><br/>    一股收盤價 170 元。<br/><br/>但有一點很重要：<br/><br/>170 本身沒有辦法告訴我們股票便不便宜。<br/><br/>例如：<br/><br/>    170 元可能非常便宜<br/><br/>    170 元也可能非常昂貴<br/><br/>要判斷「便不便宜」，還需要知道：<br/><br/>    公司盈利<br/><br/>    EPS<br/><br/>    本益比 PE<br/><br/>    未來盈利成長<br/><br/>    股息<br/><br/>    公司負債<br/><br/>    行業狀況<br/><br/>    股價歷史高低點<br/><br/>所以 ClosingPrice 主要是「現在股價在哪裡」，不是「股票值多少」。<br/>3. return_1d：-5.5%<br/><br/>這個非常重要。<br/>白話<br/><br/>代表：<br/><br/>    今天相對於前一個交易日收盤價，跌了 5.5%。<br/><br/>假設前一天收盤是約：<br/><br/>179.9<br/><br/>今天收盤：<br/><br/>170<br/><br/>所以：<br/><br/>    179.9 → 170<br/>    大約跌 5.5%<br/><br/>也就是說，如果你昨天持有 10 萬元股票，單純按價格計算，今天大約剩：<br/><br/>94,500 元<br/><br/>未計交易成本、稅費等。<br/>投資者會怎麼看？<br/><br/>單日 -5.5% 是相當明顯的下跌。<br/><br/>但真正重要的不是「跌 5.5%」本身，而是：<br/><br/>    為甚麼跌？以及跌的時候有沒有大量成交？<br/><br/>你的資料剛好顯示：<br/><br/>成交量是正常的 3 倍。<br/><br/>所以這個 -5.5% 就比「只有很少成交量的 -5.5%」更值得關注。<br/><br/>研究及技術分析實務通常也會把價格變動與成交量一起觀察，因為成交量可以反映市場參與程度；大量成交伴隨價格大幅變動，通常代表市場正在發生較強烈的重新定價或換手。<br/>4. return_5d：-8.2%<br/>白話<br/><br/>代表：<br/><br/>    過去 5 個交易日，股價累積下跌 8.2%。<br/><br/>也就是說，不只是今天突然跌。<br/><br/>如果 5 天前股價大約是：<br/><br/>185.2<br/><br/>現在：<br/><br/>170<br/><br/>大約就是：<br/><br/>    185.2 → 170<br/>    累積 -8.2%<br/><br/>這個數字比 -5.5% 更有意思<br/><br/>因為它告訴你：<br/><br/>    今天的跌勢，很可能不是完全孤立的一天。<br/><br/>如果只有：<br/>4. return_5d：-8.2%<br/>白話<br/><br/>    1日：-5.5%<br/><br/>    5日：+10%<br/><br/>那意思完全不同——可能只是今天突然大跌，但之前仍然是上升趨勢。<br/><br/>但現在是：<br/><br/>    1日：-5.5%<br/><br/>    5日：-8.2%<br/><br/>表示最近幾天整體也是向下。<br/>投資者通常會注意甚麼？<br/><br/>會開始問：<br/><br/>    「這只是一次性下跌，還是趨勢開始轉弱？」<br/><br/>因此會進一步看：<br/><br/>    股價有沒有跌破近期支撐位<br/><br/>    成交量有沒有增加<br/><br/>    有沒有公司新聞<br/><br/>    大盤是不是也在跌<br/><br/>    同業是不是也在跌<br/><br/>5. return_20d：-15.0%<br/><br/>這個更重要。<br/>白話<br/><br/>代表：<br/><br/>    過去約一個月的交易日，股價累積下跌 15%。<br/><br/>例如 20 個交易日前約：<br/><br/>200 元<br/><br/>現在：<br/><br/>170 元<br/><br/>就是：<br/><br/>    200 → 170<br/>    -15%<br/><br/>所以把三個數字放在一起：<br/>時間    報酬<br/>1日    -5.5%<br/>5日    -8.2%<br/>20日    -15.0%<br/><br/>你可以把它理解成：<br/><br/>    不是一天跌，是最近一個月一路偏弱，而且今天跌得特別急。<br/><br/>這是整份資料裡面很值得注意的地方。<br/>6. volatility_20d：0.032<br/><br/>這個對一般投資者來說比較難理解。<br/>白話<br/><br/>volatility 就是：<br/><br/>    股價最近有多「會震」。<br/><br/>0.032 如果這個指標是用「每日報酬率的標準差」計算，那就是：<br/><br/>3.2%<br/><br/>也就是說，近 20 個交易日的每日報酬波動程度大約在 3.2% 的量級。<br/><br/>標準差是金融市場很常用的波動程度衡量方式；不過要注意，你這套資料的 volatility 定義沒有提供計算公式，所以不能百分之百確定它採用哪一種算法。<br/>用白話理解<br/><br/>例如一檔股票平常：<br/><br/>    每天大概只上下 1%<br/><br/>另一檔：<br/><br/>    每天經常上下 3～4%<br/><br/>第二檔就是比較「暴躁」。<br/><br/>你的：<br/><br/>volatility_20d = 0.032<br/><br/>代表最近這檔股票的價格波動並不小。<br/>對投資者有甚麼意義？<br/><br/>如果你持有這檔股票：<br/><br/>一天的價格變化可能很大。<br/><br/>所以投資者通常會：<br/><br/>    降低持倉比例<br/><br/>    放寬對短期價格波動的預期<br/><br/>    控制風險<br/><br/>    不會因為一天反彈就立即認為趨勢反轉<br/><br/>    更注意停損或風險管理<br/><br/>注意：<br/><br/>    高波動 ≠ 一定會跌。<br/><br/>它只代表：<br/><br/>    「價格變動幅度比較大。」<br/><br/>可以大幅上升，也可以大幅下降。<br/>7. volume_ma_20d：80M<br/><br/>volume 是成交量。<br/><br/>MA 是 moving average，也就是移動平均。<br/><br/>所以：<br/><br/>volume_ma_20d = 80M<br/><br/>代表：<br/><br/>    過去 20 個交易日的平均每日成交量約 8,000 萬股。<br/><br/>這個數字本身主要是拿來當「正常成交量」的基準。<br/><br/>你可以把它想像成：<br/><br/>    平常這間店每天大約有 80 萬人進出。<br/><br/>然後今天突然來了 240 萬人。<br/><br/>那就知道：<br/><br/>    今天肯定發生了不尋常的事情。<br/><br/>股票也是類似概念。<br/>8. TradeVolume：240M<br/><br/>這是：<br/><br/>    今天實際成交了 2.4 億股。<br/><br/>而正常平均是：<br/><br/>    8,000 萬股。<br/><br/>所以今天的成交量是平常的 3 倍。<br/><br/>這是整組資料非常重要的一個訊號。<br/>為甚麼？<br/><br/>因為今天不是：<br/><br/>    股價跌 5.5%，但沒什麼人交易。<br/><br/>而是：<br/><br/>    股價跌 5.5%，同時有大量股票被交易。<br/><br/>這表示市場參與程度非常高。<br/><br/>但要注意一個很重要的觀念：<br/><br/>240M 並不等於「240M 股全部被賣掉」。<br/><br/>因為每一筆成交都有買方和賣方。<br/><br/>比較準確的理解是：<br/><br/>    有非常大量的股票在今天完成了換手。<br/><br/>成交量衡量的是交易活動程度，而不是單純的「賣出量」。高成交量可以代表強烈買盤，也可以代表強烈賣盤或大量換手。<br/>9. volume_ratio：3.0<br/><br/>這個其實就是把上一組資料簡化成一個非常好懂的指標。<br/><br/>公式大致是：<br/><br/>今日成交量 ÷ 20日平均成交量<br/><br/>所以：<br/><br/>240M ÷ 80M = 3.0<br/><br/>意思：<br/><br/>    今天成交量是平常的 3 倍。<br/><br/>白話：<br/><br/>平常：<br/><br/>🧍🧍🧍🧍<br/><br/>今天：<br/><br/>🧍🧍🧍🧍🧍🧍🧍🧍🧍🧍🧍🧍<br/><br/>市場突然非常熱鬧。<br/>為甚麼投資者會注意？<br/><br/>因為：<br/><br/>價格跌 + 成交量暴增<br/><br/>通常比：<br/><br/>價格跌 + 成交量很低<br/><br/>更值得深入研究。<br/><br/>例如：<br/><br/>    A：股價跌 5%，成交量只有平常的 0.5 倍<br/><br/>可能只是沒什麼人交易。<br/><br/>但：<br/><br/>    B：股價跌 5%，成交量是平常的 3 倍<br/><br/>代表市場上有大量資金正在重新調整部位。<br/><br/>研究文獻也長期探討成交量、報酬與波動之間的關係；實務上成交量通常被拿來協助判斷價格走勢背後的參與程度。<br/>10. intraday_range：7.0%<br/><br/>這個也很值得注意。<br/>白話<br/><br/>代表：<br/><br/>    今天股價在盤中最高與最低之間的距離，相當於股價的約 7%。<br/><br/>例如假設：<br/><br/>最高價：<br/><br/>175<br/><br/>最低價：<br/><br/>163<br/><br/>那麼：<br/><br/>    175 - 163 = 12<br/><br/>12 相對於股價約 170，大約就是 7%。<br/><br/>實際公式要看你的程式怎麼定義，所以這裡是用最常見的理解方式說明。<br/>它代表甚麼？<br/><br/>代表：<br/><br/>    今天盤中價格打得非常激烈。<br/><br/>不是單純：<br/><br/>    開盤 170 → 收盤 170<br/><br/>而可能是：<br/><br/>    先大跌 → 又反彈 → 再下跌 → 最後收在 170<br/><br/>或者：<br/><br/>    開盤急跌 → 盤中恐慌 → 有人抄底 → 最後收市<br/><br/>所以：<br/><br/>intraday_range = 7%<br/><br/>告訴你：<br/><br/>    今天市場內部的多空爭奪非常激烈。<br/><br/>11. gap：-4.0%<br/><br/>這個是另外一個很重要的訊號。<br/>Gap 是甚麼？<br/><br/>Gap 可以簡單理解成：<br/><br/>    今天開盤價和昨天收盤價之間出現明顯跳空。<br/><br/>你的：<br/><br/>gap = -4%<br/><br/>意思就是：<br/><br/>    今天開盤時，股價比昨天收盤價低約 4%。<br/><br/>假設昨天收盤約：<br/><br/>177<br/><br/>今天直接開在：<br/><br/>170<br/><br/>左右。<br/><br/>中間這一段價格不是正常地一格一格交易過去，而是直接「跳」下去。<br/><br/>這就是：<br/><br/>    跳空低開（gap down）<br/><br/>Gap 通常被用來觀察市場在兩個交易日之間發生了什麼樣的重新定價；缺口的大小與成交量、後續價格行為一起看，比單獨看 gap 更有意義。<br/>12. 把全部數字放在一起看<br/><br/>這才是最重要的。<br/><br/>你的資料是：<br/>指標    數值    白話<br/>ClosingPrice    170    今天收市 170<br/>return_1d    -5.5%    今天跌很多<br/>return_5d    -8.2%    最近一星期整體偏弱<br/>return_20d    -15%    最近一個月明顯下跌<br/>volatility_20d    3.2%    最近價格波動較大<br/>volume_ma_20d    80M    平常每天約 8,000萬股<br/>TradeVolume    240M    今天成交 2.4億股<br/>volume_ratio    3.0    今天成交量是平常3倍<br/>intraday_range    7%    今天盤中震幅很大<br/>gap    -4%    今天跳空低開約4%<br/><br/>把它翻譯成人話：<br/><br/>    「這檔股票最近一個月已經跌了15%，最近5天跌8.2%，今天更突然跳空低開約4%，最後一天跌了5.5%。而且今天成交量是平常3倍，盤中震幅又達7%。」<br/><br/>所以它不是一個「平靜地下跌」的狀態。<br/><br/>而是：<br/><br/>    價格下跌 + 跳空 + 放量 + 高波動。<br/><br/>這個組合值得投資者特別留意。<br/>13. 那麼，投資者「通常會做甚麼」？<br/><br/>這裡我建議不要直接把數據翻譯成「買／賣」，而是理解成一個決策流程。<br/>第一類：已經持有的人<br/><br/>通常會先問：<br/><br/>    「我的投資理由有沒有被破壞？」<br/><br/>例如原本買這家公司是因為：<br/><br/>    「我看好它未來盈利。」<br/><br/>那麼就要研究：<br/><br/>    公司基本面有沒有變差？<br/><br/>    有沒有重大利空？<br/><br/>    盈利預期有沒有下降？<br/><br/>    行業是不是出問題？<br/><br/>    今天的大跌是否由新聞造成？<br/><br/>如果基本面沒有改變，有些長線投資者可能選擇繼續持有。<br/><br/>但如果原本的投資理由已經消失，部分投資者可能會選擇降低持倉甚至退出。<br/><br/>這不是單靠這幾個技術數字可以決定的。<br/>第二類：短線交易者<br/><br/>短線交易者看到這組數字，通常會更加關注：<br/><br/>    170 附近能不能守住？<br/><br/>以及：<br/><br/>    接下來成交量是否仍然異常？<br/><br/>例如：<br/>情境 A<br/><br/>第二天：<br/><br/>    不再大跌<br/><br/>    成交量開始下降<br/><br/>    股價重新站回重要價格位置<br/><br/>可能代表恐慌程度開始下降。<br/>情境 B<br/><br/>第二天：<br/><br/>    再跌<br/><br/>    成交量繼續放大<br/><br/>    再創近期新低<br/><br/>那就代表：<br/><br/>    賣壓可能仍然很強。<br/><br/>這種「價格 + 成交量」的組合，是技術分析很常用的觀察方式。IIronclad Research<br/>14. 一個非常重要的陷阱：不要看到「放量」就直接買或賣<br/><br/>例如你的資料：<br/><br/>成交量 3 倍<br/><br/>有人可能會說：<br/><br/>    「哇，大戶進場！趕快買！」<br/><br/>這是不足夠的。<br/><br/>因為：<br/><br/>大量成交 ≠ 一定有人大量買入看好。<br/><br/>也可能是：<br/><br/>    大量持有人恐慌賣出。<br/><br/>也可能是：<br/><br/>    大型機構調倉。<br/><br/>也可能是：<br/><br/>    公司公布重大消息。<br/><br/>也可能是：<br/><br/>    多空雙方激烈換手。<br/><br/>甚至可能是：<br/><br/>    趨勢末端出現恐慌性成交。<br/><br/>所以真正值得看的不是：<br/><br/>「Volume = 240M」<br/><br/>而是：<br/><br/>    「240M 成交量發生的時候，股價去了哪裡？」<br/><br/>你的例子答案是：<br/><br/>    成交量暴增的同時，股價大跌。<br/><br/>這就比單純「成交量暴增」更有資訊量。<br/>15. 如果我是把這套資料做成「投資者儀表板」<br/><br/>我會把它簡化成下面這樣：<br/>🔴 趨勢<br/><br/>20日：-15%<br/><br/>→ 明顯偏弱<br/>🔴 短期動能<br/><br/>5日：-8.2%<br/><br/>→ 短期仍在下跌<br/>🔴 今日壓力<br/><br/>1日：-5.5%<br/><br/>→ 今天跌幅明顯<br/>🔴 成交量<br/><br/>Volume Ratio = 3.0<br/><br/>→ 今天交易異常活躍<br/>🔴 波動<br/><br/>20日 Volatility = 3.2%<br/><br/>→ 價格波動較大<br/>🔴 盤中風險<br/><br/>Intraday Range = 7%<br/><br/>→ 今天多空爭奪激烈<br/>🔴 開盤情緒<br/><br/>Gap = -4%<br/><br/>→ 市場一開盤就出現明顯負面重新定價<br/>最後，用一句最白話的話總結<br/><br/>如果把整份資料翻譯成投資者看得懂的一句話：<br/><br/>    「這檔股票最近一個月已經明顯走弱，今天更突然跳空下跌，而且成交量是平常的3倍、盤中震幅很大。這代表今天市場出現非常強烈的重新定價／換手，持有者通常會提高警覺，先找出下跌原因，再觀察股價能否止跌，而不是單靠這組數字立即判斷買入或賣出。」<br/><br/>另外有一個很重要的地方：如果你這組資料是你自己用 Python / SQL / 股票 API 算出來的，我會特別建議你確認 volatility_20d、intraday_range 和 gap 的實際公式。 因為不同系統對這三個欄位的定義可能不完全相同；尤其 volatility_20d = 0.032 到底是「每日波動率 3.2%」、年化波動率，還是其他算法，會直接影響解讀。</p>
+<hr/>
+<p>0050 元大台灣50<br/>交易日：238<br/>年度報酬：-66.19%<br/>年化波動率：81.23%<br/>報酬/波動比：-0.815<br/>最大回撤：-77.18%<br/>強動能未來5日平均：-2.03%<br/>弱動能未來5日平均：0.21%<br/>動能差異：-2.24%<br/>強動能勝率：62.90%<br/>弱動能勝率：64.04%<br/><br/>0056 元大高股息<br/>交易日：243<br/>年度報酬：0.08%<br/>年化波動率：20.35%<br/>報酬/波動比：0.004<br/>最大回撤：-23.08%<br/>強動能未來5日平均：0.19%<br/>弱動能未來5日平均：-0.09%<br/>動能差異：0.28%<br/>強動能勝率：47.69%<br/>弱動能勝率：60.23%</p>

@@ -1,0 +1,337 @@
+<!DOCTYPE html><html>
+        <head>
+        <title>MDialog</title>
+        <meta charset="utf-8">
+<meta property="head" content="H2">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cms/static/favicons.png">
+        
+        <style type='text/css'>
+            .site-section {
+            background-color: #FFFF;
+            padding: 40px 40px;
+            }
+            body > div > div.dropdown.open {
+                display: block;
+            }
+        </style>
+    
+        <!-- <script src="./../cms/static/jquery.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="tipuesearch_content.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch.js"></script>
+        <!-- for Wink3 客製化關閉 -->
+        <!--
+        <link rel="stylesheet" type="text/css" href="./../cms/static/winkPlayer.css" />
+        <script type="text/javascript" src="./../cms/static/winkPlayer.js"></script>
+        -->
+        <script>
+            /* original tipuesearch
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+            */
+            // customed doSearch
+            function doSearch() {
+                $('#tipue_search_input').tipuesearch({
+                    newWindow: true, 
+                    minimumLength: 2,
+                    wholeWords: false, // for search 中文
+                });
+            }
+            $(document).ready(doSearch);
+        </script>
+        
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDiff.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushMojo.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushWbt.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDart.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushRust.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cms/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<!-- 暫時不用
+<script src="./../cms/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cms/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cms/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cms/static/gearUtils-05.js"></script>
+-->
+<!-- for Brython 暫時不用
+<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
+<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
+-->
+<style>
+img.add_border {
+    border: 3px solid blue;
+}
+</style>
+
+</head>
+<body>
+<div class='container'><nav>
+        
+    <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+            <header class="site-navbar py-4 bg-white" role="banner">
+              <div class="container">
+                <div class="row align-items-center">
+                <h1>Dialog</h1>
+                <div class="pl-4">
+                    <form>
+                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
+                    </form>
+                </div>
+                  <!-- <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">Dialog</a></h1> 
+                  </div>
+                  -->
+                  <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
+                        <li class="active has-children"><a href="index.html">Home</a>
+                        <ul class="dropdown">
+                            <li><a href="sitemap.html">SMap</a></li>
+                            <li><a href="./../blog/index.html">blog</a></li>
+                        </ul>
+                      </li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='老年人和棒子.html'>老年人和棒子</a><li><a href='川口塔峰.html'>川口塔峰</a><li><a href='幸福之路.html'>幸福之路</a><li><a href='AI.html'>AI</a><li><a href='Windows.html'>Windows</a><li><a href='Solvespace.html'>Solvespace</a><li><a href='Meshtastic.html'>Meshtastic</a></li></ul><li class='has-children'><a href='CMS.html'>CMS</a><ul class='dropdown'><li class='has-children'><a href='Python.html'>Python</a><ul class='dropdown'><li><a href='Converter.html'>Converter</a></li></ul><li><a href='PP.html'>PP</a><li><a href='git.html'>git</a><li class='has-children'><a href='Mojo.html'>Mojo</a><ul class='dropdown'><li><a href='WSL.html'>WSL</a></li></ul><li><a href='ffmpeq.html'>ffmpeq</a></li></ul><li class='has-children'><a href='Dialog.html'>Dialog</a><ul class='dropdown'><li><a href='中國史.html'>中國史</a><li><a href='Plato.html'>Plato</a><li><a href='Locke.html'>Locke</a><li><a href='PPE.html'>PPE</a><li><a href='孟子.html'>孟子</a><li><a href='Woodruff.html'>Woodruff</a><li><a href='Keats.html'>Keats</a><li><a href='Weingartner.html'>Weingartner</a><li><a href='Shaw.html'>Shaw</a><li><a href='White.html'>White</a><li><a href='宋美齡.html'>宋美齡</a></li></ul><li class='has-children'><a href='NX.html'>NX</a><ul class='dropdown'><li class='has-children'><a href='NX2512.html'>NX2512</a><ul class='dropdown'><li><a href='docs.html'>docs</a></li></ul><li><a href='NX2312.html'>NX2312</a><li class='has-children'><a href='NX3.html'>NX3</a><ul class='dropdown'><li><a href='ugopen.html'>ugopen</a><li><a href='NX3_hints.html'>NX3_hints</a><li><a href='DPV.html'>DPV</a><li><a href='Datum.html'>Datum</a><li><a href='PDD.html'>PDD</a><li><a href='AC.html'>AC</a><li><a href='SS.html'>SS</a></li></ul><li><a href='Open C.html'>Open C</a><li><a href='Robotics.html'>Robotics</a></li></ul><li class='has-children'><a href='Ender-3.html'>Ender-3</a><ul class='dropdown'><li><a href='手電筒架.html'>手電筒架</a><li><a href='洞洞板.html'>洞洞板</a><li><a href='桌邊掛勾.html'>桌邊掛勾</a><li><a href='Nut.html'>Nut</a><li class='has-children'><a href='STEM.html'>STEM</a><ul class='dropdown'><li><a href='Math.html'>Math</a><li><a href='Snap Circuits.html'>Snap Circuits</a></li></li></ul></ul><li class='has-children'><a href='Stocks.html'>Stocks</a><ul class='dropdown'><li><a href='Stock1.html'>Stock1</a></li>
+                      </ul>
+                </nav>
+              </div>
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+              </div>
+
+            </div>
+          </div>
+          
+        </header>
+    <div id="tipue_search_content">Dialog << <a href='Dialog.html'>Previous</a> <a href='Plato.html'>Next</a> >> Plato<br /><h1>中國史</h1>
+<p><a href="https://zh.wikipedia.org/zh-tw/%E8%B2%BB%E6%AD%A3%E6%B8%85">費正清</a>於 1989 - 1991 年間所寫的中國新史:</p>
+<p>"1842年之後的整整一個世紀，中國一直被束縛在以不平等條約爲特徵的國際體系中。這個條約體系是由西方列強建立的，《南京條約》正是其開端，而它的終結則要等到1943年。</p>
+<p>在這激盪的百年間，中西社會的碰撞最終使得中國共產黨成功奪取政權。"</p>
+<h4>費正清的「條約世紀」：1842—1943</h4>
+<p>費正清這句話，其實是在提出一個很重要的歷史框架：<strong>把 1842—1943 年看成中國近代外交史上的「條約體系時代」或「條約世紀」</strong>。</p>
+<p>關鍵是理解他所說的「不平等條約」和「1943 年終結」究竟指什麼。</p>
+<h4>1. 為什麼從 1842 年開始？</h4>
+<p>1842 年是第一次鴉片戰爭結束，《南京條約》簽訂。</p>
+<p>它的重要性不只是「割香港、開五口」這幾項條款，而是它開啟了一種新的中外關係模式：</p>
+<ul>
+<li>中國被迫向西方國家開放若干通商口岸；</li>
+<li>英國取得香港；</li>
+<li>中國接受新的外交、通商安排；</li>
+<li>此後西方列強可以透過一系列條約，逐步取得更多特殊權利。</li>
+</ul>
+<p>而且，《南京條約》之後並沒有就此結束。1843 年的《虎門條約》進一步確立英國人在華的<strong>治外法權</strong>等特權；之後美國、法國等國又透過《望廈條約》《黃埔條約》等取得類似待遇。於是形成了一套不斷擴大的條約網絡。</p>
+<p>所以費正清把<strong>1842 年當作起點</strong>，不是說《南京條約》一簽訂，所有後來的不平等條款就已經全部出現，而是說：</p>
+<blockquote><strong>《南京條約》打開了這套國際關係結構的大門。</strong></blockquote>
+<h4>2. 「條約體系」到底是什麼？</h4>
+<p>這裡的「條約體系」不能簡單理解成「中國簽了一堆不平等條約」。</p>
+<p>它更像是一套<strong>特殊的國際秩序</strong>。</p>
+<p>在這套秩序中，中國名義上仍是一個主權國家，但西方列強透過條約取得了一系列超越一般外國人的權利。</p>
+<p>最典型的就是：</p>
+<h4>（1）治外法權</h4>
+<p>例如一名英國人在中國犯罪，在一定條件下<strong>不是按照中國法律、由中國法院審判，而是由英國領事法院等機構處理</strong>。</p>
+<p>換句話說：</p>
+<blockquote>外國人在中國領土內，卻不完全受中國司法管轄。</blockquote>
+<p>這對近代「主權國家」的原則來說，是非常特殊的。</p>
+<h4>（2）通商口岸</h4>
+<p>中國被迫開放一系列通商口岸。</p>
+<p>後來又出現租界、外國人居留區等制度，使外國人在中國部分城市擁有特殊的行政、司法與經濟地位。</p>
+<p>所以這不只是「開放貿易」這麼簡單，而是逐漸形成了<strong>外國人在中國境內享有特殊權利的空間</strong>。</p>
+<h4>（3）關稅自主權受到限制</h4>
+<p>清政府在對外貿易上也受到條約限制。</p>
+<p>這意味著中國不能完全按照自己的需要決定關稅政策。</p>
+<p>因此，從費正清的角度看，問題的核心其實是：</p>
+<blockquote><strong>中國雖然仍然存在一個中央政府，但它在自己的領土、司法、關稅與外交關係上，都受到列強條約權利的制約。</strong></blockquote>
+<p>這就是他所說的「以不平等條約為特徵的國際體系」。</p>
+<h4>3. 那為什麼說「西方列強建立」？</h4>
+<p>這句話也要稍微精確理解。</p>
+<p>不是說英國在 1842 年突然設計好了一套「一百年計畫」，然後其他國家照著執行。</p>
+<p>比較準確的說法是：</p>
+<p><strong>1842 年之後，西方列強相繼利用軍事、外交與談判優勢，要求中國接受一系列特殊條約安排；這些條約彼此疊加，最後形成一套制度化的國際關係結構。</strong></p>
+<p>例如：</p>
+<blockquote>1842《南京條約》<br/> ↓<br/> 1843《虎門條約》<br/> ↓<br/> 1844《望廈條約》《黃埔條約》<br/> ↓<br/> 第二次鴉片戰爭後的一系列條約<br/> ↓<br/> 19 世紀後期列強進一步取得租界、租借地、鐵路與其他權利<br/> ↓<br/> 20 世紀初《辛丑條約》等<br/> ↓<br/> <strong>1943 年開始正式大規模廢除治外法權等特權</strong></blockquote>
+<p>所以「條約體系」是一個<strong>逐漸形成的結構</strong>，而不是單獨某一份條約。</p>
+<h4>4. 最有意思的是：為什麼終點是 1943 年？</h4>
+<p>這可能正是你讀到費正清這段話時最容易困惑的地方。</p>
+<p>因為我們一般會想到：</p>
+<blockquote>「不是辛亥革命、五四運動、北伐、南京國民政府成立，才逐漸收回主權嗎？」</blockquote>
+<p>確實，<strong>中國收回主權是一個很長的過程</strong>。</p>
+<p>但費正清選擇<strong>1943 年</strong>，有一個非常具體的理由：</p>
+<h4>1943 年，中美、中英分別簽署了廢除治外法權的條約。</h4>
+<p>1943 年 1 月 11 日，中美簽訂《關於取消美國在華治外法權及處理有關問題的條約》；同一天，中英也簽署了相應條約。</p>
+<p>美國條約在 1943 年 5 月 20 日交換批准書後生效。美國國務院的外交文件也明確記載，這一條約就是要<strong>放棄美國在中國的治外法權</strong>。</p>
+<p>這非常重要，因為「治外法權」恰恰是近代不平等條約體系最具有象徵性的制度之一。</p>
+<p>也就是：</p>
+<blockquote><strong>1842 年：《南京條約》開啟這種特殊條約秩序。</strong><br/> <strong>1943 年：主要西方列強正式放棄最核心的治外法權。</strong></blockquote>
+<p>因此費正清才把這一百年概括成：</p>
+<p><strong>1842 → 1943 = 「條約世紀」</strong></p>
+<p>學術研究也直接把 1842—1943 年概括為治外法權與「不平等條約」的正式開始與結束，並指出這正是費正清所說的「treaty century」。</p>
+<h4>5. 但要注意：「1943 年終結」不等於中國所有不平等條約在這一年全部消失</h4>
+<p>這點非常重要。</p>
+<p>如果把費正清的話理解成：</p>
+<blockquote>「1943 年以前所有不平等條約都存在，1943 年全部一次性取消。」</blockquote>
+<p>那就不準確。</p>
+<p>實際上，<strong>廢除不平等條約是一個逐步過程</strong>。</p>
+<p>例如，中國早在 1920、1930 年代就已經開始收回部分權利；1928 年後南京國民政府也積極推動改訂不平等條約。</p>
+<p>而且不同國家的特權，是在不同時間、不同條件下取消的。</p>
+<p>所以費正清說的「1943 年終結」，更準確地說是：</p>
+<blockquote><strong>1943 年是這個舊式條約體系的關鍵制度性終點，而不是所有歷史遺留問題在那一天全部消失。</strong></blockquote>
+<h4>6. 為什麼偏偏是第二次世界大戰期間？</h4>
+<p>這裡還有一個很有意思的歷史背景。</p>
+<p>1943 年的中國已經是<strong>同盟國的一員</strong>，正在與美國、英國一起對抗日本。</p>
+<p>這使中美、中英關係發生了重大變化。</p>
+<p>美英開始認為，在戰時需要中國的合作，因此繼續維持治外法權等舊制度，政治上已經越來越不合適。</p>
+<p>美國外交文件甚至記載，當時美國政府已經討論「放棄治外法權」以及終止舊式特殊權利的問題。</p>
+<p>因此 1943 年的廢除並不單純是：</p>
+<blockquote>「西方終於承認以前做錯了。」</blockquote>
+<p>而是多種因素共同作用的結果，包括：</p>
+<ul>
+<li>中國長期要求廢除治外法權；</li>
+<li>中國民族主義與外交運動；</li>
+<li>南京國民政府多年來的修約努力；</li>
+<li>第二次世界大戰的國際政治；</li>
+<li>中國成為同盟國的重要成員；</li>
+<li>美英需要維持與中國的合作。</li>
+</ul>
+<p>所以它是一個<strong>中國長期爭取 + 國際格局改變</strong>共同造成的結果。</p>
+<h4>7. 用一張時間線就很好理解</h4>
+<table>
+<thead>
+<tr>
+<th>時間</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1842</strong></td>
+<td>《南京條約》——條約體系開始形成</td>
+</tr>
+<tr>
+<td><strong>1843</strong></td>
+<td>《虎門條約》——治外法權等進一步確立</td>
+</tr>
+<tr>
+<td><strong>1844</strong></td>
+<td>中美、中法取得類似特殊權利</td>
+</tr>
+<tr>
+<td><strong>1850–1900年代</strong></td>
+<td>條約體系不斷擴大，租界、治外法權、關稅等問題深化</td>
+</tr>
+<tr>
+<td><strong>1901</strong></td>
+<td>《辛丑條約》——列強特權達到另一個高峰</td>
+</tr>
+<tr>
+<td><strong>1910–1930年代</strong></td>
+<td>中國逐步爭取修約、收回主權</td>
+</tr>
+<tr>
+<td><strong>1937–1941</strong></td>
+<td>中日戰爭、第二次世界大戰，國際格局劇變</td>
+</tr>
+<tr>
+<td><strong>1943</strong></td>
+<td>中美、中英簽約，正式放棄治外法權等核心特權</td>
+</tr>
+<tr>
+<td><strong>1943</strong></td>
+<td>因此被費正清視為「條約世紀」的終點</td>
+</tr>
+</tbody>
+</table>
+<h4>8. 所以費正清真正想說的是什麼？</h4>
+<p>我會把他的原話翻譯成比較容易理解的現代中文：</p>
+<blockquote><strong>從第一次鴉片戰爭以後，中國雖然在形式上仍然是一個獨立國家，但它與西方列強的關係被一整套特殊條約所規範；這些條約使外國人在中國享有中國政府無法完全取消的特殊權利。這種國際秩序一直延續到第二次世界大戰期間，直到 1943 年中英、中美正式廢除治外法權等核心特權，這個舊的條約體系才可以說基本走到了終點。</strong></blockquote>
+<p>所以費正清的「1842—1943」其實是一個<strong>非常有意義的歷史分期</strong>：</p>
+<p><strong>1842 是「中國被納入近代西方主導的國際秩序」的標誌；1943 則是「這種特殊條約秩序開始制度性瓦解」的標誌。</strong></p>
+<p>而這也解釋了為什麼他不用 <strong>1842—1911</strong>、<strong>1842—1919</strong> 或 <strong>1842—1949</strong> 來劃分這一時期——他關注的不是中國內部政治制度何時改朝換代，而是<strong>中國與世界之間的「國際法律秩序」何時發生根本變化</strong>。</p>
+<p>"中國人總喜歡用過去的辦法應付當前的問題，而在 19 世紀的中國，這一特點可謂最爲突出。從公元前 213 年秦始皇焚書坑儒起，中國曆代君王都反覆強化思想的正統性，於是思想傳統得以長久延續，其維持者正是史官和諳熟經典的讀書人。朝廷以思想灌輸爲手段，確保臣民的忠順。其結果是，無論是非正統思想還是外來思想，都會對現政權構成潛在威脅。 我們必須特別注意 19 世紀中國知識分子思想背景中的三個要素，第一個是本族中心主義，甚至可稱爲“民族主義”，具體說來就是反對滿人異族統治的思想。第二個是早期天主教傳教士遺留的影響。第三個則是清政府對西方的傳統態度。"</p><br />Dialog << <a href='Dialog.html'>Previous</a> <a href='Plato.html'>Next</a> >> Plato</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cms/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cms/static/chimper/js/popper.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cms/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cms/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cms/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cms/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        

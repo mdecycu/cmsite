@@ -1,0 +1,201 @@
+<!DOCTYPE html><html>
+        <head>
+        <title>MDialog</title>
+        <meta charset="utf-8">
+<meta property="head" content="H2">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cms/static/favicons.png">
+        
+        <style type='text/css'>
+            .site-section {
+            background-color: #FFFF;
+            padding: 40px 40px;
+            }
+            body > div > div.dropdown.open {
+                display: block;
+            }
+        </style>
+    
+        <!-- <script src="./../cms/static/jquery.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="tipuesearch_content.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch.js"></script>
+        <!-- for Wink3 客製化關閉 -->
+        <!--
+        <link rel="stylesheet" type="text/css" href="./../cms/static/winkPlayer.css" />
+        <script type="text/javascript" src="./../cms/static/winkPlayer.js"></script>
+        -->
+        <script>
+            /* original tipuesearch
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+            */
+            // customed doSearch
+            function doSearch() {
+                $('#tipue_search_input').tipuesearch({
+                    newWindow: true, 
+                    minimumLength: 2,
+                    wholeWords: false, // for search 中文
+                });
+            }
+            $(document).ready(doSearch);
+        </script>
+        
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDiff.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushMojo.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushWbt.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDart.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushRust.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cms/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<!-- 暫時不用
+<script src="./../cms/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cms/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cms/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cms/static/gearUtils-05.js"></script>
+-->
+<!-- for Brython 暫時不用
+<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
+<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
+-->
+<style>
+img.add_border {
+    border: 3px solid blue;
+}
+</style>
+
+</head>
+<body>
+<div class='container'><nav>
+        
+    <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+            <header class="site-navbar py-4 bg-white" role="banner">
+              <div class="container">
+                <div class="row align-items-center">
+                <h1>Dialog</h1>
+                <div class="pl-4">
+                    <form>
+                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
+                    </form>
+                </div>
+                  <!-- <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">Dialog</a></h1> 
+                  </div>
+                  -->
+                  <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
+                        <li class="active has-children"><a href="index.html">Home</a>
+                        <ul class="dropdown">
+                            <li><a href="sitemap.html">SMap</a></li>
+                            <li><a href="./../blog/index.html">blog</a></li>
+                        </ul>
+                      </li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='老年人和棒子.html'>老年人和棒子</a><li><a href='川口塔峰.html'>川口塔峰</a><li><a href='幸福之路.html'>幸福之路</a><li><a href='AI.html'>AI</a><li><a href='Windows.html'>Windows</a><li><a href='Solvespace.html'>Solvespace</a><li><a href='Meshtastic.html'>Meshtastic</a></li></ul><li class='has-children'><a href='CMS.html'>CMS</a><ul class='dropdown'><li class='has-children'><a href='Python.html'>Python</a><ul class='dropdown'><li><a href='Converter.html'>Converter</a></li></ul><li><a href='PP.html'>PP</a><li><a href='git.html'>git</a><li class='has-children'><a href='Mojo.html'>Mojo</a><ul class='dropdown'><li><a href='WSL.html'>WSL</a></li></ul><li><a href='ffmpeq.html'>ffmpeq</a></li></ul><li class='has-children'><a href='Dialog.html'>Dialog</a><ul class='dropdown'><li><a href='中國史.html'>中國史</a><li><a href='Plato.html'>Plato</a><li><a href='Locke.html'>Locke</a><li><a href='PPE.html'>PPE</a><li><a href='孟子.html'>孟子</a><li><a href='Woodruff.html'>Woodruff</a><li><a href='Keats.html'>Keats</a><li><a href='Weingartner.html'>Weingartner</a><li><a href='Shaw.html'>Shaw</a><li><a href='White.html'>White</a><li><a href='宋美齡.html'>宋美齡</a></li></ul><li class='has-children'><a href='NX.html'>NX</a><ul class='dropdown'><li class='has-children'><a href='NX2512.html'>NX2512</a><ul class='dropdown'><li><a href='docs.html'>docs</a></li></ul><li><a href='NX2312.html'>NX2312</a><li class='has-children'><a href='NX3.html'>NX3</a><ul class='dropdown'><li><a href='ugopen.html'>ugopen</a><li><a href='NX3_hints.html'>NX3_hints</a><li><a href='DPV.html'>DPV</a><li><a href='Datum.html'>Datum</a><li><a href='PDD.html'>PDD</a><li><a href='AC.html'>AC</a><li><a href='SS.html'>SS</a></li></ul><li><a href='Open C.html'>Open C</a><li><a href='Robotics.html'>Robotics</a></li></ul><li class='has-children'><a href='Ender-3.html'>Ender-3</a><ul class='dropdown'><li><a href='手電筒架.html'>手電筒架</a><li><a href='洞洞板.html'>洞洞板</a><li><a href='桌邊掛勾.html'>桌邊掛勾</a><li><a href='Nut.html'>Nut</a><li class='has-children'><a href='STEM.html'>STEM</a><ul class='dropdown'><li><a href='Math.html'>Math</a><li><a href='Snap Circuits.html'>Snap Circuits</a></li></li></ul></ul><li class='has-children'><a href='Stocks.html'>Stocks</a><ul class='dropdown'><li><a href='Stock1.html'>Stock1</a></li>
+                      </ul>
+                </nav>
+              </div>
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+              </div>
+
+            </div>
+          </div>
+          
+        </header>
+    <div id="tipue_search_content">Stocks << <a href='Stocks.html'>Previous</a> <br /><h1>Stock1</h1>
+<p>從以下股票分析資料, 作為該股票的投資者通常會做甚麼動作, 請逐一用白話文詳細解說各數字所代表的含意:</p>
+<p>Date                2025-04-09<br/>ClosingPrice        170<br/>return_1d           -5.5%<br/>return_5d           -8.2%<br/>return_20d          -15.0%<br/><br/>volatility_20d      0.032<br/>volume_ma_20d       80M<br/>TradeVolume         240M<br/>volume_ratio        3.0<br/><br/>intraday_range      7.0%<br/>gap                 -4.0%</p>
+<hr/>
+<p>結論：單看你提供的這組數據，它描述的是一檔「短中期明顯走弱、當天出現大量成交、價格波動急劇放大」的股票。<br/>但這些數字本身不是「一定要賣」或「一定要買」的指令；投資者通常會把它當成風險升高、需要進一步確認的訊號。成交量本身代表市場參與程度，放量下跌通常比無量下跌更值得注意，但高成交量也可能是恐慌、換手或趨勢末端，不代表單一方向。</p>
+<p>下面逐項用白話解釋。<br/>1. Date：2025-04-09<br/><br/>這個很簡單：<br/><br/>代表這一整組數據是 2025 年 4 月 9 日這一天的資料。<br/><br/>所以你後面看到的：<br/><br/>    收盤價 170<br/><br/>    當日跌 5.5%<br/><br/>    5 日跌 8.2%<br/><br/>    20 日跌 15%<br/><br/>    成交量 240M<br/><br/>都是以 2025/4/9 這個交易日為基準。<br/>2. ClosingPrice：170<br/>白話<br/><br/>代表：<br/><br/>    這檔股票在 2025/4/9 收市時，價格是 170。<br/><br/>例如假設這是台股，意思就是：<br/><br/>    一股收盤價 170 元。<br/><br/>但有一點很重要：<br/><br/>170 本身沒有辦法告訴我們股票便不便宜。<br/><br/>例如：<br/><br/>    170 元可能非常便宜<br/><br/>    170 元也可能非常昂貴<br/><br/>要判斷「便不便宜」，還需要知道：<br/><br/>    公司盈利<br/><br/>    EPS<br/><br/>    本益比 PE<br/><br/>    未來盈利成長<br/><br/>    股息<br/><br/>    公司負債<br/><br/>    行業狀況<br/><br/>    股價歷史高低點<br/><br/>所以 ClosingPrice 主要是「現在股價在哪裡」，不是「股票值多少」。<br/>3. return_1d：-5.5%<br/><br/>這個非常重要。<br/>白話<br/><br/>代表：<br/><br/>    今天相對於前一個交易日收盤價，跌了 5.5%。<br/><br/>假設前一天收盤是約：<br/><br/>179.9<br/><br/>今天收盤：<br/><br/>170<br/><br/>所以：<br/><br/>    179.9 → 170<br/>    大約跌 5.5%<br/><br/>也就是說，如果你昨天持有 10 萬元股票，單純按價格計算，今天大約剩：<br/><br/>94,500 元<br/><br/>未計交易成本、稅費等。<br/>投資者會怎麼看？<br/><br/>單日 -5.5% 是相當明顯的下跌。<br/><br/>但真正重要的不是「跌 5.5%」本身，而是：<br/><br/>    為甚麼跌？以及跌的時候有沒有大量成交？<br/><br/>你的資料剛好顯示：<br/><br/>成交量是正常的 3 倍。<br/><br/>所以這個 -5.5% 就比「只有很少成交量的 -5.5%」更值得關注。<br/><br/>研究及技術分析實務通常也會把價格變動與成交量一起觀察，因為成交量可以反映市場參與程度；大量成交伴隨價格大幅變動，通常代表市場正在發生較強烈的重新定價或換手。<br/>4. return_5d：-8.2%<br/>白話<br/><br/>代表：<br/><br/>    過去 5 個交易日，股價累積下跌 8.2%。<br/><br/>也就是說，不只是今天突然跌。<br/><br/>如果 5 天前股價大約是：<br/><br/>185.2<br/><br/>現在：<br/><br/>170<br/><br/>大約就是：<br/><br/>    185.2 → 170<br/>    累積 -8.2%<br/><br/>這個數字比 -5.5% 更有意思<br/><br/>因為它告訴你：<br/><br/>    今天的跌勢，很可能不是完全孤立的一天。<br/><br/>如果只有：<br/>4. return_5d：-8.2%<br/>白話<br/><br/>    1日：-5.5%<br/><br/>    5日：+10%<br/><br/>那意思完全不同——可能只是今天突然大跌，但之前仍然是上升趨勢。<br/><br/>但現在是：<br/><br/>    1日：-5.5%<br/><br/>    5日：-8.2%<br/><br/>表示最近幾天整體也是向下。<br/>投資者通常會注意甚麼？<br/><br/>會開始問：<br/><br/>    「這只是一次性下跌，還是趨勢開始轉弱？」<br/><br/>因此會進一步看：<br/><br/>    股價有沒有跌破近期支撐位<br/><br/>    成交量有沒有增加<br/><br/>    有沒有公司新聞<br/><br/>    大盤是不是也在跌<br/><br/>    同業是不是也在跌<br/><br/>5. return_20d：-15.0%<br/><br/>這個更重要。<br/>白話<br/><br/>代表：<br/><br/>    過去約一個月的交易日，股價累積下跌 15%。<br/><br/>例如 20 個交易日前約：<br/><br/>200 元<br/><br/>現在：<br/><br/>170 元<br/><br/>就是：<br/><br/>    200 → 170<br/>    -15%<br/><br/>所以把三個數字放在一起：<br/>時間    報酬<br/>1日    -5.5%<br/>5日    -8.2%<br/>20日    -15.0%<br/><br/>你可以把它理解成：<br/><br/>    不是一天跌，是最近一個月一路偏弱，而且今天跌得特別急。<br/><br/>這是整份資料裡面很值得注意的地方。<br/>6. volatility_20d：0.032<br/><br/>這個對一般投資者來說比較難理解。<br/>白話<br/><br/>volatility 就是：<br/><br/>    股價最近有多「會震」。<br/><br/>0.032 如果這個指標是用「每日報酬率的標準差」計算，那就是：<br/><br/>3.2%<br/><br/>也就是說，近 20 個交易日的每日報酬波動程度大約在 3.2% 的量級。<br/><br/>標準差是金融市場很常用的波動程度衡量方式；不過要注意，你這套資料的 volatility 定義沒有提供計算公式，所以不能百分之百確定它採用哪一種算法。<br/>用白話理解<br/><br/>例如一檔股票平常：<br/><br/>    每天大概只上下 1%<br/><br/>另一檔：<br/><br/>    每天經常上下 3～4%<br/><br/>第二檔就是比較「暴躁」。<br/><br/>你的：<br/><br/>volatility_20d = 0.032<br/><br/>代表最近這檔股票的價格波動並不小。<br/>對投資者有甚麼意義？<br/><br/>如果你持有這檔股票：<br/><br/>一天的價格變化可能很大。<br/><br/>所以投資者通常會：<br/><br/>    降低持倉比例<br/><br/>    放寬對短期價格波動的預期<br/><br/>    控制風險<br/><br/>    不會因為一天反彈就立即認為趨勢反轉<br/><br/>    更注意停損或風險管理<br/><br/>注意：<br/><br/>    高波動 ≠ 一定會跌。<br/><br/>它只代表：<br/><br/>    「價格變動幅度比較大。」<br/><br/>可以大幅上升，也可以大幅下降。<br/>7. volume_ma_20d：80M<br/><br/>volume 是成交量。<br/><br/>MA 是 moving average，也就是移動平均。<br/><br/>所以：<br/><br/>volume_ma_20d = 80M<br/><br/>代表：<br/><br/>    過去 20 個交易日的平均每日成交量約 8,000 萬股。<br/><br/>這個數字本身主要是拿來當「正常成交量」的基準。<br/><br/>你可以把它想像成：<br/><br/>    平常這間店每天大約有 80 萬人進出。<br/><br/>然後今天突然來了 240 萬人。<br/><br/>那就知道：<br/><br/>    今天肯定發生了不尋常的事情。<br/><br/>股票也是類似概念。<br/>8. TradeVolume：240M<br/><br/>這是：<br/><br/>    今天實際成交了 2.4 億股。<br/><br/>而正常平均是：<br/><br/>    8,000 萬股。<br/><br/>所以今天的成交量是平常的 3 倍。<br/><br/>這是整組資料非常重要的一個訊號。<br/>為甚麼？<br/><br/>因為今天不是：<br/><br/>    股價跌 5.5%，但沒什麼人交易。<br/><br/>而是：<br/><br/>    股價跌 5.5%，同時有大量股票被交易。<br/><br/>這表示市場參與程度非常高。<br/><br/>但要注意一個很重要的觀念：<br/><br/>240M 並不等於「240M 股全部被賣掉」。<br/><br/>因為每一筆成交都有買方和賣方。<br/><br/>比較準確的理解是：<br/><br/>    有非常大量的股票在今天完成了換手。<br/><br/>成交量衡量的是交易活動程度，而不是單純的「賣出量」。高成交量可以代表強烈買盤，也可以代表強烈賣盤或大量換手。<br/>9. volume_ratio：3.0<br/><br/>這個其實就是把上一組資料簡化成一個非常好懂的指標。<br/><br/>公式大致是：<br/><br/>今日成交量 ÷ 20日平均成交量<br/><br/>所以：<br/><br/>240M ÷ 80M = 3.0<br/><br/>意思：<br/><br/>    今天成交量是平常的 3 倍。<br/><br/>白話：<br/><br/>平常：<br/><br/>🧍🧍🧍🧍<br/><br/>今天：<br/><br/>🧍🧍🧍🧍🧍🧍🧍🧍🧍🧍🧍🧍<br/><br/>市場突然非常熱鬧。<br/>為甚麼投資者會注意？<br/><br/>因為：<br/><br/>價格跌 + 成交量暴增<br/><br/>通常比：<br/><br/>價格跌 + 成交量很低<br/><br/>更值得深入研究。<br/><br/>例如：<br/><br/>    A：股價跌 5%，成交量只有平常的 0.5 倍<br/><br/>可能只是沒什麼人交易。<br/><br/>但：<br/><br/>    B：股價跌 5%，成交量是平常的 3 倍<br/><br/>代表市場上有大量資金正在重新調整部位。<br/><br/>研究文獻也長期探討成交量、報酬與波動之間的關係；實務上成交量通常被拿來協助判斷價格走勢背後的參與程度。<br/>10. intraday_range：7.0%<br/><br/>這個也很值得注意。<br/>白話<br/><br/>代表：<br/><br/>    今天股價在盤中最高與最低之間的距離，相當於股價的約 7%。<br/><br/>例如假設：<br/><br/>最高價：<br/><br/>175<br/><br/>最低價：<br/><br/>163<br/><br/>那麼：<br/><br/>    175 - 163 = 12<br/><br/>12 相對於股價約 170，大約就是 7%。<br/><br/>實際公式要看你的程式怎麼定義，所以這裡是用最常見的理解方式說明。<br/>它代表甚麼？<br/><br/>代表：<br/><br/>    今天盤中價格打得非常激烈。<br/><br/>不是單純：<br/><br/>    開盤 170 → 收盤 170<br/><br/>而可能是：<br/><br/>    先大跌 → 又反彈 → 再下跌 → 最後收在 170<br/><br/>或者：<br/><br/>    開盤急跌 → 盤中恐慌 → 有人抄底 → 最後收市<br/><br/>所以：<br/><br/>intraday_range = 7%<br/><br/>告訴你：<br/><br/>    今天市場內部的多空爭奪非常激烈。<br/><br/>11. gap：-4.0%<br/><br/>這個是另外一個很重要的訊號。<br/>Gap 是甚麼？<br/><br/>Gap 可以簡單理解成：<br/><br/>    今天開盤價和昨天收盤價之間出現明顯跳空。<br/><br/>你的：<br/><br/>gap = -4%<br/><br/>意思就是：<br/><br/>    今天開盤時，股價比昨天收盤價低約 4%。<br/><br/>假設昨天收盤約：<br/><br/>177<br/><br/>今天直接開在：<br/><br/>170<br/><br/>左右。<br/><br/>中間這一段價格不是正常地一格一格交易過去，而是直接「跳」下去。<br/><br/>這就是：<br/><br/>    跳空低開（gap down）<br/><br/>Gap 通常被用來觀察市場在兩個交易日之間發生了什麼樣的重新定價；缺口的大小與成交量、後續價格行為一起看，比單獨看 gap 更有意義。<br/>12. 把全部數字放在一起看<br/><br/>這才是最重要的。<br/><br/>你的資料是：<br/>指標    數值    白話<br/>ClosingPrice    170    今天收市 170<br/>return_1d    -5.5%    今天跌很多<br/>return_5d    -8.2%    最近一星期整體偏弱<br/>return_20d    -15%    最近一個月明顯下跌<br/>volatility_20d    3.2%    最近價格波動較大<br/>volume_ma_20d    80M    平常每天約 8,000萬股<br/>TradeVolume    240M    今天成交 2.4億股<br/>volume_ratio    3.0    今天成交量是平常3倍<br/>intraday_range    7%    今天盤中震幅很大<br/>gap    -4%    今天跳空低開約4%<br/><br/>把它翻譯成人話：<br/><br/>    「這檔股票最近一個月已經跌了15%，最近5天跌8.2%，今天更突然跳空低開約4%，最後一天跌了5.5%。而且今天成交量是平常3倍，盤中震幅又達7%。」<br/><br/>所以它不是一個「平靜地下跌」的狀態。<br/><br/>而是：<br/><br/>    價格下跌 + 跳空 + 放量 + 高波動。<br/><br/>這個組合值得投資者特別留意。<br/>13. 那麼，投資者「通常會做甚麼」？<br/><br/>這裡我建議不要直接把數據翻譯成「買／賣」，而是理解成一個決策流程。<br/>第一類：已經持有的人<br/><br/>通常會先問：<br/><br/>    「我的投資理由有沒有被破壞？」<br/><br/>例如原本買這家公司是因為：<br/><br/>    「我看好它未來盈利。」<br/><br/>那麼就要研究：<br/><br/>    公司基本面有沒有變差？<br/><br/>    有沒有重大利空？<br/><br/>    盈利預期有沒有下降？<br/><br/>    行業是不是出問題？<br/><br/>    今天的大跌是否由新聞造成？<br/><br/>如果基本面沒有改變，有些長線投資者可能選擇繼續持有。<br/><br/>但如果原本的投資理由已經消失，部分投資者可能會選擇降低持倉甚至退出。<br/><br/>這不是單靠這幾個技術數字可以決定的。<br/>第二類：短線交易者<br/><br/>短線交易者看到這組數字，通常會更加關注：<br/><br/>    170 附近能不能守住？<br/><br/>以及：<br/><br/>    接下來成交量是否仍然異常？<br/><br/>例如：<br/>情境 A<br/><br/>第二天：<br/><br/>    不再大跌<br/><br/>    成交量開始下降<br/><br/>    股價重新站回重要價格位置<br/><br/>可能代表恐慌程度開始下降。<br/>情境 B<br/><br/>第二天：<br/><br/>    再跌<br/><br/>    成交量繼續放大<br/><br/>    再創近期新低<br/><br/>那就代表：<br/><br/>    賣壓可能仍然很強。<br/><br/>這種「價格 + 成交量」的組合，是技術分析很常用的觀察方式。IIronclad Research<br/>14. 一個非常重要的陷阱：不要看到「放量」就直接買或賣<br/><br/>例如你的資料：<br/><br/>成交量 3 倍<br/><br/>有人可能會說：<br/><br/>    「哇，大戶進場！趕快買！」<br/><br/>這是不足夠的。<br/><br/>因為：<br/><br/>大量成交 ≠ 一定有人大量買入看好。<br/><br/>也可能是：<br/><br/>    大量持有人恐慌賣出。<br/><br/>也可能是：<br/><br/>    大型機構調倉。<br/><br/>也可能是：<br/><br/>    公司公布重大消息。<br/><br/>也可能是：<br/><br/>    多空雙方激烈換手。<br/><br/>甚至可能是：<br/><br/>    趨勢末端出現恐慌性成交。<br/><br/>所以真正值得看的不是：<br/><br/>「Volume = 240M」<br/><br/>而是：<br/><br/>    「240M 成交量發生的時候，股價去了哪裡？」<br/><br/>你的例子答案是：<br/><br/>    成交量暴增的同時，股價大跌。<br/><br/>這就比單純「成交量暴增」更有資訊量。<br/>15. 如果我是把這套資料做成「投資者儀表板」<br/><br/>我會把它簡化成下面這樣：<br/>🔴 趨勢<br/><br/>20日：-15%<br/><br/>→ 明顯偏弱<br/>🔴 短期動能<br/><br/>5日：-8.2%<br/><br/>→ 短期仍在下跌<br/>🔴 今日壓力<br/><br/>1日：-5.5%<br/><br/>→ 今天跌幅明顯<br/>🔴 成交量<br/><br/>Volume Ratio = 3.0<br/><br/>→ 今天交易異常活躍<br/>🔴 波動<br/><br/>20日 Volatility = 3.2%<br/><br/>→ 價格波動較大<br/>🔴 盤中風險<br/><br/>Intraday Range = 7%<br/><br/>→ 今天多空爭奪激烈<br/>🔴 開盤情緒<br/><br/>Gap = -4%<br/><br/>→ 市場一開盤就出現明顯負面重新定價<br/>最後，用一句最白話的話總結<br/><br/>如果把整份資料翻譯成投資者看得懂的一句話：<br/><br/>    「這檔股票最近一個月已經明顯走弱，今天更突然跳空下跌，而且成交量是平常的3倍、盤中震幅很大。這代表今天市場出現非常強烈的重新定價／換手，持有者通常會提高警覺，先找出下跌原因，再觀察股價能否止跌，而不是單靠這組數字立即判斷買入或賣出。」<br/><br/>另外有一個很重要的地方：如果你這組資料是你自己用 Python / SQL / 股票 API 算出來的，我會特別建議你確認 volatility_20d、intraday_range 和 gap 的實際公式。 因為不同系統對這三個欄位的定義可能不完全相同；尤其 volatility_20d = 0.032 到底是「每日波動率 3.2%」、年化波動率，還是其他算法，會直接影響解讀。</p>
+<hr/>
+<p>0050 元大台灣50<br/>交易日：238<br/>年度報酬：-66.19%<br/>年化波動率：81.23%<br/>報酬/波動比：-0.815<br/>最大回撤：-77.18%<br/>強動能未來5日平均：-2.03%<br/>弱動能未來5日平均：0.21%<br/>動能差異：-2.24%<br/>強動能勝率：62.90%<br/>弱動能勝率：64.04%<br/><br/>0056 元大高股息<br/>交易日：243<br/>年度報酬：0.08%<br/>年化波動率：20.35%<br/>報酬/波動比：0.004<br/>最大回撤：-23.08%<br/>強動能未來5日平均：0.19%<br/>弱動能未來5日平均：-0.09%<br/>動能差異：0.28%<br/>強動能勝率：47.69%<br/>弱動能勝率：60.23%</p><br />Stocks << <a href='Stocks.html'>Previous</a> </div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cms/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cms/static/chimper/js/popper.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cms/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cms/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cms/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cms/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        
