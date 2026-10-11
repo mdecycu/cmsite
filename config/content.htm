@@ -311,7 +311,10 @@ Set-ItemProperty -Path $registryPath -Name "NewTabPageLocation" -Value "about:bl
 <p style="padding-left: 30px;">在深入地底、四周皆為厚重岩層的礦坑、鐵路隧道施工現場。</p>
 <p style="padding-left: 30px;">功能發揮：這種環境無法佈建傳統基地台，但可以使用多台 L1 Pro 像麵包屑一樣沿著隧道「接力」佈署。</p>
 <p style="padding-left: 30px;">實作展示：工程人員配戴 L1 Pro 進出隧道，設備會透過每隔數百公尺的 L1 Pro 節點，將人員的定位與識別碼（ID）「跳卡式」傳回隧道口的控制中心，做為<strong>電子點名系統</strong>。一旦發生坍方，控制中心能立即得知有幾位員工受困、受困於哪一段隧道，大幅提升工業安全管理的精準度。</p>
-<h1>CMS</h1>
+<h2>LLM</h2>
+<p><a href="https://github.com/lyogavin/airllm">AirLLM</a> 是一個開源的 Python 推論工具，目標是讓記憶體有限的電腦也能執行較大的大型語言模型（LLM）。</p>
+<p>一般執行 LLM 時，模型的權重需要放在 GPU 記憶體、系統 RAM，或兩者之中。<a href="https://github.com/lyogavin/airllm">AirLLM</a> 的主要技巧是 逐層載入模型權重，而不是把整個模型一次放進 GPU 記憶體。</p>
+<p><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> 是一套以 C/C++ 開發的開源大型語言模型（LLM）推論框架，主要用於在個人電腦、伺服器及其他裝置上執行 AI 模型。它以低資源需求、跨硬體支援及高效率本機推論著稱，是本機 AI 生態系統的重要基礎工具。</p><h1>CMS</h1>
 <p>CMS: <a href="https://github.com/mdecycu/cms">https://github.com/mdecycu/cms</a> </p>
 <p>執行所需模組: pip install flask flask_cors bs4 lxml pelican markdown</p>
 <p>scms: 在近端啟動編輯環境</p>
