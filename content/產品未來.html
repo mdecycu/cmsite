@@ -1,0 +1,230 @@
+<!DOCTYPE html><html>
+        <head>
+        <title>MDialog</title>
+        <meta charset="utf-8">
+<meta property="head" content="H3">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cms/static/favicons.png">
+        
+        <style type='text/css'>
+            .site-section {
+            background-color: #FFFF;
+            padding: 40px 40px;
+            }
+            body > div > div.dropdown.open {
+                display: block;
+            }
+        </style>
+    
+        <!-- <script src="./../cms/static/jquery.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="tipuesearch_content.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch.js"></script>
+        <!-- for Wink3 客製化關閉 -->
+        <!--
+        <link rel="stylesheet" type="text/css" href="./../cms/static/winkPlayer.css" />
+        <script type="text/javascript" src="./../cms/static/winkPlayer.js"></script>
+        -->
+        <script>
+            /* original tipuesearch
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+            */
+            // customed doSearch
+            function doSearch() {
+                $('#tipue_search_input').tipuesearch({
+                    newWindow: true, 
+                    minimumLength: 2,
+                    wholeWords: false, // for search 中文
+                });
+            }
+            $(document).ready(doSearch);
+        </script>
+        
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDiff.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushMojo.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushWbt.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDart.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushRust.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cms/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<!-- 暫時不用
+<script src="./../cms/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cms/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cms/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cms/static/gearUtils-05.js"></script>
+-->
+<!-- for Brython 暫時不用
+<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
+<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
+-->
+<style>
+img.add_border {
+    border: 3px solid blue;
+}
+</style>
+
+</head>
+<body>
+<div class='container'><nav>
+        
+    <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+            <header class="site-navbar py-4 bg-white" role="banner">
+              <div class="container">
+                <div class="row align-items-center">
+                <h1>Dialog</h1>
+                <div class="pl-4">
+                    <form>
+                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
+                    </form>
+                </div>
+                  <!-- <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">Dialog</a></h1> 
+                  </div>
+                  -->
+                  <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
+                        <li class="active has-children"><a href="index.html">Home</a>
+                        <ul class="dropdown">
+                            <li><a href="sitemap.html">SMap</a></li>
+                            <li><a href="./../blog/index.html">blog</a></li>
+                        </ul>
+                      </li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='老年人和棒子.html'>老年人和棒子</a><li><a href='川口塔峰.html'>川口塔峰</a><li><a href='幸福之路.html'>幸福之路</a><li class='has-children'><a href='AI.html'>AI</a><ul class='dropdown'><li><a href='產品未來.html'>產品未來</a></li></ul><li><a href='Windows.html'>Windows</a><li><a href='Solvespace.html'>Solvespace</a><li><a href='Truck.html'>Truck</a><li><a href='usd-brep.html'>usd-brep</a><li><a href='Meshtastic.html'>Meshtastic</a><li><a href='LLM.html'>LLM</a></li></ul><li class='has-children'><a href='CMS.html'>CMS</a><ul class='dropdown'><li class='has-children'><a href='Python.html'>Python</a><ul class='dropdown'><li><a href='Converter.html'>Converter</a></li></ul><li><a href='PP.html'>PP</a><li><a href='git.html'>git</a><li class='has-children'><a href='Mojo.html'>Mojo</a><ul class='dropdown'><li><a href='WSL.html'>WSL</a></li></ul><li><a href='ffmpeq.html'>ffmpeq</a></li></ul><li class='has-children'><a href='Dialog.html'>Dialog</a><ul class='dropdown'><li><a href='中國史.html'>中國史</a><li><a href='Plato.html'>Plato</a><li><a href='Locke.html'>Locke</a><li><a href='PPE.html'>PPE</a><li><a href='孟子.html'>孟子</a><li><a href='Woodruff.html'>Woodruff</a><li><a href='Keats.html'>Keats</a><li><a href='Weingartner.html'>Weingartner</a><li><a href='Shaw.html'>Shaw</a><li><a href='White.html'>White</a><li><a href='宋美齡.html'>宋美齡</a></li></ul><li class='has-children'><a href='NX.html'>NX</a><ul class='dropdown'><li class='has-children'><a href='NX2512.html'>NX2512</a><ul class='dropdown'><li><a href='docs.html'>docs</a></li></ul><li><a href='NX2312.html'>NX2312</a><li class='has-children'><a href='NX3.html'>NX3</a><ul class='dropdown'><li><a href='ugopen.html'>ugopen</a><li><a href='NX3_hints.html'>NX3_hints</a><li><a href='DPV.html'>DPV</a><li><a href='Datum.html'>Datum</a><li><a href='PDD.html'>PDD</a><li><a href='AC.html'>AC</a><li><a href='SS.html'>SS</a></li></ul><li><a href='Open C.html'>Open C</a><li><a href='Robotics.html'>Robotics</a></li></ul><li class='has-children'><a href='Ender-3.html'>Ender-3</a><ul class='dropdown'><li><a href='手電筒架.html'>手電筒架</a><li><a href='洞洞板.html'>洞洞板</a><li><a href='桌邊掛勾.html'>桌邊掛勾</a><li><a href='Nut.html'>Nut</a><li class='has-children'><a href='STEM.html'>STEM</a><ul class='dropdown'><li><a href='Math.html'>Math</a><li><a href='Snap Circuits.html'>Snap Circuits</a></li></ul><li><a href='Speaker.html'>Speaker</a></li></ul><li><a href='EE.html'>EE</a><li><a href='Stocks.html'>Stocks</a></li>
+                      </ul>
+                </nav>
+              </div>
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+              </div>
+
+            </div>
+          </div>
+          
+        </header>
+    <div id="tipue_search_content">AI << <a href='AI.html'>Previous</a> <a href='Windows.html'>Next</a> >> Windows<br /><h1>產品未來</h1>
+<p>如何省下用戶時間，是 AI 時代推出各項軟硬體服務商家的必爭關鍵。</p>
+<p style="text-align: right;">-- mde.tw</p>
+<p><strong>因為許多原先必須付費的功能都能透過 AI 或免費開源流程取得</strong>，各種軟硬體將<strong>不再能透過功能收費</strong>，而是必須設法以<strong>省下用戶時間</strong>來進行營利。</p>
+<p>MDE：AI 時代的省時競爭法則</p>
+<p>M = Minimize（減少）、D = Delegate（代辦）、E = Eliminate（消除）。</p>
+<p>Minimize — <strong>減少用戶的操作時間 (讓用戶所交付的工作更快完成)</strong>:</p>
+<p style="padding-left: 30px;">讓每一件事做得更快、更簡單。</p>
+<p>傳統軟體讓使用者學習操作、尋找功能、填寫表格、反覆點選。AI 時代的產品則應盡可能縮短完成同一件事情所需的時間。</p>
+<ol>
+<li>Office：不必反覆調整格式，只需描述需求，就能生成符合規範的報告。</li>
+<li>CAD：不必逐一繪製零件，可以透過文字描述生成初步模型。</li>
+<li>電子商務：不必逐頁比較規格，由 AI 根據需求整理選項。</li>
+<li>商業意義： 以更少的操作步驟、更低的學習成本，創造更高的使用效率。</li>
+</ol>
+<p>Delegate — <strong>代替用戶完成工作 (用戶不需要花時間做這些繁瑣的事項)</strong>:</p>
+<p style="padding-left: 30px;">從輔助操作，進化到主動執行。</p>
+<p>Minimize 是讓人做得更快；Delegate 則是讓人不必親自做。</p>
+<ol>
+<li>AI 不應只回答問題，還應在授權範圍內執行任務、串接工具、檢查結果，並在必要時請使用者確認。</li>
+<li>辦公室：不只草擬郵件，還能整理附件、建立會議邀請並準備追蹤事項。</li>
+<li>工程設計：不只生成 CAD 模型，還能執行尺寸檢查、提出修改方案並產生工程圖。</li>
+<li>企業營運：不只分析銷售數據，還能產生採購建議、建立訂單草稿及追蹤交期。</li>
+<li>商業意義： 將使用者從工作執行者，提升為任務的決策者與監督者。</li>
+</ol>
+<p>Eliminate — <strong>消除不必要的工作 (讓用戶了解原本就不需做這些事)</strong>:</p>
+<p style="padding-left: 30px;">不只是把事情做快，而是讓某些事情根本不必做。</p>
+<p>很多工作之所以存在，不是因為它本身有價值，而是因為系統不相通、流程設計不良，或傳統工具有其限制。</p>
+<ol>
+<li>Office：自動消除重複輸入、不同檔案間的人工複製及格式整理。</li>
+<li>CAD：利用參數化設計與自動檢查，減少重複建模、人工比對及不必要的設計流程。</li>
+<li>企業管理：整合分散系統，消除重複登錄、人工核對及不必要的簽核環節。</li>
+<li>商業意義： 重新設計工作流程，而不是只替舊流程加上一層 AI。</li>
+</ol>
+<p>在傳統時代，企業競爭的是功能、品質與價格；在 AI 時代，企業競爭的是完成同一件事情所需要的時間與心力。</p>
+<p>第一流的產品，不只是讓使用者操作得更有效率；更進一步，是替使用者完成工作；最高境界，則是重新設計整個流程，讓不必要的工作直接消失。</p>
+<p>未來的軟硬體競爭，不是誰提供更多功能，而是誰能用更少的時間與心力，讓用戶取得更好的成果。<br/><br/>誰能持續做到 M、D、E，誰就更有機會在 AI 時代建立真正的競爭優勢。</p><br />AI << <a href='AI.html'>Previous</a> <a href='Windows.html'>Next</a> >> Windows</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cms/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cms/static/chimper/js/popper.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cms/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cms/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cms/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cms/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        
