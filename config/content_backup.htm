@@ -224,7 +224,77 @@ Set-ItemProperty -Path $registryPath -Name "NewTabPageLocation" -Value "about:bl
 <h2>Solvespace</h2>
 <p><a href="https://github.com/solvespace/solvespace">https://github.com/solvespace/solvespace</a> </p>
 <p><a href="https://mde.tw/ss">https://mde.tw/ss</a> </p>
-<h2>Meshtastic</h2>
+<h2>Truck</h2>
+<p><a href="https://github.com/ricosjp/truck">https://github.com/ricosjp/truck</a> (最早的<a href="https://news.ycombinator.com/item?id=35071317">討論</a>)</p>
+<p>以及採用 truck 為核心的 solidcraft: <a href="https://github.com/bherbruck/solidcraft">https://github.com/bherbruck/solidcraft</a> </p>
+<p>Truck:</p>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Boundary_representation">B-rep</a> (Boundary representation) 拓撲與 NURBS 幾何</li>
+<li>實體建構、建模操作、布林運算</li>
+<li>網格剖分、STEP I/O、wgpu 渲染</li>
+<li>JavaScript／WebAssembly 整合方向</li>
+</ol>
+<p>CAD Kernel 可支援多種幾何與實體表示方式，包括 B-rep（邊界表示法）、CSG（構造式實體幾何）、NURBS（曲線與曲面表示方式）、Mesh（網格表示法）、Implicit Surface（隱式曲面）、Voxel（體素表示法）及 Wireframe（線框表示法）。這些方式在分類層級與用途上有所不同，實際支援的類型則依 CAD Kernel 的設計而異。</p>
+<p>其中可分類為:</p>
+<ol>
+<li>幾何描述方式（例如 NURBS）</li>
+<li>拓撲及實體表示方式（例如 B-rep、CSG）</li>
+<li>離散化表示方式（例如 Mesh、Voxel）</li>
+<li>線框及骨架表示方式 ( 例如 Wireframe、Curve Network )</li>
+</ol>
+<p>更詳細的 CAD Kernel 幾何表示法分類:</p>
+<p>一、幾何描述方式（Geometric Representation）</p>
+<p>描述點、曲線、曲面及其數學形狀。</p>
+<p style="padding-left: 30px;">解析幾何（Analytic Geometry）：直線、圓、圓弧、平面、球面、圓柱面、圓錐面等。</p>
+<p style="padding-left: 30px;">NURBS（Non-Uniform Rational B-Splines）：以控制點、節點向量及權重描述曲線與曲面。</p>
+<p style="padding-left: 30px;">B-spline：以基底函數與控制點描述曲線、曲面。</p>
+<p style="padding-left: 30px;">Bezier Curve／Surface：使用 Bernstein 多項式與控制點描述曲線、曲面。</p>
+<p style="padding-left: 30px;">Subdivision Surface：透過細分控制網格生成平滑曲面，常見於自由造型。</p>
+<p style="padding-left: 30px;">Implicit Surface（隱式曲面）：利用隱式函數描述曲面，例如 f(x,y,z)=0 。</p>
+<p style="padding-left: 30px;">Parametric Surface（參數曲面）：以參數 u,v 描述曲面位置，例如 S(u,v) 。</p>
+<p>二、拓撲及實體表示方式（Topology and Solid Representation）</p>
+<p>描述物體如何組成、邊界如何連接，以及哪些區域構成實體。</p>
+<p style="padding-left: 30px;">B-rep（Boundary Representation，邊界表示法）：以頂點、邊、環、面、殼與實體等拓撲結構搭配幾何資料表示物體。</p>
+<p style="padding-left: 30px;">CSG（Constructive Solid Geometry，構造式實體幾何）：透過基本實體與聯集、交集、差集等運算組成物體。</p>
+<p style="padding-left: 30px;">Half-space Representation（半空間表示法）：以一組半空間的交集定義實體，常用於凸多面體及相關幾何演算法</p>
+<p style="padding-left: 30px;">Cell Decomposition（單元分解表示法）：將實體分解為多個單元，例如簡單實體或體積區域。</p>
+<p style="padding-left: 30px;">Boundary / Solid Hybrid Representation（混合表示法）：結合邊界表示與其他實體表示，例如以 B-rep 保存精確邊界，同時保留 CSG 或特徵運算資訊。</p>
+<p>三、離散化表示方式（Discrete Representation）</p>
+<p>將連續幾何或體積轉換為有限數量的離散資料。</p>
+<p style="padding-left: 30px;">Mesh（網格表示法）：以頂點、邊及三角形或多邊形描述表面。</p>
+<p style="padding-left: 30px;">Voxel（體素表示法）：以三維規則網格中的體素表示體積。</p>
+<p style="padding-left: 30px;">Point Cloud（點雲表示法）：以大量三維點描述掃描或取樣所得的形狀。</p>
+<p style="padding-left: 30px;">Tetrahedral Mesh（四面體網格）：以四面體單元離散化三維體積，常用於有限元素分析。</p>
+<p style="padding-left: 30px;">Hexahedral Mesh（六面體網格）：以六面體單元離散化體積，常用於工程模擬。</p>
+<p style="padding-left: 30px;">Octree（八叉樹表示法）：以階層式空間分割表示三維區域，可用於體素、碰撞及空間搜尋。</p>
+<p style="padding-left: 30px;">Signed Distance Field，SDF（有號距離場）：以空間位置到表面的有號距離表示形狀，常用於隱式建模與幾何處理。</p>
+<p>四、線框及骨架表示方式（Wireframe and Skeleton Representation）</p>
+<p>以線與點表示物體的骨架、輪廓或結構。</p>
+<p style="padding-left: 30px;">Wireframe（線框表示法）：以頂點與邊線描述幾何，不一定包含表面或封閉體積。</p>
+<p style="padding-left: 30px;">Curve Network（曲線網路）：由相互連接的曲線構成，可作為曲面生成、修剪或造型的依據。</p>
+<p style="padding-left: 30px;">Medial Axis／Skeleton（中軸／骨架）：描述形狀的內部骨架，可用於形狀分析、特徵辨識與部分建模流程。</p>
+<p>五、設計意圖與建模歷史表示方式（Design Intent and Modeling History）<br/><br/>此類嚴格來說不是純粹的幾何表示法，而是 CAD 系統描述設計過程與可編輯性的方式。</p>
+<p style="padding-left: 30px;">Feature-based Representation（特徵式表示法）：以拉伸、旋轉、挖孔、圓角等特徵定義模型。</p>
+<p style="padding-left: 30px;">Parametric Representation（參數化表示法）：以尺寸、約束與參數控制幾何。</p>
+<p style="padding-left: 30px;">History-based / Procedural Representation（歷史式／程序式表示法）：保存建模操作及其依賴關係，讓模型能夠重新計算。</p>
+<p style="padding-left: 30px;">Constraint-based Representation（約束式表示法）：利用幾何約束與尺寸方程式定義草圖或幾何關係。</p>
+<p></p><h2>usd-brep</h2>
+<p><a href="https://github.com/NVIDIA-Omniverse/usd-brep">https://github.com/NVIDIA-Omniverse/usd-brep</a> 於 2026.10.9 開源。</p>
+<p>usd-brep:</p>
+<ol>
+<li>NURBS-based <a href="https://en.wikipedia.org/wiki/Boundary_representation">B-rep</a> 實體建模</li>
+<li>可透過 C++ 與 Python 使用</li>
+<li>主要定位是幾何建模函式庫</li>
+<li>適合評估與 OpenUSD／Omniverse 工作流程的整合</li>
+</ol>
+<p>NVIDIA 的 usd-brep 為一套可獨立使用的 C++／Python NURBS <a href="https://en.wikipedia.org/wiki/Boundary_representation">B-rep</a> 實體建模函式庫。</p>
+<ol>
+<li>可精確幾何建模，用於處理 NURBS 曲面、<a href="https://en.wikipedia.org/wiki/Boundary_representation">B-rep</a> 實體及相關幾何操作。</li>
+<li>可與 OpenUSD 整合，讓精確幾何能參與 USD (Universal Scene Description) 場景的組合、資料交換與應用程式整合。</li>
+<li>可作為可嵌入的函式庫，不必從頭開發幾何核心，可套用於 C++ 或 Python 程式中。</li>
+</ol>
+<p>USD 由 Pixar 開發，並於 2016 年開源。OpenUSD 不只是檔案格式，還包括場景組合、資料分層、API 與可擴充的資料模型。</p>
+<p><a href="https://github.com/PixarAnimationStudios/OpenUSD">https://github.com/PixarAnimationStudios/OpenUSD</a> </p><h2>Meshtastic</h2>
 <p>Wio Tracker L1 Pro 作為一款預裝 Meshtastic 固件、開箱即用的低功耗 LoRa 追蹤與通訊設備，在無行動網路的環境下擁有極高的靈活性。</p>
 <p>使用情境一：高山徒步與越野探險（應急通訊與隊友追蹤）</p>
 <p style="padding-left: 30px;">在沒有基地台訊號的深山中，團隊成員各自攜帶 Wio Tracker L1 Pro，建立專屬的離網 Mesh 網路。</p>
@@ -310,8 +380,7 @@ Set-ItemProperty -Path $registryPath -Name "NewTabPageLocation" -Value "about:bl
 <p>使用情境二十：偏遠礦區、隧道工程的人員進出艙與生命安全監測</p>
 <p style="padding-left: 30px;">在深入地底、四周皆為厚重岩層的礦坑、鐵路隧道施工現場。</p>
 <p style="padding-left: 30px;">功能發揮：這種環境無法佈建傳統基地台，但可以使用多台 L1 Pro 像麵包屑一樣沿著隧道「接力」佈署。</p>
-<p style="padding-left: 30px;">實作展示：工程人員配戴 L1 Pro 進出隧道，設備會透過每隔數百公尺的 L1 Pro 節點，將人員的定位與識別碼（ID）「跳卡式」傳回隧道口的控制中心，做為<strong>電子點名系統</strong>。一旦發生坍方，控制中心能立即得知有幾位員工受困、受困於哪一段隧道，大幅提升工業安全管理的精準度。</p>
-<h2>LLM</h2>
+<p style="padding-left: 30px;">實作展示：工程人員配戴 L1 Pro 進出隧道，設備會透過每隔數百公尺的 L1 Pro 節點，將人員的定位與識別碼（ID）「跳卡式」傳回隧道口的控制中心，做為<strong>電子點名系統</strong>。一旦發生坍方，控制中心能立即得知有幾位員工受困、受困於哪一段隧道，大幅提升工業安全管理的精準度。</p><h2>LLM</h2>
 <p><a href="https://github.com/lyogavin/airllm">AirLLM</a> 是一個開源的 Python 推論工具，目標是讓記憶體有限的電腦也能執行較大的大型語言模型（LLM）。</p>
 <p>一般執行 LLM 時，模型的權重需要放在 GPU 記憶體、系統 RAM，或兩者之中。<a href="https://github.com/lyogavin/airllm">AirLLM</a> 的主要技巧是 逐層載入模型權重，而不是把整個模型一次放進 GPU 記憶體。</p>
 <p><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> 是一套以 C/C++ 開發的開源大型語言模型（LLM）推論框架，主要用於在個人電腦、伺服器及其他裝置上執行 AI 模型。它以低資源需求、跨硬體支援及高效率本機推論著稱，是本機 AI 生態系統的重要基礎工具。</p><h1>CMS</h1>
