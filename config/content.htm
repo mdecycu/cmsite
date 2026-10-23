@@ -536,7 +536,17 @@ git reflog expire --expire=now --all
 git gc --prune=now --aggressive
 </pre>
 <p></p>
-<h2>Mojo</h2>
+<h2>Prog</h2>
+<p>如何在 windows 11 環境下利用 msys2 建立一個可攜式的 rust 開發環境。</p>
+<p>採用以下組合：</p>
+<p style="padding-left: 30px;">MSYS2 UCRT64：提供 GCC、GNU Make、pkg-config 等原生編譯工具。</p>
+<p style="padding-left: 30px;">Rustup + stable Rust：管理 Rust 編譯器、Cargo 與工具鏈版本。</p>
+<p style="padding-left: 30px;">Windows 原生 GNU 工具鏈：以 x86_64-pc-windows-gnu 為例，搭配 MinGW-w64。</p>
+<p style="padding-left: 30px;">可攜式啟動腳本：每次啟動時動態設定 PATH、CARGO_HOME、RUSTUP_HOME，不依賴 Windows 的全域環境變數。</p>
+<p>以下方案適合開發命令列程式、一般 Rust 專案，以及需要連結 GNU 原生函式庫的應用程式。以能在 Windows 上產生原生 .exe 為目標。</p>
+<p>目錄架構:</p>
+<p style="padding-left: 30px;">E:\PortableRust\<br/>├── msys64\             # MSYS2 本體<br/>│   ├── ucrt64\         # GCC、LD、原生函式庫<br/>│   └── usr\            # MSYS2 工具<br/>├── rust\<br/>│   ├── cargo\          # Cargo、rustup 執行檔及套件<br/>│   └── rustup\          # Rust 工具鏈與元件<br/>├── projects\           # Rust 專案<br/>├── cache\              # 可選：建置快取<br/>├── start-rust.cmd      # 啟動開發環境<br/>└── update-rust.cmd     # 可選：更新工具鏈</p>
+<p></p><h2>Mojo</h2>
 <p><a href="https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular">https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular</a> </p>
 <p>Mojo 在 2026.8.18 正式開源。</p>
 <p><a 07="" 2026="" com="" href="https://www.modular.com/blog/mojo-op&lt;h2&gt;Mojo&lt;/h2&gt;
@@ -644,8 +654,7 @@ git gc --prune=now --aggressive
 <li><a href="https://llvm.org/devmtg/2023-10/slides/keynote/Mojo.pdf">https://llvm.org/devmtg/2023-10/slides/keynote/Mojo.pdf</a> </li>
 <li><a href="https://ruhati.net/mojo/">https://ruhati.net/mojo/</a> </li>
 <li><a href="https://mojo-lang.com/miji/">https://mojo-lang.com/miji/</a> </li>
-</ol>
-<h3>WSL</h3>
+</ol><h3>WSL</h3>
 <p>以管理者身分啟動 Powershell</p>
 <pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 修正 PowerShell 亂碼與空格問題
 [console]::OutputEncoding = [System.Text.Encoding]::Unicode
@@ -1348,12 +1357,12 @@ mojo build main.mojo -o my_app
 <h1>CAD</h1>
 <h2>SolidCraft</h2>
 <p><a href="https://github.com/bherbruck/solidcraft">https://github.com/bherbruck/solidcraft</a> 底層核心採用 <a href="https://github.com/ricosjp/truck">https://github.com/ricosjp/truck</a>，目前的功能已經可以建立用於 3D 列印的簡單零組件。</p>
-<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.19.0/solidcraft-0.19.0-windows-x64-portable.zip">SolidCraft 0.19.0 Windows X64 可攜版</a></p>
-<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.19.0/solidcraft-web-0.19.0.zip">SolidCraft 0.19.0 Web 版</a>:</p>
+<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.20.0/solidcraft-0.20.0-windows-x64-portable.zip">SolidCraft 0.20.0 Windows X64 可攜版</a></p>
+<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.20.0/solidcraft-web-0.20.0.zip">SolidCraft 0.20.0 Web 版</a>:</p>
 <p style="padding-left: 30px;"><a href="https://mde.tw/sc">https://mde.tw/sc</a> </p>
 <p>另一個值得注意的是 <a href="https://github.com/bherbruck/solidcore">https://github.com/bherbruck/solidcore</a> 正在用 Rust 改寫剛開源的 <a href="https://github.com/NVIDIA-Omniverse/usd-brep">https://github.com/NVIDIA-Omniverse/usd-brep</a>。最後，SolidCraft 將會從 truck 轉而採用較為成熟的 <a href="https://github.com/bherbruck/solidcore">Solidcore</a> 作為核心。</p>
 <p><a href="https://github.com/bherbruck/solidcore">Solidcore</a> 是將 NVIDIA 開源的 <a href="https://github.com/NVIDIA-Omniverse/usd-brep">SMLib</a> 改寫為 Rust。<a href="https://github.com/NVIDIA-Omniverse/usd-brep">SMLib</a> 本身是一款累積數十年的商業級幾何內核，擁有極為強大且經過市場驗證的 <a href="https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline">NURBS</a> 數學運算、交集判定與曲面修復（Healing）能力。它能輕易實現 <a href="https://github.com/ricosjp/truck">truck</a> 無法穩定處理的圓角與倒角（Fillets &amp; Chamfers）、偏移與抽殼（Offset &amp; Shelling）、掃掠（Sweep）等高級 CAD 實體建模功能。</p>
-<p>以下 Rover 取自 <a href="https://github.com/0xlillith/solidcraft-rover">https://github.com/0xlillith/solidcraft-rover</a>，已經可以看出 SolidCraft 能用來建立數十個零件的設計繪圖。但還沒有能力快速開啟帶有 504 個零組件的 <a href="https://www.printables.com/model/1520471-prusa-core-one-full-cad-assembly/files">3D 列印機組合件 STEP 檔案</a>。</p>
+<p>以下 Rover 取自 <a href="https://github.com/0xlillith/solidcraft-rover">https://github.com/0xlillith/solidcraft-rover</a>， SolidCraft 0.20.0 版不僅能用來建立數十個零件的設計繪圖。也已經可以快速開啟帶有 504 個零組件的 <a href="https://www.printables.com/model/1520471-prusa-core-one-full-cad-assembly/files">3D 列印機組合件 STEP 檔案</a>。</p>
 <p><img alt="" height="304" src="/images/rover_in_solidcraft.png" width="400"/></p><h3>MCP</h3>
 <p><a href="https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro">MCP</a>（Model Context Protocol，模型上下文協定） 的誕生，為 AI 模型連接外部軟體與調用工具建立了標準化的橋樑。這項協定的普及，正快速顛覆 MCAD（機械電腦輔助設計） 領域。在 MCP 的驅使下，未來由 AI 全權主導並執行 CAD/CAE/CAM/PLM 的跨軟體協同與虛實整合流程，已從科技幻想轉變為完全可行的現實。</p>
 <p>洞察到這一波「AI 驅動工業設計」的歷史性轉折，NVIDIA 在 2026 年 10 月初拋出震撼彈：將其於 2022 年收購的頂級商業幾何內核 SMLib，正式封裝於全新的 USD BRep 程式庫中，並以極度寬鬆的 Apache 2.0 協議全面開源。NVIDIA 此舉背後的深層商業策略如下：</p>

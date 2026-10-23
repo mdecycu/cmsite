@@ -536,7 +536,17 @@ git reflog expire --expire=now --all
 git gc --prune=now --aggressive
 </pre>
 <p></p>
-<h2>Mojo</h2>
+<h2>Prog</h2>
+<p>如何在 windows 11 環境下利用 msys2 建立一個可攜式的 rust 開發環境。</p>
+<p>採用以下組合：</p>
+<p style="padding-left: 30px;">MSYS2 UCRT64：提供 GCC、GNU Make、pkg-config 等原生編譯工具。</p>
+<p style="padding-left: 30px;">Rustup + stable Rust：管理 Rust 編譯器、Cargo 與工具鏈版本。</p>
+<p style="padding-left: 30px;">Windows 原生 GNU 工具鏈：以 x86_64-pc-windows-gnu 為例，搭配 MinGW-w64。</p>
+<p style="padding-left: 30px;">可攜式啟動腳本：每次啟動時動態設定 PATH、CARGO_HOME、RUSTUP_HOME，不依賴 Windows 的全域環境變數。</p>
+<p>以下方案適合開發命令列程式、一般 Rust 專案，以及需要連結 GNU 原生函式庫的應用程式。以能在 Windows 上產生原生 .exe 為目標。</p>
+<p>目錄架構:</p>
+<p style="padding-left: 30px;">E:\PortableRust\<br/>├── msys64\             # MSYS2 本體<br/>│   ├── ucrt64\         # GCC、LD、原生函式庫<br/>│   └── usr\            # MSYS2 工具<br/>├── rust\<br/>│   ├── cargo\          # Cargo、rustup 執行檔及套件<br/>│   └── rustup\          # Rust 工具鏈與元件<br/>├── projects\           # Rust 專案<br/>├── cache\              # 可選：建置快取<br/>├── start-rust.cmd      # 啟動開發環境<br/>└── update-rust.cmd     # 可選：更新工具鏈</p>
+<p></p><h2>Mojo</h2>
 <p><a href="https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular">https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular</a> </p>
 <p>Mojo 在 2026.8.18 正式開源。</p>
 <p><a 07="" 2026="" com="" href="https://www.modular.com/blog/mojo-op&lt;h2&gt;Mojo&lt;/h2&gt;
@@ -644,8 +654,7 @@ git gc --prune=now --aggressive
 <li><a href="https://llvm.org/devmtg/2023-10/slides/keynote/Mojo.pdf">https://llvm.org/devmtg/2023-10/slides/keynote/Mojo.pdf</a> </li>
 <li><a href="https://ruhati.net/mojo/">https://ruhati.net/mojo/</a> </li>
 <li><a href="https://mojo-lang.com/miji/">https://mojo-lang.com/miji/</a> </li>
-</ol>
-<h3>WSL</h3>
+</ol><h3>WSL</h3>
 <p>以管理者身分啟動 Powershell</p>
 <pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 修正 PowerShell 亂碼與空格問題
 [console]::OutputEncoding = [System.Text.Encoding]::Unicode
@@ -1383,7 +1392,7 @@ mojo build main.mojo -o my_app
 <p>二、生態對抗：用「世界模型」正面迎擊 NVIDIA Omniverse</p>
 <p>如前所述，NVIDIA 的王牌武器是結合了 SMLib 幾何內核的 Omniverse 數位雙生平台，試圖壟斷工業 CAD/CAE 到 AI 生成的整條數位高速公路。</p>
 <p style="padding-left: 30px;">AMD 的對抗策略：World Labs 的核心產品（如全模態世界模型 Atlas 與 Marble）能夠直接從極少量的 2D 影像或文字，一秒逆向推理並生成、重建出可互動的 3D 真實環境與物理模擬。</p>
-<p style="padding-left: 30px;">這項技術直接跳過了傳統工業界繁瑣的 3D 建模與複雜拓撲運算大坑。AMD 擁有這項技術後，就能協助其客戶擺脫 NVIDIA Omniverse 的生態綑綁，打造出一個與 OpenUSD 並行、甚至更輕量、更適合 AI 自主學習的「開源實體 AI 基礎設施」。</p>
+<p style="padding-left: 30px;">這項技術<strong>直接跳過</strong>了傳統工業界繁瑣的 3D 建模與複雜拓撲運算大坑。AMD 擁有這項技術後，就能協助其客戶擺脫 NVIDIA Omniverse 的生態綑綁，打造出一個與 OpenUSD 並行、甚至更輕量、更適合 AI 自主學習的「開源實體 AI 基礎設施」。</p>
 <p>三、補齊靈魂短板：大幅強化 ROCm 軟體棧與開源生態</p>
 <p>AMD 硬體（如 MI300/MI400 系列加速器）性能強悍，但在商業界長期落後 NVIDIA 的最大致命傷，就是軟體生態系 ROCm 遠不如 NVIDIA 的 CUDA 龐大好用。</p>
 <p style="padding-left: 30px;">AMD 的思維：李飛飛是 AI 視覺領域的奠基人（ImageNet 締造者），其團隊聚集了全球頂尖的 AI 科學家。</p>
