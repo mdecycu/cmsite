@@ -142,7 +142,46 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">SolidCraft << <a href='SolidCraft.html'>Previous</a> <a href='NX.html'>Next</a> >> NX<br /><h1>MCP</h1>
-<p>MCP 是 Model Context Protocol（模型上下文協定），能讓 AI 模型連接外部軟體、使用工具的一種標準介面。</p><br />SolidCraft << <a href='SolidCraft.html'>Previous</a> <a href='NX.html'>Next</a> >> NX</div>
+<p><a href="https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro">MCP</a>（Model Context Protocol，模型上下文協定） 的誕生，為 AI 模型連接外部軟體與調用工具建立了標準化的橋樑。這項協定的普及，正快速顛覆 MCAD（機械電腦輔助設計） 領域。在 MCP 的驅使下，未來由 AI 全權主導並執行 CAD/CAE/CAM/PLM 的跨軟體協同與虛實整合流程，已從科技幻想轉變為完全可行的現實。</p>
+<p>洞察到這一波「AI 驅動工業設計」的歷史性轉折，NVIDIA 在 2026 年 10 月初拋出震撼彈：將其於 2022 年收購的頂級商業幾何內核 SMLib，正式封裝於全新的 USD BRep 程式庫中，並以極度寬鬆的 Apache 2.0 協議全面開源。NVIDIA 此舉背後的深層商業策略如下：</p>
+<p>一、將 <a href="https://www.nvidia.com/en-us/glossary/openusd/">OpenUSD</a> 生態從「純視覺」推向「精確製造」:</p>
+<p>NVIDIA 過去幾年全力推廣 OpenUSD (Universal Scene Description)，將其作為旗下 Omniverse 數位雙生（Digital Twins）與元宇宙的底層架構。OpenUSD 的核心價值在於打破了 3D 軟體之間長久以來的『數據孤島』。<br/>過去，建築師、機械工程師與動畫師使用的軟體格式互不相通，導致數位雙生工廠往往只能流於視覺展示。NVIDIA 看中 OpenUSD 強大的非破壞性幾何編輯（Layers &amp; Compositions）能力，將其升級為工業級標準。這讓巨型工廠（如寶馬汽車 BMW 的虛擬工廠）能夠在 Omniverse 中同時整合來自不同專業軟體的資料，實現大規模的虛擬組裝、光線追蹤渲染與動態物理模擬，讓真正的數位雙生得以落地。</p>
+<p style="padding-left: 30px;">先前的痛點：<a href="https://www.nvidia.com/en-us/glossary/openusd/">OpenUSD</a> 傳統上主要處理的是多邊形網格（Polygon Mesh）。當工程師把精確的 CAD 模型（NURBS / B-Rep）導入 <a href="https://www.nvidia.com/zh-tw/omniverse/">Omniverse</a> 時，模型必須被「打碎」成網格，這會失去數學上的精確度，無法進行真正的工業再加工或高精度模擬。</p>
+<p style="padding-left: 30px;">開源的戰略目的：透過開源 SMLib，NVIDIA 讓 USD BRep 補齊了最後一塊拼圖——讓精確的 CAD 實體幾何能存在於 <a href="https://www.nvidia.com/en-us/glossary/openusd/">OpenUSD</a> 格式中。使得數位雙生、虛擬工廠能直接與真實的製造產品對應。</p>
+<p>二、讓 AI Agent 執行 MCAD 流程</p>
+<p>近年生成式 AI 爆發，但現有的 LLM（大語言模型）和神經網路極難直接理解傳統 MCAD 軟體。這是因為傳統 MCAD 的核心並非簡單的視覺圖片，而是由『B-Rep（邊界表示法）』所建構的複雜幾何與拓撲關係。</p>
+<p>MCAD 軟體中的一個 3D 實體，是由無數個面、邊、頂點之間的『指涉與約束關係』交織而成的參數化歷史樹。AI 無法像閱讀文字一樣進行簡單的線性理解，只要遺漏任何一個微米的約束條件，整個 3D 模型就會崩塌、報錯。這種高度結構化且容錯率為零的幾何邏輯，正是傳統 MCAD 阻礙 AI 理解的巨大技術鴻溝。</p>
+<p style="padding-left: 30px;">傳統商業 MCAD 底層內核（如 Siemens 的 Parasolid）架構高度封閉、授權費極其昂貴。雖然高階應用層軟體（如 NX）可透過 NXOpen 提供 Python 介面進行自動化開發，但核心幾何內核本身仍被深鎖在商業黑盒中。AI Agent 無法自由、低成本地直接呼叫內核進行大規模的幾何底層運算與並行訓練，這阻礙了 AI 開源生態在 CAD 領域的爆發。</p>
+<p style="padding-left: 30px;">NVIDIA 開源 SMLib 封裝出的 USD BRep，原生提供 Python 和 C++ 接口。讓 AI 可以直接透過程式碼調用 SMLib 來做精確的布林運算、Fillet、Shell，讓 AI 輔助設計（AI-driven MCAD）與自動化生成幾何跨過技術與授權門檻，形成爆發式增長。</p>
+<p>三、用 Apache 2.0 對抗傳統 CAD 巨頭</p>
+<p>CAD 底層幾何內核的市場長期被少數巨頭壟斷，商業界由 Siemens Parasolid 與 Dassault ACIS 統治，授權費高昂且條款嚴苛。這些巨頭的授權條款通常嚴格限制了代碼的公開性與分發方式，除了收取高昂的年費外，還會對商業化產品抽取版稅，且嚴禁將內核分發到開源項目中。這使得新創團隊、獨立開發者或 AI 研究機構，根本無法在遵守條款的前提下，將幾何內核無縫整合到現代的 AI 自動化與開源生態中。</p>
+<p style="padding-left: 30px;">開源界過去幾十年幾乎只有 OpenCASCADE (OCCT) 一個選擇，但其使用的是較為受限的 LGPL 協議，且程式碼歷史包袱沉重、極難維護。</p>
+<p style="padding-left: 30px;">NVIDIA 直接釋出 Apache 2.0 協議（允許自由修改、甚至直接用於商業閉源產品）的 SMLib，對整個 3D 軟體界與 3D 打印開發者來說是「降維打擊」。NVIDIA 不靠賣 CAD 軟體授權賺錢，它開源 SMLib 是為了降低 3D 軟體開發門檻，催生無數新興的 3D/AI 軟體（例如 SolidCraft、Flux 等），進而擴大整個生態系。</p>
+<p>四、終極硬體變現：所有的路，最後都通往 NVIDIA GPU</p>
+<p>NVIDIA 所有的軟體策略（包含 Omniverse、Isaac 機器人平台、cuLitho 計算光學）最終目的都非常純粹：賣出更多的 GPU 算力。</p>
+<p>當全球的工程師、AI Agent、數位雙生系統都基於 OpenUSD 和 SMLib 內核在雲端或本地並行生成 3D 幾何、進行物理模擬與渲染時，這背後龐大的算力與並行運算需求，最終都必須運行在 NVIDIA 的 GPU 顯示卡與 AI 伺服器集群上。透過將 SMLib 與 OpenUSD 免費奉送給開源社群，NVIDIA 成功將自己從一家硬體供應商，重塑為下一代工業 AI 革命中不可或缺的中央基礎設施。</p>
+<hr/>
+<p>基於上述 NVIDIA 藉由開源 SMLib（USD BRep）進行「軟體圍剿、硬體變現」的宏大佈局，我們能更清晰地看懂超微半導體（AMD）的對抗策略。</p>
+<p>在 2026 年 9 月底，AMD 宣布以高達 82 億美元的天價（全股票交易）收購「AI 教母」李飛飛剛創立兩年的 World Labs 團隊，且李飛飛將親自出任 AMD 執行副總裁兼首席科學家。這絕非一筆簡單的「買人才」交易，而是執行長蘇姿丰為了粉碎 NVIDIA 壟斷、在下一代「實體 AI（Physical AI）」戰場上進行的一場飽和式戰略反擊。</p>
+<p>以下是 AMD 花費巨資買下李飛飛團隊的深層對抗策略與商業思維：</p>
+<p>一、戰略思維：搶奪「未來算力工作負載（Workload）的定義權」<br/><br/>NVIDIA 之所以能壟斷市場，是因為它透過 OpenUSD 與 SMLib 告訴世界：「未來的幾何、模擬與 AI 必須這樣跑，所以你們需要我的 GPU。」</p>
+<p style="padding-left: 30px;">AMD 的反擊：與其在現有的「大型語言模型（LLM）」戰場上被動追趕 NVIDIA，AMD 選擇直接下注下一波巨浪——空間智慧（Spatial Intelligence）與世界模型（World Models）。</p>
+<p style="padding-left: 30px;">李飛飛的 World Labs 主攻讓 AI 真正理解物理世界的 3D 結構、光影與運動規律，這正是機器人、自動駕駛與虛擬工廠最核心的底層大腦。AMD 買下這個團隊，意味著 AMD 開始反向掌控「定義未來 AI 需要什麼晶片架構」的權力。透過提前了解世界模型的運算特性，AMD 才能在硬體設計階段（例如：高記憶體頻寬、空間算子優化）超越 NVIDIA。</p>
+<p>二、生態對抗：用「世界模型」正面迎擊 NVIDIA Omniverse</p>
+<p>如前所述，NVIDIA 的王牌武器是結合了 SMLib 幾何內核的 Omniverse 數位雙生平台，試圖壟斷工業 CAD/CAE 到 AI 生成的整條數位高速公路。</p>
+<p style="padding-left: 30px;">AMD 的對抗策略：World Labs 的核心產品（如全模態世界模型 Atlas 與 Marble）能夠直接從極少量的 2D 影像或文字，一秒逆向推理並生成、重建出可互動的 3D 真實環境與物理模擬。</p>
+<p style="padding-left: 30px;">這項技術<strong>直接跳過</strong>了傳統工業界繁瑣的 3D 建模與複雜拓撲運算大坑。AMD 擁有這項技術後，就能協助其客戶擺脫 NVIDIA Omniverse 的生態綑綁，打造出一個與 OpenUSD 並行、甚至更輕量、更適合 AI 自主學習的「開源實體 AI 基礎設施」。</p>
+<p>三、補齊靈魂短板：大幅強化 ROCm 軟體棧與開源生態</p>
+<p>AMD 硬體（如 MI300/MI400 系列加速器）性能強悍，但在商業界長期落後 NVIDIA 的最大致命傷，就是軟體生態系 ROCm 遠不如 NVIDIA 的 CUDA 龐大好用。</p>
+<p style="padding-left: 30px;">AMD 的思維：李飛飛是 AI 視覺領域的奠基人（ImageNet 締造者），其團隊聚集了全球頂尖的 AI 科學家。</p>
+<p style="padding-left: 30px;">讓李飛飛出任執行副總裁並主導軟硬體整合，不僅能將 World Labs 的最前沿模型優化至 ROCm 軟體棧上，更能吸引全球開源社群、機器人公司與新創團隊，為了使用李飛飛的「世界模型」而主動遷移至 AMD 的硬體生態。這與 AMD 長期主打的 「Open Ecosystem（開放生態系）」 戰略完美契合，藉此對抗 CUDA 的閉源壟斷。</p>
+<p>四、終極變現模式：繞過「軟體層」，直接引導客戶買 AMD 晶片</p>
+<p>NVIDIA 開源 SMLib 的目的是用免費軟體推銷 GPU。AMD 這筆 82 億美元的交易，則是更激進的思維——直接把世界最強的「物理 AI 實驗室」納為己有。</p>
+<p style="padding-left: 30px;">實體 AI 和 3D 空間重建是不可思議的「算力黑洞」。未來，不論是自動駕駛訓練還是智慧製造模擬，都需要並行跑幾萬個世界模型節點。</p>
+<p style="padding-left: 30px;">當 AMD 把 World Labs 的技術作為底座，向全球工業巨頭提供服務時，它就能直接向客戶打包保證：「使用 AMD 的架構，在跑世界模型時能提供最具性價比、最低延遲的算力表現。」這讓 AMD 得以從「追隨 NVIDIA 定義的規則」轉變為「自己建立一條通往晶片銷售的新通路」。</p>
+<p>總結：晶片戰爭的典範轉移</p>
+<p>如果說 NVIDIA 開源 SMLib 是一場由軟體向硬體延伸的「生態圍剿戰」；那麼 AMD 砸下 82 億美元娶回李飛飛，就是一場由研究驅動、定義未來工作負載的「源頭攔截戰」。</p>
+<p>蘇姿丰非常清楚，要在 LLM 時代徹底擊敗 CUDA 已經太遲；但透過 World Labs，AMD 成功在「實體 AI 與空間智慧」這個剛開打的全新主戰場上，取得了與 NVIDIA 平起平坐、甚至超前定義硬體標準的戰略制高點。</p><br />SolidCraft << <a href='SolidCraft.html'>Previous</a> <a href='NX.html'>Next</a> >> NX</div>
         
     <!-- footer -->
       <div class="container">
