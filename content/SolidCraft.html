@@ -146,7 +146,8 @@ img.add_border {
 <p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.19.0/solidcraft-0.19.0-windows-x64-portable.zip">SolidCraft 0.19.0 Windows X64 可攜版</a></p>
 <p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.19.0/solidcraft-web-0.19.0.zip">SolidCraft 0.19.0 Web 版</a>:</p>
 <p style="padding-left: 30px;"><a href="https://mde.tw/sc">https://mde.tw/sc</a> </p>
-<p>另一個值得注意的是 <a href="https://github.com/bherbruck/solidcore">https://github.com/bherbruck/solidcore</a> 正在用 Rust 改寫剛開源的 <a href="https://github.com/NVIDIA-Omniverse/usd-brep">https://github.com/NVIDIA-Omniverse/usd-brep</a>。</p>
+<p>另一個值得注意的是 <a href="https://github.com/bherbruck/solidcore">https://github.com/bherbruck/solidcore</a> 正在用 Rust 改寫剛開源的 <a href="https://github.com/NVIDIA-Omniverse/usd-brep">https://github.com/NVIDIA-Omniverse/usd-brep</a>。最後，SolidCraft 將會從 truck 轉而採用較為成熟的 <a href="https://github.com/bherbruck/solidcore">Solidcore</a> 作為核心。</p>
+<p><a href="https://github.com/bherbruck/solidcore">Solidcore</a> 是將 NVIDIA 開源的 <a href="https://github.com/NVIDIA-Omniverse/usd-brep">SMLib</a> 改寫為 Rust。<a href="https://github.com/NVIDIA-Omniverse/usd-brep">SMLib</a> 本身是一款累積數十年的商業級幾何內核，擁有極為強大且經過市場驗證的 <a href="https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline">NURBS</a> 數學運算、交集判定與曲面修復（Healing）能力。它能輕易實現 <a href="https://github.com/ricosjp/truck">truck</a> 無法穩定處理的圓角與倒角（Fillets &amp; Chamfers）、偏移與抽殼（Offset &amp; Shelling）、掃掠（Sweep）等高級 CAD 實體建模功能。</p>
 <p>以下 Rover 取自 <a href="https://github.com/0xlillith/solidcraft-rover">https://github.com/0xlillith/solidcraft-rover</a>，已經可以看出 SolidCraft 能用來建立數十個零件的設計繪圖。但還沒有能力快速開啟帶有 504 個零組件的 <a href="https://www.printables.com/model/1520471-prusa-core-one-full-cad-assembly/files">3D 列印機組合件 STEP 檔案</a>。</p>
 <p><img alt="" height="304" src="./../images/rover_in_solidcraft.png" width="400"/></p><br />CAD << <a href='CAD.html'>Previous</a> <a href='MCP.html'>Next</a> >> MCP</div>
         
