@@ -1348,12 +1348,13 @@ mojo build main.mojo -o my_app
 <h1>CAD</h1>
 <h2>SolidCraft</h2>
 <p><a href="https://github.com/bherbruck/solidcraft">https://github.com/bherbruck/solidcraft</a> 底層核心採用 <a href="https://github.com/ricosjp/truck">https://github.com/ricosjp/truck</a>，目前的功能已經可以建立用於 3D 列印的簡單零組件。</p>
-<p><a href="https://github.com/bherbruck/solidcraft/releases/download/v0.10.0/solidcraft-0.10.0-windows-x64-portable.zip">SolidCraft 0.10.0 Windows X64 可攜版</a></p>
-<p><a href="https://github.com/bherbruck/solidcraft/releases/download/v0.10.0/solidcraft-web-0.10.0.zip">SolidCraft 0.10.0 Web 版</a>:</p>
+<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.19.0/solidcraft-0.19.0-windows-x64-portable.zip">SolidCraft 0.19.0 Windows X64 可攜版</a></p>
+<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.19.0/solidcraft-web-0.19.0.zip">SolidCraft 0.19.0 Web 版</a>:</p>
 <p style="padding-left: 30px;"><a href="https://mde.tw/sc">https://mde.tw/sc</a> </p>
 <p>另一個值得注意的是 <a href="https://github.com/bherbruck/solidcore">https://github.com/bherbruck/solidcore</a> 正在用 Rust 改寫剛開源的 <a href="https://github.com/NVIDIA-Omniverse/usd-brep">https://github.com/NVIDIA-Omniverse/usd-brep</a>。</p>
-<p>以下 Rover 取自 <a href="https://github.com/0xlillith/solidcraft-rover">https://github.com/0xlillith/solidcraft-rover</a>，雖然不是採用零件組立，但已經可以看出 SolidCraft 能用來建立數十個零件的設計繪圖。但還沒有能力開啟帶有 504 個零組件的 <a href="https://www.printables.com/model/1520471-prusa-core-one-full-cad-assembly/files">3D 列印機組合件 STEP 檔案</a>。</p>
-<p><img alt="" height="304" src="/images/rover_in_solidcraft.png" width="400"/></p><h2>NX</h2>
+<p>以下 Rover 取自 <a href="https://github.com/0xlillith/solidcraft-rover">https://github.com/0xlillith/solidcraft-rover</a>，已經可以看出 SolidCraft 能用來建立數十個零件的設計繪圖。但還沒有能力快速開啟帶有 504 個零組件的 <a href="https://www.printables.com/model/1520471-prusa-core-one-full-cad-assembly/files">3D 列印機組合件 STEP 檔案</a>。</p>
+<p><img alt="" height="304" src="/images/rover_in_solidcraft.png" width="400"/></p><h3>MCP</h3>
+<p>MCP 是 Model Context Protocol（模型上下文協定），能讓 AI 模型連接外部軟體、使用工具的一種標準介面。</p><h2>NX</h2>
 <p>摘要<br/><br/>早期的 Unigraphics（UG）至中期的 I-DEAS、中後期的 NX，再至 2026 年 Designcenter 的演進，是一條由數值控制（Numerical Control, NC）、電腦輔助製造（Computer-Aided Manufacturing, CAM）、電腦輔助設計（Computer-Aided Design, CAD）、電腦輔助工程（Computer-Aided Engineering, CAE）、產品資料管理（Product Data Management, PDM）逐步整合至產品生命週期管理（Product Lifecycle Management, PLM），並進一步向數位主線（Digital Thread）、雲端工程（Cloud Engineering）與人工智慧輔助工程（AI-assisted Engineering）延伸的技術發展歷程。<br/><br/>此一技術血統可追溯至 1960 年代 United Computing 所發展之 APT/UNIAPT 技術，1970 年代形成 UNI-GRAPHICS，1976 年進入 McDonnell Douglas 體系；1990 年代進入 EDS 時代；2001 年 EDS 將 UGS 與 SDRC 納入同一 PLM 組織，促成 Unigraphics 與 I-DEAS 技術整合；2002 年正式推出 NX；2007 年 Siemens 收購 UGS；2019 年導入 Continuous Release；2022 年改採年份與月份作為版本標識；2025 年將 NX 納入 Designcenter 品牌；2026 年 6 月進一步以 Designcenter 2606 作為統一產品名稱。</p>
 <p>從技術史角度觀察，這條演進路徑的核心是產品資訊的數位化邊界持續擴張：由幾何描述擴張至產品結構，由產品結構擴張至工程分析與製造，再由工程資料擴張至整個產品生命週期，最終形成設計、模擬、製造、資料管理、協作、雲端與 AI 相互連接的工程平台。</p>
 <p>一、研究範圍與歷史定位<br/><br/>現代 Designcenter 的技術來源具有多重企業與產品血統，其中最重要者包括 United Computing、Unigraphics、McDonnell Douglas、EDS、UGS、SDRC、I-DEAS 以及 Siemens。</p>
@@ -2482,12 +2483,14 @@ ending1: ;
 <p><a href="https://github.com/mdecycu/Ender-3">https://github.com/mdecycu/Ender-3</a> </p>
 <p>列印流程:</p>
 <ol>
-<li>CAD (使用 <a href="https://solvespace.com">Solvesapce</a> 與 <a href="https://mde.tw/cmsite/content/NX2512.html">Siemens Designcenter NX2512</a>) 建立零組件。</li>
+<li>CAD (使用 <a href="https://solvespace.com">Solvesapce</a>、<a href="https://github.com/bherbruck/solidcraft">SolidCraft</a>、<a href="https://mde.tw/cmsite/content/NX3.html">NX3</a> 或 <a href="https://mde.tw/cmsite/content/NX2512.html">Siemens Designcenter NX2512</a>) 建立零組件。</li>
 <li>分別轉為 <a href="https://en.wikipedia.org/wiki/STL_(file_format)">STL</a>。</li>
 <li>將 <a href="https://en.wikipedia.org/wiki/STL_(file_format)">STL</a> 放入 <a href="https://ultimaker.com/software/ultimaker-cura/">Cura</a> (配合舊電腦仍使用 3.6.0 版) 進行列印規劃 (熱板 60 度 C，列印頭 205度 C，列印 <a href="https://en.wikipedia.org/wiki/Polylactic_acid">PLA</a>)。</li>
 <li>列印規劃結束後轉出 <a href="https://en.wikipedia.org/wiki/G-code">G-code</a>。</li>
 <li>在 <a href="https://www.pronterface.com/">Pronterface</a> 中載入 <a href="https://en.wikipedia.org/wiki/G-code">G-code</a> 後，採類 <a href="https://en.wikipedia.org/wiki/Direct_numerical_control">DNC</a> 方式列印。</li>
 </ol>
+<p>強化 <a href="https://en.wikipedia.org/wiki/Polylactic_acid">PLA</a> 列印件: </p>
+<p style="padding-left: 30px;">在 <a href="https://ultimaker.com/software/ultimaker-cura/">Cura</a> 將外殼圈數（Wall Line Count / Perimeters）從內建的 2 圈改為 4 圈、填充密度（Infill Density）調至 40% 且圖案選用 Gyroid（迴轉體），並把列印溫度（Printing Temperature / Nozzle Temperature）拉高到 215°C 與風扇速度（Fan Speed）調降至 50%，印好後放入烤箱以 60°C ~ 65°C 進行熱退火（Annealing）烘烤 1 小時，並在切片前預先將縮放比例（Scale）調整為 XY 軸放大 101.5%、Z 軸縮小 99% 以補償退火造成的尺寸變形 (可針對不同料材列印校準方塊後確認各軸縮放比例) ，就能有效提升 <a href="https://en.wikipedia.org/wiki/Polylactic_acid">PLA</a> 列印件的強度。</p>
 <p><a href="https://ultimaker.com/software/ultimaker-cura/">Cura</a> 負責把 3D 模型轉換成列印指令，原始碼: <a href="https://github.com/ultimaker/cura">https://github.com/ultimaker/cura</a> </p>
 <p><a href="https://ultimaker.com/software/ultimaker-cura/">Cura</a> 的主要功能</p>
 <ol>
@@ -2511,7 +2514,7 @@ ending1: ;
 <p>目前仍在服役的 Ender-3 列印機，是在 2019 年 3 月 5 日訂購，購買價是 220.99 美元。</p>
 <p>眼看著目前流行的許多自動定位與多色列印款， Ender-3 可說是功能非常陽春的老古董，只是更換給料機構與列印噴頭後，仍舊堪用。</p>
 <p>3D 列印最早從 1983 年 SLA (Stereolithography) 光固化列印開始，1988 前後發展出 SLS (Selective Laser Sintering) 到之後 SLM (Selective Laser Melting) 的突破，能在無支撐的條件下進行各種金屬零組件的列印，前後將近五十年。</p>
-<p>全球第一台 SLS 原型機，是在 UT Austin 機械系中唯一的一間暗房中進行開發:</p>
+<p>全球第一台 SLS 原型機，是在 <a href="https://me.utexas.edu/">UT Austin 機械系</a>中唯一的一間暗房中進行開發:</p>
 <p><img alt="" height="228" src="/images/Carl Deckard and Joe Beaman in front of the first SLS machine circa 1988.png" width="400"/></p><h2>手電筒架</h2>
 <p>在親自動手做之前，覺得這個<a href="https://www.instructables.com/Universal-3D-printable-flashlight-stand/">通用設計</a>好像不錯，但覺得高度過低，而且組立時還需要兩條皮筋，有點麻煩。</p>
 <p>因為整體的小手電筒並沒有很重，繞 Z 軸旋轉的功能只要整座提起即可，至於上下旋轉，也不需要使用球接頭做那樣複雜。直接利用兩端的夾片夾住四方體 (圓形體應該也行)，就可以自由調整上下旋轉的角度。</p>
@@ -2983,7 +2986,22 @@ ending1: ;
 <p><a href="https://mrcet.com/downloads/digital_notes/HS/Basic%20Electrical%20Engineering%20R-20.pdf">https://mrcet.com/downloads/digital_notes/HS/Basic%20Electrical%20Engineering%20R-20.pdf</a> </p>
 <p><a href="https://www.pce-fet.com/common/library/books/39/173_BasicElectricalEngineeringbyV.K.MehtaandRohitMehta.pdf">https://www.pce-fet.com/common/library/books/39/173_BasicElectricalEngineeringbyV.K.MehtaandRohitMehta.pdf</a> </p>
 <p><a href="https://www.griet.ac.in/nodes/BEEE.pdf">https://www.griet.ac.in/nodes/BEEE.pdf</a> </p>
-<p><a href="https://electricalconnects.com/frontend/images/free_items/fundamentals-of-electrical-engineering-by-thaddeus-a-roppel-and-charles-a-gross.pdf">https://electricalconnects.com/frontend/images/free_items/fundamentals-of-electrical-engineering-by-thaddeus-a-roppel-and-charles-a-gross.pdf</a> </p><h1>Stocks</h1>
+<p><a href="https://electricalconnects.com/frontend/images/free_items/fundamentals-of-electrical-engineering-by-thaddeus-a-roppel-and-charles-a-gross.pdf">https://electricalconnects.com/frontend/images/free_items/fundamentals-of-electrical-engineering-by-thaddeus-a-roppel-and-charles-a-gross.pdf</a> </p><h2>ESP32</h2>
+<p>使用 ESP32 控制 iPhone 或反向由 iPhone 控制 ESP32，主要透過下列方式實現：<br/><br/>一、雙向藍牙低功耗通訊（BLE UART 模式）</p>
+<p style="padding-left: 30px;">原理：利用 ESP32 的 BLE 功能模擬 UART（串口通訊），讓 iPhone 透過支援 BLE 的 App 與 ESP32 交換指令與數據。</p>
+<p style="padding-left: 30px;">常用 iOS App：LightBlue 或 nRF Connect</p>
+<p style="padding-left: 30px;">應用場景：iPhone 發送指令（如 1、0）來開關 ESP32 上的 LED、控制伺服馬達，或是接收來自 ESP32 感測器（如溫濕度 DHT11）的回傳數據。</p>
+<p>二、透過 Wi-Fi 網頁介面控制（Web Server）</p>
+<p style="padding-left: 30px;">原理：將 ESP32 設定為 Wi-Fi 伺服器（或 Soft-AP 熱點模式），在其內部寫入一個簡單的 HTML 網頁。</p>
+<p style="padding-left: 30px;">操作方式：iPhone 連上該 Wi-Fi 並用瀏覽器（Safari）開啟指定 IP，即可在網頁上點擊按鈕來控制 ESP32 的 GPIO 腳位或外接裝置。</p>
+<p style="padding-left: 30px;">優點：不需額外安裝 iOS App，跨平台相容性高。</p>
+<p>三、Apple HomeKit 智慧家庭整合</p>
+<p style="padding-left: 30px;">原理：在 ESP32 上燒錄支援 HomeKit 的開源函式庫（例如 ESP32HomeKit 或類似專案）。</p>
+<p style="padding-left: 30px;">操作方式：將 ESP32 虛擬成一個 HomeKit 配件，加入 iPhone 的「家庭 (Home)」App 中。</p>
+<p style="padding-left: 30px;">應用場景：可以直接在 iPhone 畫面上點選開關，或是直接對著 Siri 喊「嘿 Siri，打開電燈」來透過 ESP32 控制繼電器與家電。</p>
+<p>四、進階：ESP32 模擬藍牙/USB 裝置（如 AI 手機代理）</p>
+<p style="padding-left: 30px;">原理：近期的開源專案（如利用 ESP32-S3 搭配特定韌體）可以讓 ESP32 扮演藍牙 HID 裝置或藉由硬體介面與手機互動。</p>
+<p style="padding-left: 30px;">注意事項：若涉及自動化點擊或螢幕控制，通常需要開啟 iOS 的「輔助觸控 (AssistiveTouch)」功能，且部分敏感 App（如銀行或 Apple Pay）會有安全隱私限制。</p><h1>Stocks</h1>
 <p>原始市場資料：TWSE 直接提供，例如開盤價、最高價、最低價、收盤價、成交量。<br/><br/>Python 計算出的衍生欄位：例如 return_20d、volatility_20d、volume_ratio、future_return_5d。這些不是交易所直接公布的數字，而是根據原始資料計算出來的研究特徵。</p>
 <p><a href="/downloads/python_get_stock_data.7z">python_get_stock_data.7z</a></p>
 <p>Date: 交易日</p>
