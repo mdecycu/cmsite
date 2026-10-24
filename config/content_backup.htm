@@ -228,7 +228,8 @@
 </ol>
 <p>在傳統時代，企業競爭的是功能、品質與價格；在 AI 時代，企業競爭的是完成同一件事情所需要的時間與心力。</p>
 <p>第一流的產品，不只是讓使用者操作得更有效率；更進一步，是替使用者完成工作；最高境界，則是重新設計整個流程，讓不必要的工作直接消失。</p>
-<p>未來的軟硬體競爭，不是誰提供更多功能，而是誰能用更少的時間與心力，讓用戶取得更好的成果。<br/><br/>誰能持續做到 M、D、E，誰就更有機會在 AI 時代建立真正的競爭優勢。</p><h2>Windows</h2>
+<p>未來的軟硬體競爭，不是誰提供更多功能，而是誰能用更少的時間與心力，讓用戶取得更好的成果。<br/><br/>誰能持續做到 M、D、E，誰就更有機會在 AI 時代建立真正的競爭優勢。</p>
+<h2>Windows</h2>
 <p>在 Windows 11 將 Edge 的搜索引擎換為 Google 後，Edge 仍然表現頑強，每次開起都會自動跳出由 MSN 精選的瀏覽內容，為了終止此一現象，可以修改 Windows 機碼（Registry），強制將 Microsoft Edge 瀏覽器的「新分頁（New Tab Page）」設為純白空白頁面，並關閉新分頁上的新聞、天氣與廣告內容。</p>
 <p>其實並非不喜歡這類新聞、天氣與各種廣告內容，只是不很喜歡每次開啟 Edge 時，就會自動挑出這些被安排好的內容這件事。</p>
 <p>首先以管理者身分開啟 Powershell，然後執行下列三段指令:</p>
@@ -256,7 +257,8 @@ Set-ItemProperty -Path $registryPath -Name "NewTabPageLocation" -Value "about:bl
 <p style="padding-left: 60px;">效果：設定為 0 表示關閉 Edge 新分頁上的 Microsoft Start 內容（如新聞 feeds、天氣、新聞卡片等）。</p>
 <p style="padding-left: 30px;">Set-ItemProperty -Path $registryPath -Name "NewTabPageLocation" -Value "about:blank" -Type String</p>
 <p style="padding-left: 60px;">功能：新增或修改名為 NewTabPageLocation 的字串（String）數值。</p>
-<p style="padding-left: 60px;">效果：將新分頁的網址強制導向 about:blank（純白空白頁）。</p><h2>Solvespace</h2>
+<p style="padding-left: 60px;">效果：將新分頁的網址強制導向 about:blank（純白空白頁）。</p>
+<h2>Solvespace</h2>
 <p><a href="https://github.com/solvespace/solvespace">https://github.com/solvespace/solvespace</a> </p>
 <p><a href="https://mde.tw/ss">https://mde.tw/ss</a> </p>
 <h2>Truck</h2>
@@ -313,7 +315,8 @@ Set-ItemProperty -Path $registryPath -Name "NewTabPageLocation" -Value "about:bl
 <p style="padding-left: 30px;">Parametric Representation（參數化表示法）：以尺寸、約束與參數控制幾何。</p>
 <p style="padding-left: 30px;">History-based / Procedural Representation（歷史式／程序式表示法）：保存建模操作及其依賴關係，讓模型能夠重新計算。</p>
 <p style="padding-left: 30px;">Constraint-based Representation（約束式表示法）：利用幾何約束與尺寸方程式定義草圖或幾何關係。</p>
-<p></p><h2>usd-brep</h2>
+<p></p>
+<h2>usd-brep</h2>
 <p><a href="https://github.com/NVIDIA-Omniverse/usd-brep">https://github.com/NVIDIA-Omniverse/usd-brep</a> 於 2026.10.9 開源。</p>
 <p>usd-brep:</p>
 <ol>
@@ -329,7 +332,8 @@ Set-ItemProperty -Path $registryPath -Name "NewTabPageLocation" -Value "about:bl
 <li>可作為可嵌入的函式庫，不必從頭開發幾何核心，可套用於 C++ 或 Python 程式中。</li>
 </ol>
 <p>USD 由 Pixar 開發，並於 2016 年開源。OpenUSD 不只是檔案格式，還包括場景組合、資料分層、API 與可擴充的資料模型。</p>
-<p><a href="https://github.com/PixarAnimationStudios/OpenUSD">https://github.com/PixarAnimationStudios/OpenUSD</a> </p><h2>Meshtastic</h2>
+<p><a href="https://github.com/PixarAnimationStudios/OpenUSD">https://github.com/PixarAnimationStudios/OpenUSD</a> </p>
+<h2>Meshtastic</h2>
 <p>Wio Tracker L1 Pro 作為一款預裝 Meshtastic 固件、開箱即用的低功耗 LoRa 追蹤與通訊設備，在無行動網路的環境下擁有極高的靈活性。</p>
 <p>使用情境一：高山徒步與越野探險（應急通訊與隊友追蹤）</p>
 <p style="padding-left: 30px;">在沒有基地台訊號的深山中，團隊成員各自攜帶 Wio Tracker L1 Pro，建立專屬的離網 Mesh 網路。</p>
@@ -415,10 +419,12 @@ Set-ItemProperty -Path $registryPath -Name "NewTabPageLocation" -Value "about:bl
 <p>使用情境二十：偏遠礦區、隧道工程的人員進出艙與生命安全監測</p>
 <p style="padding-left: 30px;">在深入地底、四周皆為厚重岩層的礦坑、鐵路隧道施工現場。</p>
 <p style="padding-left: 30px;">功能發揮：這種環境無法佈建傳統基地台，但可以使用多台 L1 Pro 像麵包屑一樣沿著隧道「接力」佈署。</p>
-<p style="padding-left: 30px;">實作展示：工程人員配戴 L1 Pro 進出隧道，設備會透過每隔數百公尺的 L1 Pro 節點，將人員的定位與識別碼（ID）「跳卡式」傳回隧道口的控制中心，做為<strong>電子點名系統</strong>。一旦發生坍方，控制中心能立即得知有幾位員工受困、受困於哪一段隧道，大幅提升工業安全管理的精準度。</p><h2>LLM</h2>
+<p style="padding-left: 30px;">實作展示：工程人員配戴 L1 Pro 進出隧道，設備會透過每隔數百公尺的 L1 Pro 節點，將人員的定位與識別碼（ID）「跳卡式」傳回隧道口的控制中心，做為<strong>電子點名系統</strong>。一旦發生坍方，控制中心能立即得知有幾位員工受困、受困於哪一段隧道，大幅提升工業安全管理的精準度。</p>
+<h2>LLM</h2>
 <p><a href="https://github.com/lyogavin/airllm">AirLLM</a> 是一個開源的 Python 推論工具，目標是讓記憶體有限的電腦也能執行較大的大型語言模型（LLM）。</p>
 <p>一般執行 LLM 時，模型的權重需要放在 GPU 記憶體、系統 RAM，或兩者之中。<a href="https://github.com/lyogavin/airllm">AirLLM</a> 的主要技巧是 逐層載入模型權重，而不是把整個模型一次放進 GPU 記憶體。</p>
-<p><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> 是一套以 C/C++ 開發的開源大型語言模型（LLM）推論框架，主要用於在個人電腦、伺服器及其他裝置上執行 AI 模型。它以低資源需求、跨硬體支援及高效率本機推論著稱，是本機 AI 生態系統的重要基礎工具。</p><h1>CMS</h1>
+<p><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> 是一套以 C/C++ 開發的開源大型語言模型（LLM）推論框架，主要用於在個人電腦、伺服器及其他裝置上執行 AI 模型。它以低資源需求、跨硬體支援及高效率本機推論著稱，是本機 AI 生態系統的重要基礎工具。</p>
+<h1>CMS</h1>
 <p>CMS: <a href="https://github.com/mdecycu/cms">https://github.com/mdecycu/cms</a> </p>
 <p>執行所需模組: pip install flask flask_cors bs4 lxml pelican markdown</p>
 <p>scms: 在近端啟動編輯環境</p>
@@ -440,7 +446,8 @@ Set-ItemProperty -Path $registryPath -Name "NewTabPageLocation" -Value "about:bl
 <p><a href="https://github.com/mdecycu/pymadcad">https://github.com/mdecycu/pymadcad</a> </p>
 <p><a href="https://github.com/mdecycu/uimadcad">https://github.com/mdecycu/uimadcad</a> </p>
 <p><a href="https://github.com/mdecycu/pj5073">https://github.com/mdecycu/pj5073</a> </p>
-<p><a href="https://github.com/mdecycu/kll3pp">https://github.com/mdecycu/kll3pp</a> </p><h2>Python</h2>
+<p><a href="https://github.com/mdecycu/kll3pp">https://github.com/mdecycu/kll3pp</a> </p>
+<h2>Python</h2>
 <p>為了讓熟悉 C++ 或 Java 的用戶方便使用，在 Python 2.2 中，放入 @staticmethod (靜態方法) 裝飾器的用法，以便在類別 (Class) 中定義一個不需要存取類別屬性 (Class attributes) 或實例屬性 (Instance attributes) 的方法。本質上就是一個寫在類別內部的普通函式。</p>
 <p>核心語法與特色</p>
 <ol>
@@ -546,7 +553,8 @@ git gc --prune=now --aggressive
 <p>以下方案適合開發命令列程式、一般 Rust 專案，以及需要連結 GNU 原生函式庫的應用程式。以能在 Windows 上產生原生 .exe 為目標。</p>
 <p>目錄架構:</p>
 <p style="padding-left: 30px;">E:\PortableRust\<br/>├── msys64\             # MSYS2 本體<br/>│   ├── ucrt64\         # GCC、LD、原生函式庫<br/>│   └── usr\            # MSYS2 工具<br/>├── rust\<br/>│   ├── cargo\          # Cargo、rustup 執行檔及套件<br/>│   └── rustup\          # Rust 工具鏈與元件<br/>├── projects\           # Rust 專案<br/>├── cache\              # 可選：建置快取<br/>├── start-rust.cmd      # 啟動開發環境<br/>└── update-rust.cmd     # 可選：更新工具鏈</p>
-<p></p><h2>Mojo</h2>
+<p></p>
+<h2>Mojo</h2>
 <p><a href="https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular">https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular</a> </p>
 <p>Mojo 在 2026.8.18 正式開源。</p>
 <p><a 07="" 2026="" com="" href="https://www.modular.com/blog/mojo-op&lt;h2&gt;Mojo&lt;/h2&gt;
@@ -654,7 +662,8 @@ git gc --prune=now --aggressive
 <li><a href="https://llvm.org/devmtg/2023-10/slides/keynote/Mojo.pdf">https://llvm.org/devmtg/2023-10/slides/keynote/Mojo.pdf</a> </li>
 <li><a href="https://ruhati.net/mojo/">https://ruhati.net/mojo/</a> </li>
 <li><a href="https://mojo-lang.com/miji/">https://mojo-lang.com/miji/</a> </li>
-</ol><h3>WSL</h3>
+</ol>
+<h3>WSL</h3>
 <p>以管理者身分啟動 Powershell</p>
 <pre class="brush:ps;auto-links:false;toolbar:false" contenteditable="false"># 修正 PowerShell 亂碼與空格問題
 [console]::OutputEncoding = [System.Text.Encoding]::Unicode
@@ -1357,13 +1366,14 @@ mojo build main.mojo -o my_app
 <h1>CAD</h1>
 <h2>SolidCraft</h2>
 <p><a href="https://github.com/bherbruck/solidcraft">https://github.com/bherbruck/solidcraft</a> 底層核心採用 <a href="https://github.com/ricosjp/truck">https://github.com/ricosjp/truck</a>，目前的功能已經可以建立用於 3D 列印的簡單零組件。</p>
-<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.19.0/solidcraft-0.19.0-windows-x64-portable.zip">SolidCraft 0.19.0 Windows X64 可攜版</a></p>
-<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.19.0/solidcraft-web-0.19.0.zip">SolidCraft 0.19.0 Web 版</a>:</p>
+<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.20.0/solidcraft-0.20.0-windows-x64-portable.zip">SolidCraft 0.20.0 Windows X64 可攜版</a></p>
+<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.20.0/solidcraft-web-0.20.0.zip">SolidCraft 0.20.0 Web 版</a>:</p>
 <p style="padding-left: 30px;"><a href="https://mde.tw/sc">https://mde.tw/sc</a> </p>
 <p>另一個值得注意的是 <a href="https://github.com/bherbruck/solidcore">https://github.com/bherbruck/solidcore</a> 正在用 Rust 改寫剛開源的 <a href="https://github.com/NVIDIA-Omniverse/usd-brep">https://github.com/NVIDIA-Omniverse/usd-brep</a>。最後，SolidCraft 將會從 truck 轉而採用較為成熟的 <a href="https://github.com/bherbruck/solidcore">Solidcore</a> 作為核心。</p>
 <p><a href="https://github.com/bherbruck/solidcore">Solidcore</a> 是將 NVIDIA 開源的 <a href="https://github.com/NVIDIA-Omniverse/usd-brep">SMLib</a> 改寫為 Rust。<a href="https://github.com/NVIDIA-Omniverse/usd-brep">SMLib</a> 本身是一款累積數十年的商業級幾何內核，擁有極為強大且經過市場驗證的 <a href="https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline">NURBS</a> 數學運算、交集判定與曲面修復（Healing）能力。它能輕易實現 <a href="https://github.com/ricosjp/truck">truck</a> 無法穩定處理的圓角與倒角（Fillets &amp; Chamfers）、偏移與抽殼（Offset &amp; Shelling）、掃掠（Sweep）等高級 CAD 實體建模功能。</p>
-<p>以下 Rover 取自 <a href="https://github.com/0xlillith/solidcraft-rover">https://github.com/0xlillith/solidcraft-rover</a>，已經可以看出 SolidCraft 能用來建立數十個零件的設計繪圖。但還沒有能力快速開啟帶有 504 個零組件的 <a href="https://www.printables.com/model/1520471-prusa-core-one-full-cad-assembly/files">3D 列印機組合件 STEP 檔案</a>。</p>
-<p><img alt="" height="304" src="/images/rover_in_solidcraft.png" width="400"/></p><h3>MCP</h3>
+<p>以下 Rover 取自 <a href="https://github.com/0xlillith/solidcraft-rover">https://github.com/0xlillith/solidcraft-rover</a>， SolidCraft 0.20.0 版不僅能用來建立數十個零件的設計繪圖。也已經可以快速開啟帶有 504 個零組件的 <a href="https://www.printables.com/model/1520471-prusa-core-one-full-cad-assembly/files">3D 列印機組合件 STEP 檔案</a>。</p>
+<p><img alt="" height="304" src="/images/rover_in_solidcraft.png" width="400"/></p>
+<h3>MCP</h3>
 <p><a href="https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro">MCP</a>（Model Context Protocol，模型上下文協定） 的誕生，為 AI 模型連接外部軟體與調用工具建立了標準化的橋樑。這項協定的普及，正快速顛覆 MCAD（機械電腦輔助設計） 領域。在 MCP 的驅使下，未來由 AI 全權主導並執行 CAD/CAE/CAM/PLM 的跨軟體協同與虛實整合流程，已從科技幻想轉變為完全可行的現實。</p>
 <p>洞察到這一波「AI 驅動工業設計」的歷史性轉折，NVIDIA 在 2026 年 10 月初拋出震撼彈：將其於 2022 年收購的頂級商業幾何內核 SMLib，正式封裝於全新的 USD BRep 程式庫中，並以極度寬鬆的 Apache 2.0 協議全面開源。NVIDIA 此舉背後的深層商業策略如下：</p>
 <p>一、將 <a href="https://www.nvidia.com/en-us/glossary/openusd/">OpenUSD</a> 生態從「純視覺」推向「精確製造」:</p>
@@ -1403,7 +1413,40 @@ mojo build main.mojo -o my_app
 <p style="padding-left: 30px;">當 AMD 把 World Labs 的技術作為底座，向全球工業巨頭提供服務時，它就能直接向客戶打包保證：「使用 AMD 的架構，在跑世界模型時能提供最具性價比、最低延遲的算力表現。」這讓 AMD 得以從「追隨 NVIDIA 定義的規則」轉變為「自己建立一條通往晶片銷售的新通路」。</p>
 <p>總結：晶片戰爭的典範轉移</p>
 <p>如果說 NVIDIA 開源 SMLib 是一場由軟體向硬體延伸的「生態圍剿戰」；那麼 AMD 砸下 82 億美元娶回李飛飛，就是一場由研究驅動、定義未來工作負載的「源頭攔截戰」。</p>
-<p>蘇姿丰非常清楚，要在 LLM 時代徹底擊敗 CUDA 已經太遲；但透過 World Labs，AMD 成功在「實體 AI 與空間智慧」這個剛開打的全新主戰場上，取得了與 NVIDIA 平起平坐、甚至超前定義硬體標準的戰略制高點。</p><h2>NX</h2>
+<p>蘇姿丰非常清楚，要在 LLM 時代徹底擊敗 CUDA 已經太遲；但透過 World Labs，AMD 成功在「實體 AI 與空間智慧」這個剛開打的全新主戰場上，取得了與 NVIDIA 平起平坐、甚至超前定義硬體標準的戰略制高點。</p>
+<p></p>
+<h3>Rust</h3>
+<p>在 Windows 11 建立採 NTFS 格式化隨身碟中的可攜式 Rust 程式開發環境，之所以要將隨身碟用 NTFS 格式化，是因為 cargo 快取只能存入 NTFS 格式區。</p>
+<p>啟動可攜 Rust 程式環境的 <a href="/downloads/start_rust.bat">start_rust.bat</a>。</p>
+<p>關閉可攜 Rust 程式環境則採用 <a href="/downloads/stop_rust.bat">stop_rust.bat</a>。</p>
+<p>可攜環境中的目錄配置:</p>
+<p>data\</p>
+<p style="padding-left: 30px;">虛擬磁碟 Y: 的實際根目錄</p>
+<p style="padding-left: 30px;">.rustup\\ — Rust 工具鏈</p>
+<p style="padding-left: 30px;">.cargo\\ — Cargo 套件、設定及執行檔</p>
+<p style="padding-left: 30px;">mingw64\\ — MinGW-w64 編譯工具</p>
+<p style="padding-left: 30px;">Python313\\ — 可攜式 Python</p>
+<p style="padding-left: 30px;">Webots_2023b\\ — Webots</p>
+<p style="padding-left: 30px;">portablegit\\ — Git</p>
+<p style="padding-left: 30px;">PuTTY\\ — SSH 工具</p>
+<p style="padding-left: 30px;">wscite\\ — SciTE 編輯器</p>
+<p style="padding-left: 30px;">home\\ — 使用者家目錄</p>
+<p style="padding-left: 30px;">projects\\ — Rust 專案</p>
+<p>準備 Rustup 與 Rust</p>
+<p>Rustup 用於管理 Rust 編譯器及工具鏈。</p>
+<p>Cargo 則負責套件管理與建置。</p>
+<p><a href="https://rust-lang.org/tools/install/">Rust 官方下載頁面</a>，下載 rustup-init.exe，安裝在 C:\使用者\帳號下\.cargo 以及 .rustup，安裝完成後將此兩個目錄複製到可攜套件的 data 目錄後，卸除 rustup-init 在操作系統安裝的 Rustup: the Rust toolchain installer。</p>
+<p>接著從 <a href="https://www.msys2.org/">https://www.msys2.org/</a> 下載 msys2-x86_64-20260927.exe，在 C:\msys64 安裝 Msys2。</p>
+<p>C:\msys64 安裝完成後，執行 ucrt64.exe。</p>
+<p>在 MSYS2 UCRT64 終端機執行:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">pacman -Syu
+pacman -S --needed mingw-w64-ucrt-x86_64-toolchain</pre>
+<p>輸入系統更新時會要求重新執行 ucrt64.exe，之後再執行 pacman -Syu 後，再執行 pacman -S --needed mingw-w64-ucrt-x86_64-toolchain，並選擇安裝全部內建套件。</p>
+<hr/>
+<p>可攜 Rust 建置完成後，可用來編譯 SolidCraft:</p>
+<p>Y:\projects&gt;git clone <a href="https://github.com/tangency-labs/solidcraft.git">https://github.com/tangency-labs/solidcraft.git</a></p>
+<p>Y:\projects&gt;cd solidcraft<br/><br/>Y:\projects\solidcraft&gt;git checkout v0.21.0<br/>Note: switching to 'v0.21.0'.</p>
+<p>Y:\projects\solidcraft&gt;cargo run --release -p solidcraft -- --sample</p><h2>NX</h2>
 <p>摘要<br/><br/>早期的 Unigraphics（UG）至中期的 I-DEAS、中後期的 NX，再至 2026 年 Designcenter 的演進，是一條由數值控制（Numerical Control, NC）、電腦輔助製造（Computer-Aided Manufacturing, CAM）、電腦輔助設計（Computer-Aided Design, CAD）、電腦輔助工程（Computer-Aided Engineering, CAE）、產品資料管理（Product Data Management, PDM）逐步整合至產品生命週期管理（Product Lifecycle Management, PLM），並進一步向數位主線（Digital Thread）、雲端工程（Cloud Engineering）與人工智慧輔助工程（AI-assisted Engineering）延伸的技術發展歷程。<br/><br/>此一技術血統可追溯至 1960 年代 United Computing 所發展之 APT/UNIAPT 技術，1970 年代形成 UNI-GRAPHICS，1976 年進入 McDonnell Douglas 體系；1990 年代進入 EDS 時代；2001 年 EDS 將 UGS 與 SDRC 納入同一 PLM 組織，促成 Unigraphics 與 I-DEAS 技術整合；2002 年正式推出 NX；2007 年 Siemens 收購 UGS；2019 年導入 Continuous Release；2022 年改採年份與月份作為版本標識；2025 年將 NX 納入 Designcenter 品牌；2026 年 6 月進一步以 Designcenter 2606 作為統一產品名稱。</p>
 <p>從技術史角度觀察，這條演進路徑的核心是產品資訊的數位化邊界持續擴張：由幾何描述擴張至產品結構，由產品結構擴張至工程分析與製造，再由工程資料擴張至整個產品生命週期，最終形成設計、模擬、製造、資料管理、協作、雲端與 AI 相互連接的工程平台。</p>
 <p>一、研究範圍與歷史定位<br/><br/>現代 Designcenter 的技術來源具有多重企業與產品血統，其中最重要者包括 United Computing、Unigraphics、McDonnell Douglas、EDS、UGS、SDRC、I-DEAS 以及 Siemens。</p>
@@ -1436,7 +1479,8 @@ mojo build main.mojo -o my_app
 <p>Siemens NX1847 到 2606 版本:</p>
 <p><img alt="" height="356" src="/images/NX_releases.png" width="400"/><br/><br/>產品名稱的演進本身具有一定研究價值。<br/><br/>早期：<br/><br/>UNI-GRAPHICS<br/><br/>強調圖形與工程幾何。<br/><br/>之後：<br/><br/>Unigraphics<br/><br/>形成完整 CAD/CAM 品牌。<br/><br/>2002：<br/><br/>Unigraphics NX<br/><br/>代表 New Generation。<br/><br/>之後：<br/><br/>NX<br/><br/>逐漸成為獨立 CAD/CAM/CAE 品牌。<br/><br/>2007 後：<br/><br/>Siemens NX<br/><br/>反映 Siemens 企業體系。<br/><br/>2019：<br/><br/>NX Continuous Release<br/><br/>反映軟體生命週期模式變化。<br/><br/>2022：<br/><br/>NX 2206<br/><br/>反映持續發布的時間型版本。<br/><br/>2025：<br/><br/>Designcenter NX<br/><br/>反映平台化品牌。<br/><br/>2026：<br/><br/>Designcenter 2606<br/><br/>則代表 NX 技術進一步被置於更高層級的 Designcenter 平台品牌之下。<br/><br/>因此，品牌演進實際上反映了產品定位的逐步提升：<br/><br/>CAD Application → CAD/CAM Platform → Product Engineering Platform → Digital Engineering Environment。</p>
 <p>二十四、2026 年的 Designcenter 應如何定位<br/><br/>截至 2026 年，較適合將 Designcenter 理解為：<br/><br/>一個以產品設計與工程為核心，逐漸整合桌面 CAD、雲端工程、協作、資料管理、模擬、製造與 AI 能力的工程平台品牌。<br/><br/>此定位與早期「CAD 軟體」具有明顯差異。<br/><br/>其核心技術方向可概括為：<br/><br/>Geometry<br/><br/>↓<br/><br/>Parametric / Direct Modeling<br/><br/>↓<br/><br/>Product Definition<br/><br/>↓<br/><br/>CAD/CAM/CAE Integration<br/><br/>↓<br/><br/>PLM<br/><br/>↓<br/><br/>Digital Thread<br/><br/>↓<br/><br/>Cloud Engineering<br/><br/>↓<br/><br/>AI-assisted Engineering<br/><br/>這條路徑正是六十年以上工程軟體發展的核心脈絡。</p>
-<p>二十五、結論<br/><br/>從 1960 年代 United Computing 的 NC/APT 技術，到 1970 年代 UNI-GRAPHICS；從 McDonnell Douglas 時代的 Unigraphics，到 EDS/UGS 時代；從 SDRC I-DEAS 與 Unigraphics 的整合，到 2002 年 NX 的建立；再經 Siemens 於 2007 年取得 UGS、2019 年 Continuous Release、2022 年時間型版本命名、2025 年 Designcenter NX，以及 2026 年 Designcenter 2606，整條技術演進可以視為一個持續提高「產品數位化抽象層級」的過程。<br/><br/>其最早期的核心問題是：<br/><br/>如何以電腦描述幾何與加工。<br/><br/>其後轉變為：<br/><br/>如何建立具有設計意圖的三維產品模型。<br/><br/>再進一步：<br/><br/>如何整合設計、分析與製造。<br/><br/>之後：<br/><br/>如何管理完整產品資料與生命週期。<br/><br/>而 2026 年的主要問題則逐漸轉變為：<br/><br/>如何使產品資料、工程流程、模擬、製造、協作、雲端與人工智慧形成連續的數位工程環境。<br/><br/>因此，從技術史觀點而言，「UG → NX → Designcenter」是 CAD 軟體由幾何工具逐步演化為產品工程基礎設施（Product Engineering Infrastructure） 的一個具代表性的案例。<br/><br/>其中最值得注意的歷史事實，是 Unigraphics 的製造工程血統、I-DEAS 的 CAD/CAE/PDM 技術、EDS/UGS 的 PLM 戰略，以及 Siemens 的工業數位化戰略，最終在 Designcenter 時代逐漸匯合。<br/><br/>總之 2026 年的 Designcenter 從早期 Unigraphics 套件，逐步將數十年間累積的 CAD、CAM、CAE、PDM、PLM、Digital Thread、Cloud Engineering 與 AI Engineering 等技術，重新置於一個更高層級產品工程架構之下，未來可望有更令人期待的發展。</p><h2>NX2512</h2>
+<p>二十五、結論<br/><br/>從 1960 年代 United Computing 的 NC/APT 技術，到 1970 年代 UNI-GRAPHICS；從 McDonnell Douglas 時代的 Unigraphics，到 EDS/UGS 時代；從 SDRC I-DEAS 與 Unigraphics 的整合，到 2002 年 NX 的建立；再經 Siemens 於 2007 年取得 UGS、2019 年 Continuous Release、2022 年時間型版本命名、2025 年 Designcenter NX，以及 2026 年 Designcenter 2606，整條技術演進可以視為一個持續提高「產品數位化抽象層級」的過程。<br/><br/>其最早期的核心問題是：<br/><br/>如何以電腦描述幾何與加工。<br/><br/>其後轉變為：<br/><br/>如何建立具有設計意圖的三維產品模型。<br/><br/>再進一步：<br/><br/>如何整合設計、分析與製造。<br/><br/>之後：<br/><br/>如何管理完整產品資料與生命週期。<br/><br/>而 2026 年的主要問題則逐漸轉變為：<br/><br/>如何使產品資料、工程流程、模擬、製造、協作、雲端與人工智慧形成連續的數位工程環境。<br/><br/>因此，從技術史觀點而言，「UG → NX → Designcenter」是 CAD 軟體由幾何工具逐步演化為產品工程基礎設施（Product Engineering Infrastructure） 的一個具代表性的案例。<br/><br/>其中最值得注意的歷史事實，是 Unigraphics 的製造工程血統、I-DEAS 的 CAD/CAE/PDM 技術、EDS/UGS 的 PLM 戰略，以及 Siemens 的工業數位化戰略，最終在 Designcenter 時代逐漸匯合。<br/><br/>總之 2026 年的 Designcenter 從早期 Unigraphics 套件，逐步將數十年間累積的 CAD、CAM、CAE、PDM、PLM、Digital Thread、Cloud Engineering 與 AI Engineering 等技術，重新置於一個更高層級產品工程架構之下，未來可望有更令人期待的發展。</p>
+<h2>NX2512</h2>
 <p>NX2512 CAE 內建 Simcenter Nastran、Simcenter FLOEFD 與 Simcenter Motion。</p>
 <p><a href="https://docs.sw.siemens.com/en-US/product/209349590/doc/PL20250429951538534.xid1851843/html/xid1851946_v1">NX2512 Help</a></p>
 <p><a href="/downloads/NXOpen_Getting_Started.pdf">NXOpen_Getting_Started.pdf</a></p>
@@ -2528,7 +2572,8 @@ ending1: ;
 <h2>Robotics</h2>
 <p><a href="https://github.com/TheRobotStudio/SO-ARM100">https://github.com/TheRobotStudio/SO-ARM100</a> </p>
 <p><a href="https://github.com/huggingface/lerobot">https://github.com/huggingface/lerobot</a> </p>
-<p><a href="https://mde.tw/fivebar_box">https://mde.tw/fivebar_box</a> </p><h1>Ender-3</h1>
+<p><a href="https://mde.tw/fivebar_box">https://mde.tw/fivebar_box</a> </p>
+<h1>Ender-3</h1>
 <p><a href="https://github.com/mdecycu/Ender-3">https://github.com/mdecycu/Ender-3</a> </p>
 <p>列印流程:</p>
 <ol>
@@ -2564,7 +2609,8 @@ ending1: ;
 <p>眼看著目前流行的許多自動定位與多色列印款， Ender-3 可說是功能非常陽春的老古董，只是更換給料機構與列印噴頭後，仍舊堪用。</p>
 <p>3D 列印最早從 1983 年 SLA (Stereolithography) 光固化列印開始，1988 前後發展出 SLS (Selective Laser Sintering) 到之後 SLM (Selective Laser Melting) 的突破，能在無支撐的條件下進行各種金屬零組件的列印，前後將近五十年。</p>
 <p>全球第一台 SLS 原型機，是在 <a href="https://me.utexas.edu/">UT Austin 機械系</a>中唯一的一間暗房中進行開發:</p>
-<p><img alt="" height="228" src="/images/Carl Deckard and Joe Beaman in front of the first SLS machine circa 1988.png" width="400"/></p><h2>手電筒架</h2>
+<p><img alt="" height="228" src="/images/Carl Deckard and Joe Beaman in front of the first SLS machine circa 1988.png" width="400"/></p>
+<h2>手電筒架</h2>
 <p>在親自動手做之前，覺得這個<a href="https://www.instructables.com/Universal-3D-printable-flashlight-stand/">通用設計</a>好像不錯，但覺得高度過低，而且組立時還需要兩條皮筋，有點麻煩。</p>
 <p>因為整體的小手電筒並沒有很重，繞 Z 軸旋轉的功能只要整座提起即可，至於上下旋轉，也不需要使用球接頭做那樣複雜。直接利用兩端的夾片夾住四方體 (圓形體應該也行)，就可以自由調整上下旋轉的角度。</p>
 <p>3D 列印時儘量讓所有物件平攤在熱板上，速度調慢約八成，PLA 噴頭的溫度調到 205 度 C，讓 Ender-3 慢慢印，大約一個多小時就可以完成。</p>
@@ -3019,7 +3065,8 @@ ending1: ;
 <p><a href="/downloads/bluetooth_case2.7z">bluetooth_case2.7z</a></p>
 <p><a href="https://www.inhann.com.tw/product/221">4040S-AS</a></p>
 <hr/>
-<p><a href="https://pearl-hifi.com/06_Lit_Archive/14_Books_Tech_Papers/Cordell_Bob/MOSFET_Power_Amp.pdf">A MOSFET Power Amplifier with Error Correction</a></p><h1>EE</h1>
+<p><a href="https://pearl-hifi.com/06_Lit_Archive/14_Books_Tech_Papers/Cordell_Bob/MOSFET_Power_Amp.pdf">A MOSFET Power Amplifier with Error Correction</a></p>
+<h1>EE</h1>
 <p>電壓、電流、電阻與功率。</p>
 <p>電如何運作? 直流電與交流電。</p>
 <p>電阻、電容、電感、電晶體、二極體如何運作。</p>
@@ -3035,7 +3082,8 @@ ending1: ;
 <p><a href="https://mrcet.com/downloads/digital_notes/HS/Basic%20Electrical%20Engineering%20R-20.pdf">https://mrcet.com/downloads/digital_notes/HS/Basic%20Electrical%20Engineering%20R-20.pdf</a> </p>
 <p><a href="https://www.pce-fet.com/common/library/books/39/173_BasicElectricalEngineeringbyV.K.MehtaandRohitMehta.pdf">https://www.pce-fet.com/common/library/books/39/173_BasicElectricalEngineeringbyV.K.MehtaandRohitMehta.pdf</a> </p>
 <p><a href="https://www.griet.ac.in/nodes/BEEE.pdf">https://www.griet.ac.in/nodes/BEEE.pdf</a> </p>
-<p><a href="https://electricalconnects.com/frontend/images/free_items/fundamentals-of-electrical-engineering-by-thaddeus-a-roppel-and-charles-a-gross.pdf">https://electricalconnects.com/frontend/images/free_items/fundamentals-of-electrical-engineering-by-thaddeus-a-roppel-and-charles-a-gross.pdf</a> </p><h2>ESP32</h2>
+<p><a href="https://electricalconnects.com/frontend/images/free_items/fundamentals-of-electrical-engineering-by-thaddeus-a-roppel-and-charles-a-gross.pdf">https://electricalconnects.com/frontend/images/free_items/fundamentals-of-electrical-engineering-by-thaddeus-a-roppel-and-charles-a-gross.pdf</a> </p>
+<h2>ESP32</h2>
 <p>使用 ESP32 控制 iPhone 或反向由 iPhone 控制 ESP32，主要透過下列方式實現：<br/><br/>一、雙向藍牙低功耗通訊（BLE UART 模式）</p>
 <p style="padding-left: 30px;">原理：利用 ESP32 的 BLE 功能模擬 UART（串口通訊），讓 iPhone 透過支援 BLE 的 App 與 ESP32 交換指令與數據。</p>
 <p style="padding-left: 30px;">常用 iOS App：LightBlue 或 nRF Connect</p>
@@ -3050,7 +3098,8 @@ ending1: ;
 <p style="padding-left: 30px;">應用場景：可以直接在 iPhone 畫面上點選開關，或是直接對著 Siri 喊「嘿 Siri，打開電燈」來透過 ESP32 控制繼電器與家電。</p>
 <p>四、進階：ESP32 模擬藍牙/USB 裝置（如 AI 手機代理）</p>
 <p style="padding-left: 30px;">原理：近期的開源專案（如利用 ESP32-S3 搭配特定韌體）可以讓 ESP32 扮演藍牙 HID 裝置或藉由硬體介面與手機互動。</p>
-<p style="padding-left: 30px;">注意事項：若涉及自動化點擊或螢幕控制，通常需要開啟 iOS 的「輔助觸控 (AssistiveTouch)」功能，且部分敏感 App（如銀行或 Apple Pay）會有安全隱私限制。</p><h1>Stocks</h1>
+<p style="padding-left: 30px;">注意事項：若涉及自動化點擊或螢幕控制，通常需要開啟 iOS 的「輔助觸控 (AssistiveTouch)」功能，且部分敏感 App（如銀行或 Apple Pay）會有安全隱私限制。</p>
+<h1>Stocks</h1>
 <p>原始市場資料：TWSE 直接提供，例如開盤價、最高價、最低價、收盤價、成交量。<br/><br/>Python 計算出的衍生欄位：例如 return_20d、volatility_20d、volume_ratio、future_return_5d。這些不是交易所直接公布的數字，而是根據原始資料計算出來的研究特徵。</p>
 <p><a href="/downloads/python_get_stock_data.7z">python_get_stock_data.7z</a></p>
 <p>Date: 交易日</p>
