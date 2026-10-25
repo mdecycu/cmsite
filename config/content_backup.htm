@@ -543,17 +543,6 @@ git reflog expire --expire=now --all
 git gc --prune=now --aggressive
 </pre>
 <p></p>
-<h2>Prog</h2>
-<p>如何在 windows 11 環境下利用 msys2 建立一個可攜式的 rust 開發環境。</p>
-<p>採用以下組合：</p>
-<p style="padding-left: 30px;">MSYS2 UCRT64：提供 GCC、GNU Make、pkg-config 等原生編譯工具。</p>
-<p style="padding-left: 30px;">Rustup + stable Rust：管理 Rust 編譯器、Cargo 與工具鏈版本。</p>
-<p style="padding-left: 30px;">Windows 原生 GNU 工具鏈：以 x86_64-pc-windows-gnu 為例，搭配 MinGW-w64。</p>
-<p style="padding-left: 30px;">可攜式啟動腳本：每次啟動時動態設定 PATH、CARGO_HOME、RUSTUP_HOME，不依賴 Windows 的全域環境變數。</p>
-<p>以下方案適合開發命令列程式、一般 Rust 專案，以及需要連結 GNU 原生函式庫的應用程式。以能在 Windows 上產生原生 .exe 為目標。</p>
-<p>目錄架構:</p>
-<p style="padding-left: 30px;">E:\PortableRust\<br/>├── msys64\             # MSYS2 本體<br/>│   ├── ucrt64\         # GCC、LD、原生函式庫<br/>│   └── usr\            # MSYS2 工具<br/>├── rust\<br/>│   ├── cargo\          # Cargo、rustup 執行檔及套件<br/>│   └── rustup\          # Rust 工具鏈與元件<br/>├── projects\           # Rust 專案<br/>├── cache\              # 可選：建置快取<br/>├── start-rust.cmd      # 啟動開發環境<br/>└── update-rust.cmd     # 可選：更新工具鏈</p>
-<p></p>
 <h2>Mojo</h2>
 <p><a href="https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular">https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular</a> </p>
 <p>Mojo 在 2026.8.18 正式開源。</p>
@@ -1425,8 +1414,6 @@ mojo build main.mojo -o my_app
 <p style="padding-left: 30px;">.rustup\\ — Rust 工具鏈</p>
 <p style="padding-left: 30px;">.cargo\\ — Cargo 套件、設定及執行檔</p>
 <p style="padding-left: 30px;">mingw64\\ — MinGW-w64 編譯工具</p>
-<p style="padding-left: 30px;">Python313\\ — 可攜式 Python</p>
-<p style="padding-left: 30px;">Webots_2023b\\ — Webots</p>
 <p style="padding-left: 30px;">portablegit\\ — Git</p>
 <p style="padding-left: 30px;">PuTTY\\ — SSH 工具</p>
 <p style="padding-left: 30px;">wscite\\ — SciTE 編輯器</p>
@@ -1444,9 +1431,12 @@ pacman -S --needed mingw-w64-ucrt-x86_64-toolchain</pre>
 <p>輸入系統更新時會要求重新執行 ucrt64.exe，之後再執行 pacman -Syu 後，再執行 pacman -S --needed mingw-w64-ucrt-x86_64-toolchain，並選擇安裝全部內建套件。</p>
 <hr/>
 <p>可攜 Rust 建置完成後，可用來編譯 SolidCraft:</p>
-<p>Y:\projects&gt;git clone <a href="https://github.com/tangency-labs/solidcraft.git">https://github.com/tangency-labs/solidcraft.git</a></p>
-<p>Y:\projects&gt;cd solidcraft<br/><br/>Y:\projects\solidcraft&gt;git checkout v0.21.0<br/>Note: switching to 'v0.21.0'.</p>
-<p>Y:\projects\solidcraft&gt;cargo run --release -p solidcraft -- --sample</p><h2>NX</h2>
+<p>R:\projects&gt;git clone <a href="https://github.com/tangency-labs/solidcraft.git">https://github.com/tangency-labs/solidcraft.git</a></p>
+<p>R:\projects&gt;cd solidcraft<br/><br/>R:\projects\solidcraft&gt;git checkout v0.21.0<br/>Note: switching to 'v0.21.0'.</p>
+<p>R:\projects\solidcraft&gt;cargo run --release -p solidcraft -- --sample</p>
+<hr/>
+<p>利用 SciTE 開發 Rust 程式的兩個設定檔案:</p>
+<p></p><h2>NX</h2>
 <p>摘要<br/><br/>早期的 Unigraphics（UG）至中期的 I-DEAS、中後期的 NX，再至 2026 年 Designcenter 的演進，是一條由數值控制（Numerical Control, NC）、電腦輔助製造（Computer-Aided Manufacturing, CAM）、電腦輔助設計（Computer-Aided Design, CAD）、電腦輔助工程（Computer-Aided Engineering, CAE）、產品資料管理（Product Data Management, PDM）逐步整合至產品生命週期管理（Product Lifecycle Management, PLM），並進一步向數位主線（Digital Thread）、雲端工程（Cloud Engineering）與人工智慧輔助工程（AI-assisted Engineering）延伸的技術發展歷程。<br/><br/>此一技術血統可追溯至 1960 年代 United Computing 所發展之 APT/UNIAPT 技術，1970 年代形成 UNI-GRAPHICS，1976 年進入 McDonnell Douglas 體系；1990 年代進入 EDS 時代；2001 年 EDS 將 UGS 與 SDRC 納入同一 PLM 組織，促成 Unigraphics 與 I-DEAS 技術整合；2002 年正式推出 NX；2007 年 Siemens 收購 UGS；2019 年導入 Continuous Release；2022 年改採年份與月份作為版本標識；2025 年將 NX 納入 Designcenter 品牌；2026 年 6 月進一步以 Designcenter 2606 作為統一產品名稱。</p>
 <p>從技術史角度觀察，這條演進路徑的核心是產品資訊的數位化邊界持續擴張：由幾何描述擴張至產品結構，由產品結構擴張至工程分析與製造，再由工程資料擴張至整個產品生命週期，最終形成設計、模擬、製造、資料管理、協作、雲端與 AI 相互連接的工程平台。</p>
 <p>一、研究範圍與歷史定位<br/><br/>現代 Designcenter 的技術來源具有多重企業與產品血統，其中最重要者包括 United Computing、Unigraphics、McDonnell Douglas、EDS、UGS、SDRC、I-DEAS 以及 Siemens。</p>
