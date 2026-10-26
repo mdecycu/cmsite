@@ -1,0 +1,10 @@
+{
+  "robots": [],
+  "walls": {},
+  "description": "A simple world demonstrating how to add and remove\nwalls, and get information about the walls\npresent at a given location.",
+  "small_tiles": false,
+  "rows": 12,
+  "cols": 14,
+  "onload": "RUR.onload_set_programming_mode(\"python\")\n",
+  "editor": "# In the Onload editor, we have set the programming\n# mode to Python.\n\norientations = [\"east\", \"north\", \"west\", \"south\"]\ngoal = True\nfor orient in orientations:\n    RUR.add_wall(orient, 3, 2, goal)\n\nfor orient in RUR.get_walls(3, 2, goal):\n    RUR.add_wall(orient, 3, 2)\n    \n# North of a tile is same as South of\n# the one above\n    \nif RUR.is_wall(\"north\", 3, 1):\n    RUR.remove_wall(\"south\", 3, 2)\n    \n# Internally, orientation is converted to lower case\n\nif RUR.is_wall(\"NORTH\", 3, 1, goal):\n    RUR.remove_wall(\"South\", 3, 2, goal)"
+}

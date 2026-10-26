@@ -1436,7 +1436,8 @@ pacman -S --needed mingw-w64-ucrt-x86_64-toolchain</pre>
 <p>R:\projects\solidcraft&gt;cargo run --release -p solidcraft -- --sample</p>
 <hr/>
 <p>利用 SciTE 開發 Rust 程式的兩個設定檔案:</p>
-<p></p><h2>NX</h2>
+<p style="padding-left: 30px;"><a href="/downloads/rust.properties">rust.properties</a></p>
+<p style="padding-left: 30px;"><a href="/downloads/SciTEUser.properties">SciTEUser.properties</a></p><h2>NX</h2>
 <p>摘要<br/><br/>早期的 Unigraphics（UG）至中期的 I-DEAS、中後期的 NX，再至 2026 年 Designcenter 的演進，是一條由數值控制（Numerical Control, NC）、電腦輔助製造（Computer-Aided Manufacturing, CAM）、電腦輔助設計（Computer-Aided Design, CAD）、電腦輔助工程（Computer-Aided Engineering, CAE）、產品資料管理（Product Data Management, PDM）逐步整合至產品生命週期管理（Product Lifecycle Management, PLM），並進一步向數位主線（Digital Thread）、雲端工程（Cloud Engineering）與人工智慧輔助工程（AI-assisted Engineering）延伸的技術發展歷程。<br/><br/>此一技術血統可追溯至 1960 年代 United Computing 所發展之 APT/UNIAPT 技術，1970 年代形成 UNI-GRAPHICS，1976 年進入 McDonnell Douglas 體系；1990 年代進入 EDS 時代；2001 年 EDS 將 UGS 與 SDRC 納入同一 PLM 組織，促成 Unigraphics 與 I-DEAS 技術整合；2002 年正式推出 NX；2007 年 Siemens 收購 UGS；2019 年導入 Continuous Release；2022 年改採年份與月份作為版本標識；2025 年將 NX 納入 Designcenter 品牌；2026 年 6 月進一步以 Designcenter 2606 作為統一產品名稱。</p>
 <p>從技術史角度觀察，這條演進路徑的核心是產品資訊的數位化邊界持續擴張：由幾何描述擴張至產品結構，由產品結構擴張至工程分析與製造，再由工程資料擴張至整個產品生命週期，最終形成設計、模擬、製造、資料管理、協作、雲端與 AI 相互連接的工程平台。</p>
 <p>一、研究範圍與歷史定位<br/><br/>現代 Designcenter 的技術來源具有多重企業與產品血統，其中最重要者包括 United Computing、Unigraphics、McDonnell Douglas、EDS、UGS、SDRC、I-DEAS 以及 Siemens。</p>
@@ -3089,7 +3090,215 @@ ending1: ;
 <p>四、進階：ESP32 模擬藍牙/USB 裝置（如 AI 手機代理）</p>
 <p style="padding-left: 30px;">原理：近期的開源專案（如利用 ESP32-S3 搭配特定韌體）可以讓 ESP32 扮演藍牙 HID 裝置或藉由硬體介面與手機互動。</p>
 <p style="padding-left: 30px;">注意事項：若涉及自動化點擊或螢幕控制，通常需要開啟 iOS 的「輔助觸控 (AssistiveTouch)」功能，且部分敏感 App（如銀行或 Apple Pay）會有安全隱私限制。</p>
-<h1>Stocks</h1>
+<h1>Prog</h1>
+<p><a href="https://pyodide.org">Pyodide</a> 是一個將 <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 解譯器和常用科學套件 (例如: <a href="https://numpy.org/">numpy</a>、<a href="https://scipy.org/">scipy</a>、<a href="https://matplotlib.org/">matplotlib</a> 等) 編譯成 <a href="https://webassembly.org/">WebAssembly</a>，可在瀏覽器中執行 <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 程式的專案。</p>
+<p><a href="https://pyodide.org">Pyodide</a> 是將 <a href="https://github.com/python/cpython">CPython</a> 編譯為 <a href="https://webassembly.org/">WebAssembly</a>，可在瀏覽器或其他 <a href="https://webassembly.org/">WebAssembly</a> 環境中執行；而 <a href="https://github.com/python/cpython">CPython</a> 是標準的原生 <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 解譯器，運行在作業系統上。換言之，<a href="https://pyodide.org">Pyodide</a> 是為在瀏覽器中執行 <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 而設計的 <a href="https://github.com/python/cpython">CPython</a> 移植版本。<a href="https://pyodide.org">Pyodide</a> 可與 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">JavaScript</a> 雙向互動，讓 <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 程式能呼叫 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">JavaScript</a> 函數並操作網頁元素，也能被 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">JavaScript</a> 呼叫執行 <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> 程式碼。</p>
+<p><a href="/downloads/pyodide_robot_patrol.py">pyodide_robot_patrol.py</a> 能同時在近端與廣域網路中執行的機器人巡邏程式。</p>
+<p><!-- orig --> <!-- <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script> -->
+<script src="https://cdn.jsdelivr.net/pyodide/v314.0.7/full/pyodide.js"></script>
+</p>
+<p><button id="version">version</button> <button id="hello_button">hello</button> <button id="add1to100">1 add to 100</button> <button id="robot1">機器人巡邏</button><button id="free_walk">自由行</button> <button id="numpy_ode">numpy_ode</button></p>
+<!-- Ace Editor Scripts -->
+<p>
+<script src="/static/ace/FileSaver.min.js"></script>
+<script src="/static/ace/filereader.js"></script>
+<script src="/static/ace/ace.js"></script>
+<script src="/static/ace/ext-language_tools.js"></script>
+<script src="/static/ace/mode-python.js"></script>
+<script src="/static/ace/snippets/python.js"></script>
+</p>
+<!-- Editor 1 -->
+<div id="kw_editor1" style="width: 600px; height: 300px;"></div>
+<p><button id="kw_run1">Run</button> <button id="kw_output1">Output</button> <button id="kw_clear_console1">清除輸出區</button> <button onclick="location.reload()">Reload</button></p>
+<p><textarea id="kw_console1"></textarea></p>
+<div id="pyodide_div1"></div>
+<div id="mpl_output1"></div>
+<div id="brython_div1"></div>
+<hr/>
+<p>從 1 累加到 100 part2:</p>
+<p><button id="add1to100part2">1 add to 100</button></p>
+<!-- Editor 2 -->
+<div id="kw_editor2" style="width: 600px; height: 300px;"></div>
+<p><button id="kw_run2">Run</button> <button id="kw_output2">Output</button> <button id="kw_clear_console2">清除輸出區</button> <button onclick="location.reload()">Reload</button></p>
+<p><textarea id="kw_console2"></textarea></p>
+<div id="pyodide_div2"></div>
+<div id="mpl_output2"></div>
+<div id="brython_div2"></div>
+<p>
+<script>
+function getUrlParam(key) {
+  return new URLSearchParams(window.location.search).get(key);
+}
+function updateUrlParam(key, value) {
+  const url = new URL(window.location);
+  url.searchParams.set(key, value);
+  window.history.replaceState({}, "", url);
+}
+
+let pyodide, editor1, editor2;
+
+document.addEventListener("DOMContentLoaded", async () => {
+  editor1 = ace.edit("kw_editor1");
+  editor1.setTheme("ace/theme/chrome");
+  editor1.session.setMode("ace/mode/python");
+
+  editor2 = ace.edit("kw_editor2");
+  editor2.setTheme("ace/theme/chrome");
+  editor2.session.setMode("ace/mode/python");
+
+  pyodide = await loadPyodide();
+  await pyodide.loadPackage(["numpy", "scipy", "matplotlib", "micropip"]);
+
+  // 定義 hello() 模組
+  const code = `
+def hello():
+    print("Hello from custom module! (模組定義寫在本網頁中)")
+`;
+  pyodide.runPython(code);
+
+  const GIST_ADD1TO100 =
+    "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/" +
+    "c48e37714f055c3a0027cbfef59e442a6ef659b9/from_1_add_to_100_1.py";
+  const NUMPY_ODE =
+    "https://gist.githubusercontent.com/mdecycu/ec4bb35dd0769e7a83d2a9fa57878a67/raw/" +
+    "98d582539545b3c9fbfa35dd3e605c506367618e/pyodide_ode_ex1.py";
+  const PYODIDE_ROBOT_ANIMATION =
+    "https://gist.githubusercontent.com/mdecycu/ec4bb35dd0769e7a83d2a9fa57878a67/raw/" +
+    "f3d75d08f2b90f4470342e91ee1e5c36b5f950bf/pyodide_robot_ex1.py";
+  const FREE_WALK = 
+    "https://gist.githubusercontent.com/mdecycu/ec4bb35dd0769e7a83d2a9fa57878a67/raw/" + "d1659628afe5d36a026ef305dc639f6be4c9f608/pyodide_robot_ex3.py"
+
+  const src = getUrlParam("src");
+  if (src === PYODIDE_ROBOT_ANIMATION) {
+    const robotCode = await fetchCode(PYODIDE_ROBOT_ANIMATION);
+    editor1.setValue(robotCode, -1);
+    updateUrlParam("src", PYODIDE_ROBOT_ANIMATION);
+    runPyodide(editor1, "kw_console1", "brython_div1");
+  } else {
+    const initialCode = await fetchCode(src || GIST_ADD1TO100);
+    editor1.setValue(initialCode, -1);
+    runPyodide(editor1, "kw_console1", "brython_div1");
+  }
+
+  editor2.setValue("", -1);
+
+  document.getElementById("version").onclick = () => {
+    const vcode = `
+import pyodide
+import sys
+import matplotlib
+import numpy
+import scipy
+print("Pyodide version:", pyodide.__version__)
+print("Python version :", sys.version)
+print("matplotlib version:", matplotlib.__version__)
+print("numpy version:", numpy.__version__)
+print("scipy version:", scipy.__version__)
+`;
+    editor1.setValue(vcode, -1);
+    updateUrlParam("src", "inline_version");
+    runPyodide(editor1, "kw_console1", "brython_div1");
+  };
+
+  document.getElementById("hello_button").onclick = () => {
+    editor1.setValue("hello()", -1);
+    updateUrlParam("src", "inline_hello");
+    runPyodide(editor1, "kw_console1", "brython_div1");
+  };
+
+  document.getElementById("add1to100").onclick = async () => {
+    const c = await fetchCode(GIST_ADD1TO100);
+    editor1.setValue(c, -1);
+    updateUrlParam("src", GIST_ADD1TO100);
+    runPyodide(editor1, "kw_console1", "brython_div1");
+  };
+
+  document.getElementById("numpy_ode").onclick = async () => {
+    const c = await fetchCode(NUMPY_ODE);
+    editor1.setValue(c, -1);
+    updateUrlParam("src", NUMPY_ODE);
+    runPyodide(editor1, "kw_console1", "brython_div1");
+  };
+
+  document.getElementById("robot1").onclick = async () => {
+    const rc = await fetchCode(PYODIDE_ROBOT_ANIMATION);
+    editor1.setValue(rc, -1);
+    updateUrlParam("src", PYODIDE_ROBOT_ANIMATION);
+    runPyodide(editor1, "kw_console1", "brython_div1");
+  };
+
+  document.getElementById("free_walk").onclick = async () => {
+    const rc = await fetchCode(FREE_WALK);
+    editor1.setValue(rc, -1);
+    updateUrlParam("src", FREE_WALK);
+    runPyodide(editor1, "kw_console1", "brython_div1");
+  };
+
+  document.getElementById("add1to100part2").onclick = async () => {
+    const c = await fetchCode(GIST_ADD1TO100);
+    editor2.setValue(c, -1);
+    runPyodide(editor2, "kw_console2", "brython_div2");
+  };
+
+  document.getElementById("kw_run1").onclick = () =>
+    runPyodide(editor1, "kw_console1", "brython_div1");
+  document.getElementById("kw_run2").onclick = () =>
+    runPyodide(editor2, "kw_console2", "brython_div2");
+  document.getElementById("kw_clear_console1").onclick = () =>
+    clearOutput("kw_console1", "brython_div1");
+  document.getElementById("kw_clear_console2").onclick = () =>
+    clearOutput("kw_console2", "brython_div2");
+});
+
+// 處理兩個 Output 列數
+  document.getElementById("kw_output1").onclick = () => {
+    const ta = document.getElementById("kw_console1");
+    ta.rows = "15";
+    ta.cols = "70";
+    ta.scrollTop = 0;
+  };
+  document.getElementById("kw_output2").onclick = () => {
+    const ta = document.getElementById("kw_console2");
+    ta.rows = "15";
+    ta.cols = "70";
+    ta.scrollTop = 0;
+  };
+
+async function fetchCode(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`載入失敗 ${r.status}`);
+  return await r.text();
+}
+
+function clearOutput(consoleId, divId) {
+  document.getElementById(consoleId).value = "";
+  document.getElementById(divId).innerHTML = "";
+}
+
+async function runPyodide(editor, consoleId, divId) {
+  document.getElementById(consoleId).value = "";
+  document.getElementById(divId).innerHTML = "";
+
+  await pyodide.runPythonAsync(`
+import sys
+class JsWriter:
+  def write(self, s):
+    from js import document
+    ta = document.getElementById("${consoleId}")
+    ta.value += s
+    ta.scrollTop = ta.scrollHeight
+sys.stdout = JsWriter()
+sys.stderr = JsWriter()
+`);
+
+  try {
+    await pyodide.runPythonAsync(editor.getValue());
+  } catch (e) {
+    document.getElementById(consoleId).value += "\n錯誤：" + e.toString();
+  }
+}
+</script>
+</p><h1>Stocks</h1>
 <p>原始市場資料：TWSE 直接提供，例如開盤價、最高價、最低價、收盤價、成交量。<br/><br/>Python 計算出的衍生欄位：例如 return_20d、volatility_20d、volume_ratio、future_return_5d。這些不是交易所直接公布的數字，而是根據原始資料計算出來的研究特徵。</p>
 <p><a href="/downloads/python_get_stock_data.7z">python_get_stock_data.7z</a></p>
 <p>Date: 交易日</p>
