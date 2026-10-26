@@ -2,15 +2,7 @@ import js, asyncio
 
 CELL_SIZE = 40
 WALL_THICKNESS = 6
-#IMG_PATH = "./../images/reeborg/images/"
-hostname = js.window.location.hostname
-
-if hostname in ("localhost", "127.0.0.1"):
-    IMG_PATH = "./../images/reeborg/images/"
-else:
-    IMG_PATH = "./images/reeborg/images/"
-
-print(hostname, IMG_PATH)
+IMG_PATH = "./../images/reeborg/images/"
 
 class World:
     _image_cache = {}
