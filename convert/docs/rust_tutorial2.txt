@@ -1,0 +1,311 @@
+# 從 Python 到 Rust：網際內容管理系統開發實戰教材
+
+**核心實例程式：CMS 靜態 HTML 轉換工具**  
+（將單一 `content.htm` 依 h1/h2/h3 自動切割成多頁、產生導覽選單、Previous/Next、搜尋索引的完整工具）
+
+---
+
+## 教材總覽與學習路徑
+
+| 階段 | 主題 | 學習目標 | 對應原程式重點 |
+|------|------|----------|----------------|
+| 1 | 資料結構與所有權思維 | 從 Python class/dict 轉換到 Rust struct/Vec/HashMap | Page、NavNode、SearchPage |
+| 2 | 函式、借用與錯誤處理 | 理解為什麼 Rust 要寫 `&` 和 `Result` | 所有函式簽名、`?` 運算子 |
+| 3 | 文字處理核心能力 | Regex、閉包、迭代器、字串操作 | parse_pages、slug_filename |
+| 4 | 產生 HTML 與樹狀結構 | 樣板、遞迴、導覽選單 | html_header、navigation_links |
+| 5 | 檔案、JSON、命令列 | 完整工具的入口與輸出 | generate、main |
+| 6 | 進階概念整合 | Trait Object、閉包進階、HTML 解析策略 | 延伸討論 |
+
+---
+
+## 第一階段：資料結構與所有權思維  
+（從 Python 的 class / dict 轉向 Rust）
+
+### 講解稿
+
+在 Python 我們習慣用 `class` 或 `dataclass` 來定義資料，用 `list` 和 `dict` 來儲存集合。Rust 對應的是 `struct`、`Vec` 和 `HashMap`，但多了一個核心差異：**所有權（Ownership）**。
+
+原程式定義了三個重要結構：
+
+```rust
+#[derive(Debug, Clone)]
+struct Page {
+    title: String,
+    filename: String,
+    level: usize,
+    body: String,
+}
+
+#[derive(Debug)]
+struct NavNode {
+    page_index: usize,
+    children: Vec<NavNode>,   // 樹狀結構
+}
+
+#[derive(Serialize)]
+struct SearchPage {
+    title: String,
+    text: String,
+    tags: String,
+    url: String,
+}
+```
+
+`#[derive(...)]` 是屬性巨集，類似 Python 的 decorator，但功能更強，能自動實作 `Debug`、`Clone`、`Serialize` 等 Trait。
+
+### 投影片重點
+
+- `struct` ≈ Python 的 dataclass / class
+- `Vec<T>` ≈ Python list（但型別固定）
+- `HashMap<K,V>` ≈ Python dict
+- `#[derive(Debug, Clone, Serialize)]` 自動產生常用功能
+- 所有權：每個值同時只能有一個擁有者
+
+### 三個實用延伸例子
+
+1. 商品資料  
+```rust
+#[derive(Debug, Clone)]
+struct Product {
+    id: u32,
+    name: String,
+    price: f64,
+    tags: Vec<String>,
+}
+```
+
+2. 字頻統計（對照 Python collections.Counter）  
+```rust
+use std::collections::HashMap;
+
+fn word_count(text: &str) -> HashMap<String, usize> {
+    let mut map = HashMap::new();
+    for word in text.split_whitespace() {
+        *map.entry(word.to_string()).or_insert(0) += 1;
+    }
+    map
+}
+```
+
+3. 樹狀目錄  
+```rust
+#[derive(Debug)]
+struct Folder {
+    name: String,
+    files: Vec<String>,
+    subfolders: Vec<Folder>,
+}
+```
+
+---
+
+## 第二階段：函式、借用、參考、生命週期與錯誤處理
+
+### 講解稿
+
+Python 函式參數預設是參考傳遞（對 mutable 物件），Rust 則明確區分「擁有」與「借用」。
+
+原程式幾乎所有函式都使用借用：
+
+```rust
+fn strip_tags(input: &str) -> Result<String, Box<dyn Error>> { ... }
+fn generate(input_path: &Path, output_dir: &Path) -> Result<(), Box<dyn Error>> { ... }
+```
+
+回傳 `Result<T, E>` 是 Rust 處理錯誤的標準方式，搭配 `?` 運算子可以讓程式碼像 Python 的例外一樣簡潔，但更安全。
+
+### 投影片重點
+
+| Python | Rust |
+|--------|------|
+| def func(s: str) | fn func(s: &str) |
+| raise Exception | return Err(...) |
+| try-except | Result + ? |
+| 沒有明確生命週期 | 編譯器檢查參考是否有效 |
+
+- `&T`：不可變借用  
+- `&mut T`：可變借用  
+- `?`：錯誤自動傳播  
+
+### 三個實用延伸例子
+
+1. 讀取設定檔  
+```rust
+fn load_config(path: &str) -> Result<String, Box<dyn Error>> {
+    Ok(fs::read_to_string(path)?)
+}
+```
+
+2. 安全除法  
+```rust
+fn safe_divide(a: f64, b: f64) -> Result<f64, String> {
+    if b == 0.0 { Err("除數不能為零".into()) } else { Ok(a / b) }
+}
+```
+
+3. 修改字串  
+```rust
+fn append_exclamation(s: &mut String) {
+    s.push('!');
+}
+```
+
+---
+
+## 第三階段：正規表示式、閉包、迭代器與字串處理
+
+### 講解稿
+
+這是內容管理系統最核心的能力之一。原程式用 Regex 找出所有 h1～h3，再用迭代器與閉包處理檔名。
+
+```rust
+let result: String = title
+    .trim()
+    .chars()
+    .map(|c| if invalid.contains(&c) || c.is_control() { '_' } else { c })
+    .collect();
+```
+
+這段程式碼在 Python 通常會寫成 generator expression 或 list comprehension，Rust 的迭代器是惰性的，效能與表達力都極佳。
+
+檔名衝突則用 `HashMap` 計數解決，這是實務上非常常見的模式。
+
+### 投影片重點
+
+- Regex：強力文字擷取
+- 閉包（|x| ...）≈ Python lambda
+- 迭代器鏈式呼叫：`.map().filter().collect()`
+- 字串常用方法：`replace`、`trim`、`chars`、`split`
+- 檔名唯一性處理：HashMap 計數法
+
+### 三個實用延伸例子
+
+1. 電子郵件簡單驗證  
+2. 過濾偶數並平方  
+3. 通用「產生唯一檔名」函式
+
+---
+
+## 第四階段：HTML 樣板、樹狀導覽與分頁連結
+
+### 講解稿
+
+產生靜態網頁時，我們需要大量字串拼接。Rust 使用 raw string（`r##"..."##`）可以優雅地嵌入 HTML/CSS/JS。
+
+導覽選單是經典的樹狀結構問題，原程式用兩個遞迴函式解決：
+
+- `insert_nav_node`：建立樹
+- `render_nav_nodes`：渲染成 HTML
+
+Previous / Next 則設計成可重用元件，上下各呼叫一次，並用 CSS flex 控制左右對齊。
+
+### 投影片重點
+
+- Raw string 避免跳脫地獄
+- `format!` 中大括號要寫成 `{{` `}}`
+- 遞迴建立樹 + 遞迴渲染
+- 元件化思考：Previous/Next 只寫一次
+- CSS flex 讓排版變簡單
+
+### 三個實用延伸例子
+
+1. 通用 HTML 頁面樣板
+2. 遞迴產生目錄樹
+3. 分頁導覽列元件
+
+---
+
+## 第五階段：檔案讀寫、JSON 序列化、命令列與 main
+
+### 講解稿
+
+一個完整工具的骨架通常是：
+
+1. 解析命令列參數（`env::args()`）
+2. 讀取輸入檔（`fs::read_to_string`）
+3. 核心轉換邏輯
+4. 寫出多個輸出檔（`fs::write`）
+5. 產生 JSON 搜尋索引（`serde_json`）
+
+`main` 函式應該保持精簡，只負責參數與錯誤顯示；真正邏輯放在 `generate` 這類函式中。
+
+### 投影片重點
+
+- 檔案：`fs::read_to_string` / `fs::write`
+- JSON：`serde` + `serde_json`
+- 命令列：`env::args().collect()`
+- 錯誤處理：`if let Err(e) = ... { eprintln!(...); exit(1); }`
+- 責任分離：main 精簡，邏輯獨立
+
+### 三個實用延伸例子
+
+1. 檔案複製工具
+2. 輸出漂亮的 JSON 檔
+3. 標準命令列小工具範本
+
+---
+
+## 第六階段：進階概念整合（給想深入的研究者）
+
+### Trait Object（動態分派）
+
+當你需要「一組不同型別但擁有共同行為」的集合時使用（對照 Python 的 duck typing）。
+
+```rust
+trait Plugin {
+    fn name(&self) -> &str;
+    fn execute(&self);
+}
+let plugins: Vec<Box<dyn Plugin>> = vec![...];
+```
+
+### 閉包進階
+
+- `Fn` / `FnMut` / `FnOnce`
+- `move` 閉包（常用於執行緒）
+
+### HTML 解析策略選擇
+
+| 需求 | 推薦 crate |
+|------|------------|
+| 簡單 CSS 選擇器抽取 | scraper |
+| 完整 HTML5 解析 | html5ever |
+| 高效能大量處理 | tl |
+
+原程式選擇自己用 Regex 切割，是因為輸入格式可控，速度與依賴都更輕量。
+
+---
+
+## 完整學習路線建議（給研究者的自學時程）
+
+**第 1～2 週**  
+精通所有權、借用、struct、Vec、HashMap、Result  
+
+**第 3 週**  
+Regex + 迭代器 + 閉包，完成自己的「檔名清理與唯一化」模組  
+
+**第 4 週**  
+實作樹狀導覽與 HTML 樣板系統  
+
+**第 5 週**  
+把整支 CMS 轉換工具重寫一次（或加上新功能：支援 Markdown、自動產生 sitemap.xml、多語系）  
+
+**第 6 週以後**  
+引入 Trait Object 做外掛系統、加入非同步下載、或改寫成支援增量更新的內容管理工具。
+
+---
+
+## 結語：為什麼這份教材特別適合你
+
+1. **以真實 CMS 需求驅動**，而不是玩具範例。  
+2. **處處對照 Python**，降低認知轉換成本。  
+3. **每個概念都附原程式片段 + 三個延伸例子**，方便立刻實踐。  
+4. **講解稿 + 投影片重點** 雙格式，適合自學也適合用來教別人。  
+5. **最終目標明確**：讓你有能力獨立開發高效能、安全、可維護的網際內容管理相關工具。
+
+你現在手上已經有：
+- 完整註解版原始程式
+- 分段深度解說
+- 講解稿與投影片重點
+- 從 Python 過渡的學習路徑
+

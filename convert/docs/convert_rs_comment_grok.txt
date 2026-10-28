@@ -1,0 +1,749 @@
+// ------------------------------------------------------------
+// 外部 crate 與標準函式庫的引入
+// ------------------------------------------------------------
+// use 關鍵字用來將其他模組或 crate 的項目導入目前作用域。
+// regex::Regex          → 正則表達式處理
+// serde::Serialize      → 讓結構體可以序列化成 JSON
+// std::collections::HashMap → 雜湊表（鍵值對）
+// std::env              → 讀取命令列參數
+// std::error::Error     → 錯誤處理的通用 Trait
+// std::fs               → 檔案系統操作（讀寫檔案、建立目錄）
+// std::path::{Path, PathBuf} → 路徑處理（Path 是借用，PathBuf 是擁有所有權）
+use regex::Regex;
+use serde::Serialize;
+use std::collections::HashMap;
+use std::env;
+use std::error::Error;
+use std::fs;
+use std::path::{Path, PathBuf};
+
+// ------------------------------------------------------------
+// 資料結構定義
+// ------------------------------------------------------------
+
+// #[derive(...)] 是屬性巨集（Attribute Macro），自動實作指定的 Trait。
+// Debug  → 讓結構體可以用 {:?} 印出
+// Clone  → 讓結構體可以呼叫 .clone() 進行深拷貝
+#[derive(Debug, Clone)]
+struct Page {
+    title: String,      // 分頁標題
+    filename: String,   // 產生的 HTML 檔名
+    level: usize,       // 標題層級（1=h1, 2=h2, 3=h3）
+    body: String,       // 該分頁的 HTML 內容
+}
+
+// 導覽選單的樹狀節點
+#[derive(Debug)]
+struct NavNode {
+    page_index: usize,          // 對應 pages 向量的索引
+    children: Vec<NavNode>,     // 子節點（形成樹狀結構）
+}
+
+// 用於產生搜尋索引的資料結構
+// #[derive(Serialize)] 讓此結構體可以透過 serde 序列化成 JSON
+#[derive(Serialize)]
+struct SearchPage {
+    title: String,
+    text: String,   // 去除 HTML 標籤後的純文字
+    tags: String,
+    url: String,
+}
+
+// ------------------------------------------------------------
+// 工具函式
+// ------------------------------------------------------------
+
+/// 移除 HTML 標籤並還原常見的 HTML 實體
+/// 回傳型別使用 Result<T, E>，成功回傳 String，失敗回傳錯誤
+fn strip_tags(input: &str) -> Result<String, Box<dyn Error>> {
+    // Regex::new 建立正則表達式物件
+    // (?s) 讓 . 可以匹配換行符號
+    // <[^>]*> 匹配任何 HTML 標籤
+    let re = Regex::new(r"(?s)<[^>]*>")?;
+    // replace_all 會回傳 Cow<str>，可以自動處理是否需要配置新字串
+    let text = re.replace_all(input, "");
+
+    // 連續使用 replace 還原 HTML 實體
+    Ok(text
+        .replace("&nbsp;", " ")
+        .replace("&amp;", "&")
+        .replace("&lt;", "<")
+        .replace("&gt;", ">")
+        .replace("&quot;", "\"")
+        .replace("&#39;", "'"))
+}
+
+/// 將特殊字元跳脫成 HTML 實體，避免 XSS 或顯示錯誤
+fn escape_html(input: &str) -> String {
+    input
+        .replace('&', "&amp;")
+        .replace('<', "&lt;")
+        .replace('>', "&gt;")
+        .replace('"', "&quot;")
+        .replace('\'', "&#39;")
+}
+
+/// 將標題轉換成合法的檔名（移除不合法字元）
+fn slug_filename(title: &str) -> String {
+    // 定義不合法的檔名字元
+    let invalid = ['<', '>', ':', '"', '/', '\\', '|', '?', '*'];
+
+    // chars() 取得字元迭代器
+    // map 對每個字元進行轉換
+    // collect() 將迭代器收集成 String
+    let result: String = title
+        .trim()                     // 移除前後空白
+        .chars()
+        .map(|c| {
+            // 如果是不合法字元或控制字元，就替換成底線
+            if invalid.contains(&c) || c.is_control() {
+                '_'
+            } else {
+                c
+            }
+        })
+        .collect();
+
+    // 移除結尾的空白與點
+    let result = result.trim_end_matches([' ', '.']);
+
+    // 如果結果是空字串，就使用預設名稱
+    if result.is_empty() {
+        "untitled".to_string()
+    } else {
+        result.to_string()
+    }
+}
+
+/// 修正靜態資源路徑（讓相對路徑正確）
+fn fix_static_paths(html: &str) -> String {
+    // 連續呼叫 replace，把絕對路徑改成相對路徑
+    html.replace("src=\"/images/", "src=\"./../images/")
+        .replace("href=\"/downloads/", "href=\"./../downloads/")
+        .replace("data=\"/images/", "data=\"./../images/")
+        .replace("src=\"/static/", "src=\"./../cms/static/")
+        .replace("src=/downloads", "src=./../downloads")
+        .replace("pythonpath:['/static/'", "pythonpath:['./../cms/static/'")
+        .replace(
+            "data-dirname=\"/static\"",
+            "data-dirname=\"./../cms/static\"",
+        )
+}
+
+// ------------------------------------------------------------
+// 解析 content.htm，依 h1/h2/h3 切割成多個分頁
+// ------------------------------------------------------------
+fn parse_pages(input: &str) -> Result<Vec<Page>, Box<dyn Error>> {
+    // (?is) → i=不分大小寫, s=讓 . 匹配換行
+    // 找出所有 h1、h2、h3 標題
+    let heading_re = Regex::new(r"(?is)<h([1-3])\b[^>]*>.*?</h[1-3]\s*>")?;
+    // 用來從標題標籤中擷取「層級」與「標題文字」
+    let title_re = Regex::new(r"(?is)^<h([1-3])\b[^>]*>(.*?)</h[1-3]\s*>$")?;
+
+    // 儲存 (起始位置, 結束位置, 層級, 標題文字)
+    let mut headings: Vec<(usize, usize, usize, String)> = Vec::new();
+
+    // find_iter 回傳所有匹配的迭代器
+    for found in heading_re.find_iter(input) {
+        let tag = found.as_str();
+        // captures 擷取群組
+        let captures = title_re
+            .captures(tag)
+            .ok_or("無法解析 HTML 標題")?;   // 如果沒匹配到就回傳錯誤
+
+        let level: usize = captures[1].parse()?;  // 把字串轉成數字
+        let title = strip_tags(&captures[2])?.trim().to_string();
+
+        headings.push((
+            found.start(),  // 標題在原文中的起始位置
+            found.end(),    // 標題在原文中的結束位置
+            level,
+            title,
+        ));
+    }
+
+    // 如果完全找不到標題，就回傳錯誤
+    if headings.is_empty() {
+        return Err(
+            "content.htm 中找不到 h1、h2 或 h3 分頁標題".into(),
+        );
+    }
+
+    // 用來處理「相同標題」與「相同檔名」的計數器
+    let mut title_counts: HashMap<String, usize> = HashMap::new();
+    let mut filename_counts: HashMap<String, usize> = HashMap::new();
+    let mut pages = Vec::new();
+
+    // 依照標題位置切割出每個分頁的內容
+    for i in 0..headings.len() {
+        let (_start, end, level, title) = &headings[i];
+
+        // 下一個標題的起始位置就是目前分頁的結束位置
+        // 如果是最後一個標題，就取到字串結尾
+        let body_end = headings
+            .get(i + 1)
+            .map(|next| next.0)
+            .unwrap_or(input.len());
+
+        let body = input[*end..body_end].to_string();
+
+        // 處理重複標題：如果標題重複，就加上 -1、-2...
+        let count = title_counts.entry(title.clone()).or_insert(0);
+        *count += 1;
+
+        let unique_title =
+            if headings.iter().filter(|item| item.3 == *title).count() > 1 {
+                format!("{}-{}", title, count)
+            } else {
+                title.clone()
+            };
+
+        // 產生合法檔名，並處理檔名衝突
+        let base_name = slug_filename(&unique_title);
+        let key = base_name.to_lowercase();
+        let filename_count = filename_counts.entry(key).or_insert(0);
+        *filename_count += 1;
+
+        let filename = if *filename_count == 1 {
+            format!("{}.html", base_name)
+        } else {
+            format!("{}-{}.html", base_name, filename_count)
+        };
+
+        pages.push(Page {
+            title: unique_title,
+            filename,
+            level: *level,
+            body,
+        });
+    }
+
+    Ok(pages)
+}
+
+// ------------------------------------------------------------
+// HTML 標頭
+// 使用 r##"..."## 原始字串（raw string），避免 HTML 的 " 或 # 造成字串結束。
+// format! 範本內的 CSS / JavaScript 大括號必須使用雙大括號 {{ }}。
+// ------------------------------------------------------------
+fn html_header(title: &str) -> String {
+    format!(
+        r##"<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta property="head" content="H1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>{title}</title>
+<link rel="stylesheet" href="./../cms/static/chimper/fonts/icomoon/style.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap.min.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/magnific-popup.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/jquery-ui.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/owl.carousel.min.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="./../cms/static/chimper/fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/aos.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/style.css">
+<link rel="shortcut icon" href="./../cms/static/favicons.png">
+<style type="text/css">
+.site-section {{ background-color: #FFFF; padding: 40px 40px; }}
+body > div > div.dropdown.open {{ display: block; }}
+img.add_border {{ border: 3px solid blue; }}
+.page-navigation {{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 20px;
+    margin: 24px 0;
+    padding: 12px 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}}
+.page-navigation .previous {{
+    flex: 1 1 50%;
+    min-width: 0;
+    margin-right: auto;
+    text-align: left;
+}}
+.page-navigation .next {{
+    flex: 1 1 50%;
+    min-width: 0;
+    margin-left: auto;
+    text-align: right;
+}}
+.page-navigation a {{
+    display: inline-block;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}}
+.page-navigation a:hover {{
+    text-decoration: underline;
+}}
+</style>
+<script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="./../cms/static/tipuesearch/css/normalize.min.css">
+<script src="./../cms/static/tipuesearch/tipuesearch_set.js"></script>
+<script src="tipuesearch_content.js"></script>
+<link rel="stylesheet" href="./../cms/static/tipuesearch/css/tipuesearch.css">
+<script src="./../cms/static/tipuesearch/tipuesearch.js"></script>
+<script>
+function doSearch() {{
+    if (window.jQuery && jQuery.fn.tipuesearch) {{
+        jQuery('#tipue_search_input').tipuesearch({{
+            newWindow: true,
+            minimumLength: 2,
+            wholeWords: false
+        }});
+    }}
+}}
+if (window.jQuery) {{
+    jQuery(document).ready(doSearch);
+}}
+</script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDiff.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushMojo.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushWbt.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDart.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushRust.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cms/static/syntaxhighlighter/css/shCoreDefault.css">
+<script>if (window.SyntaxHighlighter) SyntaxHighlighter.all();</script>
+</head>
+<body>
+<div class="container">
+<div class="site-wrap">
+<div class="site-mobile-menu">
+  <div class="site-mobile-menu-header">
+    <div class="site-mobile-menu-close mt-3">
+      <span class="icon-close2 js-menu-toggle"></span>
+    </div>
+  </div>
+  <div class="site-mobile-menu-body"></div>
+</div>
+<header class="site-navbar py-4 bg-white" role="banner">
+  <div class="container">
+    <div class="row align-items-center">
+      <h1>Dialog</h1>
+      <div class="pl-4">
+        <form action="#" onsubmit="return false;">
+          <input type="text"
+                 placeholder="Search"
+                 name="q"
+                 id="tipue_search_input"
+                 pattern=".{{2,}}"
+                 title="At least 2 characters">
+        </form>
+      </div>
+      <div class="col-12 col-md-10 d-none d-xl-block">
+        <nav class="site-navigation position-relative text-right" role="navigation">
+          <!-- NAVIGATION_MENU_INSERTED_BY_CONVERTER -->
+        </nav>
+      </div>
+      <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3"
+           style="position: relative; top: 3px;">
+        <a href="#" class="site-menu-toggle js-menu-toggle text-black">
+          <span class="icon-menu h3"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+<div id="tipue_search_content">
+"##,
+        // 命名參數：把 title 變數的值代入 {title} 位置
+        // 並先經過 escape_html 跳脫特殊字元
+        title = escape_html(title)
+    )
+}
+
+// ------------------------------------------------------------
+// 建立 h1 / h2 / h3 樹狀選單
+// ------------------------------------------------------------
+
+/// 遞迴把節點插入正確的樹狀位置
+/// depth 表示目前要插入的層級
+fn insert_nav_node(
+    nodes: &mut Vec<NavNode>,   // 使用 &mut 才能修改向量
+    page_index: usize,
+    depth: usize,
+) {
+    // 如果是最頂層或目前沒有節點，就直接加到這個層級
+    if depth <= 1 || nodes.is_empty() {
+        nodes.push(NavNode {
+            page_index,
+            children: Vec::new(),
+        });
+        return;
+    }
+
+    // 否則繼續往最後一個節點的 children 遞迴
+    if let Some(last_node) = nodes.last_mut() {
+        insert_nav_node(
+            &mut last_node.children,
+            page_index,
+            depth - 1,
+        );
+    }
+}
+
+/// 根據 pages 的 level 建立完整的導覽樹
+fn build_navigation_tree(pages: &[Page]) -> Vec<NavNode> {
+    let mut roots: Vec<NavNode> = Vec::new();
+
+    for (index, page) in pages.iter().enumerate() {
+        // clamp 確保 level 落在 1~3 之間
+        let level = page.level.clamp(1, 3);
+        insert_nav_node(
+            &mut roots,
+            index,
+            level,
+        );
+    }
+    roots
+}
+
+/// 把樹狀結構遞迴渲染成 HTML 選單
+fn render_nav_nodes(
+    nodes: &[NavNode],
+    pages: &[Page],
+    output: &mut String,        // 使用 &mut String 累積輸出
+) {
+    for node in nodes {
+        let page = &pages[node.page_index];
+
+        // 有子節點就加上 has-children class
+        if node.children.is_empty() {
+            output.push_str("<li>");
+        } else {
+            output.push_str("<li class=\"has-children\">");
+        }
+
+        // 產生連結
+        output.push_str(&format!(
+            "<a href=\"{}\">{}</a>",
+            escape_html(&page.filename),
+            escape_html(&page.title)
+        ));
+
+        // 如果有子節點，就遞迴產生 <ul>
+        if !node.children.is_empty() {
+            output.push_str("<ul class=\"dropdown\">\n");
+            render_nav_nodes(
+                &node.children,
+                pages,
+                output,
+            );
+            output.push_str("</ul>\n");
+        }
+
+        output.push_str("</li>\n");
+    }
+}
+
+/// 產生完整的導覽選單 HTML
+fn navigation_links(pages: &[Page]) -> String {
+    // 先放入固定的 Home 選項
+    let mut output = String::from(
+        r#"<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+<li class="active has-children">
+<a href="index.html">Home</a>
+<ul class="dropdown">
+<li><a href="sitemap.html">SMap</a></li>
+</ul>
+</li>
+"#,
+    );
+
+    // 建立樹狀結構並渲染
+    let tree = build_navigation_tree(pages);
+    render_nav_nodes(
+        &tree,
+        pages,
+        &mut output,
+    );
+
+    output.push_str("</ul>\n");
+    output
+}
+
+// ------------------------------------------------------------
+// HTML 頁尾
+// 回傳 &'static str（靜態生命週期的字串切片），因為內容是寫死的
+// ------------------------------------------------------------
+fn html_footer() -> &'static str {
+    r#"
+</div><!-- /tipue_search_content -->
+<div class="container">
+  <div class="row pt-3 mx-auto">
+    <p>
+      Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+      All rights reserved |
+      <i class="icon-heart" aria-hidden="true"></i>
+      by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+    </p>
+  </div>
+</div>
+</div><!-- /site-wrap -->
+<script src="../cms/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="../cms/static/chimper/js/jquery-ui.js"></script>
+<script src="../cms/static/chimper/js/popper.min.js"></script>
+<script src="../cms/static/chimper/js/bootstrap.min.js"></script>
+<script src="../cms/static/chimper/js/owl.carousel.min.js"></script>
+<script src="../cms/static/chimper/js/jquery.stellar.min.js"></script>
+<script src="../cms/static/chimper/js/jquery.countdown.min.js"></script>
+<script src="../cms/static/chimper/js/jquery.magnific-popup.min.js"></script>
+<script src="../cms/static/chimper/js/bootstrap-datepicker.min.js"></script>
+<script src="../cms/static/chimper/js/aos.js"></script>
+<script src="../cms/static/chimper/js/main.js"></script>
+</body>
+</html>
+"#
+}
+
+// ------------------------------------------------------------
+// Previous / Next 導覽列
+// Previous 靠左，Next 靠右。上方與下方共用同一個函式。
+// ------------------------------------------------------------
+fn render_previous_next(
+    index: usize,
+    pages: &[Page],
+) -> String {
+    let mut output = String::from(
+        "<nav class=\"page-navigation\" aria-label=\"Page navigation\">\n",
+    );
+
+    // 有上一頁才產生連結
+    if index > 0 {
+        let previous = &pages[index - 1];
+        output.push_str(&format!(
+            "<div class=\"previous\">\
+             &lt;&lt; <a href=\"{}\">Previous: {}</a>\
+             </div>\n",
+            escape_html(&previous.filename),
+            escape_html(&previous.title)
+        ));
+    } else {
+        // 沒有上一頁就放空的 div，保持版面整齊
+        output.push_str("<div class=\"previous\"></div>\n");
+    }
+
+    // 有下一頁才產生連結
+    if index + 1 < pages.len() {
+        let next = &pages[index + 1];
+        output.push_str(&format!(
+            "<div class=\"next\">\
+             <a href=\"{}\">Next: {}</a> &gt;&gt;\
+             </div>\n",
+            escape_html(&next.filename),
+            escape_html(&next.title)
+        ));
+    } else {
+        output.push_str("<div class=\"next\"></div>\n");
+    }
+
+    output.push_str("</nav>\n");
+    output
+}
+
+// ------------------------------------------------------------
+// 產生單一分頁的完整 HTML
+// ------------------------------------------------------------
+fn render_page(
+    index: usize,
+    pages: &[Page],
+) -> String {
+    let page = &pages[index];
+    let mut output = html_header(&page.title);
+
+    // 把導覽選單插入到預留的註解位置
+    output = output.replace(
+        "<!-- NAVIGATION_MENU_INSERTED_BY_CONVERTER -->",
+        &navigation_links(pages),
+    );
+
+    // 頁面標題
+    output.push_str(&format!(
+        "<h1>{}</h1>\n",
+        escape_html(&page.title)
+    ));
+
+    // 頁面上方：Previous 靠左，Next 靠右
+    output.push_str(&render_previous_next(index, pages));
+
+    // 原始 HTML 內容（並修正靜態資源路徑）
+    output.push_str(&fix_static_paths(&page.body));
+
+    // 頁面下方：同樣使用左右分開的導覽列
+    output.push_str(&render_previous_next(index, pages));
+
+    // 頁尾
+    output.push_str(html_footer());
+    output
+}
+
+// index.html 與第一個分頁使用完全相同的頁面內容
+fn render_index(pages: &[Page]) -> String {
+    render_page(0, pages)
+}
+
+// ------------------------------------------------------------
+// 網站地圖
+// ------------------------------------------------------------
+fn render_sitemap(pages: &[Page]) -> String {
+    let mut output = html_header("網站地圖");
+
+    output = output.replace(
+        "<!-- NAVIGATION_MENU_INSERTED_BY_CONVERTER -->",
+        &navigation_links(pages),
+    );
+
+    output.push_str("<h1>網站地圖</h1>\n<ul>\n");
+
+    // 依序輸出所有分頁連結，並帶上 level class
+    for page in pages {
+        output.push_str(&format!(
+            "<li class=\"level-{}\"><a href=\"{}\">{}</a></li>\n",
+            page.level,
+            escape_html(&page.filename),
+            escape_html(&page.title)
+        ));
+    }
+
+    output.push_str("</ul>\n");
+    output.push_str(html_footer());
+    output
+}
+
+// ------------------------------------------------------------
+// 轉換與輸出主流程
+// ------------------------------------------------------------
+fn generate(
+    input_path: &Path,      // 輸入檔案路徑（借用）
+    output_dir: &Path,      // 輸出目錄路徑（借用）
+) -> Result<(), Box<dyn Error>> {
+    println!("讀取：{}", input_path.display());
+
+    // 讀取整個檔案內容成 String
+    let input = fs::read_to_string(input_path)?;
+
+    // 解析成多個分頁
+    let pages = parse_pages(&input)?;
+
+    if pages.is_empty() {
+        return Err("沒有可產生的分頁".into());
+    }
+
+    // 建立輸出目錄（如果已存在則忽略）
+    fs::create_dir_all(output_dir)?;
+
+    // 產生 index.html
+    fs::write(
+        output_dir.join("index.html"),
+        render_index(&pages),
+    )?;
+
+    // 產生 sitemap.html
+    fs::write(
+        output_dir.join("sitemap.html"),
+        render_sitemap(&pages),
+    )?;
+
+    // 產生每個分頁，並同時建立搜尋索引
+    let mut search_pages: Vec<SearchPage> = Vec::new();
+
+    for (index, page) in pages.iter().enumerate() {
+        let output_path = output_dir.join(&page.filename);
+
+        // 寫入分頁 HTML
+        fs::write(
+            &output_path,
+            render_page(index, &pages),
+        )?;
+
+        // 加入搜尋索引
+        search_pages.push(SearchPage {
+            title: page.title.clone(),
+            text: strip_tags(&page.body)?,
+            tags: String::new(),
+            url: page.filename.clone(),
+        });
+
+        println!("產生：{}", output_path.display());
+    }
+
+    // 把搜尋索引序列化成 JSON，再包成 JavaScript 變數
+    let search_json = serde_json::to_string(&search_pages)?;
+    let search_js = format!(
+        "var tipuesearch = {{\"pages\": {}}};\n",
+        search_json
+    );
+
+    fs::write(
+        output_dir.join("tipuesearch_content.js"),
+        search_js,
+    )?;
+
+    println!("\n轉檔完成！");
+    println!("分頁數量：{}", pages.len());
+    println!("輸出目錄：{}", output_dir.display());
+
+    Ok(())
+}
+
+// ------------------------------------------------------------
+// 主程式進入點
+// ------------------------------------------------------------
+fn main() {
+    // 收集命令列參數
+    // env::args() 回傳迭代器，collect() 轉成 Vec<String>
+    let args: Vec<String> = env::args().collect();
+
+    // 如果有 --help 或 -h，就顯示使用說明後結束
+    if args.iter().any(|arg| arg == "--help" || arg == "-h") {
+        println!("CMS 靜態 HTML 轉換工具");
+        println!("用法：");
+        println!("  convert.exe");
+        println!("  convert.exe <輸入檔案> <輸出目錄>");
+        return;
+    }
+
+    // 取得輸入檔案路徑，若沒指定則使用預設值
+    // get(1) 取得第二個參數（第一個是程式本身）
+    // map 把 &String 轉成 PathBuf
+    // unwrap_or_else 在沒有參數時執行閉包產生預設路徑
+    let input = args
+        .get(1)
+        .map(PathBuf::from)
+        .unwrap_or_else(|| {
+            PathBuf::from("config").join("content.htm")
+        });
+
+    // 取得輸出目錄，若沒指定則使用 "content"
+    let output = args
+        .get(2)
+        .map(PathBuf::from)
+        .unwrap_or_else(|| PathBuf::from("content"));
+
+    // 執行轉換，若發生錯誤就印出訊息並以狀態碼 1 結束程式
+    if let Err(err) = generate(&input, &output) {
+        eprintln!("轉檔失敗：{err}");
+        std::process::exit(1);
+    }
+}

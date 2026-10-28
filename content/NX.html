@@ -1,61 +1,90 @@
-<!DOCTYPE html><html>
-        <head>
-        <title>MDialog</title>
-        <meta charset="utf-8">
-<meta property="head" content="H2">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="./../cms/static/chimper/fonts/icomoon/style.css">
-        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap.min.css">
-        <link rel="stylesheet" href="./../cms/static/chimper/css/magnific-popup.css">
-        <link rel="stylesheet" href="./../cms/static/chimper/css/jquery-ui.css">
-        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap-datepicker.css">
-        <link rel="stylesheet" href="./../cms/static/chimper/fonts/flaticon/font/flaticon.css">
-        <link rel="stylesheet" href="./../cms/static/chimper/css/aos.css">
-        <link rel="stylesheet" href="./../cms/static/chimper/css/style.css">
-        <link rel="shortcut icon" href="./../cms/static/favicons.png">
-        
-        <style type='text/css'>
-            .site-section {
-            background-color: #FFFF;
-            padding: 40px 40px;
-            }
-            body > div > div.dropdown.open {
-                display: block;
-            }
-        </style>
-    
-        <!-- <script src="./../cms/static/jquery.js"></script> -->
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-        <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script>
-        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/normalize.min.css">
-        <script src="./../cms/static/tipuesearch/tipuesearch_set.js"></script>
-        <script src="tipuesearch_content.js"></script>
-        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/tipuesearch.css">
-        <script src="./../cms/static/tipuesearch/tipuesearch.js"></script>
-        <!-- for Wink3 客製化關閉 -->
-        <!--
-        <link rel="stylesheet" type="text/css" href="./../cms/static/winkPlayer.css" />
-        <script type="text/javascript" src="./../cms/static/winkPlayer.js"></script>
-        -->
-        <script>
-            /* original tipuesearch
-            $(document).ready(function() {
-                 $('#tipue_search_input').tipuesearch();
-            });
-            */
-            // customed doSearch
-            function doSearch() {
-                $('#tipue_search_input').tipuesearch({
-                    newWindow: true, 
-                    minimumLength: 2,
-                    wholeWords: false, // for search 中文
-                });
-            }
-            $(document).ready(doSearch);
-        </script>
-        
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta property="head" content="H1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>NX</title>
+
+<link rel="stylesheet" href="./../cms/static/chimper/fonts/icomoon/style.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap.min.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/magnific-popup.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/jquery-ui.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/owl.carousel.min.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="./../cms/static/chimper/fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/aos.css">
+<link rel="stylesheet" href="./../cms/static/chimper/css/style.css">
+<link rel="shortcut icon" href="./../cms/static/favicons.png">
+
+<style type="text/css">
+.site-section { background-color: #FFFF; padding: 40px 40px; }
+body > div > div.dropdown.open { display: block; }
+img.add_border { border: 3px solid blue; }
+
+.page-navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 20px;
+    margin: 24px 0;
+    padding: 12px 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.page-navigation .previous {
+    flex: 1 1 50%;
+    min-width: 0;
+    margin-right: auto;
+    text-align: left;
+}
+
+.page-navigation .next {
+    flex: 1 1 50%;
+    min-width: 0;
+    margin-left: auto;
+    text-align: right;
+}
+
+.page-navigation a {
+    display: inline-block;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.page-navigation a:hover {
+    text-decoration: underline;
+}
+</style>
+
+<script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="./../cms/static/tipuesearch/css/normalize.min.css">
+<script src="./../cms/static/tipuesearch/tipuesearch_set.js"></script>
+<script src="tipuesearch_content.js"></script>
+<link rel="stylesheet" href="./../cms/static/tipuesearch/css/tipuesearch.css">
+<script src="./../cms/static/tipuesearch/tipuesearch.js"></script>
+
+<script>
+function doSearch() {
+    if (window.jQuery && jQuery.fn.tipuesearch) {
+        jQuery('#tipue_search_input').tipuesearch({
+            newWindow: true,
+            minimumLength: 2,
+            wholeWords: false
+        });
+    }
+}
+
+if (window.jQuery) {
+    jQuery(document).ready(doSearch);
+}
+</script>
+
 <script type="text/javascript" src="./../cms/static/syntaxhighlighter/shCore.js"></script>
 <script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushBash.js"></script>
 <script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDiff.js"></script>
@@ -75,73 +104,162 @@
 <script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCSharp.js"></script>
 <script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDart.js"></script>
 <script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushRust.js"></script>
-<link type="text/css" rel="stylesheet" href="./../cms/static/syntaxhighlighter/css/shCoreDefault.css"/>
-<script type="text/javascript">SyntaxHighlighter.all();</script>
-<!-- 暫時不用
-<script src="./../cms/static/fengari-web.js"></script>
-<script type="text/javascript" src="./../cms/static/Cango-13v08-min.js"></script>
-<script type="text/javascript" src="./../cms/static/CangoAxes-4v01-min.js"></script>
-<script type="text/javascript" src="./../cms/static/gearUtils-05.js"></script>
--->
-<!-- for Brython 暫時不用
-<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
-<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
--->
-<style>
-img.add_border {
-    border: 3px solid blue;
-}
-</style>
-
+<link type="text/css" rel="stylesheet" href="./../cms/static/syntaxhighlighter/css/shCoreDefault.css">
+<script>if (window.SyntaxHighlighter) SyntaxHighlighter.all();</script>
 </head>
+
 <body>
-<div class='container'><nav>
-        
-    <div class="site-wrap">
+<div class="container">
+<div class="site-wrap">
 
-    <div class="site-mobile-menu">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
+<div class="site-mobile-menu">
+  <div class="site-mobile-menu-header">
+    <div class="site-mobile-menu-close mt-3">
+      <span class="icon-close2 js-menu-toggle"></span>
     </div>
-    
-            <header class="site-navbar py-4 bg-white" role="banner">
-              <div class="container">
-                <div class="row align-items-center">
-                <h1>Dialog</h1>
-                <div class="pl-4">
-                    <form>
-                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
-                    </form>
-                </div>
-                  <!-- <div class="col-11 col-xl-2">
-                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">Dialog</a></h1> 
-                  </div>
-                  -->
-                  <div class="col-12 col-md-10 d-none d-xl-block">
-                    <nav class="site-navigation position-relative text-right" role="navigation">
-    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
-                        <li class="active has-children"><a href="index.html">Home</a>
-                        <ul class="dropdown">
-                            <li><a href="sitemap.html">SMap</a></li>
-                            <li><a href="./../blog/index.html">blog</a></li>
-                        </ul>
-                      </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='老年人和棒子.html'>老年人和棒子</a><li><a href='川口塔峰.html'>川口塔峰</a><li><a href='幸福之路.html'>幸福之路</a><li class='has-children'><a href='AI.html'>AI</a><ul class='dropdown'><li><a href='產品未來.html'>產品未來</a></li></ul><li><a href='Windows.html'>Windows</a><li><a href='Solvespace.html'>Solvespace</a><li><a href='Truck.html'>Truck</a><li><a href='usd-brep.html'>usd-brep</a><li><a href='Meshtastic.html'>Meshtastic</a><li><a href='LLM.html'>LLM</a></li></ul><li class='has-children'><a href='CMS.html'>CMS</a><ul class='dropdown'><li class='has-children'><a href='Python.html'>Python</a><ul class='dropdown'><li><a href='Converter.html'>Converter</a></li></ul><li><a href='PP.html'>PP</a><li><a href='git.html'>git</a><li class='has-children'><a href='Mojo.html'>Mojo</a><ul class='dropdown'><li><a href='WSL.html'>WSL</a></li></ul><li><a href='ffmpeq.html'>ffmpeq</a></li></ul><li class='has-children'><a href='Dialog.html'>Dialog</a><ul class='dropdown'><li><a href='中國史.html'>中國史</a><li><a href='Plato.html'>Plato</a><li><a href='Locke.html'>Locke</a><li><a href='PPE.html'>PPE</a><li><a href='孟子.html'>孟子</a><li><a href='Woodruff.html'>Woodruff</a><li><a href='Keats.html'>Keats</a><li><a href='Weingartner.html'>Weingartner</a><li><a href='Shaw.html'>Shaw</a><li><a href='White.html'>White</a><li><a href='宋美齡.html'>宋美齡</a></li></ul><li class='has-children'><a href='CAD.html'>CAD</a><ul class='dropdown'><li class='has-children'><a href='SolidCraft.html'>SolidCraft</a><ul class='dropdown'><li><a href='MCP.html'>MCP</a><li><a href='Rust.html'>Rust</a></li></ul><li><a href='NX.html'>NX</a><li class='has-children'><a href='NX2512.html'>NX2512</a><ul class='dropdown'><li><a href='docs.html'>docs</a></li></ul><li><a href='NX2312.html'>NX2312</a><li class='has-children'><a href='NX3.html'>NX3</a><ul class='dropdown'><li><a href='ugopen.html'>ugopen</a><li><a href='NX3_hints.html'>NX3_hints</a><li><a href='DPV.html'>DPV</a><li><a href='Datum.html'>Datum</a><li><a href='PDD.html'>PDD</a><li><a href='AC.html'>AC</a><li><a href='SS.html'>SS</a></li></ul><li><a href='Open C.html'>Open C</a><li><a href='Robotics.html'>Robotics</a></li></ul><li class='has-children'><a href='Ender-3.html'>Ender-3</a><ul class='dropdown'><li><a href='手電筒架.html'>手電筒架</a><li><a href='洞洞板.html'>洞洞板</a><li><a href='桌邊掛勾.html'>桌邊掛勾</a><li><a href='Nut.html'>Nut</a><li class='has-children'><a href='STEM.html'>STEM</a><ul class='dropdown'><li><a href='Math.html'>Math</a><li><a href='Snap Circuits.html'>Snap Circuits</a></li></ul><li><a href='Speaker.html'>Speaker</a></li></ul><li class='has-children'><a href='EE.html'>EE</a><ul class='dropdown'><li><a href='ESP32.html'>ESP32</a></li></ul><li><a href='Prog.html'>Prog</a><li><a href='Stocks.html'>Stocks</a></li>
-                      </ul>
-                </nav>
-              </div>
-              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
-              </div>
+  </div>
+  <div class="site-mobile-menu-body"></div>
+</div>
 
-            </div>
-          </div>
-          
-        </header>
-    <div id="tipue_search_content">Rust << <a href='Rust.html'>Previous</a> <a href='NX2512.html'>Next</a> >> NX2512<br /><h1>NX</h1>
+<header class="site-navbar py-4 bg-white" role="banner">
+  <div class="container">
+    <div class="row align-items-center">
+      <h1>Dialog</h1>
+
+      <div class="pl-4">
+        <form action="#" onsubmit="return false;">
+          <input type="text"
+                 placeholder="Search"
+                 name="q"
+                 id="tipue_search_input"
+                 pattern=".{2,}"
+                 title="At least 2 characters">
+        </form>
+      </div>
+
+      <div class="col-12 col-md-10 d-none d-xl-block">
+        <nav class="site-navigation position-relative text-right" role="navigation">
+          <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+<li class="active has-children">
+<a href="index.html">Home</a>
+<ul class="dropdown">
+<li><a href="sitemap.html">SMap</a></li>
+</ul>
+</li>
+<li class="has-children"><a href="About.html">About</a><ul class="dropdown">
+<li><a href="老年人和棒子.html">老年人和棒子</a></li>
+<li><a href="川口塔峰.html">川口塔峰</a></li>
+<li><a href="幸福之路.html">幸福之路</a></li>
+<li class="has-children"><a href="AI.html">AI</a><ul class="dropdown">
+<li><a href="產品未來.html">產品未來</a></li>
+</ul>
+</li>
+<li><a href="Windows.html">Windows</a></li>
+<li><a href="Solvespace.html">Solvespace</a></li>
+<li><a href="Truck.html">Truck</a></li>
+<li><a href="usd-brep.html">usd-brep</a></li>
+<li><a href="Meshtastic.html">Meshtastic</a></li>
+<li><a href="LLM.html">LLM</a></li>
+</ul>
+</li>
+<li class="has-children"><a href="CMS.html">CMS</a><ul class="dropdown">
+<li class="has-children"><a href="Python.html">Python</a><ul class="dropdown">
+<li><a href="Converter.html">Converter</a></li>
+</ul>
+</li>
+<li><a href="PP.html">PP</a></li>
+<li><a href="git.html">git</a></li>
+<li class="has-children"><a href="Mojo.html">Mojo</a><ul class="dropdown">
+<li><a href="WSL.html">WSL</a></li>
+</ul>
+</li>
+<li><a href="ffmpeq.html">ffmpeq</a></li>
+</ul>
+</li>
+<li class="has-children"><a href="Dialog.html">Dialog</a><ul class="dropdown">
+<li><a href="中國史.html">中國史</a></li>
+<li><a href="Plato.html">Plato</a></li>
+<li><a href="Locke.html">Locke</a></li>
+<li><a href="PPE.html">PPE</a></li>
+<li><a href="孟子.html">孟子</a></li>
+<li><a href="Woodruff.html">Woodruff</a></li>
+<li><a href="Keats.html">Keats</a></li>
+<li><a href="Weingartner.html">Weingartner</a></li>
+<li><a href="Shaw.html">Shaw</a></li>
+<li><a href="White.html">White</a></li>
+<li><a href="宋美齡.html">宋美齡</a></li>
+</ul>
+</li>
+<li class="has-children"><a href="CAD.html">CAD</a><ul class="dropdown">
+<li class="has-children"><a href="SolidCraft.html">SolidCraft</a><ul class="dropdown">
+<li><a href="MCP.html">MCP</a></li>
+<li><a href="Rust.html">Rust</a></li>
+</ul>
+</li>
+<li><a href="NX.html">NX</a></li>
+<li class="has-children"><a href="NX2512.html">NX2512</a><ul class="dropdown">
+<li><a href="docs.html">docs</a></li>
+</ul>
+</li>
+<li><a href="NX2312.html">NX2312</a></li>
+<li class="has-children"><a href="NX3.html">NX3</a><ul class="dropdown">
+<li><a href="ugopen.html">ugopen</a></li>
+<li><a href="NX3_hints.html">NX3_hints</a></li>
+<li><a href="DPV.html">DPV</a></li>
+<li><a href="Datum.html">Datum</a></li>
+<li><a href="PDD.html">PDD</a></li>
+<li><a href="AC.html">AC</a></li>
+<li><a href="SS.html">SS</a></li>
+</ul>
+</li>
+<li><a href="Open C.html">Open C</a></li>
+<li><a href="Robotics.html">Robotics</a></li>
+</ul>
+</li>
+<li class="has-children"><a href="Ender-3.html">Ender-3</a><ul class="dropdown">
+<li><a href="手電筒架.html">手電筒架</a></li>
+<li><a href="洞洞板.html">洞洞板</a></li>
+<li><a href="桌邊掛勾.html">桌邊掛勾</a></li>
+<li><a href="Nut.html">Nut</a></li>
+<li class="has-children"><a href="STEM.html">STEM</a><ul class="dropdown">
+<li><a href="Math.html">Math</a></li>
+<li><a href="Snap Circuits.html">Snap Circuits</a></li>
+</ul>
+</li>
+<li><a href="Speaker.html">Speaker</a></li>
+</ul>
+</li>
+<li class="has-children"><a href="EE.html">EE</a><ul class="dropdown">
+<li><a href="ESP32.html">ESP32</a></li>
+</ul>
+</li>
+<li class="has-children"><a href="Prog.html">Prog</a><ul class="dropdown">
+<li><a href="Rustcms.html">Rustcms</a></li>
+</ul>
+</li>
+<li><a href="Stocks.html">Stocks</a></li>
+</ul>
+
+        </nav>
+      </div>
+
+      <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3"
+           style="position: relative; top: 3px;">
+        <a href="#" class="site-menu-toggle js-menu-toggle text-black">
+          <span class="icon-menu h3"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div id="tipue_search_content">
+<h1>NX</h1>
+<nav class="page-navigation" aria-label="Page navigation">
+<div class="previous">&lt;&lt; <a href="Rust.html">Previous: Rust</a></div>
+<div class="next"><a href="NX2512.html">Next: NX2512</a> &gt;&gt;</div>
+</nav>
+
 <p>摘要<br/><br/>早期的 Unigraphics（UG）至中期的 I-DEAS、中後期的 NX，再至 2026 年 Designcenter 的演進，是一條由數值控制（Numerical Control, NC）、電腦輔助製造（Computer-Aided Manufacturing, CAM）、電腦輔助設計（Computer-Aided Design, CAD）、電腦輔助工程（Computer-Aided Engineering, CAE）、產品資料管理（Product Data Management, PDM）逐步整合至產品生命週期管理（Product Lifecycle Management, PLM），並進一步向數位主線（Digital Thread）、雲端工程（Cloud Engineering）與人工智慧輔助工程（AI-assisted Engineering）延伸的技術發展歷程。<br/><br/>此一技術血統可追溯至 1960 年代 United Computing 所發展之 APT/UNIAPT 技術，1970 年代形成 UNI-GRAPHICS，1976 年進入 McDonnell Douglas 體系；1990 年代進入 EDS 時代；2001 年 EDS 將 UGS 與 SDRC 納入同一 PLM 組織，促成 Unigraphics 與 I-DEAS 技術整合；2002 年正式推出 NX；2007 年 Siemens 收購 UGS；2019 年導入 Continuous Release；2022 年改採年份與月份作為版本標識；2025 年將 NX 納入 Designcenter 品牌；2026 年 6 月進一步以 Designcenter 2606 作為統一產品名稱。</p>
 <p>從技術史角度觀察，這條演進路徑的核心是產品資訊的數位化邊界持續擴張：由幾何描述擴張至產品結構，由產品結構擴張至工程分析與製造，再由工程資料擴張至整個產品生命週期，最終形成設計、模擬、製造、資料管理、協作、雲端與 AI 相互連接的工程平台。</p>
 <p>一、研究範圍與歷史定位<br/><br/>現代 Designcenter 的技術來源具有多重企業與產品血統，其中最重要者包括 United Computing、Unigraphics、McDonnell Douglas、EDS、UGS、SDRC、I-DEAS 以及 Siemens。</p>
@@ -175,54 +293,36 @@ img.add_border {
 <p><img alt="" height="356" src="./../images/NX_releases.png" width="400"/><br/><br/>產品名稱的演進本身具有一定研究價值。<br/><br/>早期：<br/><br/>UNI-GRAPHICS<br/><br/>強調圖形與工程幾何。<br/><br/>之後：<br/><br/>Unigraphics<br/><br/>形成完整 CAD/CAM 品牌。<br/><br/>2002：<br/><br/>Unigraphics NX<br/><br/>代表 New Generation。<br/><br/>之後：<br/><br/>NX<br/><br/>逐漸成為獨立 CAD/CAM/CAE 品牌。<br/><br/>2007 後：<br/><br/>Siemens NX<br/><br/>反映 Siemens 企業體系。<br/><br/>2019：<br/><br/>NX Continuous Release<br/><br/>反映軟體生命週期模式變化。<br/><br/>2022：<br/><br/>NX 2206<br/><br/>反映持續發布的時間型版本。<br/><br/>2025：<br/><br/>Designcenter NX<br/><br/>反映平台化品牌。<br/><br/>2026：<br/><br/>Designcenter 2606<br/><br/>則代表 NX 技術進一步被置於更高層級的 Designcenter 平台品牌之下。<br/><br/>因此，品牌演進實際上反映了產品定位的逐步提升：<br/><br/>CAD Application → CAD/CAM Platform → Product Engineering Platform → Digital Engineering Environment。</p>
 <p>二十四、2026 年的 Designcenter 應如何定位<br/><br/>截至 2026 年，較適合將 Designcenter 理解為：<br/><br/>一個以產品設計與工程為核心，逐漸整合桌面 CAD、雲端工程、協作、資料管理、模擬、製造與 AI 能力的工程平台品牌。<br/><br/>此定位與早期「CAD 軟體」具有明顯差異。<br/><br/>其核心技術方向可概括為：<br/><br/>Geometry<br/><br/>↓<br/><br/>Parametric / Direct Modeling<br/><br/>↓<br/><br/>Product Definition<br/><br/>↓<br/><br/>CAD/CAM/CAE Integration<br/><br/>↓<br/><br/>PLM<br/><br/>↓<br/><br/>Digital Thread<br/><br/>↓<br/><br/>Cloud Engineering<br/><br/>↓<br/><br/>AI-assisted Engineering<br/><br/>這條路徑正是六十年以上工程軟體發展的核心脈絡。</p>
 <p>二十五、結論<br/><br/>從 1960 年代 United Computing 的 NC/APT 技術，到 1970 年代 UNI-GRAPHICS；從 McDonnell Douglas 時代的 Unigraphics，到 EDS/UGS 時代；從 SDRC I-DEAS 與 Unigraphics 的整合，到 2002 年 NX 的建立；再經 Siemens 於 2007 年取得 UGS、2019 年 Continuous Release、2022 年時間型版本命名、2025 年 Designcenter NX，以及 2026 年 Designcenter 2606，整條技術演進可以視為一個持續提高「產品數位化抽象層級」的過程。<br/><br/>其最早期的核心問題是：<br/><br/>如何以電腦描述幾何與加工。<br/><br/>其後轉變為：<br/><br/>如何建立具有設計意圖的三維產品模型。<br/><br/>再進一步：<br/><br/>如何整合設計、分析與製造。<br/><br/>之後：<br/><br/>如何管理完整產品資料與生命週期。<br/><br/>而 2026 年的主要問題則逐漸轉變為：<br/><br/>如何使產品資料、工程流程、模擬、製造、協作、雲端與人工智慧形成連續的數位工程環境。<br/><br/>因此，從技術史觀點而言，「UG → NX → Designcenter」是 CAD 軟體由幾何工具逐步演化為產品工程基礎設施（Product Engineering Infrastructure） 的一個具代表性的案例。<br/><br/>其中最值得注意的歷史事實，是 Unigraphics 的製造工程血統、I-DEAS 的 CAD/CAE/PDM 技術、EDS/UGS 的 PLM 戰略，以及 Siemens 的工業數位化戰略，最終在 Designcenter 時代逐漸匯合。<br/><br/>總之 2026 年的 Designcenter 從早期 Unigraphics 套件，逐步將數十年間累積的 CAD、CAM、CAE、PDM、PLM、Digital Thread、Cloud Engineering 與 AI Engineering 等技術，重新置於一個更高層級產品工程架構之下，未來可望有更令人期待的發展。</p>
-<br />Rust << <a href='Rust.html'>Previous</a> <a href='NX2512.html'>Next</a> >> NX2512</div>
-        
-    <!-- footer -->
-      <div class="container">
-        <div class="row pt-3 mx-auto">
-            <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-        </div>
-      </div>
-    <!-- for footer -->
-    
-        </div> <!-- for site wrap -->
-            <!-- <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script> -->
-            <script src="../cms/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
-            <script src="../cms/static/chimper/js/jquery-ui.js"></script>
-            <script src="../cms/static/chimper/js/popper.min.js"></script>
-            <script src="../cms/static/chimper/js/bootstrap.min.js"></script>
-            <script src="../cms/static/chimper/js/owl.carousel.min.js"></script>
-            <script src="../cms/static/chimper/js/jquery.stellar.min.js"></script>
-            <script src="../cms/static/chimper/js/jquery.countdown.min.js"></script>
-            <script src="../cms/static/chimper/js/jquery.magnific-popup.min.js"></script>
-            <script src="../cms/static/chimper/js/bootstrap-datepicker.min.js"></script>
-            <script src="../cms/static/chimper/js/aos.js"></script>
-            <!--
-            <script src="../cms/static/chimper/js/typed.js"></script>
-                    <script>
-                    var typed = new Typed('.typed-words', {
-                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
-                    typeSpeed: 80,
-                    backSpeed: 80,
-                    backDelay: 4000,
-                    startDelay: 1000,
-                    loop: true,
-                    showCursor: true
-                    });
-                    </script>
-            -->
-            <script src="../cms/static/chimper/js/main.js"></script>
-        
-<!-- 啟用 LaTeX equations 編輯 -->
-  <!-- <script>
-  MathJax = {
-    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
-  };
-  </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
-    </body></html>
-        
+<nav class="page-navigation" aria-label="Page navigation">
+<div class="previous">&lt;&lt; <a href="Rust.html">Previous: Rust</a></div>
+<div class="next"><a href="NX2512.html">Next: NX2512</a> &gt;&gt;</div>
+</nav>
+
+</div><!-- /tipue_search_content -->
+
+<div class="container">
+  <div class="row pt-3 mx-auto">
+    <p>
+      Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+      All rights reserved |
+      <i class="icon-heart" aria-hidden="true"></i>
+      by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+    </p>
+  </div>
+</div>
+
+</div><!-- /site-wrap -->
+
+<script src="../cms/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="../cms/static/chimper/js/jquery-ui.js"></script>
+<script src="../cms/static/chimper/js/popper.min.js"></script>
+<script src="../cms/static/chimper/js/bootstrap.min.js"></script>
+<script src="../cms/static/chimper/js/owl.carousel.min.js"></script>
+<script src="../cms/static/chimper/js/jquery.stellar.min.js"></script>
+<script src="../cms/static/chimper/js/jquery.countdown.min.js"></script>
+<script src="../cms/static/chimper/js/jquery.magnific-popup.min.js"></script>
+<script src="../cms/static/chimper/js/bootstrap-datepicker.min.js"></script>
+<script src="../cms/static/chimper/js/aos.js"></script>
+<script src="../cms/static/chimper/js/main.js"></script>
+</body>
+</html>
