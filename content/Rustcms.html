@@ -260,9 +260,12 @@ if (window.jQuery) {
 <div class="next"><a href="Stocks.html">Next: Stocks</a> &gt;&gt;</div>
 </nav>
 
+<p>目前 cms (即是先前的 cmsimde 去除 reveal.js 之後的版本) 最大的瓶頸是將動態網頁轉為靜態網頁，當頁面內容逐步增加後，轉靜態檔案需時甚久，因此在全面將 cms 用 Rust 改寫之前，先用 Rust 改寫 convert 功能。</p>
+<hr/>
 <p>利用 Portable_rust 改寫 <a href="https://github.com/mdecycu/cms.git">cms</a> 是逐漸將程式碼的編寫，從 Python 轉向 Rust 的一種嘗試。</p>
 <p>此時的 Portable_rust 仍然帶著 Python，仍用舊版的 cms 編寫網站內容，但從動態網頁轉為靜態網頁，希望能改用 Rust 執行，所得到的好處是: 轉檔速度快了許多。</p>
 <p>開發用的 IDE 仍然使用 Leo Editor:</p>
+<p><img alt="" height="172" src="./../images/leo_editor_rust_convert.png" width="300"/></p>
 <p>importer:</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">@language python
 '''Recursively import all python files in a directory and clean the result.'''
