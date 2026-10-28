@@ -261,7 +261,81 @@ if (window.jQuery) {
 </nav>
 
 <p>利用 Portable_rust 改寫 <a href="https://github.com/mdecycu/cms.git">cms</a> 是逐漸將程式碼的編寫，從 Python 轉向 Rust 的一種嘗試。</p>
-<p>此時的 Portable_rust 仍然帶著 Python，仍用舊版的 cms 編寫網站內容，但從動態網頁轉為靜態網頁，希望能改用 Rust 執行。</p><nav class="page-navigation" aria-label="Page navigation">
+<p>此時的 Portable_rust 仍然帶著 Python，仍用舊版的 cms 編寫網站內容，但從動態網頁轉為靜態網頁，希望能改用 Rust 執行，所得到的好處是: 轉檔速度快了許多。</p>
+<p>開發用的 IDE 仍然使用 Leo Editor:</p>
+<p>importer:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">@language python
+'''Recursively import all python files in a directory and clean the result.'''
+# ctrl + b to execute
+ 
+c.recursiveImport(
+    dir_ = r'./',
+    kind = '@clean', # The new best practice.
+    safe_at_file = False,
+    theTypes = ['.rs']
+)</pre>
+<p>cargo build button:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">@language python
+
+import subprocess
+
+subprocess.Popen(
+    ["cmd.exe", "/c", "cargo build"],
+    creationflags=subprocess.CREATE_NEW_CONSOLE
+)
+g.es("cargo build 執行完畢")</pre>
+<p>更換目錄執行 cargo build:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">@language python
+
+import subprocess
+
+subprocess.Popen(
+    ["cmd.exe", "/c", "cd convert &amp;&amp; cargo build"],
+    creationflags=subprocess.CREATE_NEW_CONSOLE
+)
+g.es("convert cargo build 執行完畢")</pre>
+<p>convert method 寫法:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">@app.route('/convert')
+def convert():
+
+    """Action to convert config/content.htm to static pages of content.
+    """
+
+    if not isAdmin():
+        return redirect("/login")
+    try:
+        result = subprocess.run(
+            ["convert.exe"],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=300
+        )
+        outstring = (
+            result.stdout
+            + ("\n" if result.stdout and result.stderr else "")
+            + result.stderr
+        )
+
+        if result.returncode == 0:
+            outstring = "convert 執行成功\n" + outstring
+        else:
+            outstring = (
+                f"convert 執行失敗，結束代碼：{result.returncode}\n"
+                + outstring
+            )
+
+    except subprocess.TimeoutExpired:
+        outstring = "convert 執行逾時（300 秒）"
+    except OSError as e:
+        outstring = f"無法執行 convert.exe：{e}"
+
+    return Response(
+        outstring,
+        content_type="text/plain; charset=utf-8"
+    )</pre>
+<p></p><nav class="page-navigation" aria-label="Page navigation">
 <div class="previous">&lt;&lt; <a href="Prog.html">Previous: Prog</a></div>
 <div class="next"><a href="Stocks.html">Next: Stocks</a> &gt;&gt;</div>
 </nav>

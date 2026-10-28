@@ -3334,6 +3334,47 @@ subprocess.Popen(
     creationflags=subprocess.CREATE_NEW_CONSOLE
 )
 g.es("convert cargo build 執行完畢")</pre>
+<p>convert method 寫法:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">@app.route('/convert')
+def convert():
+
+    """Action to convert config/content.htm to static pages of content.
+    """
+
+    if not isAdmin():
+        return redirect("/login")
+    try:
+        result = subprocess.run(
+            ["convert.exe"],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=300
+        )
+        outstring = (
+            result.stdout
+            + ("\n" if result.stdout and result.stderr else "")
+            + result.stderr
+        )
+
+        if result.returncode == 0:
+            outstring = "convert 執行成功\n" + outstring
+        else:
+            outstring = (
+                f"convert 執行失敗，結束代碼：{result.returncode}\n"
+                + outstring
+            )
+
+    except subprocess.TimeoutExpired:
+        outstring = "convert 執行逾時（300 秒）"
+    except OSError as e:
+        outstring = f"無法執行 convert.exe：{e}"
+
+    return Response(
+        outstring,
+        content_type="text/plain; charset=utf-8"
+    )</pre>
 <p></p><h1>Stocks</h1>
 <p>原始市場資料：TWSE 直接提供，例如開盤價、最高價、最低價、收盤價、成交量。<br/><br/>Python 計算出的衍生欄位：例如 return_20d、volatility_20d、volume_ratio、future_return_5d。這些不是交易所直接公布的數字，而是根據原始資料計算出來的研究特徵。</p>
 <p><a href="/downloads/python_get_stock_data.7z">python_get_stock_data.7z</a></p>
