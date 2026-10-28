@@ -1361,7 +1361,8 @@ mojo build main.mojo -o my_app
 <p>另一個值得注意的是 <a href="https://github.com/bherbruck/solidcore">https://github.com/bherbruck/solidcore</a> 正在用 Rust 改寫剛開源的 <a href="https://github.com/NVIDIA-Omniverse/usd-brep">https://github.com/NVIDIA-Omniverse/usd-brep</a>。最後，SolidCraft 將會從 truck 轉而採用較為成熟的 <a href="https://github.com/bherbruck/solidcore">Solidcore</a> 作為核心。</p>
 <p><a href="https://github.com/bherbruck/solidcore">Solidcore</a> 是將 NVIDIA 開源的 <a href="https://github.com/NVIDIA-Omniverse/usd-brep">SMLib</a> 改寫為 Rust。<a href="https://github.com/NVIDIA-Omniverse/usd-brep">SMLib</a> 本身是一款累積數十年的商業級幾何內核，擁有極為強大且經過市場驗證的 <a href="https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline">NURBS</a> 數學運算、交集判定與曲面修復（Healing）能力。它能輕易實現 <a href="https://github.com/ricosjp/truck">truck</a> 無法穩定處理的圓角與倒角（Fillets &amp; Chamfers）、偏移與抽殼（Offset &amp; Shelling）、掃掠（Sweep）等高級 CAD 實體建模功能。</p>
 <p>以下 Rover 取自 <a href="https://github.com/0xlillith/solidcraft-rover">https://github.com/0xlillith/solidcraft-rover</a>， SolidCraft 0.20.0 版不僅能用來建立數十個零件的設計繪圖。也已經可以快速開啟帶有 504 個零組件的 <a href="https://www.printables.com/model/1520471-prusa-core-one-full-cad-assembly/files">3D 列印機組合件 STEP 檔案</a>。</p>
-<p><img alt="" height="304" src="/images/rover_in_solidcraft.png" width="400"/></p><h3>MCP</h3>
+<p><img alt="" height="304" src="/images/rover_in_solidcraft.png" width="400"/></p>
+<h3>MCP</h3>
 <p><a href="https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro">MCP</a>（Model Context Protocol，模型上下文協定） 的誕生，為 AI 模型連接外部軟體與調用工具建立了標準化的橋樑。這項協定的普及，正快速顛覆 MCAD（機械電腦輔助設計） 領域。在 MCP 的驅使下，未來由 AI 全權主導並執行 CAD/CAE/CAM/PLM 的跨軟體協同與虛實整合流程，已從科技幻想轉變為完全可行的現實。</p>
 <p>洞察到這一波「AI 驅動工業設計」的歷史性轉折，NVIDIA 在 2026 年 10 月初拋出震撼彈：將其於 2022 年收購的頂級商業幾何內核 SMLib，正式封裝於全新的 USD BRep 程式庫中，並以極度寬鬆的 Apache 2.0 協議全面開源。NVIDIA 此舉背後的深層商業策略如下：</p>
 <p>一、將 <a href="https://www.nvidia.com/en-us/glossary/openusd/">OpenUSD</a> 生態從「純視覺」推向「精確製造」:</p>
@@ -1436,7 +1437,8 @@ pacman -S --needed mingw-w64-ucrt-x86_64-toolchain</pre>
 <hr/>
 <p>利用 SciTE 開發 Rust 程式的兩個設定檔案:</p>
 <p style="padding-left: 30px;"><a href="/downloads/rust.properties">rust.properties</a></p>
-<p style="padding-left: 30px;"><a href="/downloads/SciTEUser.properties">SciTEUser.properties</a></p><h2>NX</h2>
+<p style="padding-left: 30px;"><a href="/downloads/SciTEUser.properties">SciTEUser.properties</a></p>
+<h2>NX</h2>
 <p>摘要<br/><br/>早期的 Unigraphics（UG）至中期的 I-DEAS、中後期的 NX，再至 2026 年 Designcenter 的演進，是一條由數值控制（Numerical Control, NC）、電腦輔助製造（Computer-Aided Manufacturing, CAM）、電腦輔助設計（Computer-Aided Design, CAD）、電腦輔助工程（Computer-Aided Engineering, CAE）、產品資料管理（Product Data Management, PDM）逐步整合至產品生命週期管理（Product Lifecycle Management, PLM），並進一步向數位主線（Digital Thread）、雲端工程（Cloud Engineering）與人工智慧輔助工程（AI-assisted Engineering）延伸的技術發展歷程。<br/><br/>此一技術血統可追溯至 1960 年代 United Computing 所發展之 APT/UNIAPT 技術，1970 年代形成 UNI-GRAPHICS，1976 年進入 McDonnell Douglas 體系；1990 年代進入 EDS 時代；2001 年 EDS 將 UGS 與 SDRC 納入同一 PLM 組織，促成 Unigraphics 與 I-DEAS 技術整合；2002 年正式推出 NX；2007 年 Siemens 收購 UGS；2019 年導入 Continuous Release；2022 年改採年份與月份作為版本標識；2025 年將 NX 納入 Designcenter 品牌；2026 年 6 月進一步以 Designcenter 2606 作為統一產品名稱。</p>
 <p>從技術史角度觀察，這條演進路徑的核心是產品資訊的數位化邊界持續擴張：由幾何描述擴張至產品結構，由產品結構擴張至工程分析與製造，再由工程資料擴張至整個產品生命週期，最終形成設計、模擬、製造、資料管理、協作、雲端與 AI 相互連接的工程平台。</p>
 <p>一、研究範圍與歷史定位<br/><br/>現代 Designcenter 的技術來源具有多重企業與產品血統，其中最重要者包括 United Computing、Unigraphics、McDonnell Douglas、EDS、UGS、SDRC、I-DEAS 以及 Siemens。</p>
@@ -3298,7 +3300,8 @@ sys.stderr = JsWriter()
   }
 }
 </script>
-</p><h2>Rustcms</h2>
+</p>
+<h2>Rustcms</h2>
 <p>目前 cms (即是先前的 cmsimde 去除 reveal.js 之後的版本) 最大的瓶頸是將動態網頁轉為靜態網頁，當頁面內容逐步增加後，轉靜態檔案需時甚久，因此在全面將 cms 用 Rust 改寫之前，先用 Rust 改寫 convert 功能。</p>
 <hr/>
 <p>利用 Portable_rust 改寫 <a href="https://github.com/mdecycu/cms.git">cms</a> 是逐漸將程式碼的編寫，從 Python 轉向 Rust 的一種嘗試。</p>
@@ -3377,7 +3380,8 @@ def convert():
         outstring,
         content_type="text/plain; charset=utf-8"
     )</pre>
-<p></p><h1>Stocks</h1>
+<p></p>
+<h1>Stocks</h1>
 <p>原始市場資料：TWSE 直接提供，例如開盤價、最高價、最低價、收盤價、成交量。<br/><br/>Python 計算出的衍生欄位：例如 return_20d、volatility_20d、volume_ratio、future_return_5d。這些不是交易所直接公布的數字，而是根據原始資料計算出來的研究特徵。</p>
 <p><a href="/downloads/python_get_stock_data.7z">python_get_stock_data.7z</a></p>
 <p>Date: 交易日</p>
