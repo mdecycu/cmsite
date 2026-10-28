@@ -316,13 +316,13 @@ def convert():
             timeout=300
         )
         outstring = (
-            result.stdout
-            + ("\n" if result.stdout and result.stderr else "")
+            result.stdout.replace("\n", "&lt;br&gt;")
+            + ("&lt;br&gt;" if result.stdout and result.stderr else "")
             + result.stderr
         )
 
         if result.returncode == 0:
-            outstring = "convert 執行成功\n" + outstring
+            outstring = "convert 執行成功&lt;br&gt;" + outstring
         else:
             outstring = (
                 f"convert 執行失敗，結束代碼：{result.returncode}\n"
@@ -334,12 +334,16 @@ def convert():
     except OSError as e:
         outstring = f"無法執行 convert.exe：{e}"
 
-    return Response(
+    """return Response(
         outstring,
         content_type="text/plain; charset=utf-8"
-    )</pre>
-<p></p>
-<nav class="page-navigation" aria-label="Page navigation">
+    )
+    """
+    head, level, page = parse_content()
+    directory = render_menu(head, level, page)
+    return set_css() + "&lt;div class='container'&gt;&lt;nav&gt;"+ \
+           directory + "&lt;/nav&gt;&lt;section&gt;&lt;h1&gt;Convert Result&lt;/h1&gt;" + outstring + "&lt;/section&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</pre>
+<p></p><nav class="page-navigation" aria-label="Page navigation">
 <div class="previous">&lt;&lt; <a href="Prog.html">Previous: Prog</a></div>
 <div class="next"><a href="Stocks.html">Next: Stocks</a> &gt;&gt;</div>
 </nav>
