@@ -1355,14 +1355,13 @@ mojo build main.mojo -o my_app
 <h1>CAD</h1>
 <h2>SolidCraft</h2>
 <p><a href="https://github.com/bherbruck/solidcraft">https://github.com/bherbruck/solidcraft</a> 底層核心採用 <a href="https://github.com/ricosjp/truck">https://github.com/ricosjp/truck</a>，目前的功能已經可以建立用於 3D 列印的簡單零組件。</p>
-<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.20.0/solidcraft-0.20.0-windows-x64-portable.zip">SolidCraft 0.20.0 Windows X64 可攜版</a></p>
-<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.20.0/solidcraft-web-0.20.0.zip">SolidCraft 0.20.0 Web 版</a>:</p>
+<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.25.1/solidcraft-0.25.1-windows-x64-portable.zip">SolidCraft 0.25.1 Windows X64 可攜版</a></p>
+<p><a href="https://github.com/tangency-labs/solidcraft/releases/download/v0.25.1/solidcraft-web-0.25.1.zip">SolidCraft 0.25.1 Web 版</a>:</p>
 <p style="padding-left: 30px;"><a href="https://mde.tw/sc">https://mde.tw/sc</a> </p>
 <p>另一個值得注意的是 <a href="https://github.com/bherbruck/solidcore">https://github.com/bherbruck/solidcore</a> 正在用 Rust 改寫剛開源的 <a href="https://github.com/NVIDIA-Omniverse/usd-brep">https://github.com/NVIDIA-Omniverse/usd-brep</a>。最後，SolidCraft 將會從 truck 轉而採用較為成熟的 <a href="https://github.com/bherbruck/solidcore">Solidcore</a> 作為核心。</p>
 <p><a href="https://github.com/bherbruck/solidcore">Solidcore</a> 是將 NVIDIA 開源的 <a href="https://github.com/NVIDIA-Omniverse/usd-brep">SMLib</a> 改寫為 Rust。<a href="https://github.com/NVIDIA-Omniverse/usd-brep">SMLib</a> 本身是一款累積數十年的商業級幾何內核，擁有極為強大且經過市場驗證的 <a href="https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline">NURBS</a> 數學運算、交集判定與曲面修復（Healing）能力。它能輕易實現 <a href="https://github.com/ricosjp/truck">truck</a> 無法穩定處理的圓角與倒角（Fillets &amp; Chamfers）、偏移與抽殼（Offset &amp; Shelling）、掃掠（Sweep）等高級 CAD 實體建模功能。</p>
 <p>以下 Rover 取自 <a href="https://github.com/0xlillith/solidcraft-rover">https://github.com/0xlillith/solidcraft-rover</a>， SolidCraft 0.20.0 版不僅能用來建立數十個零件的設計繪圖。也已經可以快速開啟帶有 504 個零組件的 <a href="https://www.printables.com/model/1520471-prusa-core-one-full-cad-assembly/files">3D 列印機組合件 STEP 檔案</a>。</p>
-<p><img alt="" height="304" src="/images/rover_in_solidcraft.png" width="400"/></p>
-<h3>MCP</h3>
+<p><img alt="" height="304" src="/images/rover_in_solidcraft.png" width="400"/></p><h3>MCP</h3>
 <p><a href="https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro">MCP</a>（Model Context Protocol，模型上下文協定） 的誕生，為 AI 模型連接外部軟體與調用工具建立了標準化的橋樑。這項協定的普及，正快速顛覆 MCAD（機械電腦輔助設計） 領域。在 MCP 的驅使下，未來由 AI 全權主導並執行 CAD/CAE/CAM/PLM 的跨軟體協同與虛實整合流程，已從科技幻想轉變為完全可行的現實。</p>
 <p>洞察到這一波「AI 驅動工業設計」的歷史性轉折，NVIDIA 在 2026 年 10 月初拋出震撼彈：將其於 2022 年收購的頂級商業幾何內核 SMLib，正式封裝於全新的 USD BRep 程式庫中，並以極度寬鬆的 Apache 2.0 協議全面開源。NVIDIA 此舉背後的深層商業策略如下：</p>
 <p>一、將 <a href="https://www.nvidia.com/en-us/glossary/openusd/">OpenUSD</a> 生態從「純視覺」推向「精確製造」:</p>
